@@ -1,6 +1,6 @@
 # Hi 👋, I'm Eury Sohn!
 
- ## 👩🏻‍💻 <i>Data Analyst</i>, experience in <i>Lean Management and Continuous Improvement </i>
+ ## 👩🏻‍💻 <i>Data Analyst & Scientist</i>, experience in <i>Lean Management and Continuous Improvement </i>
 
 ### About
 Hello, I'm Eury! I graduated with a Bachelor of Science in <b> Information Technology </b> from Yonsei University and Master of Science in <b> Information </b> from University of Wisconsin Madison. I currently work at Volvo Trucks as a Lean Management Data Scientist, and is open to from <b> January of 2024</b>. 
@@ -11,6 +11,7 @@ Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Cu
 
 #### ⭐ See my previous projects here: 
 * **Python**
+* <i>Data Science </i>
   * [Graph2Chart](Python/Graph2Chart), creating an Algorithm to turn graphs back into tables in a scalar level.
      * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
      * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
