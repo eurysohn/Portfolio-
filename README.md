@@ -1,6 +1,6 @@
 # Hi 👋, I'm Eury Sohn!
 
- ## 👩🏻‍💻 <i>Data Scientist & Analyst</i>, experience in <i>Lean Management and Continuous Improvement </i>
+ ## 👩🏻‍💻 <i>Data Analyst</i>, experience in <i>Lean Management and Continuous Improvement </i>
 
 #### ⭐ See my previous projects here: 
 * **Python**
