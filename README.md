@@ -9,7 +9,6 @@
      * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
 
 * **SQL**
-* **R**
 * **PowerBI**
 * **MongoDB**
 * **Tableau**
