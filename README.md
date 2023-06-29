@@ -9,6 +9,9 @@ My previous roles have been Data Scientist in a startup, Data Analyst, Research 
 
 Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Culture Analysis, and Social Innovation through Makerspace Idea Contest
 
+#### ⭐ Contact me through here: 
+* https://www.linkedin.com/in/eury-sohn/
+
 #### ⭐ See _some_ of my previous projects here: 
 * **Python**
      * **[Graph2Chart](Python/Graph2Chart)**, creating a model to extract graphs from PDF into tables forms then present on a scalar level.
@@ -28,9 +31,6 @@ Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Cu
 * **Tableau**
 
 #### ⭐ See my resume here : [CV](ES_RESUME(fixed)July.pdf)
-#### ⭐ Contact me through here: 
-* eurysohn@gmail.com 
-* https://www.linkedin.com/in/eury-sohn/
 
 ### My skills are: 
 
