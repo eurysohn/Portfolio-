@@ -10,7 +10,6 @@
 
 * **SQL**
 * **PowerBI**
-* **MongoDB**
 * **Tableau**
 
 #### ⭐ See my resume here : [CV](ES_RESUME(fixed)July.pdf)
@@ -29,7 +28,7 @@ Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Cu
 
 ⦿ Python, R, Tableau, Excel, PowerBI, Looker, MongoDB, SQL 
 
-⦿ Data analysis, data mining, data merging, machine learning, Linear Programming, Topic Extraction, API Integration, NLP, Image detection, Image classification, Feature Selection, Sentiment Analysis 
+⦿ Data analysis, data mining, data merging, machine learning, Linear Programming, Topic Extraction, API Integration, NLP, Image detection, Image classification, Feature Selection, Sentiment Analysis, RDBMS. 
 
 ⦿  PyTorch, NumPy, Matplotlib, Pandas, Scikit‑learn, Powerapps, Linear Regression, Vadar, Bert, K‑means clustering via Pandas, ROC, Naive Bayes, Selenium, Beautiful Soup, PyLDA, Gephi, Keras, <b> and so much more! </b> 
 
