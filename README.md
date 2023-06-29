@@ -12,7 +12,7 @@
 * **MongoDB**
 * **Tableau**
 
-#### ⭐ See my resume here : [CV](https://github.com/eurysohn/Portfolio-/blob/main/eury_sohn_resume.pdf)
+#### ⭐ See my resume here : [CV](ES_RESUME(fixed)July.pdf)
 #### ⭐ Contact me through here: 
 * eurysohn@gmail.com 
 * https://www.linkedin.com/in/eury-sohn/
