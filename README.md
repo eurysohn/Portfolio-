@@ -4,7 +4,8 @@
 
 #### ⭐ See my previous projects here: 
 * **Python**
-  * [Reverse engineering tables from graphs into digitisation form.](Python/Graph2Chart) **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification
+  * [Reverse engineering tables from graphs into digitisation form.](Python/Graph2Chart)
+     * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification
 
 * **SQL**
 * **R**
