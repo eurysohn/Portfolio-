@@ -11,10 +11,10 @@ Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Cu
 
 #### ⭐ See my previous projects here: 
 * **Python**
-*  <i>Data Science </i>
-  * [Graph2Chart](Python/Graph2Chart), creating an Algorithm to turn graphs back into tables in a scalar level.
-     * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
-     * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
+ * <i>Data Science </i>
+   * [Graph2Chart](Python/Graph2Chart), creating an Algorithm to turn graphs back into tables in a scalar level.
+      * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
+      * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
 
 * **SQL**
 * **PowerBI**
