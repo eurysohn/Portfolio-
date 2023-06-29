@@ -15,6 +15,9 @@ Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Cu
      * [Graph2Chart](Python/Graph2Chart), creating an Algorithm to turn graphs back into tables in a scalar level.
         * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
         * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
+     * [Optimise Routes & Cost](Python/Optimise Routes & Cost), using Linear Programming to create an optimised route for several supply and demand locations in lowest cost.
+        * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
+        * **Paper:** [Minimizing Shipping Cost and Redistribution for Recoffery](Python/Optimise Routes & Cost/orms.pdf)
 
 * **SQL**
 * **PowerBI**
