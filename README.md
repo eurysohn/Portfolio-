@@ -12,7 +12,7 @@ Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Cu
 #### ⭐ See my previous projects here: 
 * **Python**
    * <i>Data Science </i>
-     * **[Graph2Chart](Python/Graph2Chart)**, creating a model to turn graphs back into tables in a scalar level.
+     * **[Graph2Chart](Python/Graph2Chart)**, creating a model to extract graphs from PDF into tables forms then present on a scalar level.
         * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
         * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
      * **[Optimise Routes & Cost](Python/Optimise%20Routes%20%26%20Cost)**, using Linear Programming to create an optimised route for several supply and demand locations in the lowest cost.
