@@ -5,7 +5,8 @@
 #### ⭐ See my previous projects here: 
 * **Python**
   * [Reverse engineering tables from graphs into digitisation form.](Python/Graph2Chart)
-     * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification
+     * **Skills:** Python, NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
+     * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
 
 * **SQL**
 * **R**
