@@ -9,7 +9,7 @@ My previous roles have been Data Scientist in a startup, Data Analyst, Research 
 
 Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Culture Analysis, and Social Innovation through Makerspace Idea Contest
 
-#### ⭐ See _some_ my previous projects here: 
+#### ⭐ See _some_ of my previous projects here: 
 * **Python**
    * <i>Data Science </i>
      * **[Graph2Chart](Python/Graph2Chart)**, creating a model to extract graphs from PDF into tables forms then present on a scalar level.
