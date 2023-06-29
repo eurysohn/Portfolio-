@@ -13,7 +13,10 @@ Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Cu
 * **Python**
      * **[Graph2Chart](Python/Graph2Chart)**, creating a model to extract graphs from PDF into tables forms then present on a scalar level.
         * **Skills:** NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
-        * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
+        * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)  
+     * **[Evolution of COVID19 Misinformation Tweets](Python/Evolution%20of%20COVID19%20Misinformation%20Tweets)**, R1: How does misinformation tweets regarding Covid-19 differ 2020 & 2021 ; R2: Using Elaboration Likelihood Model, do misinformation tweets from 2021 reference smore cues related to peripheral processing (i.e. emotions, authority) compared to 2020?
+        * **Skills:** Data cleaning, Sentiment Analysis, Bokeh, LDA, Pyvis, NLTK, Topic Extraction.
+        * **Paper:** [Covid-19 Misinformation: The Evolution of Tweets Over Time on the Pandemic](Python/Evolution%20of%20COVID19%20Misinformation%20Tweets/Covid-19%20misinformation.pdf)
      * **[Optimise Routes & Cost](Python/Optimise%20Routes%20%26%20Cost)**, using Linear Programming to create an optimised route for several supply and demand locations in the lowest cost.
         * **Skills:** Linear Algebra, Optimization, Integration, Interpolation, Operational Research.
         * **Paper:** [Minimizing Shipping Cost and Redistribution for Recoffery](Python/Optimise%20Routes%20%26%20Cost/orms.pdf)
