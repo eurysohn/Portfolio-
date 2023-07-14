@@ -26,9 +26,6 @@ Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Cu
         * **Skills:** Linear Algebra, Optimization, Integration, Interpolation, Operational Research.
         * **Paper:** [Minimizing Shipping Cost and Redistribution for Recoffery](Python/Optimise%20Routes%20%26%20Cost/orms.pdf)
 
-* **SQL**
-* **PowerBI**
-* **Tableau**
 
 #### ⭐ See my resume here : [CV](ES_RESUME(fixed)July.pdf)
 
