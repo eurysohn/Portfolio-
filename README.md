@@ -1,6 +1,6 @@
 # Hi 👋, I'm Eury Sohn!
 
- ## 👩🏻‍💻 <i>Data Analyst & Scientist</i>, experience in <i>Lean Management and Continuous Improvement </i>
+ ## 👩🏻‍💻 <i>Data Analyst & Scientist</i>, experience in <i>NLP </i>
 
 ### About
 Hello, I'm Eury! I graduated with a Bachelor of Science in <b> Information Technology </b> from Yonsei University(Seoul) and Master of Science in <b> Information </b> from University of Wisconsin Madison. I currently work at Volvo Trucks as a Lean Management Data Scientist, and is open to from <b> January of 2024</b>. 
