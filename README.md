@@ -1,39 +1,76 @@
-# Hi 👋, I'm Eury Sohn!
+# Hi 👋 I'm Eury Sohn  
+**Forward-Deployed Engineer | AI Systems & Enterprise Agent Deployment**
 
- ## 👩🏻‍💻 <i>Data Analyst & Scientist</i>, experience in <i>NLP </i>
+I build and deploy production-grade AI systems in real enterprise environments.
 
-### About
-Hello, I'm Eury! I graduated with a Bachelor of Science in <b> Information Technology </b> from Yonsei University(Seoul) and Master of Science in <b> Information </b> from University of Wisconsin Madison. I currently work at LG CNS as a data consultant, and is open to from <b> January of 2024</b>. 
+Currently working at **LG CNS** as an **AI Agent Deployment Owner / Product Consultant**, leading end-to-end delivery of enterprise-scale SCM AI Agents that automate real operational workflows across ERP, data pipelines, and business systems.
 
-My previous roles have been Data Scientist in a startup, Data Analyst, Research Assistant in A.I. Lab, Teacher's Assistant in Yonsei and Wisconsin-Madison University, Mentor in UN Sustainable Development. 
+My focus is not just model performance, but **deployment reliability, system integration, observability, and business adoption**.
 
-Some of my awards are first place in: Nexon-Yonsei RC Competition, Krafton VR Culture Analysis, and Social Innovation through Makerspace Idea Contest
+---
 
-#### ⭐ Contact me through here: 
-* https://www.linkedin.com/in/eury-sohn/
+## What I Do
 
-#### ⭐ See _some_ of my previous projects here: 
-* **Python**
-     * **[Graph2Chart](Python/Graph2Chart)**, creating a model to extract graphs from PDF into tables forms then present on a scalar level.
-        * **Skills:** NLP, Objective Detection, Node detection, Unsupervised learning, Image classification.
-        * **Paper:** [Counting Pixels for An Effective Axis Detection](IEEE_IRI_2022.pdf)
-      
-     * **[Evolution of COVID19 Misinformation Tweets](Python/Evolution%20of%20COVID19%20Misinformation%20Tweets)**, RQ1: _How does misinformation tweets regarding Covid-19 differ 2020 & 2021_ ; RQ2: _Using Elaboration Likelihood Model, do misinformation tweets from 2021 reference smore cues related to peripheral processing (i.e. emotions, authority) compared to 2020?_
-        * **Skills:** Data cleaning, Sentiment Analysis, Bokeh, LDA, Pyvis, NLTK, Topic Extraction.
-        * **Paper:** [Covid-19 Misinformation: The Evolution of Tweets Over Time on the Pandemic](Python/Evolution%20of%20COVID19%20Misinformation%20Tweets/Covid-19%20misinformation.pdf)
-          
-     * **[Optimise Routes & Cost](Python/Optimise%20Routes%20%26%20Cost)**, using Linear Programming to create an optimised route for several supply and demand locations in the lowest cost.
-        * **Skills:** Linear Algebra, Optimization, Integration, Interpolation, Operational Research.
-        * **Paper:** [Minimizing Shipping Cost and Redistribution for Recoffery](Python/Optimise%20Routes%20%26%20Cost/orms.pdf)
+- Design and deploy production AI agent systems integrated with enterprise ERP and analytics pipelines  
+- Build Text-to-SQL and LLM-powered operational analytics pipelines for business users  
+- Own end-to-end delivery lifecycle: architecture, deployment, monitoring, incident response  
+- Work directly with stakeholders to translate ambiguous business requirements into working systems  
+- Operate AI systems at scale (10,000+ users, 1,000 concurrent users)
 
+---
 
-#### ⭐ See my resume here : [CV](ES_RESUME(fixed)July.pdf)
+## Current Role
 
-### My skills are: 
+**LG CNS — AI Agent Deployment Owner / SCM Consultant**
 
-⦿ Python, R, Tableau, Excel, PowerBI, Looker, MongoDB, SQL 
+- Led production rollout of SCM Expert AI Agent replacing enterprise CSR workflows  
+- Built unified AI operational interface combining ERP transactional data and domain knowledge  
+- Designed deployment automation and data orchestration pipelines  
+- Operated enterprise platform automating 100+ daily CSR requests with 87% automation rate  
+- Managed production incidents, privacy risk mitigation, rollback and redeployment strategies  
 
-⦿ Data analysis, data mining, data merging, machine learning, Linear Programming, Topic Extraction, API Integration, NLP, Image detection, Image classification, Feature Selection, Sentiment Analysis, RDBMS. 
+---
 
-⦿  PyTorch, NumPy, Matplotlib, Pandas, Scikit‑learn, Powerapps, Linear Regression, Vadar, Bert, K‑means clustering via Pandas, ROC, Naive Bayes, Selenium, Beautiful Soup, PyLDA, Gephi, Keras, <b> and so much more! </b> 
+## Education
 
+- M.S. Information (Data Science), University of Wisconsin–Madison (GPA 3.8/4.0)  
+- B.S. Creative Technology Management, Yonsei University (GPA 4.15/4.3)  
+
+---
+
+## Tech Stack
+
+**Languages & Data**  
+Python, SQL, MongoDB, Pandas, NumPy  
+
+**AI / ML**  
+LLM Pipelines, NLP, Text-to-SQL, Embedding Retrieval, Scikit-learn, PyTorch  
+
+**Systems**  
+FastAPI, API Integration, Data Pipelines, ERP Integration, Logging and Monitoring  
+
+**Analytics**  
+Tableau, PowerBI, Looker  
+
+---
+
+## Featured Projects
+
+### Mini Agent Runtime  
+Production-style agent execution engine with routing, tool interfaces, observability, and evaluation framework.  
+Repository: https://github.com/YOUR_USERNAME/mini-agent-runtime  
+
+### Enterprise Text-to-SQL Assistant  
+Natural language analytics agent for business KPI queries with validation and fallback handling.  
+Repository: https://github.com/YOUR_USERNAME/enterprise-text-to-sql-agent  
+
+### FastAPI Deployment Pipeline  
+Production-style API deployment pipeline with Docker and CI automation.  
+Repository: https://github.com/YOUR_USERNAME/fastapi-deployment-pipeline  
+
+---
+
+## Contact
+
+LinkedIn: https://www.linkedin.com/in/eury-sohn  
+Email: eurysohn@gmail.com  
