@@ -8,7 +8,7 @@ Currently working at **LG CNS** as an **AI Agent Deployment Owner / Product Cons
 My focus is not just model performance, but **deployment reliability, system integration, observability, and business adoption**.
 
 ---
-
+ 
 ## What I Do
 
 - Design and deploy production AI agent systems integrated with enterprise ERP and analytics pipelines  
