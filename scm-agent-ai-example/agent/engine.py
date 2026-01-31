@@ -41,6 +41,31 @@ def _run_calculator(query: str) -> Dict:
     return {"metric": "Calculation", "value": "Provide parameters for calculation."}
 
 
+def _detect_rag_domain(query: str) -> str | None:
+    text = query.lower()
+    demand_keywords = [
+        "demand",
+        "forecast",
+        "s&op",
+        "sales and operations",
+        "sales & operations",
+        "demand planning",
+    ]
+    supply_keywords = [
+        "supply",
+        "supplier",
+        "procurement",
+        "logistics",
+        "transport",
+        "warehouse",
+    ]
+    if any(word in text for word in demand_keywords):
+        return "demand"
+    if any(word in text for word in supply_keywords):
+        return "supply"
+    return None
+
+
 def run_agent(query: str, confidence_threshold: float = 0.55) -> Dict:
     dict_results, related_terms = lookup(query)
     routing = route(query, related_terms)
@@ -64,7 +89,8 @@ def run_agent(query: str, confidence_threshold: float = 0.55) -> Dict:
         answer = f"{calc['metric']} = {calc['value']}"
         tool_calls.append("calculator")
     else:
-        sources = search(query, top_k=3)
+        domain = _detect_rag_domain(query)
+        sources = search(query, top_k=3, domain=domain)
         context_blocks = []
         for s in sources:
             if s.get("page_text"):
