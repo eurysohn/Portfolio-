@@ -1,0 +1,61 @@
+Inventory Optimization
+
+EOQ balances ordering costs with holding costs to determine optimal batch size. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Safety stock can be set by service level targets using a z-score approach. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Pipeline inventory covers demand during replenishment lead time. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Cycle stock represents the average inventory due to batch ordering. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Demand variability drives buffer stock requirements. This guidance is reviewed quarterly to reflect changing business conditions.
+
+EOQ balances ordering costs with holding costs to determine optimal batch size. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Safety stock can be set by service level targets using a z-score approach. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Pipeline inventory covers demand during replenishment lead time. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Cycle stock represents the average inventory due to batch ordering. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Demand variability drives buffer stock requirements. This guidance is reviewed quarterly to reflect changing business conditions.
+
+EOQ balances ordering costs with holding costs to determine optimal batch size. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Safety stock can be set by service level targets using a z-score approach. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Pipeline inventory covers demand during replenishment lead time. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Cycle stock represents the average inventory due to batch ordering. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Demand variability drives buffer stock requirements. This guidance is reviewed quarterly to reflect changing business conditions.
+
+EOQ balances ordering costs with holding costs to determine optimal batch size. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Safety stock can be set by service level targets using a z-score approach. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Pipeline inventory covers demand during replenishment lead time. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Cycle stock represents the average inventory due to batch ordering. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Demand variability drives buffer stock requirements. This guidance is reviewed quarterly to reflect changing business conditions.
+
+EOQ balances ordering costs with holding costs to determine optimal batch size. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Safety stock can be set by service level targets using a z-score approach. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Pipeline inventory covers demand during replenishment lead time. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Cycle stock represents the average inventory due to batch ordering. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Demand variability drives buffer stock requirements. This guidance is reviewed quarterly to reflect changing business conditions.
+
+EOQ balances ordering costs with holding costs to determine optimal batch size. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Safety stock can be set by service level targets using a z-score approach. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Pipeline inventory covers demand during replenishment lead time. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Cycle stock represents the average inventory due to batch ordering. This guidance is reviewed quarterly to reflect changing business conditions.
+
+Demand variability drives buffer stock requirements. This guidance is reviewed quarterly to reflect changing business conditions.
