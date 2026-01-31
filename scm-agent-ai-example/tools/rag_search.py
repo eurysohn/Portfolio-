@@ -1,26 +1,13 @@
 import pickle
-from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from sklearn.metrics.pairwise import cosine_similarity
 
-
-BASE_DIR = Path(__file__).resolve().parents[1]
-INDEX_PATH = BASE_DIR / "storage" / "vector_db" / "index.pkl"
-SUPPLY_INDEX_PATH = BASE_DIR / "storage" / "vector_db_supply" / "index.pkl"
-DEMAND_INDEX_PATH = BASE_DIR / "storage" / "vector_db_demand" / "index.pkl"
+from config import get_index_path
 
 
-def _resolve_index_path(domain: str | None) -> Path:
-    if domain == "supply":
-        return SUPPLY_INDEX_PATH
-    if domain == "demand":
-        return DEMAND_INDEX_PATH
-    return INDEX_PATH
-
-
-def _load_index(domain: str | None = None) -> Dict:
-    index_path = _resolve_index_path(domain)
+def _load_index(domain: Optional[str] = None) -> Dict:
+    index_path = get_index_path(domain)
     if not index_path.exists():
         if domain:
             raise FileNotFoundError(
@@ -31,7 +18,7 @@ def _load_index(domain: str | None = None) -> Dict:
         return pickle.load(f)
 
 
-def search(query: str, top_k: int = 3, domain: str | None = None) -> List[Dict]:
+def search(query: str, top_k: int = 3, domain: Optional[str] = None) -> List[Dict]:
     index = _load_index(domain)
     vectorizer = index["vectorizer"]
     matrix = index["matrix"]

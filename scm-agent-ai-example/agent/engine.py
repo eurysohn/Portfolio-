@@ -66,7 +66,7 @@ def _detect_rag_domain(query: str) -> str | None:
     return None
 
 
-def run_agent(query: str, confidence_threshold: float = 0.55) -> Dict:
+def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3) -> Dict:
     dict_results, related_terms = lookup(query)
     routing = route(query, related_terms)
     intent = routing["intent"]
@@ -90,7 +90,7 @@ def run_agent(query: str, confidence_threshold: float = 0.55) -> Dict:
         tool_calls.append("calculator")
     else:
         domain = _detect_rag_domain(query)
-        sources = search(query, top_k=3, domain=domain)
+        sources = search(query, top_k=top_k, domain=domain)
         context_blocks = []
         for s in sources:
             if s.get("page_text"):

@@ -47,6 +47,26 @@ each URL and stores the original file in `data/raw_data/`.
 
 The agent routes queries to supply/demand RAG when supply/demand keywords are detected.
 
+## API service (enterprise deploy)
+Run the API server (expects prebuilt indexes):
+```bash
+uvicorn api.app:app --host 0.0.0.0 --port 8000
+```
+
+### Required env vars for object storage
+If you want indexes pulled from object storage on startup:
+- `INDEX_BUCKET`: bucket name
+- `INDEX_PREFIX`: prefix for stored artifacts (default `scm-agent-ai-example/indexes`)
+- `INDEX_CACHE_DIR`: local cache directory (default `cache/`)
+
+Optional overrides:
+- `INDEX_SUPPLY_KEY`: full key for supply index
+- `INDEX_DEMAND_KEY`: full key for demand index
+
+### API endpoints
+- `GET /health` → index readiness
+- `POST /query` → `{ "query": "...", "top_k": 3 }`
+
 ## Notes
 - Outputs are logged to `logs/scm_runs.jsonl`.
 
@@ -55,10 +75,17 @@ The agent routes queries to supply/demand RAG when supply/demand keywords are de
 scm-agent-ai-example/
   README.md
   requirements.txt
+  Dockerfile
+  .dockerignore
   download_raw.py
   process_data.py
   build_process_rag.py
+  config.py
+  index_loader.py
   run_scm_agent.py
+  api/
+    __init__.py
+    app.py
   agent/
     __init__.py
     engine.py
