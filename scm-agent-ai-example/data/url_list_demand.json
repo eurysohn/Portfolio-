@@ -1,0 +1,394 @@
+[
+  {
+    "category": "demand",
+    "url": "https://docs.aws.amazon.com/pdfs/whitepapers/latest/demand-forecasting/demand-forecasting.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/05/JSA-Demand-Forecasting-92-KCG-clean.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://valuechainplanning.com/upload/details/Forecast_Accuracy_Presentation.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://valuechainplanning.com/upload/details/Forecast_Accuracy_Presentation_2023.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://becomedemanddriven.com/wp-content/uploads/2023/02/Forecast-Accuracy.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://mikeshor.com/research/forecastcollaboration.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.apics.org/docs/default-source/industry-content/apics-sop-performance-report.pdf?sfvrsn=0"
+  },
+  {
+    "category": "demand",
+    "url": "https://host.kelley.iu.edu/mabert/e730/chopra-chap-7.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.anaplan.com/content/dam/anaplan/assets/documents/datasheet/demand-management-supply-chain-datasheet.pdf?r=cfo-epms"
+  },
+  {
+    "category": "demand",
+    "url": "https://support.sas.com/content/dam/SAS/support/en/books/business-forecasting-practical-problems-and-solutions/68980_excerpt.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.supplychainbrain.com/ext/resources/secure_download/KellysFiles/WhitePapersAndBenchMarkReports/Logility/S-OP+5+Steps+to+Success+Logility.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.wns.com/Portals/0/Documents/Whitepapers/WNS-WP-the-4-step-approach-to-improve-sales-operations-and-planning.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.robintp.com/wp-content/uploads/2020/04/APICS_moaref_barname_forosh.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://courses.edx.org/asset-v1:MITx+CTL.SC1x_1+2T2015+type@asset+block/w4l2_NewIntermittentProducts_ANNOTATED_FINAL.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/15-772j-d-lab-supply-chains-fall-2014/6952be57b43aa185119c6f114908bcc5_MIT15_772JF14_Newsboy.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://link.springer.com/content/pdf/10.1007/978-3-031-51241-4_2.pdf?pdf=inline%20link"
+  },
+  {
+    "category": "demand",
+    "url": "https://otexts.com/fpp3/fpp3.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://otexts.com/fpp2/fpp2.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://docs.aws.amazon.com/pdfs/whitepapers/latest/forecasting/forecasting.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.minitab.com/uploadedFiles/Content/Products/Forecasting/Forecasting_White_Paper.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/15-772j-d-lab-supply-chains-fall-2014/resources/mit15_772jf14_lec01/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/15-772j-d-lab-supply-chains-fall-2014/resources/mit15_772jf14_lec03/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/15-772j-d-lab-supply-chains-fall-2014/resources/mit15_772jf14_lec04-lec05/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/15-772j-d-lab-supply-chains-fall-2014/resources/mit15_772jf14_lec06/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/15-772j-d-lab-supply-chains-fall-2014/resources/mit15_772jf14_lec13/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/15-772j-d-lab-supply-chains-fall-2014/resources/mit15_772jf14_lec14/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/15-772j-d-lab-supply-chains-fall-2014/resources/mit15_772jf14_lec15/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect2/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect3/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect4/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect5/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect6/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect7/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect8/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect9/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect11/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect12/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect13/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect14/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.stat.berkeley.edu/~ryantibs/timeseries-f23/lectures/characteristics.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://robjhyndman.com/eindhoven/1-0-intro.pdf"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect15/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect16/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect17/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect18/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect19/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect20/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect21/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect23/"
+  },
+  {
+    "category": "demand",
+    "url": "https://ocw.mit.edu/courses/esd-260j-logistics-systems-fall-2006/resources/lect25/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.anaplan.com/blog/sales-operations-planning-sop-guide/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.oracle.com/scm/supply-chain-planning/sales-operations-planning/"
+  },
+  {
+    "category": "demand",
+    "url": "https://docs.oracle.com/en/cloud/saas/supply-chain-and-manufacturing/25d/faurp/demand-measures-and-forecast-accuracy-measures.html"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.relexsolutions.com/resources/measuring-forecast-accuracy/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.salesforce.com/ap/blog/demand-forecasting-guide/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.datamine.com/datafix/guides/demand-forecasting"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.supplychainbrain.com/articles/36302-forecast-accuracy-metrics"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.supplychainbrain.com/articles/36535-demand-sensing-what-it-is-and-why-it-matters"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.e2open.com/fbs/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.e2open.com/resources/just-the-facts-highlights-from-the-e2open-2024-forecasting-and-inventory-benchmark-study/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.geodis.com/us-en/resources/whitepapers/logistics-forecasting-how-stay-competitive-index"
+  },
+  {
+    "category": "demand",
+    "url": "https://aws.amazon.com/executive-insights/content/ai-powered-demand-sensing/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.smartsheet.com/sales-operations-planning-101"
+  },
+  {
+    "category": "demand",
+    "url": "https://support.anaplan.com/sales-and-operations-planning-ef40447f-909a-4122-98d7-ae5b00029387"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.sap.com/products/ibp/demand-planning.html"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.investopedia.com/terms/d/demand-forecasting.asp"
+  },
+  {
+    "category": "demand",
+    "url": "https://hbr.org/2020/03/forecasting-demand-in-a-turbulent-economy"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.mckinsey.com/capabilities/operations/our-insights/demand-forecasting-in-uncertain-times"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.sas.com/en_us/insights/analytics/forecasting.html"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.ibm.com/topics/demand-forecasting"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.ibm.com/topics/sales-operations-planning"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.oracle.com/scm/demand-management/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2021/06/08/demand-forecasting/"
+  },
+  {
+    "category": "demand",
+    "url": "https://azure.microsoft.com/en-us/blog/forecasting-demand-using-azure-machine-learning/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.kinaxis.com/en/solutions/demand-management"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.blueyonder.com/solutions/demand-planning"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.o9solutions.com/resources/demand-planning-whitepaper/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.toolsgroup.com/demand-forecasting/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.informs.org/Explore/Operations-and-Supply-Chain-Management/Forecasting"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.cio.com/article/189242/what-is-demand-forecasting.html"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.oracle.com/scm/supply-chain-planning/demand-planning/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.sap.com/products/ibp/what-is-sales-operations-planning.html"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.gartner.com/en/supply-chain/topics/demand-forecasting"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.supplychain247.com/article/demand_planning_best_practices"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.supplychain247.com/article/sop_planning_process"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.supplychainbrain.com/articles/34955-what-is-demand-planning"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.supplychainbrain.com/articles/35143-demand-planning-best-practices"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.supplychainbrain.com/articles/36633-how-to-improve-forecast-accuracy"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.sciencedirect.com/topics/engineering/demand-forecasting"
+  },
+  {
+    "category": "demand",
+    "url": "https://corporatefinanceinstitute.com/resources/management/demand-forecasting/"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.investopedia.com/terms/f/forecasting.asp"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.investopedia.com/terms/s/salesforecast.asp"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.forbes.com/sites/forbestechcouncil/2021/07/08/demand-forecasting-in-volatile-times/"
+  },
+  {
+    "category": "demand",
+    "url": "https://hbr.org/2017/04/a-better-way-to-forecast-demand"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.mckinsey.com/capabilities/operations/our-insights/using-advanced-analytics-to-improve-demand-forecasting"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.pmi.org/learning/library/demand-management-forecasting-11318"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.ibm.com/docs/en/spss-modeler/saas?topic=forecasting-overview"
+  },
+  {
+    "category": "demand",
+    "url": "https://www.kdnuggets.com/2020/04/demand-forecasting-time-series.html"
+  }
+]
