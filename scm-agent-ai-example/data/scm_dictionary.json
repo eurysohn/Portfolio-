@@ -1,0 +1,1220 @@
+[
+  {
+    "term": "OTIF",
+    "definition": "On-Time In-Full delivery performance.",
+    "business_meaning": "Measures the percentage of orders delivered on time and with complete quantities.",
+    "formula": "OTIF = On-Time Rate * In-Full Rate",
+    "synonyms": ["on time in full", "perfect delivery"],
+    "example_queries": ["What is OTIF?", "How do we improve OTIF?"]
+  },
+  {
+    "term": "Fill Rate",
+    "definition": "Percentage of demand fulfilled immediately from stock.",
+    "business_meaning": "Indicates inventory availability and customer service level.",
+    "formula": "Fill Rate = Filled Units / Total Demand Units",
+    "synonyms": ["service fill", "order fill"],
+    "example_queries": ["Calculate fill rate", "Target fill rate for A items"]
+  },
+  {
+    "term": "Safety Stock",
+    "definition": "Extra inventory held to buffer variability in demand or supply.",
+    "business_meaning": "Protects service levels during uncertainty.",
+    "formula": "Safety Stock = Z * Demand Std Dev * sqrt(Lead Time)",
+    "synonyms": ["buffer stock", "protective stock"],
+    "example_queries": ["How to set safety stock?", "Safety stock formula"]
+  },
+  {
+    "term": "Reorder Point",
+    "definition": "Inventory level that triggers replenishment.",
+    "business_meaning": "Ensures replenishment arrives before stockout.",
+    "formula": "ROP = Demand During Lead Time + Safety Stock",
+    "synonyms": ["order point", "replenishment point"],
+    "example_queries": ["Compute reorder point", "ROP policy"]
+  },
+  {
+    "term": "Lead Time",
+    "definition": "Time from order placement to receipt.",
+    "business_meaning": "Drives safety stock and service performance.",
+    "formula": "N/A",
+    "synonyms": ["cycle time", "procurement lead time"],
+    "example_queries": ["What affects lead time?", "Lead time variability"]
+  },
+  {
+    "term": "Backorder",
+    "definition": "Order not fulfilled when requested, shipped later.",
+    "business_meaning": "Represents unmet demand and service issues.",
+    "formula": "N/A",
+    "synonyms": ["back order", "late order"],
+    "example_queries": ["Backorder rate meaning", "Reduce backorders"]
+  },
+  {
+    "term": "ATP",
+    "definition": "Available-to-Promise inventory for customer orders.",
+    "business_meaning": "Shows what can be promised based on current and planned supply.",
+    "formula": "ATP = On-Hand + Scheduled Receipts - Allocated Demand",
+    "synonyms": ["available to promise"],
+    "example_queries": ["Define ATP", "How is ATP calculated?"]
+  },
+  {
+    "term": "MOQ",
+    "definition": "Minimum Order Quantity required by supplier.",
+    "business_meaning": "Influences order frequency and inventory carrying cost.",
+    "formula": "N/A",
+    "synonyms": ["minimum order size"],
+    "example_queries": ["What is MOQ?", "MOQ impact on inventory"]
+  },
+  {
+    "term": "EOQ",
+    "definition": "Economic Order Quantity minimizes ordering and holding costs.",
+    "business_meaning": "Balances order size and inventory cost.",
+    "formula": "EOQ = sqrt((2 * D * S) / H)",
+    "synonyms": ["economic batch size"],
+    "example_queries": ["EOQ formula", "Calculate EOQ"]
+  },
+  {
+    "term": "Inventory Turns",
+    "definition": "Number of times inventory is sold/used in a period.",
+    "business_meaning": "Indicates inventory efficiency and working capital usage.",
+    "formula": "Turns = COGS / Average Inventory",
+    "synonyms": ["stock turns"],
+    "example_queries": ["Inventory turns target", "Improve turns"]
+  },
+  {
+    "term": "Cycle Time",
+    "definition": "Time to complete a process from start to finish.",
+    "business_meaning": "Used to measure operational efficiency.",
+    "formula": "N/A",
+    "synonyms": ["process time"],
+    "example_queries": ["Cycle time in manufacturing", "Reduce cycle time"]
+  },
+  {
+    "term": "Service Level",
+    "definition": "Probability of meeting demand without stockout.",
+    "business_meaning": "Defines target availability for customers.",
+    "formula": "N/A",
+    "synonyms": ["service target", "availability level"],
+    "example_queries": ["Service level definition", "Service level by segment"]
+  },
+  {
+    "term": "Stockout",
+    "definition": "Event when inventory is unavailable to meet demand.",
+    "business_meaning": "Creates lost sales and service penalties.",
+    "formula": "N/A",
+    "synonyms": ["out of stock"],
+    "example_queries": ["Stockout causes", "Stockout rate"]
+  },
+  {
+    "term": "Demand Forecast",
+    "definition": "Prediction of future customer demand.",
+    "business_meaning": "Drives planning and inventory decisions.",
+    "formula": "N/A",
+    "synonyms": ["forecast", "demand plan"],
+    "example_queries": ["Demand forecast process", "Forecast accuracy"]
+  },
+  {
+    "term": "MAPE",
+    "definition": "Mean Absolute Percentage Error for forecasts.",
+    "business_meaning": "Measures forecast accuracy as a percentage.",
+    "formula": "MAPE = avg(|(Actual - Forecast)/Actual|)",
+    "synonyms": ["forecast error"],
+    "example_queries": ["What is MAPE?", "Reduce MAPE"]
+  },
+  {
+    "term": "Forecast Bias",
+    "definition": "Systematic tendency to over- or under-forecast.",
+    "business_meaning": "Indicates directional error in forecasting.",
+    "formula": "Bias = avg(Actual - Forecast)",
+    "synonyms": ["forecast skew"],
+    "example_queries": ["Forecast bias meaning", "Fix forecast bias"]
+  },
+  {
+    "term": "S&OP",
+    "definition": "Sales and Operations Planning process.",
+    "business_meaning": "Aligns demand, supply, and financial plans.",
+    "formula": "N/A",
+    "synonyms": ["sales and operations planning"],
+    "example_queries": ["S&OP cadence", "S&OP participants"]
+  },
+  {
+    "term": "MRP",
+    "definition": "Material Requirements Planning.",
+    "business_meaning": "Explodes demand into component requirements.",
+    "formula": "N/A",
+    "synonyms": ["material requirements planning"],
+    "example_queries": ["MRP output", "MRP inputs"]
+  },
+  {
+    "term": "BOM",
+    "definition": "Bill of Materials list for a product.",
+    "business_meaning": "Defines components required to build finished goods.",
+    "formula": "N/A",
+    "synonyms": ["bill of materials"],
+    "example_queries": ["BOM structure", "BOM accuracy"]
+  },
+  {
+    "term": "WIP",
+    "definition": "Work In Process inventory.",
+    "business_meaning": "Represents partially completed goods.",
+    "formula": "N/A",
+    "synonyms": ["work in process"],
+    "example_queries": ["WIP reduction", "WIP limits"]
+  },
+  {
+    "term": "Capacity",
+    "definition": "Maximum output a process can produce.",
+    "business_meaning": "Used to balance demand and supply plans.",
+    "formula": "N/A",
+    "synonyms": ["throughput capacity"],
+    "example_queries": ["Capacity planning", "Capacity constraints"]
+  },
+  {
+    "term": "Throughput",
+    "definition": "Rate at which a system produces output.",
+    "business_meaning": "Core measure of operational performance.",
+    "formula": "N/A",
+    "synonyms": ["output rate"],
+    "example_queries": ["Increase throughput", "Throughput vs capacity"]
+  },
+  {
+    "term": "Lead Time Variability",
+    "definition": "Variation in lead time over time.",
+    "business_meaning": "Higher variability requires more safety stock.",
+    "formula": "N/A",
+    "synonyms": ["lead time volatility"],
+    "example_queries": ["Lead time variability impact", "Reduce lead time variability"]
+  },
+  {
+    "term": "Lot Size",
+    "definition": "Quantity produced or purchased in a batch.",
+    "business_meaning": "Impacts setup cost and inventory.",
+    "formula": "N/A",
+    "synonyms": ["batch size"],
+    "example_queries": ["Lot size decision", "Optimize lot size"]
+  },
+  {
+    "term": "ABC Classification",
+    "definition": "Inventory segmentation by value or usage.",
+    "business_meaning": "Enables differentiated policies by item class.",
+    "formula": "N/A",
+    "synonyms": ["ABC analysis"],
+    "example_queries": ["ABC classification example", "ABC policy"]
+  },
+  {
+    "term": "SKU",
+    "definition": "Stock Keeping Unit identifier.",
+    "business_meaning": "Represents a distinct product or variant.",
+    "formula": "N/A",
+    "synonyms": ["item code"],
+    "example_queries": ["SKU proliferation", "SKU rationalization"]
+  },
+  {
+    "term": "Safety Lead Time",
+    "definition": "Extra lead time added to protect availability.",
+    "business_meaning": "Buffers supplier or transport variability.",
+    "formula": "N/A",
+    "synonyms": ["buffer lead time"],
+    "example_queries": ["Safety lead time policy", "When to use safety lead time"]
+  },
+  {
+    "term": "Order Cycle",
+    "definition": "Time between consecutive orders.",
+    "business_meaning": "Drives replenishment cadence.",
+    "formula": "N/A",
+    "synonyms": ["reorder cycle"],
+    "example_queries": ["Order cycle length", "Order cycle optimization"]
+  },
+  {
+    "term": "Freight Cost",
+    "definition": "Cost of transporting goods.",
+    "business_meaning": "Major component of logistics expense.",
+    "formula": "N/A",
+    "synonyms": ["transportation cost"],
+    "example_queries": ["Freight cost per unit", "Reduce freight cost"]
+  },
+  {
+    "term": "Carrier",
+    "definition": "Transportation provider.",
+    "business_meaning": "Impacts on-time delivery and cost.",
+    "formula": "N/A",
+    "synonyms": ["logistics provider"],
+    "example_queries": ["Carrier performance", "Carrier scorecard"]
+  },
+  {
+    "term": "Distribution Center",
+    "definition": "Facility used to store and ship goods.",
+    "business_meaning": "Enables regional fulfillment and service.",
+    "formula": "N/A",
+    "synonyms": ["DC", "warehouse"],
+    "example_queries": ["DC network", "DC throughput"]
+  },
+  {
+    "term": "Cross Docking",
+    "definition": "Direct transfer of inbound to outbound shipments.",
+    "business_meaning": "Reduces storage time and handling.",
+    "formula": "N/A",
+    "synonyms": ["cross-dock"],
+    "example_queries": ["Cross docking benefits", "Cross docking process"]
+  },
+  {
+    "term": "Last Mile",
+    "definition": "Final delivery stage to the customer.",
+    "business_meaning": "Often the most costly and visible delivery segment.",
+    "formula": "N/A",
+    "synonyms": ["final mile"],
+    "example_queries": ["Last mile cost", "Last mile service"]
+  },
+  {
+    "term": "Return Rate",
+    "definition": "Percentage of orders or units returned.",
+    "business_meaning": "Impacts reverse logistics and cost.",
+    "formula": "Return Rate = Returns / Shipped Units",
+    "synonyms": ["returns rate"],
+    "example_queries": ["Return rate KPI", "Reduce returns"]
+  },
+  {
+    "term": "Reverse Logistics",
+    "definition": "Process of managing returns and disposition.",
+    "business_meaning": "Recovers value and improves customer satisfaction.",
+    "formula": "N/A",
+    "synonyms": ["returns management"],
+    "example_queries": ["Reverse logistics flow", "Reverse logistics KPIs"]
+  },
+  {
+    "term": "Vendor Managed Inventory",
+    "definition": "Supplier manages inventory replenishment for customer.",
+    "business_meaning": "Improves availability and reduces bullwhip effects.",
+    "formula": "N/A",
+    "synonyms": ["VMI"],
+    "example_queries": ["VMI benefits", "VMI governance"]
+  },
+  {
+    "term": "Consignment Stock",
+    "definition": "Inventory held at customer site but owned by supplier.",
+    "business_meaning": "Reduces customer working capital while ensuring availability.",
+    "formula": "N/A",
+    "synonyms": ["consigned inventory"],
+    "example_queries": ["Consignment stock terms", "Consignment risks"]
+  },
+  {
+    "term": "Purchase Order",
+    "definition": "Document authorizing a supplier to deliver goods.",
+    "business_meaning": "Formalizes procurement transaction.",
+    "formula": "N/A",
+    "synonyms": ["PO"],
+    "example_queries": ["Purchase order process", "PO lead time"]
+  },
+  {
+    "term": "SLA",
+    "definition": "Service Level Agreement with target performance.",
+    "business_meaning": "Defines delivery, quality, and response expectations.",
+    "formula": "N/A",
+    "synonyms": ["service agreement"],
+    "example_queries": ["SLA metrics", "SLA penalties"]
+  },
+  {
+    "term": "Perfect Order",
+    "definition": "Order delivered without errors on time and in full.",
+    "business_meaning": "Composite service metric for customer satisfaction.",
+    "formula": "Perfect Order = OTIF * Accuracy * Damage-Free",
+    "synonyms": ["perfect order rate"],
+    "example_queries": ["Perfect order KPI", "Perfect order definition"]
+  },
+  {
+    "term": "On-Time Delivery",
+    "definition": "Percentage of orders delivered by promised date.",
+    "business_meaning": "Measures delivery reliability.",
+    "formula": "On-Time Delivery = On-Time Orders / Total Orders",
+    "synonyms": ["OTD"],
+    "example_queries": ["On-time delivery KPI", "Improve OTD"]
+  },
+  {
+    "term": "In-Full",
+    "definition": "Percentage of orders delivered with complete quantity.",
+    "business_meaning": "Measures order completeness.",
+    "formula": "In-Full = Complete Orders / Total Orders",
+    "synonyms": ["order completeness"],
+    "example_queries": ["In-full definition", "Improve in-full rate"]
+  },
+  {
+    "term": "Forecast Accuracy",
+    "definition": "How close a forecast is to actual demand.",
+    "business_meaning": "Affects inventory and service levels.",
+    "formula": "Accuracy = 1 - MAPE",
+    "synonyms": ["forecast quality"],
+    "example_queries": ["Forecast accuracy target", "Forecast accuracy formula"]
+  },
+  {
+    "term": "Days of Supply",
+    "definition": "How many days inventory will last.",
+    "business_meaning": "Indicates coverage and working capital.",
+    "formula": "Days of Supply = On-Hand / Average Daily Demand",
+    "synonyms": ["inventory coverage"],
+    "example_queries": ["Days of supply calculation", "Days of supply target"]
+  },
+  {
+    "term": "GMROI",
+    "definition": "Gross Margin Return on Inventory Investment.",
+    "business_meaning": "Measures profitability per inventory dollar.",
+    "formula": "GMROI = Gross Margin / Average Inventory Cost",
+    "synonyms": ["gross margin return on inventory"],
+    "example_queries": ["GMROI meaning", "Improve GMROI"]
+  },
+  {
+    "term": "Cost to Serve",
+    "definition": "Total cost to serve a customer or segment.",
+    "business_meaning": "Highlights true profitability by customer.",
+    "formula": "N/A",
+    "synonyms": ["cost-to-serve"],
+    "example_queries": ["Cost to serve model", "Cost to serve drivers"]
+  },
+  {
+    "term": "Incoterms",
+    "definition": "International commercial terms for shipping responsibilities.",
+    "business_meaning": "Defines risk transfer and cost responsibility.",
+    "formula": "N/A",
+    "synonyms": ["international commercial terms"],
+    "example_queries": ["Incoterms 2020", "Incoterms for FOB"]
+  },
+  {
+    "term": "Transit Time",
+    "definition": "Time goods spend in transportation.",
+    "business_meaning": "Affects delivery promises and safety stock.",
+    "formula": "N/A",
+    "synonyms": ["shipping time"],
+    "example_queries": ["Transit time variability", "Transit time KPI"]
+  },
+  {
+    "term": "Order Fulfillment",
+    "definition": "Process of receiving and delivering customer orders.",
+    "business_meaning": "Core customer experience driver.",
+    "formula": "N/A",
+    "synonyms": ["fulfillment"],
+    "example_queries": ["Order fulfillment flow", "Improve fulfillment speed"]
+  },
+  {
+    "term": "Fill Time",
+    "definition": "Time to complete an order from placement to shipment.",
+    "business_meaning": "Measures fulfillment speed.",
+    "formula": "N/A",
+    "synonyms": ["order cycle time"],
+    "example_queries": ["Fill time definition", "Reduce fill time"]
+  },
+  {
+    "term": "Cycle Count",
+    "definition": "Continuous inventory counting process.",
+    "business_meaning": "Improves inventory accuracy without shutdowns.",
+    "formula": "N/A",
+    "synonyms": ["cycle counting"],
+    "example_queries": ["Cycle count frequency", "Cycle count benefits"]
+  },
+  {
+    "term": "Inventory Accuracy",
+    "definition": "Match between recorded and actual inventory.",
+    "business_meaning": "Critical for reliable ATP and planning.",
+    "formula": "Accuracy = Correct Records / Total Records",
+    "synonyms": ["stock accuracy"],
+    "example_queries": ["Inventory accuracy KPI", "Improve accuracy"]
+  },
+  {
+    "term": "Shrinkage",
+    "definition": "Loss of inventory due to damage, theft, or errors.",
+    "business_meaning": "Reduces available inventory and margin.",
+    "formula": "Shrinkage = Book Inventory - Physical Inventory",
+    "synonyms": ["inventory loss"],
+    "example_queries": ["Shrinkage rate", "Shrinkage causes"]
+  },
+  {
+    "term": "Obsolescence",
+    "definition": "Inventory that can no longer be sold.",
+    "business_meaning": "Creates write-offs and working capital drag.",
+    "formula": "N/A",
+    "synonyms": ["obsolete stock"],
+    "example_queries": ["Obsolete inventory reduction", "Obsolescence policy"]
+  },
+  {
+    "term": "Allocation",
+    "definition": "Rules to distribute limited inventory to demand.",
+    "business_meaning": "Prioritizes key customers or channels.",
+    "formula": "N/A",
+    "synonyms": ["inventory allocation"],
+    "example_queries": ["Allocation rules", "Allocation during shortages"]
+  },
+  {
+    "term": "Constraint",
+    "definition": "Resource limiting system throughput.",
+    "business_meaning": "Primary focus for improving flow.",
+    "formula": "N/A",
+    "synonyms": ["bottleneck"],
+    "example_queries": ["Identify constraint", "Manage bottlenecks"]
+  },
+  {
+    "term": "OEE",
+    "definition": "Overall Equipment Effectiveness.",
+    "business_meaning": "Measures equipment availability, performance, and quality.",
+    "formula": "OEE = Availability * Performance * Quality",
+    "synonyms": ["overall equipment effectiveness"],
+    "example_queries": ["OEE definition", "Improve OEE"]
+  },
+  {
+    "term": "Yield",
+    "definition": "Percentage of good output from total input.",
+    "business_meaning": "Indicates process quality and efficiency.",
+    "formula": "Yield = Good Units / Total Units",
+    "synonyms": ["process yield"],
+    "example_queries": ["Yield rate", "Increase yield"]
+  },
+  {
+    "term": "Scrap Rate",
+    "definition": "Percentage of production discarded.",
+    "business_meaning": "Measures waste and quality issues.",
+    "formula": "Scrap Rate = Scrap / Total Production",
+    "synonyms": ["defect rate"],
+    "example_queries": ["Scrap rate KPI", "Reduce scrap"]
+  },
+  {
+    "term": "Kanban",
+    "definition": "Visual pull-based replenishment system.",
+    "business_meaning": "Controls WIP and improves flow.",
+    "formula": "N/A",
+    "synonyms": ["pull system"],
+    "example_queries": ["Kanban cards", "Kanban sizing"]
+  },
+  {
+    "term": "Just In Time",
+    "definition": "Production and delivery aligned to immediate demand.",
+    "business_meaning": "Reduces inventory while maintaining flow.",
+    "formula": "N/A",
+    "synonyms": ["JIT"],
+    "example_queries": ["JIT benefits", "JIT risks"]
+  },
+  {
+    "term": "Make-to-Stock",
+    "definition": "Production based on forecast for inventory.",
+    "business_meaning": "Supports fast fulfillment but risks overstock.",
+    "formula": "N/A",
+    "synonyms": ["MTS"],
+    "example_queries": ["Make-to-stock strategy", "MTS vs MTO"]
+  },
+  {
+    "term": "Make-to-Order",
+    "definition": "Production starts after customer order.",
+    "business_meaning": "Reduces inventory but increases lead time.",
+    "formula": "N/A",
+    "synonyms": ["MTO"],
+    "example_queries": ["Make-to-order strategy", "MTO lead time"]
+  },
+  {
+    "term": "Drop Shipping",
+    "definition": "Supplier ships directly to customer.",
+    "business_meaning": "Reduces handling but limits control of service.",
+    "formula": "N/A",
+    "synonyms": ["dropship"],
+    "example_queries": ["Dropshipping pros and cons", "Dropshipping model"]
+  },
+  {
+    "term": "Safety Stock Factor",
+    "definition": "Service-level factor used to calculate safety stock.",
+    "business_meaning": "Determines buffer size based on desired service level.",
+    "formula": "N/A",
+    "synonyms": ["z-score"],
+    "example_queries": ["Safety stock factor", "Z-score table"]
+  },
+  {
+    "term": "Demand Variability",
+    "definition": "Fluctuation in demand over time.",
+    "business_meaning": "Drives safety stock and planning buffers.",
+    "formula": "N/A",
+    "synonyms": ["demand volatility"],
+    "example_queries": ["Demand variability impact", "Reduce variability"]
+  },
+  {
+    "term": "Bullwhip Effect",
+    "definition": "Demand amplification up the supply chain.",
+    "business_meaning": "Causes excess inventory and service instability.",
+    "formula": "N/A",
+    "synonyms": ["demand amplification"],
+    "example_queries": ["Bullwhip effect causes", "Bullwhip effect mitigation"]
+  },
+  {
+    "term": "Order Cycle Time",
+    "definition": "Time from order placement to delivery.",
+    "business_meaning": "Key service and speed metric.",
+    "formula": "N/A",
+    "synonyms": ["order lead time"],
+    "example_queries": ["Order cycle time KPI", "Reduce order cycle time"]
+  },
+  {
+    "term": "Inventory Carrying Cost",
+    "definition": "Cost to hold inventory including capital and storage.",
+    "business_meaning": "Major driver in inventory policy decisions.",
+    "formula": "N/A",
+    "synonyms": ["holding cost"],
+    "example_queries": ["Inventory carrying cost", "Holding cost rate"]
+  },
+  {
+    "term": "Demand Signal",
+    "definition": "Data representing actual or expected customer demand.",
+    "business_meaning": "Used to improve forecast responsiveness.",
+    "formula": "N/A",
+    "synonyms": ["demand indicator"],
+    "example_queries": ["Demand signals sources", "Use demand signals"]
+  },
+  {
+    "term": "Allocation Logic",
+    "definition": "Rules used to allocate scarce inventory.",
+    "business_meaning": "Protects key customers and margins.",
+    "formula": "N/A",
+    "synonyms": ["allocation rules"],
+    "example_queries": ["Allocation logic example", "Allocation governance"]
+  },
+  {
+    "term": "Master Production Schedule",
+    "definition": "Plan for finished goods production.",
+    "business_meaning": "Translates demand into manufacturing schedule.",
+    "formula": "N/A",
+    "synonyms": ["MPS"],
+    "example_queries": ["MPS process", "MPS stability"]
+  },
+  {
+    "term": "Service Level Agreement",
+    "definition": "Contracted performance expectations.",
+    "business_meaning": "Defines metrics and penalties.",
+    "formula": "N/A",
+    "synonyms": ["SLA"],
+    "example_queries": ["SLA metrics", "SLA compliance"]
+  },
+  {
+    "term": "Fulfillment Rate",
+    "definition": "Share of orders fulfilled without delay.",
+    "business_meaning": "Measures order execution success.",
+    "formula": "Fulfillment Rate = Fulfilled Orders / Total Orders",
+    "synonyms": ["order fulfillment rate"],
+    "example_queries": ["Fulfillment rate", "Improve fulfillment rate"]
+  },
+  {
+    "term": "Warehouse Slotting",
+    "definition": "Optimizing item placement in the warehouse.",
+    "business_meaning": "Improves picking speed and efficiency.",
+    "formula": "N/A",
+    "synonyms": ["slotting"],
+    "example_queries": ["Warehouse slotting strategy", "Slotting benefits"]
+  },
+  {
+    "term": "Cycle Service Level",
+    "definition": "Probability of no stockout in a replenishment cycle.",
+    "business_meaning": "Used to set safety stock targets.",
+    "formula": "N/A",
+    "synonyms": ["CSL"],
+    "example_queries": ["Cycle service level", "CSL calculation"]
+  },
+  {
+    "term": "Demand Planning",
+    "definition": "Process to forecast and plan demand.",
+    "business_meaning": "Aligns marketing, sales, and operations.",
+    "formula": "N/A",
+    "synonyms": ["demand management"],
+    "example_queries": ["Demand planning process", "Demand planning tools"]
+  },
+  {
+    "term": "Inventory Optimization",
+    "definition": "Balancing service levels and inventory cost.",
+    "business_meaning": "Uses analytics to set targets and buffers.",
+    "formula": "N/A",
+    "synonyms": ["inventory planning"],
+    "example_queries": ["Inventory optimization methods", "Inventory optimization KPIs"]
+  },
+  {
+    "term": "Supply Planning",
+    "definition": "Determining how to meet forecast demand.",
+    "business_meaning": "Converts demand into production and procurement plans.",
+    "formula": "N/A",
+    "synonyms": ["supply plan"],
+    "example_queries": ["Supply planning cadence", "Supply planning constraints"]
+  },
+  {
+    "term": "Available to Promise",
+    "definition": "Quantity available for new customer orders.",
+    "business_meaning": "Prevents over-promising and improves service.",
+    "formula": "ATP = On-Hand + Scheduled Receipts - Committed Demand",
+    "synonyms": ["ATP"],
+    "example_queries": ["Available to promise", "ATP policy"]
+  },
+  {
+    "term": "Bottleneck",
+    "definition": "Process step that limits overall throughput.",
+    "business_meaning": "Primary target for capacity improvements.",
+    "formula": "N/A",
+    "synonyms": ["constraint"],
+    "example_queries": ["Identify bottleneck", "Bottleneck analysis"]
+  },
+  {
+    "term": "Demand-Supply Gap",
+    "definition": "Difference between planned demand and supply.",
+    "business_meaning": "Resolved in S&OP or tactical planning.",
+    "formula": "Gap = Demand - Supply",
+    "synonyms": ["supply gap"],
+    "example_queries": ["Demand-supply gap", "Close demand-supply gap"]
+  },
+  {
+    "term": "Inventory Allocation",
+    "definition": "Assignment of inventory to orders or channels.",
+    "business_meaning": "Supports service priorities and compliance.",
+    "formula": "N/A",
+    "synonyms": ["allocation"],
+    "example_queries": ["Inventory allocation rules", "Allocation by channel"]
+  },
+  {
+    "term": "Cycle Stock",
+    "definition": "Inventory held to cover normal demand between orders.",
+    "business_meaning": "Base inventory level before safety stock.",
+    "formula": "Cycle Stock = Q / 2",
+    "synonyms": ["working stock"],
+    "example_queries": ["Cycle stock definition", "Cycle stock calculation"]
+  }
+]
+[
+  {
+    "term": "OTIF",
+    "definition": "On-Time In-Full delivery performance.",
+    "business_meaning": "Measures customer experience by tracking orders delivered on the promised date and complete.",
+    "formula": "OTIF = (On-time and in-full orders) / (Total orders)",
+    "synonyms": ["On-time in-full", "Perfect delivery"],
+    "example_queries": ["What is OTIF?", "How do we calculate on-time in-full?"]
+  },
+  {
+    "term": "Fill Rate",
+    "definition": "Percent of demand fulfilled immediately from stock.",
+    "business_meaning": "Indicates availability and service level.",
+    "formula": "Fill Rate = (Units shipped immediately) / (Total units ordered)",
+    "synonyms": ["Service level", "Case fill"],
+    "example_queries": ["Compute fill rate", "What is order fill?"]
+  },
+  {
+    "term": "Safety Stock",
+    "definition": "Buffer inventory to protect against uncertainty.",
+    "business_meaning": "Reduces stockout risk due to demand or supply variability.",
+    "formula": "Safety Stock = Z * sigma * sqrt(Lead Time)",
+    "synonyms": ["Buffer stock", "Reserve stock"],
+    "example_queries": ["How to set safety stock?", "Buffer inventory meaning"]
+  },
+  {
+    "term": "Reorder Point",
+    "definition": "Inventory level that triggers replenishment.",
+    "business_meaning": "Ensures replenishment arrives before stockout.",
+    "formula": "ROP = Demand during lead time + Safety stock",
+    "synonyms": ["ROP", "Reorder level"],
+    "example_queries": ["Calculate reorder point", "What is ROP?"]
+  },
+  {
+    "term": "Lead Time",
+    "definition": "Time between order and delivery.",
+    "business_meaning": "Impacts inventory planning and service levels.",
+    "formula": "Lead Time = Order date to receipt date",
+    "synonyms": ["Supply lead time", "Cycle time"],
+    "example_queries": ["Lead time definition", "Why is lead time important?"]
+  },
+  {
+    "term": "Backorder",
+    "definition": "Order not fulfilled due to insufficient stock.",
+    "business_meaning": "Represents delayed demand fulfillment.",
+    "formula": "",
+    "synonyms": ["Back order", "Delayed order"],
+    "example_queries": ["What is a backorder?", "Backorder meaning"]
+  },
+  {
+    "term": "ATP",
+    "definition": "Available to Promise inventory.",
+    "business_meaning": "Quantity that can be committed to new orders.",
+    "formula": "ATP = On-hand + Scheduled receipts - Allocated demand",
+    "synonyms": ["Available to promise"],
+    "example_queries": ["Define ATP", "How to calculate available to promise?"]
+  },
+  {
+    "term": "MOQ",
+    "definition": "Minimum Order Quantity.",
+    "business_meaning": "Smallest order size accepted by a supplier.",
+    "formula": "",
+    "synonyms": ["Minimum order", "Min order qty"],
+    "example_queries": ["What does MOQ mean?", "MOQ definition"]
+  },
+  {
+    "term": "EOQ",
+    "definition": "Economic Order Quantity.",
+    "business_meaning": "Optimal order size minimizing total costs.",
+    "formula": "EOQ = sqrt((2 * D * S) / H)",
+    "synonyms": ["Optimal order quantity"],
+    "example_queries": ["EOQ formula", "How do I compute EOQ?"]
+  },
+  {
+    "term": "MRP",
+    "definition": "Material Requirements Planning.",
+    "business_meaning": "Plans component demand based on the master schedule.",
+    "formula": "",
+    "synonyms": ["Material planning"],
+    "example_queries": ["What is MRP?", "MRP purpose"]
+  },
+  {
+    "term": "S&OP",
+    "definition": "Sales and Operations Planning.",
+    "business_meaning": "Monthly process to align demand and supply.",
+    "formula": "",
+    "synonyms": ["Sales and operations planning", "SOP"],
+    "example_queries": ["Explain S&OP", "S&OP process"]
+  },
+  {
+    "term": "Forecast Accuracy",
+    "definition": "Closeness of forecast to actual demand.",
+    "business_meaning": "Indicates planning quality.",
+    "formula": "Accuracy = 1 - (|Actual - Forecast| / Actual)",
+    "synonyms": ["Forecast performance"],
+    "example_queries": ["What is forecast accuracy?", "How to measure accuracy?"]
+  },
+  {
+    "term": "MAPE",
+    "definition": "Mean Absolute Percentage Error.",
+    "business_meaning": "Measures forecasting error as a percentage.",
+    "formula": "MAPE = avg(|Actual - Forecast| / Actual)",
+    "synonyms": ["Forecast error percentage"],
+    "example_queries": ["Define MAPE", "MAPE formula"]
+  },
+  {
+    "term": "Forecast Bias",
+    "definition": "Systematic over- or under-forecasting.",
+    "business_meaning": "Highlights consistent forecast direction error.",
+    "formula": "Bias = avg(Forecast - Actual)",
+    "synonyms": ["Bias"],
+    "example_queries": ["What is forecast bias?", "How to detect bias?"]
+  },
+  {
+    "term": "Inventory Turnover",
+    "definition": "Number of times inventory is sold/used in a period.",
+    "business_meaning": "Reflects inventory efficiency.",
+    "formula": "Turns = COGS / Average inventory",
+    "synonyms": ["Inventory turns"],
+    "example_queries": ["Inventory turnover meaning", "Turns formula"]
+  },
+  {
+    "term": "Days of Supply",
+    "definition": "Days inventory can cover expected demand.",
+    "business_meaning": "Shows how long inventory will last.",
+    "formula": "Days of Supply = On-hand / Daily demand",
+    "synonyms": ["DOS", "Days on hand"],
+    "example_queries": ["What is days of supply?", "DOS formula"]
+  },
+  {
+    "term": "Cycle Service Level",
+    "definition": "Probability of no stockout during a replenishment cycle.",
+    "business_meaning": "Service level tied to safety stock decisions.",
+    "formula": "",
+    "synonyms": ["CSL"],
+    "example_queries": ["Cycle service level definition"]
+  },
+  {
+    "term": "ABC Analysis",
+    "definition": "Inventory classification by value or usage.",
+    "business_meaning": "Focuses controls on critical items.",
+    "formula": "",
+    "synonyms": ["ABC classification", "ABC segmentation"],
+    "example_queries": ["What is ABC analysis?"]
+  },
+  {
+    "term": "SKU",
+    "definition": "Stock Keeping Unit.",
+    "business_meaning": "Unique identifier for an inventory item.",
+    "formula": "",
+    "synonyms": ["Item code"],
+    "example_queries": ["SKU meaning"]
+  },
+  {
+    "term": "BOM",
+    "definition": "Bill of Materials.",
+    "business_meaning": "List of components needed to build a product.",
+    "formula": "",
+    "synonyms": ["Bill of material"],
+    "example_queries": ["What is a BOM?"]
+  },
+  {
+    "term": "WIP",
+    "definition": "Work in Process inventory.",
+    "business_meaning": "Items in production but not yet finished.",
+    "formula": "",
+    "synonyms": ["Work in progress"],
+    "example_queries": ["Define WIP"]
+  },
+  {
+    "term": "Capacity Utilization",
+    "definition": "Percentage of available capacity used.",
+    "business_meaning": "Indicates how fully resources are used.",
+    "formula": "Utilization = Actual output / Potential output",
+    "synonyms": ["Utilization"],
+    "example_queries": ["Capacity utilization formula"]
+  },
+  {
+    "term": "OEE",
+    "definition": "Overall Equipment Effectiveness.",
+    "business_meaning": "Composite metric for equipment performance.",
+    "formula": "OEE = Availability * Performance * Quality",
+    "synonyms": ["Equipment effectiveness"],
+    "example_queries": ["OEE definition", "OEE formula"]
+  },
+  {
+    "term": "Takt Time",
+    "definition": "Rate of production needed to meet demand.",
+    "business_meaning": "Aligns production with customer demand.",
+    "formula": "Takt = Available time / Demand",
+    "synonyms": ["Production pace"],
+    "example_queries": ["What is takt time?"]
+  },
+  {
+    "term": "Throughput",
+    "definition": "Rate of production or flow through a system.",
+    "business_meaning": "Measure of process output capacity.",
+    "formula": "",
+    "synonyms": ["Output rate"],
+    "example_queries": ["Throughput meaning"]
+  },
+  {
+    "term": "Bullwhip Effect",
+    "definition": "Demand variability amplification upstream.",
+    "business_meaning": "Causes inefficiency across the supply chain.",
+    "formula": "",
+    "synonyms": ["Bullwhip"],
+    "example_queries": ["Explain bullwhip effect"]
+  },
+  {
+    "term": "Supplier Lead Time",
+    "definition": "Time for a supplier to deliver goods.",
+    "business_meaning": "Key input to reorder point and safety stock.",
+    "formula": "",
+    "synonyms": ["Vendor lead time"],
+    "example_queries": ["Supplier lead time definition"]
+  },
+  {
+    "term": "VMI",
+    "definition": "Vendor Managed Inventory.",
+    "business_meaning": "Supplier manages buyer inventory levels.",
+    "formula": "",
+    "synonyms": ["Vendor managed inventory"],
+    "example_queries": ["What is VMI?"]
+  },
+  {
+    "term": "Consignment",
+    "definition": "Supplier retains ownership until goods are used.",
+    "business_meaning": "Reduces working capital for buyer.",
+    "formula": "",
+    "synonyms": ["Consignment inventory"],
+    "example_queries": ["Consignment meaning"]
+  },
+  {
+    "term": "Cross-docking",
+    "definition": "Direct transfer from receiving to shipping.",
+    "business_meaning": "Reduces storage and handling time.",
+    "formula": "",
+    "synonyms": ["Cross docking"],
+    "example_queries": ["What is cross-docking?"]
+  },
+  {
+    "term": "3PL",
+    "definition": "Third-Party Logistics provider.",
+    "business_meaning": "Outsourced logistics services.",
+    "formula": "",
+    "synonyms": ["Third party logistics"],
+    "example_queries": ["Define 3PL"]
+  },
+  {
+    "term": "4PL",
+    "definition": "Fourth-Party Logistics provider.",
+    "business_meaning": "Manages multiple 3PLs and end-to-end logistics.",
+    "formula": "",
+    "synonyms": ["Fourth party logistics"],
+    "example_queries": ["Define 4PL"]
+  },
+  {
+    "term": "Incoterms",
+    "definition": "International commercial terms defining responsibilities.",
+    "business_meaning": "Clarifies cost and risk transfer in shipping.",
+    "formula": "",
+    "synonyms": ["Shipping terms"],
+    "example_queries": ["What are Incoterms?"]
+  },
+  {
+    "term": "FOB",
+    "definition": "Free On Board shipping term.",
+    "business_meaning": "Seller delivers goods to a port; risk transfers at loading.",
+    "formula": "",
+    "synonyms": ["Free on board"],
+    "example_queries": ["FOB meaning"]
+  },
+  {
+    "term": "CIF",
+    "definition": "Cost, Insurance, and Freight.",
+    "business_meaning": "Seller covers cost, insurance, and freight to destination.",
+    "formula": "",
+    "synonyms": ["Cost insurance freight"],
+    "example_queries": ["CIF definition"]
+  },
+  {
+    "term": "Demurrage",
+    "definition": "Charge for holding cargo beyond free time.",
+    "business_meaning": "Incentivizes quick clearance at ports.",
+    "formula": "",
+    "synonyms": ["Port storage fee"],
+    "example_queries": ["Demurrage meaning"]
+  },
+  {
+    "term": "Detention",
+    "definition": "Charge for holding containers beyond free time.",
+    "business_meaning": "Applies to inland container use.",
+    "formula": "",
+    "synonyms": ["Container detention"],
+    "example_queries": ["Detention fee in logistics"]
+  },
+  {
+    "term": "Carrier On-time",
+    "definition": "Percentage of shipments delivered on time.",
+    "business_meaning": "Measures carrier reliability.",
+    "formula": "On-time = On-time shipments / Total shipments",
+    "synonyms": ["On-time delivery"],
+    "example_queries": ["Carrier on-time performance"]
+  },
+  {
+    "term": "Freight Cost",
+    "definition": "Transportation cost for shipping goods.",
+    "business_meaning": "Major logistics cost driver.",
+    "formula": "",
+    "synonyms": ["Transportation cost"],
+    "example_queries": ["Freight cost definition"]
+  },
+  {
+    "term": "Lane",
+    "definition": "Origin-destination transportation route.",
+    "business_meaning": "Used for network planning and carrier bidding.",
+    "formula": "",
+    "synonyms": ["Shipping lane"],
+    "example_queries": ["What is a freight lane?"]
+  },
+  {
+    "term": "Distribution Center",
+    "definition": "Facility that stores and distributes inventory.",
+    "business_meaning": "Central node for fulfillment and allocation.",
+    "formula": "",
+    "synonyms": ["DC", "Warehouse"],
+    "example_queries": ["Distribution center role"]
+  },
+  {
+    "term": "Last Mile",
+    "definition": "Final delivery to the customer.",
+    "business_meaning": "Often the most expensive and visible logistics step.",
+    "formula": "",
+    "synonyms": ["Final mile"],
+    "example_queries": ["Last mile logistics meaning"]
+  },
+  {
+    "term": "Reverse Logistics",
+    "definition": "Process of handling returns and disposal.",
+    "business_meaning": "Manages returns, refurbishments, and waste.",
+    "formula": "",
+    "synonyms": ["Returns management"],
+    "example_queries": ["Reverse logistics definition"]
+  },
+  {
+    "term": "Return Rate",
+    "definition": "Percentage of sold items returned.",
+    "business_meaning": "Measures quality and customer satisfaction.",
+    "formula": "Return Rate = Returns / Total sales",
+    "synonyms": ["Returns rate"],
+    "example_queries": ["Return rate formula"]
+  },
+  {
+    "term": "Service Level",
+    "definition": "Probability of meeting demand without stockout.",
+    "business_meaning": "Guides inventory policy and safety stock.",
+    "formula": "",
+    "synonyms": ["Customer service level"],
+    "example_queries": ["Service level in inventory"]
+  },
+  {
+    "term": "Perfect Order",
+    "definition": "Order delivered complete, on time, damage-free, and with accurate docs.",
+    "business_meaning": "Comprehensive service KPI.",
+    "formula": "Perfect Order = Orders meeting all criteria / Total orders",
+    "synonyms": ["Perfect order rate"],
+    "example_queries": ["Perfect order definition"]
+  },
+  {
+    "term": "Stockout",
+    "definition": "Inventory not available when needed.",
+    "business_meaning": "Leads to backorders or lost sales.",
+    "formula": "",
+    "synonyms": ["Out of stock"],
+    "example_queries": ["Stockout meaning"]
+  },
+  {
+    "term": "Lost Sales",
+    "definition": "Demand lost due to stockout.",
+    "business_meaning": "Revenue impact of poor availability.",
+    "formula": "",
+    "synonyms": ["Missed sales"],
+    "example_queries": ["Lost sales definition"]
+  },
+  {
+    "term": "Obsolete Inventory",
+    "definition": "Items no longer sellable or usable.",
+    "business_meaning": "Ties up working capital.",
+    "formula": "",
+    "synonyms": ["Dead stock"],
+    "example_queries": ["Obsolete inventory meaning"]
+  },
+  {
+    "term": "Safety Lead Time",
+    "definition": "Extra lead time buffer used in planning.",
+    "business_meaning": "Protects against supplier variability.",
+    "formula": "",
+    "synonyms": ["Lead time buffer"],
+    "example_queries": ["Safety lead time definition"]
+  },
+  {
+    "term": "Lot Size",
+    "definition": "Quantity produced or ordered at once.",
+    "business_meaning": "Affects setup costs and inventory levels.",
+    "formula": "",
+    "synonyms": ["Order lot size"],
+    "example_queries": ["Lot size meaning"]
+  },
+  {
+    "term": "Batch Size",
+    "definition": "Quantity processed together in production.",
+    "business_meaning": "Trade-off between setups and flow.",
+    "formula": "",
+    "synonyms": ["Batch quantity"],
+    "example_queries": ["Batch size definition"]
+  },
+  {
+    "term": "Palletization",
+    "definition": "Unitization of goods on pallets.",
+    "business_meaning": "Improves handling efficiency.",
+    "formula": "",
+    "synonyms": ["Palletizing"],
+    "example_queries": ["Palletization meaning"]
+  },
+  {
+    "term": "Put-away",
+    "definition": "Process of moving received goods to storage.",
+    "business_meaning": "Part of warehouse inbound operations.",
+    "formula": "",
+    "synonyms": ["Putaway"],
+    "example_queries": ["Put-away process"]
+  },
+  {
+    "term": "Picking Accuracy",
+    "definition": "Correctness of items picked for orders.",
+    "business_meaning": "Impacts customer satisfaction and returns.",
+    "formula": "Picking Accuracy = Correct picks / Total picks",
+    "synonyms": ["Pick accuracy"],
+    "example_queries": ["Picking accuracy metric"]
+  },
+  {
+    "term": "Cycle Count",
+    "definition": "Periodic inventory counting of subsets.",
+    "business_meaning": "Improves inventory accuracy without full shutdown.",
+    "formula": "",
+    "synonyms": ["Cycle counting"],
+    "example_queries": ["Cycle count definition"]
+  },
+  {
+    "term": "Inventory Accuracy",
+    "definition": "Match between system and physical inventory.",
+    "business_meaning": "Enables reliable ATP and planning.",
+    "formula": "Accuracy = Correct records / Total records",
+    "synonyms": ["Record accuracy"],
+    "example_queries": ["Inventory accuracy formula"]
+  },
+  {
+    "term": "Net Requirements",
+    "definition": "Demand after considering on-hand and scheduled receipts.",
+    "business_meaning": "Key output of MRP.",
+    "formula": "Net = Gross requirements - On-hand - Scheduled receipts",
+    "synonyms": ["Net demand"],
+    "example_queries": ["Net requirements in MRP"]
+  },
+  {
+    "term": "Order Cycle Time",
+    "definition": "Time from order placement to delivery.",
+    "business_meaning": "Captures end-to-end fulfillment speed.",
+    "formula": "",
+    "synonyms": ["Order lead time"],
+    "example_queries": ["Order cycle time definition"]
+  },
+  {
+    "term": "Production Yield",
+    "definition": "Good output as a percentage of total production.",
+    "business_meaning": "Indicates quality and efficiency.",
+    "formula": "Yield = Good units / Total units",
+    "synonyms": ["Yield rate"],
+    "example_queries": ["Production yield formula"]
+  },
+  {
+    "term": "Scrap Rate",
+    "definition": "Percentage of defective or wasted units.",
+    "business_meaning": "Measures production losses.",
+    "formula": "Scrap Rate = Scrap units / Total units",
+    "synonyms": ["Defect rate"],
+    "example_queries": ["Scrap rate definition"]
+  },
+  {
+    "term": "Demand Variability",
+    "definition": "Fluctuation in demand over time.",
+    "business_meaning": "Drives safety stock and service levels.",
+    "formula": "",
+    "synonyms": ["Demand volatility"],
+    "example_queries": ["Demand variability meaning"]
+  },
+  {
+    "term": "Replenishment Cycle",
+    "definition": "Time between replenishment orders.",
+    "business_meaning": "Impacts order quantity and inventory levels.",
+    "formula": "",
+    "synonyms": ["Order cycle"],
+    "example_queries": ["Replenishment cycle definition"]
+  },
+  {
+    "term": "Kanban",
+    "definition": "Pull-based replenishment signal system.",
+    "business_meaning": "Supports just-in-time flow.",
+    "formula": "",
+    "synonyms": ["Kanban system"],
+    "example_queries": ["What is kanban in SCM?"]
+  },
+  {
+    "term": "Just-in-Time",
+    "definition": "Production and replenishment aligned to demand.",
+    "business_meaning": "Reduces inventory and waste.",
+    "formula": "",
+    "synonyms": ["JIT"],
+    "example_queries": ["Just in time meaning"]
+  },
+  {
+    "term": "Make-to-Stock",
+    "definition": "Produce goods for inventory ahead of demand.",
+    "business_meaning": "Suited for stable demand items.",
+    "formula": "",
+    "synonyms": ["MTS"],
+    "example_queries": ["Make-to-stock definition"]
+  },
+  {
+    "term": "Make-to-Order",
+    "definition": "Produce goods after receiving an order.",
+    "business_meaning": "Suited for custom or variable demand.",
+    "formula": "",
+    "synonyms": ["MTO"],
+    "example_queries": ["Make-to-order definition"]
+  },
+  {
+    "term": "Configure-to-Order",
+    "definition": "Assemble based on customer configuration.",
+    "business_meaning": "Balances customization and speed.",
+    "formula": "",
+    "synonyms": ["CTO"],
+    "example_queries": ["Configure-to-order meaning"]
+  }
+]
