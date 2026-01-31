@@ -3,8 +3,29 @@ from typing import Dict, List
 INTENTS = ["PLANNING", "INVENTORY", "LOGISTICS", "DEFINITION", "CALCULATION", "GENERAL"]
 
 KEYWORDS = {
-    "PLANNING": ["forecast", "s&op", "sales and operations", "demand plan", "capacity"],
-    "INVENTORY": ["inventory", "safety stock", "reorder", "cycle count", "abc"],
+    "PLANNING": [
+        "forecast",
+        "s&op",
+        "sales and operations",
+        "demand plan",
+        "capacity",
+        "수요예측",
+        "수요 계획",
+        "판매 운영",
+        "s&op",
+    ],
+    "INVENTORY": [
+        "inventory",
+        "safety stock",
+        "reorder",
+        "cycle count",
+        "abc",
+        "재고",
+        "안전재고",
+        "재주문",
+        "재주문점",
+        "재고회전",
+    ],
     "LOGISTICS": ["transport", "freight", "warehouse", "delivery", "carrier"],
     "DEFINITION": [
         "define",
@@ -18,7 +39,17 @@ KEYWORDS = {
         "뭐야",
         "무엇",
     ],
-    "CALCULATION": ["calculate", "compute", "formula", "eoq", "reorder point", "fill rate"],
+    "CALCULATION": [
+        "calculate",
+        "compute",
+        "formula",
+        "eoq",
+        "reorder point",
+        "fill rate",
+        "계산",
+        "산출",
+        "공식",
+    ],
 }
 
 
