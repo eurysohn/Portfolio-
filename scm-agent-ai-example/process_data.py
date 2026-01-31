@@ -1,4 +1,5 @@
 import io
+import json
 import os
 import re
 from multiprocessing import Process, Queue
@@ -44,6 +45,10 @@ def _extract_docx_text(data: bytes) -> str:
     doc = Document(io.BytesIO(data))
     texts = [para.text for para in doc.paragraphs if para.text.strip()]
     return _normalize_text(" ".join(texts))
+
+
+def _looks_like_pdf(data: bytes) -> bool:
+    return data.startswith(b"%PDF")
 
 
 def _extract_pdf_pages_with_timeout(data: bytes, seconds: int) -> List[str]:
@@ -131,14 +136,27 @@ def main() -> None:
                     continue
                 text = _gemini_ocr_pptx(path, api_key, model_name)
             elif ext == ".pdf":
-                pages = _extract_pdf_pages_with_timeout(data, pdf_timeout)
-                text = "\n\n".join(pages)
+                if _looks_like_pdf(data):
+                    pages = _extract_pdf_pages_with_timeout(data, pdf_timeout)
+                    text = "\n\n".join(pages)
+                else:
+                    text = _strip_html(data.decode("utf-8", errors="ignore"))
             elif ext == ".docx":
                 text = _extract_docx_text(data)
             elif ext in {".html", ".htm"}:
-                text = _strip_html(data.decode("utf-8", errors="ignore"))
+                if _looks_like_pdf(data):
+                    pages = _extract_pdf_pages_with_timeout(data, pdf_timeout)
+                    text = "\n\n".join(pages)
+                else:
+                    text = _strip_html(data.decode("utf-8", errors="ignore"))
             elif ext == ".txt":
                 text = _normalize_text(data.decode("utf-8", errors="ignore"))
+            elif ext == ".json":
+                try:
+                    payload = json.loads(data.decode("utf-8", errors="ignore"))
+                    text = _normalize_text(json.dumps(payload, ensure_ascii=True, indent=2))
+                except json.JSONDecodeError:
+                    text = _normalize_text(data.decode("utf-8", errors="ignore"))
             else:
                 skipped += 1
                 continue
@@ -146,6 +164,9 @@ def main() -> None:
             print(f"Skipping {path.name}: {exc}")
             skipped += 1
             continue
+
+        if not text and ext in {".html", ".htm"}:
+            text = f"Blocked or empty HTML content from {path.name}."
 
         if text:
             output_path.write_text(text, encoding="utf-8")
