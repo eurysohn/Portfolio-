@@ -1,4 +1,5 @@
 import json
+import re
 import uuid
 from pathlib import Path
 from typing import Dict, List
@@ -66,6 +67,15 @@ def _detect_rag_domain(query: str) -> str | None:
     return None
 
 
+def _summarize_context(text: str, max_sentences: int = 3) -> str:
+    clean = re.sub(r"\s+", " ", text).strip()
+    if not clean:
+        return ""
+    sentences = re.split(r"(?<=[.!?])\s+", clean)
+    summary = " ".join(sentences[:max_sentences]).strip()
+    return summary
+
+
 def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3) -> Dict:
     dict_results, related_terms = lookup(query)
     routing = route(query, related_terms)
@@ -74,21 +84,56 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3) ->
     sources = []
     answer = ""
     tool_calls = []
+    handled = False
 
-    if intent == "DEFINITION" and dict_results:
-        entry = dict_results[0]
-        answer = (
-            f"{entry['term']}: {entry['definition']}\n"
-            f"Business meaning: {entry['business_meaning']}\n"
-            f"Formula: {entry.get('formula', 'N/A')}"
-        )
-        sources = [{"source": "data/scm_dictionary.json", "score": 1.0, "text": entry["term"]}]
-        tool_calls.append("dictionary_lookup")
-    elif intent == "CALCULATION":
+    if intent == "DEFINITION":
+        if dict_results:
+            entry = dict_results[0]
+            answer = (
+                f"{entry['term']}: {entry['definition']}\n"
+                f"Business meaning: {entry['business_meaning']}\n"
+                f"Formula: {entry.get('formula', 'N/A')}"
+            )
+            sources = [
+                {
+                    "chunk_id": f"dict:{entry['term']}",
+                    "source": "data/scm_dictionary.json",
+                    "score": 1.0,
+                    "text": entry["term"],
+                    "page_text": "",
+                }
+            ]
+            tool_calls.append("dictionary_lookup")
+            handled = True
+        else:
+            text = query.lower()
+            if "scm" in text or "supply chain" in text:
+                answer = (
+                    "SCM (Supply Chain Management) is the end-to-end management of "
+                    "planning, sourcing, production, logistics, and fulfillment to "
+                    "deliver products efficiently and reliably."
+                )
+                tool_calls.append("definition_fallback")
+                sources = [
+                    {
+                        "chunk_id": "built_in_definition",
+                        "source": "built_in_definition",
+                        "score": 1.0,
+                        "text": "SCM",
+                        "page_text": "",
+                    }
+                ]
+                handled = True
+            else:
+                intent = "GENERAL"
+
+    if intent == "CALCULATION":
         calc = _run_calculator(query)
         answer = f"{calc['metric']} = {calc['value']}"
         tool_calls.append("calculator")
-    else:
+        handled = True
+
+    if not handled:
         domain = _detect_rag_domain(query)
         sources = search(query, top_k=top_k, domain=domain)
         context_blocks = []
@@ -98,7 +143,8 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3) ->
             else:
                 context_blocks.append(s["text"])
         context = " ".join(context_blocks)[:2000]
-        answer = f"{SYSTEM_PROMPT} Based on sources: {context}"
+        summary = _summarize_context(context, max_sentences=3)
+        answer = summary if summary else "No relevant information found in sources."
         tool_calls.append("rag_search")
 
     if confidence < confidence_threshold:

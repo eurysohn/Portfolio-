@@ -13,7 +13,14 @@ def _load_index(domain: Optional[str] = None) -> Dict:
             raise FileNotFoundError(
                 f"Vector index missing for {domain}. Run: python build_process_rag.py"
             )
-        raise FileNotFoundError("Vector index missing. Run: python build_kb.py")
+        supply_path = get_index_path("supply")
+        demand_path = get_index_path("demand")
+        if supply_path.exists():
+            index_path = supply_path
+        elif demand_path.exists():
+            index_path = demand_path
+        else:
+            raise FileNotFoundError("Vector index missing. Run: python build_process_rag.py")
     with index_path.open("rb") as f:
         return pickle.load(f)
 

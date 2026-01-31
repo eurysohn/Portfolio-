@@ -6,7 +6,18 @@ KEYWORDS = {
     "PLANNING": ["forecast", "s&op", "sales and operations", "demand plan", "capacity"],
     "INVENTORY": ["inventory", "safety stock", "reorder", "cycle count", "abc"],
     "LOGISTICS": ["transport", "freight", "warehouse", "delivery", "carrier"],
-    "DEFINITION": ["define", "what is", "meaning", "term", "glossary"],
+    "DEFINITION": [
+        "define",
+        "what is",
+        "meaning",
+        "term",
+        "glossary",
+        "정의",
+        "뜻",
+        "의미",
+        "뭐야",
+        "무엇",
+    ],
     "CALCULATION": ["calculate", "compute", "formula", "eoq", "reorder point", "fill rate"],
 }
 
