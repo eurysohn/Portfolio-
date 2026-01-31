@@ -9,8 +9,44 @@ DICT_PATH = BASE_DIR / "data" / "scm_dictionary.json"
 
 
 def _load_dictionary() -> List[Dict]:
-    data = json.loads(DICT_PATH.read_text(encoding="utf-8"))
-    return data if isinstance(data, list) else []
+    raw = DICT_PATH.read_text(encoding="utf-8")
+    try:
+        data = json.loads(raw)
+        return data if isinstance(data, list) else []
+    except json.JSONDecodeError:
+        data = _parse_first_json_array(raw)
+        return data if isinstance(data, list) else []
+
+
+def _parse_first_json_array(text: str):
+    start = text.find("[")
+    if start == -1:
+        return []
+    depth = 0
+    in_string = False
+    escape = False
+    for idx in range(start, len(text)):
+        char = text[idx]
+        if in_string:
+            if escape:
+                escape = False
+            elif char == "\\":
+                escape = True
+            elif char == '"':
+                in_string = False
+            continue
+        if char == '"':
+            in_string = True
+        elif char == "[":
+            depth += 1
+        elif char == "]":
+            depth -= 1
+            if depth == 0:
+                try:
+                    return json.loads(text[start : idx + 1])
+                except json.JSONDecodeError:
+                    return []
+    return []
 
 
 def _build_index(entries: List[Dict]) -> Dict[str, str]:

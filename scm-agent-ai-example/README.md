@@ -53,6 +53,9 @@ Run the API server (expects prebuilt indexes):
 uvicorn api.app:app --host 0.0.0.0 --port 8000
 ```
 
+Open the demo UI in a browser:
+- `http://localhost:8000/`
+
 ### Required env vars for object storage
 If you want indexes pulled from object storage on startup:
 - `INDEX_BUCKET`: bucket name
@@ -66,6 +69,7 @@ Optional overrides:
 ### API endpoints
 - `GET /health` → index readiness
 - `POST /query` → `{ "query": "...", "top_k": 3 }`
+- `GET /` → demo UI
 
 ## Notes
 - Outputs are logged to `logs/scm_runs.jsonl`.

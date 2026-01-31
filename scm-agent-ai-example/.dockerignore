@@ -8,5 +8,3 @@ logs/
 data/raw_data/
 data/process_data/
 storage/vector_db/
-storage/vector_db_supply/
-storage/vector_db_demand/
