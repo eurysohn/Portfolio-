@@ -1,0 +1,1003 @@
+<!doctype html><!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en" > <![endif]--><!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en" >        <![endif]--><!--[if IE 8]>    <html class="no-js lt-ie9" lang="en" >               <![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Datamine">
+    <meta name="description" content="Demand forecasting is a key step in optimising production &amp; inventory levels.  Learn all you need to know in Datamine’s step-by-step demand forecasting guide.">
+    <meta name="generator" content="HubSpot">
+    <title>Guide to Demand Forecasting | Steps &amp; Factors | Datamine</title>
+    <link rel="shortcut icon" href="https://www.datamine.com/hubfs/Other%20or%20Old/Datamine-January2018/Images/Infinity-Favicon.png">
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/hs/hsstatic/jquery-libs/static-1.4/jquery/jquery-1.11.2.js"></script>
+<script>hsjQuery = window['jQuery'];</script>
+    <meta property="og:description" content="Demand forecasting is a key step in optimising production &amp; inventory levels.  Learn all you need to know in Datamine’s step-by-step demand forecasting guide.">
+    <meta property="og:title" content="Guide to Demand Forecasting | Steps &amp; Factors | Datamine">
+    <meta name="twitter:description" content="Demand forecasting is a key step in optimising production &amp; inventory levels.  Learn all you need to know in Datamine’s step-by-step demand forecasting guide.">
+    <meta name="twitter:title" content="Guide to Demand Forecasting | Steps &amp; Factors | Datamine">
+
+    
+
+    
+    <style>
+a.cta_button{-moz-box-sizing:content-box !important;-webkit-box-sizing:content-box !important;box-sizing:content-box !important;vertical-align:middle}.hs-breadcrumb-menu{list-style-type:none;margin:0px 0px 0px 0px;padding:0px 0px 0px 0px}.hs-breadcrumb-menu-item{float:left;padding:10px 0px 10px 10px}.hs-breadcrumb-menu-divider:before{content:'›';padding-left:10px}.hs-featured-image-link{border:0}.hs-featured-image{float:right;margin:0 0 20px 20px;max-width:50%}@media (max-width: 568px){.hs-featured-image{float:none;margin:0;width:100%;max-width:100%}}.hs-screen-reader-text{clip:rect(1px, 1px, 1px, 1px);height:1px;overflow:hidden;position:absolute !important;width:1px}
+</style>
+
+<link rel="stylesheet" href="https://www.datamine.com/hubfs/hub_generated/module_assets/1/6351419362/1743052155795/module_Site_Search_Input_2018.min.css">
+<link rel="stylesheet" href="https://www.datamine.com/hubfs/hub_generated/module_assets/1/71378327346/1758746265672/module_Parallax_Hero_Banner.min.css">
+
+<style>
+  /* Dynamic Background Styles */
+  #hs-hero-widget_1682564546389.hs-hero:before {
+    background-color: #FFFFFF;
+    opacity: .0;
+  }
+  #hs-hero-widget_1682564546389.hs-hero {
+    color: #FFFFFF;
+  }
+</style>
+
+<link rel="stylesheet" href="https://www.datamine.com/hubfs/hub_generated/module_assets/1/129128867459/1743052258645/module_carousel-local.min.css">
+<link rel="stylesheet" href="/hs/hsstatic/slick/static-1.56/bundles/project.css">
+<link rel="stylesheet" href="/hs/hsstatic/legacy-module-support/static-1.27/bundles/legacyGalleryModule.css">
+<!-- Editor Styles -->
+<style id="hs_editor_style" type="text/css">
+#hs_cos_wrapper_widget_1682744987884  { border-color: #663f96 !important; border-style: solid !important; border-width: 1px !important; display: block !important; padding-bottom: 20px !important; padding-left: 20px !important; padding-right: 20px !important; padding-top: 20px !important }
+#hs_cos_wrapper_widget_1691078721504  { display: block !important; padding-bottom: 60px !important; padding-top: 60px !important }
+#hs_cos_wrapper_widget_1689133219244  { display: block !important; padding-top: 60px !important }
+</style>
+    
+
+    
+<!--  Added by GoogleAnalytics integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+_hsp.push(['addPrivacyConsentListener', function(consent) { if (consent.allowed || (consent.categories && consent.categories.analytics)) {
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create','UA-112524982-1','auto');
+  ga('send','pageview');
+}}]);
+</script>
+
+<!-- /Added by GoogleAnalytics integration -->
+
+<!--  Added by GoogleAnalytics4 integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = 1000;
+
+
+if (!window._hsGoogleConsentRunOnce) {
+  window._hsGoogleConsentRunOnce = true;
+
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'analytics_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'wait_for_update': waitForUpdateMillis
+  });
+
+  if (useGoogleConsentModeV2) {
+    _hsp.push(['useGoogleConsentModeV2'])
+  } else {
+    _hsp.push(['addPrivacyConsentListener', function(consent){
+      var hasAnalyticsConsent = consent && (consent.allowed || (consent.categories && consent.categories.analytics));
+      var hasAdsConsent = consent && (consent.allowed || (consent.categories && consent.categories.advertisement));
+
+      gtag('consent', 'update', {
+        'ad_storage': hasAdsConsent ? 'granted' : 'denied',
+        'analytics_storage': hasAnalyticsConsent ? 'granted' : 'denied',
+        'ad_user_data': hasAdsConsent ? 'granted' : 'denied',
+        'ad_personalization': hasAdsConsent ? 'granted' : 'denied'
+      });
+    }]);
+  }
+}
+
+gtag('js', new Date());
+gtag('set', 'developer_id.dZTQ1Zm', true);
+gtag('config', 'G-N7CRRG1S71');
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7CRRG1S71"></script>
+
+<!-- /Added by GoogleAnalytics4 integration -->
+
+<!--  Added by GoogleTagManager integration -->
+<script>
+var _hsp = window._hsp = window._hsp || [];
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+
+var useGoogleConsentModeV2 = true;
+var waitForUpdateMillis = 1000;
+
+
+
+var hsLoadGtm = function loadGtm() {
+    if(window._hsGtmLoadOnce) {
+      return;
+    }
+
+    if (useGoogleConsentModeV2) {
+
+      gtag('set','developer_id.dZTQ1Zm',true);
+
+      gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'wait_for_update': waitForUpdateMillis
+      });
+
+      _hsp.push(['useGoogleConsentModeV2'])
+    }
+
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W8K84GS');
+
+    window._hsGtmLoadOnce = true;
+};
+
+_hsp.push(['addPrivacyConsentListener', function(consent){
+  if(consent.allowed || (consent.categories && consent.categories.analytics)){
+    hsLoadGtm();
+  }
+}]);
+
+</script>
+
+<!-- /Added by GoogleTagManager integration -->
+
+    <link rel="canonical" href="https://www.datamine.com/datafix/guides/demand-forecasting">
+
+<script>
+window['_fs_host'] = 'fullstory.com';
+window['_fs_script'] = 'edge.fullstory.com/s/fs.js';
+window['_fs_org'] = 'o-1H6PY0-na1';
+window['_fs_namespace'] = 'FS';
+(function(m,n,e,t,l,o,g,y){
+    if (e in m) {if(m.console && m.console.log) { m.console.log('FullStory namespace conflict. Please set window["_fs_namespace"].');} return;}
+    g=m[e]=function(a,b,s){g.q?g.q.push([a,b,s]):g._api(a,b,s);};g.q=[];
+    o=n.createElement(t);o.async=1;o.crossOrigin='anonymous';o.src='https://'+_fs_script;
+    y=n.getElementsByTagName(t)[0];y.parentNode.insertBefore(o,y);
+    g.identify=function(i,v,s){g(l,{uid:i},s);if(v)g(l,v,s)};g.setUserVars=function(v,s){g(l,v,s)};g.event=function(i,v,s){g('event',{n:i,p:v},s)};
+    g.anonymize=function(){g.identify(!!0)};
+    g.shutdown=function(){g("rec",!1)};g.restart=function(){g("rec",!0)};
+    g.log = function(a,b){g("log",[a,b])};
+    g.consent=function(a){g("consent",!arguments.length||a)};
+    g.identifyAccount=function(i,v){o='account';v=v||{};v.acctId=i;g(o,v)};
+    g.clearUserCookie=function(){};
+    g.setVars=function(n, p){g('setVars',[n,p]);};
+    g._w={};y='XMLHttpRequest';g._w[y]=m[y];y='fetch';g._w[y]=m[y];
+    if(m[y])m[y]=function(){return g._w[y].apply(this,arguments)};
+    g._v="1.3.0";
+})(window,document,window['_fs_namespace'],'script','user');
+</script>
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3980891.js"></script>
+<!-- End of HubSpot Embed Code -->
+<meta property="og:url" content="https://www.datamine.com/datafix/guides/demand-forecasting">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="//7052064.fs1.hubspotusercontent-na1.net/hubfs/7052064/hub_generated/template_assets/DEFAULT_ASSET/1767988196805/template_layout.min.css">
+
+
+<link rel="stylesheet" href="https://www.datamine.com/hubfs/hub_generated/template_assets/1/123328731719/1743048154030/template_styles.min.css">
+
+
+    <link rel="stylesheet" type="text/css" href="https://www.datamine.com/hubfs/Datamine-January2018/Doc/slick.css">
+<link rel="stylesheet" type="text/css" href="https://www.datamine.com/hubfs/Datamine-January2018/Doc/slick-theme.css">
+<script type="text/javascript" src="https://www.datamine.com/hubfs/Datamine-January2018/Doc/slick.js"></script>
+<script src="https://www.datamine.com/hubfs/hub_generated/template_assets/1/5496051943/1743048043765/template_Datamine_January2018-main.js"></script>
+    
+
+</head>
+<body class="   hs-content-id-124229551386 hs-landing-page hs-page " style="">
+<!--  Added by GoogleTagManager integration -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W8K84GS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- /Added by GoogleTagManager integration -->
+
+    <div class="header-container-wrapper">
+    <div class="header-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-global_group " style="" data-widget-type="global_group" data-x="0" data-w="12">
+<div class="" data-global-widget-path="generated_global_groups/6447409869.html"><div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell main-header" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span1 widget-span widget-type-cell logo-part" style="" data-widget-type="cell" data-x="0" data-w="1">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1539857016649273" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_module_1539857016649273_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"><a href="https://www.datamine.com/" target="_parent" id="hs-link-module_1539857016649273_" style="border-width:0px;border:0px;"><img src="https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/Logo-for-website-white-01.png?width=417&amp;name=Logo-for-website-white-01.png" class="hs-image-widget " style="width:417px;border-width:0px;border:0px;" width="417" alt="Datamine" title="Datamine" srcset="https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/Logo-for-website-white-01.png?width=209&amp;name=Logo-for-website-white-01.png 209w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/Logo-for-website-white-01.png?width=417&amp;name=Logo-for-website-white-01.png 417w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/Logo-for-website-white-01.png?width=626&amp;name=Logo-for-website-white-01.png 626w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/Logo-for-website-white-01.png?width=834&amp;name=Logo-for-website-white-01.png 834w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/Logo-for-website-white-01.png?width=1043&amp;name=Logo-for-website-white-01.png 1043w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/Logo-for-website-white-01.png?width=1251&amp;name=Logo-for-website-white-01.png 1251w" sizes="(max-width: 417px) 100vw, 417px"></a></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span10 widget-span widget-type-cell menu-part" style="" data-widget-type="cell" data-x="1" data-w="10">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell wrapper-header" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget menu custom-menu-primary" style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1539856686029105" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+<span id="hs_cos_wrapper_module_1539856686029105_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_menu" style="" data-hs-cos-general-type="widget" data-hs-cos-type="menu"><div id="hs_menu_wrapper_module_1539856686029105_" class="hs-menu-wrapper active-branch flyouts hs-menu-flow-horizontal" role="navigation" data-sitemap-name="default" data-menu-id="186512260767" aria-label="Navigation Menu">
+ <ul role="menu">
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="https://www.datamine.com/oursolutions" aria-haspopup="true" aria-expanded="false" role="menuitem">Our Solutions</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/oursolutions" role="menuitem">Our Solutions</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/our-process" role="menuitem">Our Process</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/envisaging-and-development-workshops" role="menuitem">Our Workshops</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/how-much-does-data-analytics-and-ai-cost" role="menuitem">Our Pricing</a></li>
+    <li class="hs-menu-item hs-menu-depth-2 hs-item-has-children" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies" role="menuitem">Case Studies</a>
+     <ul role="menu" class="hs-menu-children-wrapper">
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/retail" role="menuitem">Retail</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/fmcg" role="menuitem">FMCG</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/travel-tourism" role="menuitem">Travel</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/not-for-profit" role="menuitem">Not for profit</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/media-and-entertainment" role="menuitem">Media &amp; entertainment</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/health-and-wellness" role="menuitem">Health &amp; wellness</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/telco-and-technology" role="menuitem">Telco</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/energy-and-utilities" role="menuitem">Utilities</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/government" role="menuitem">Government</a></li>
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/industryexpertise/case-studies/banking-and-finance" role="menuitem">Finance</a></li>
+     </ul></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="https://www.datamine.com/what-we-do/our-products" aria-haspopup="true" aria-expanded="false" role="menuitem">Our Products</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/weekahead" role="menuitem">WeekAhead</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/ourservices/retailwatch" role="menuitem">RetailWatch</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/ourservices/sitespotter" role="menuitem">SiteSpotter</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/data/fuel-price-nz" role="menuitem">NZ Fuel Data</a></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="https://www.datamine.com/resources" aria-haspopup="true" aria-expanded="false" role="menuitem">Our Resources</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/theboardroomtable" role="menuitem">The Boardroom Table</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/reports/retailwatch-dashboard" role="menuitem">RetailWatch Dashboard</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/telcowatch" role="menuitem">TelcoWatch Dashboard</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/resources/datamine-guides" role="menuitem">Downloadable Datamine Guides</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/datafix" role="menuitem">Datafix Blog</a></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1 hs-item-has-children" role="none"><a href="https://www.datamine.com/about-us" aria-haspopup="true" aria-expanded="false" role="menuitem">About Us</a>
+   <ul role="menu" class="hs-menu-children-wrapper">
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/the-datamine-story" role="menuitem">The Datamine Story</a></li>
+    <li class="hs-menu-item hs-menu-depth-2 hs-item-has-children" role="none"><a href="https://www.datamine.com/being-a-dataminer/our-people" role="menuitem">Our People</a>
+     <ul role="menu" class="hs-menu-children-wrapper">
+      <li class="hs-menu-item hs-menu-depth-3" role="none"><a href="https://www.datamine.com/being-a-dataminer" role="menuitem">Join Us</a></li>
+     </ul></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/en-au/about-us/our-values" role="menuitem">Our Values</a></li>
+    <li class="hs-menu-item hs-menu-depth-2" role="none"><a href="https://www.datamine.com/company-we-keep" role="menuitem">Our Partners</a></li>
+   </ul></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.datamine.com/theboardroomtable" role="menuitem">The Boardroom Table</a></li>
+  <li class="hs-menu-item hs-menu-depth-1" role="none"><a href="https://www.datamine.com/contact-us" role="menuitem">Contact us</a></li>
+ </ul>
+</div></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span1 widget-span widget-type-custom_widget search-part" style="" data-widget-type="custom_widget" data-x="11" data-w="1">
+<div id="hs_cos_wrapper_module_1539866252144195" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+<div class="hs-search-field"> 
+    <div class="hs-search-field__bar"> 
+      <form action="/hs-search-results">
+        <input type="text" class="hs-search-field__input" name="term" autocomplete="off" placeholder="Search">
+
+        
+      </form>
+    </div>
+  <ul class="hs-search-field__suggestions"></ul>
+</div></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_15399312602711339" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(window).load(function(){
+        $(".listing-post.slider > div > span > div").addClass("owl-carousel owl-theme");
+        $(".hs-rss-item").wrap('<div class="item"></div>"');
+        $('.owl-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            items:1,
+            nav:true,
+            autoplay:true,
+            autoplayTimeout:5000,
+            autoplayHoverPause:true
+        })
+    });
+</script>
+
+<!-- <script>
+$(document).ready(function(){
+$( ".wrapper-header .hs-menu-wrapper ul" ).append( '<div class="search-part-toggle"></div>' );
+});
+</script> --></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+</div>
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end header -->
+</div><!--end header wrapper -->
+
+<div class="body-container-wrapper">
+    <div class="body-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-widget_container " style="" data-widget-type="widget_container" data-x="0" data-w="12">
+<span id="hs_cos_wrapper_module_168255409084215" class="hs_cos_wrapper hs_cos_wrapper_widget_container hs_cos_wrapper_type_widget_container" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div id="hs_cos_wrapper_widget_1682564546389" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+<div id="hs-hero-widget_1682564546389" class="hs-hero" style="background-image: url('https://www.datamine.com/hubfs/Whitepapers%20and%20Guides/Demand%20forecasting%20web%20banner%20image.png'); padding-top: 100px; padding-bottom: 100px;">
+  <div class="hs-hero__content hs-hero__content--center">
+    <main>
+      <h1><div id="hs_cos_wrapper_widget_1682564546389_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="inline_text" data-hs-cos-field="heading">The Datamine Guide to Demand Forecasting</div></h1>
+      <div id="hs_cos_wrapper_widget_1682564546389_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_inline_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="inline_rich_text" data-hs-cos-field="main_content"></div>
+    </main>
+    <footer>
+      <span id="hs_cos_wrapper_widget_1682564546389_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_cta" style="" data-hs-cos-general-type="widget" data-hs-cos-type="cta"></span>
+    </footer>
+  </div>
+</div>
+</div>
+<div id="hs_cos_wrapper_widget_1682564629520" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="cm-fw-flexible-bg-wrap container-width" style="background-color:#683893;">
+    <div class="page-center">
+        <div class="content">
+            <p style="text-align: center;">Predicting customer demand is critical, but it’s not always straightforward.&nbsp; Done well, demand forecasting can help streamline operations, reduce waste, and meet customer expectations.&nbsp; Done poorly, it can cost you sales, impact your inventory, and hurt your bottom line.</p>
+        </div>
+    </div>
+</div></div>
+<div id="hs_cos_wrapper_widget_1689133219244" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span class="hs-horizontal-spacer"></span></div></span>
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell container" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span6 widget-span widget-type-widget_container " style="" data-widget-type="widget_container" data-x="0" data-w="6">
+<span id="hs_cos_wrapper_module_168980780864430" class="hs_cos_wrapper hs_cos_wrapper_widget_container hs_cos_wrapper_type_widget_container" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div id="hs_cos_wrapper_widget_1691078586712" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+
+
+
+
+
+
+  
+
+
+
+<span id="hs_cos_wrapper_widget_1691078586712_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_linked_image" style="" data-hs-cos-general-type="widget" data-hs-cos-type="linked_image"><img src="https://www.datamine.com/hubfs/20241030%20Demand%20Forecasting%20Cover%20small.png" class="hs-image-widget " style="max-width: 100%; height: auto;" alt="20241030 Demand Forecasting Cover small" title="20241030 Demand Forecasting Cover small"></span></div>
+<div id="hs_cos_wrapper_widget_1691098985735" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_widget_1691098985735_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h3><span>Your step-by-step guide to demand forecasting in business</span></h3>
+<p>For businesses across Australia and New Zealand, accurately forecasting demand can be the difference between profitability and missed opportunities.</p>
+<p><span style="font-weight: normal;">Our guide outlines a clear framework for demand forecasting optimisation.&nbsp; You’ll learn the key factors that influence demand, explore the most effective methodologies and techniques, and walk through practical steps to build a forecasting cycle that works</span>.</p></span></div></span>
+</div><!--end widget-span -->
+<div class="span6 widget-span widget-type-widget_container " style="" data-widget-type="widget_container" data-x="6" data-w="6">
+<span id="hs_cos_wrapper_module_1682556145627101" class="hs_cos_wrapper hs_cos_wrapper_widget_container hs_cos_wrapper_type_widget_container" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div id="hs_cos_wrapper_widget_1682745986961" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_widget_1682745986961_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><div>
+<div>
+<div data-widget-type="widget_container" data-x="0" data-w="12">
+<p style="font-size: 14px;"><span><strong>Interested?&nbsp; Please enter your details below to download a copy of the <em>Datamine Guide to Demand Forecasting.</em></strong></span></p>
+</div>
+</div>
+</div></span></div>
+<div id="hs_cos_wrapper_widget_1682744987884" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+	
+
+
+
+	<span id="hs_cos_wrapper_widget_1682744987884_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_form" style="" data-hs-cos-general-type="widget" data-hs-cos-type="form">
+<div id="hs_form_target_widget_1682744987884"></div>
+
+
+
+
+
+
+
+
+</span>
+</div></span>
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-widget_container " style="" data-widget-type="widget_container" data-x="0" data-w="12">
+<span id="hs_cos_wrapper_module_1689808500036151" class="hs_cos_wrapper hs_cos_wrapper_widget_container hs_cos_wrapper_type_widget_container" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div id="hs_cos_wrapper_widget_1691078721504" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span id="hs_cos_wrapper_widget_1691078721504_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_rich_text" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2 style="font-size: 24px; text-align: center;">HERE'S WHAT'S INSIDE</h2></span></div>
+<div id="hs_cos_wrapper_widget_1746755594611" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="cm-fw-flexible-bg-wrap container-width" style="background-color:ffffff;">
+    <div class="page-center">
+        <div class="content">
+            <h3><span style="color: #000000;">What is demand forecasting?</span></h3>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;"><span style="color: #000000;">You’ll learn how forecasting helps align your stock levels with real customer behaviour, avoid costly over or under-stocking, and improve decision-making across operations, supply chain and staffing.</span></p>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;">&nbsp;</p>
+<h3><span style="color: #000000;">Business challenges when forecasting demand</span></h3>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;"><span style="color: #000000;">Even experienced businesses can struggle with demand forecasting.&nbsp; We outline the most common challenges – from relying on outdated tools and using inaccurate or inconsistent data to underestimating the need for strategy and internal buy-in.&nbsp; Learn how to overcome these pitfalls to get more accurate, actionable forecasts.</span></p>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;">&nbsp;</p>
+<h3><span style="color: #000000;">Internal and external factors that influence demand</span></h3>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;"><span style="color: #000000;">A single variable rarely shapes demand.&nbsp; We explore the wide range of factors that affect forecasting accuracy, including shelf life, supply chain delays, warehousing capacity, seasonality, competitor activity and economic shifts.&nbsp; You’ll also find a list of questions to help you assess what influences demand in your specific business.</span></p>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;">&nbsp;</p>
+<h3><span style="color: #000000;">Forecasting methods and techniques </span></h3>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;"><span style="color: #000000;">There’s no one-size-fits-all approach to demand forecasting.&nbsp; Learn about core forecasting methodologies – qualitative, time-series and causal forecasting – and when to use each technique.&nbsp; You’ll discover how to choose the right model for your needs based on data availability, time horizon and business goals.</span></p>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;">&nbsp;</p>
+<h3><span style="color: #000000;">5 steps to effective forecasting </span></h3>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;"><span style="color: #000000;">To get forecasting right, you need a repeatable system.&nbsp; We walk you through our five clearly defined steps to set up your forecasting process.&nbsp; It’s a complete cycle you can embed into your operations for ongoing optimisation.</span></p>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;">&nbsp;</p>
+<h3><span style="color: #000000;">See forecasting in action </span></h3>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;"><span style="color: #000000;">Read a real-world example from one of our clients.&nbsp; This major retailer partnered with Datamine to centralise and streamline its forecasting approach, leading to an 8% increase in sales and a 17% drop in waste.&nbsp; The takeaway?&nbsp; The right forecasting model can quickly deliver measurable results.</span></p>
+<p style="margin-top: 0cm; margin-right: 0cm; margin-bottom: 6pt;"><span style="color: #000000;">&nbsp;</span></p>
+<p><span style="color: #000000;">Download the complete guide for your roadmap to smarter, more strategic forecasting. </span></p>
+<p><span style="color: #000000;">&nbsp;</span></p>
+<h3><span style="color: #000000;">Further reading:</span></h3>
+<p><span style="color: #663f96;"><a href="/datafix/how-to-kickstart-a-data-strategy" rel="noopener" style="color: #663f96;">How to kickstart a data strategy</a></span></p>
+<p><a href="/datafix/mastering-forecasting-for-increased-profits" rel="noopener"><span style="color: #663f96;">Mastering Forecasting for Increased Profits</span></a></p>
+<p><a href="/datafix/index.php/2018/02/08/sales-forecasting-shouldnt-be-rocket-science" rel="noopener"><span style="color: #663f96;"><span color="#ea4e5b">Sales forecasting shouldn't be rocket science</span></span></a></p>
+<p><a href="/datafix/can-you-see-churn-coming" rel="noopener"><span style="color: #663f96;">Can you see churn coming?</span></a></p>
+<p><a href="/datafix/maximise-revenue-without-overstocking" rel="noopener"><span style="color: #663f96;">Maximise revenue with effective inventory management</span></a></p>
+<p>&nbsp;</p>
+<p style="text-align: center; font-size: 20px;"><strong><span style="color: #000000;">CLIENTS WE HAVE PROVIDED DEMAND FORECASTING SOLUTIONS FOR</span></strong></p>
+        </div>
+    </div>
+</div></div>
+<div id="hs_cos_wrapper_widget_1746756065000" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+ 
+
+
+<span id="hs_cos_wrapper_widget_1746756065000_Gallery" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_gallery" style="" data-hs-cos-general-type="widget" data-hs-cos-type="gallery"><!--[if lt IE 9]><div id="hs_cos_gallery_widget_1746756065000_Gallery" class="hs_cos_gallery lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><div id="hs_cos_gallery_widget_1746756065000_Gallery" class="hs_cos_gallery"><!--<![endif]-->
+    <div class="hs_cos_gallery_main">
+                <div class="hs_cos_gallery_slide slick-slide">
+            <div class="slick-slide-inner-wrapper">
+                <img data-lazy="https://www.datamine.com/hubfs/Client%20Logos/bp-1.png" alt="" title="">
+                
+            </div>
+        </div>
+
+        <div class="hs_cos_gallery_slide slick-slide">
+            <div class="slick-slide-inner-wrapper">
+                <img data-lazy="https://www.datamine.com/hubfs/Client%20Logos/chorus.jpg" alt="" title="">
+                
+            </div>
+        </div>
+
+        <div class="hs_cos_gallery_slide slick-slide">
+            <div class="slick-slide-inner-wrapper">
+                <img data-lazy="https://www.datamine.com/hubfs/Other%20or%20Old/Datamine-January2018/Images/Logo%20Slider/fireandemergencynz.jpg" alt="" title="">
+                
+            </div>
+        </div>
+
+        <div class="hs_cos_gallery_slide slick-slide">
+            <div class="slick-slide-inner-wrapper">
+                <img data-lazy="https://www.datamine.com/hubfs/Other%20or%20Old/Datamine-January2018/Images/Logo%20Slider/REINZ%20black.png" alt="" title="">
+                
+            </div>
+        </div>
+
+        <div class="hs_cos_gallery_slide slick-slide">
+            <div class="slick-slide-inner-wrapper">
+                <img data-lazy="https://www.datamine.com/hubfs/Other%20or%20Old/Datamine-January2018/Images/Logo%20Slider/VTNZ.jpg" alt="" title="">
+                
+            </div>
+        </div>
+
+        <div class="hs_cos_gallery_slide slick-slide">
+            <div class="slick-slide-inner-wrapper">
+                <img data-lazy="https://www.datamine.com/hubfs/Client%20Logos/QMS.png" alt="" title="">
+                
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+</span></div></span>
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell container" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+<div class="row-fluid ">
+<div class="span6 widget-span widget-type-widget_container " style="" data-widget-type="widget_container" data-x="0" data-w="6">
+<span id="hs_cos_wrapper_module_168974833004364" class="hs_cos_wrapper hs_cos_wrapper_widget_container hs_cos_wrapper_type_widget_container" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"></span>
+</div><!--end widget-span -->
+<div class="span6 widget-span widget-type-widget_container " style="" data-widget-type="widget_container" data-x="6" data-w="6">
+<span id="hs_cos_wrapper_module_168980793339495" class="hs_cos_wrapper hs_cos_wrapper_widget_container hs_cos_wrapper_type_widget_container" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"></span>
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-7 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="min-height: 120px;" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1689808492540149" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module widget-type-space" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span class="hs-horizontal-spacer"></span></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end body -->
+</div><!--end body wrapper -->
+
+<div class="footer-container-wrapper">
+    <div class="footer-container container-fluid">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-global_group site-footer" style="" data-widget-type="global_group" data-x="0" data-w="12">
+<div class="" data-global-widget-path="generated_global_groups/123444555646.html"><div class="row-fluid-wrapper row-depth-1 row-number-1 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-cell container" style="" data-widget-type="cell" data-x="0" data-w="12">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+<div class="row-fluid ">
+<div class="span3 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="0" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-3 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1688538154085150" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><div class="module module--1688538154085150 module--image">
+    <div class="module__inner">
+
+  
+
+  
+  <img src="https://www.datamine.com/hs-fs/hubfs/Datamine%20logos/datamine-logo-white.png?width=154&amp;height=29&amp;name=datamine-logo-white.png" alt="datamine-logo-white" srcset="https://www.datamine.com/hs-fs/hubfs/Datamine%20logos/datamine-logo-white.png?width=308&amp;name=datamine-logo-white.png 308w" width="154" height="29" loading="eager" class=" ">
+
+
+
+    </div>
+  </div>
+</div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-4 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_168955404271872" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="3" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-5 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1688538872887290" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><h3>Contact Us</h3>
+
+<ul class="nav">
+
+<li><a href="https://www.datamine.com/contact-us">Sydney</a>&nbsp;</li>
+<li><a href="https://www.datamine.com/contact-us">Melbourne</a>&nbsp;</li>
+<li><a href="https://www.datamine.com/contact-us">Auckland</a>&nbsp;</li>
+<li><a href="https://www.datamine.com/contact-us">Wellington</a>&nbsp;</li>
+</ul>
+
+<h3>Connect with us</h3>
+
+<a href="https://www.linkedin.com/company/datamine" rel="noopener" target="_blank"><img src="https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/linkedin-color.png?width=39&amp;name=linkedin-color.png" alt="linkedin-color" width="39" loading="lazy" style="width: 39px;" srcset="https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/linkedin-color.png?width=20&amp;name=linkedin-color.png 20w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/linkedin-color.png?width=39&amp;name=linkedin-color.png 39w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/linkedin-color.png?width=59&amp;name=linkedin-color.png 59w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/linkedin-color.png?width=78&amp;name=linkedin-color.png 78w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/linkedin-color.png?width=98&amp;name=linkedin-color.png 98w, https://www.datamine.com/hs-fs/hubfs/Imported_Blog_Media/linkedin-color.png?width=117&amp;name=linkedin-color.png 117w" sizes="(max-width: 39px) 100vw, 39px"></a></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="6" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-6 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1688538208353166" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><h3>Serious Stuff</h3>
+
+<ul class="nav">
+<li><a href="https://www.datamine.com/privacystatement?hsCtaTracking=b40dbcd4-898e-4896-82f4-47311ce55cd1%7C507e064b-99be-4674-b749-0ea504c654a1">Privacy Policy</a></li>
+<li><a href="https://www.datamine.com/website-terms-conditions?hsCtaTracking=bb0a7bda-ab90-47ed-a409-8c4a4435d768%7C296185ae-0ae9-45ac-ab8b-62ca3c223db8">Website Terms &amp; Conditions</a></li>
+<li><a href="https://marketing.org.nz/data-warranty-register" rel="noopener" target="_blank"><img src="https://www.datamine.com/hs-fs/hubfs/Client%20Logos/dataWARRANTED-871483-edited-057119-edited.png?width=150&amp;name=dataWARRANTED-871483-edited-057119-edited.png" alt="Data Warranted Logo" width="150" loading="lazy" style="width: 150px;" srcset="https://www.datamine.com/hs-fs/hubfs/Client%20Logos/dataWARRANTED-871483-edited-057119-edited.png?width=129&amp;name=dataWARRANTED-871483-edited-057119-edited.png 129w, https://www.datamine.com/hs-fs/hubfs/Client%20Logos/dataWARRANTED-871483-edited-057119-edited.png?width=257&amp;name=dataWARRANTED-871483-edited-057119-edited.png 257w, https://www.datamine.com/hs-fs/hubfs/Client%20Logos/dataWARRANTED-871483-edited-057119-edited.png?width=386&amp;name=dataWARRANTED-871483-edited-057119-edited.png 386w, https://www.datamine.com/hs-fs/hubfs/Client%20Logos/dataWARRANTED-871483-edited-057119-edited.png?width=514&amp;name=dataWARRANTED-871483-edited-057119-edited.png 514w, https://www.datamine.com/hs-fs/hubfs/Client%20Logos/dataWARRANTED-871483-edited-057119-edited.png?width=643&amp;name=dataWARRANTED-871483-edited-057119-edited.png 643w, https://www.datamine.com/hs-fs/hubfs/Client%20Logos/dataWARRANTED-871483-edited-057119-edited.png?width=771&amp;name=dataWARRANTED-871483-edited-057119-edited.png 771w" sizes="(max-width: 257px) 100vw, 257px"></a></li>
+</ul>
+<p>Copyright © Datamine 2024</p></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+<div class="span3 widget-span widget-type-cell " style="" data-widget-type="cell" data-x="9" data-w="3">
+
+<div class="row-fluid-wrapper row-depth-1 row-number-7 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_1688538204704164" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><h3>Subscribe to our Newsletter</h3>
+<p>Stay in the loop with our latest updates by signing up for our newsletter today!</p></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+<div class="row-fluid-wrapper row-depth-1 row-number-8 ">
+<div class="row-fluid ">
+<div class="span12 widget-span widget-type-custom_widget " style="" data-widget-type="custom_widget" data-x="0" data-w="12">
+<div id="hs_cos_wrapper_module_168963850251623" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_module" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<button data-fancybox="" data-src="#dialog-content" class="button">Subscribe</button>
+
+<div id="dialog-content" style="display: none; max-width: 720px;">
+
+<span id="hs_cos_wrapper_module_168963850251623_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_form" style="" data-hs-cos-general-type="widget" data-hs-cos-type="form"><h3 id="hs_cos_wrapper_form_97115115_title" class="hs_cos_wrapper form-title" data-hs-cos-general-type="widget_field" data-hs-cos-type="text"></h3>
+
+<div id="hs_form_target_form_97115115"></div>
+
+
+
+
+
+
+
+
+
+</span>
+
+</div></div>
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+</div>
+</div><!--end widget-span -->
+</div><!--end row-->
+</div><!--end row-wrapper -->
+
+    </div><!--end footer -->
+</div><!--end footer wrapper -->
+
+    
+<!-- HubSpot performance collection script -->
+<script defer src="/hs/hsstatic/content-cwv-embed/static-1.1293/embed.js"></script>
+<script>
+var hsVars = hsVars || {}; hsVars['language'] = 'en';
+</script>
+
+<script src="/hs/hsstatic/cos-i18n/static-1.53/bundles/project.js"></script>
+<script src="/hs/hsstatic/keyboard-accessible-menu-flyouts/static-1.17/bundles/project.js"></script>
+<script src="https://www.datamine.com/hubfs/hub_generated/module_assets/1/6351419362/1743052155795/module_Site_Search_Input_2018.min.js"></script>
+<script src="https://www.datamine.com/hubfs/hub_generated/module_assets/1/6356161494/1743052156719/module_js_module_2018.min.js"></script>
+
+    <!--[if lte IE 8]>
+    <script charset="utf-8" src="https://js-ap1.hsforms.net/forms/v2-legacy.js"></script>
+    <![endif]-->
+
+<script data-hs-allowed="true" src="/_hcms/forms/v2.js"></script>
+
+    <script data-hs-allowed="true">
+        var options = {
+            portalId: '3980891',
+            formId: '40feabd8-bf8b-4969-ac52-03bdbaf4e1f6',
+            formInstanceId: '4388',
+            
+            pageId: '124229551386',
+            
+            region: 'ap1',
+            
+            
+            
+            
+            pageName: "Guide to Demand Forecasting | Steps & Factors | Datamine",
+            
+            
+            
+            inlineMessage: "Thank you for downloading our guide to demand forecasting! You will receive an email with a copy of your Datamine guide to Demand Forecasting shortly.",
+            
+            
+            rawInlineMessage: "Thank you for downloading our guide to demand forecasting! You will receive an email with a copy of your Datamine guide to Demand Forecasting shortly.",
+            
+            
+            hsFormKey: "de27e61332b0fce7a31c82bfc0ef4942",
+            
+            
+            css: '',
+            target: '#hs_form_target_widget_1682744987884',
+            
+            
+            
+            
+            
+            
+            
+            contentType: "landing-page",
+            
+            
+            
+            formsBaseUrl: '/_hcms/forms/',
+            
+            
+            
+            formData: {
+                cssClass: 'hs-form stacked hs-custom-form'
+            }
+        };
+
+        options.getExtraMetaDataBeforeSubmit = function() {
+            var metadata = {};
+            
+
+            if (hbspt.targetedContentMetadata) {
+                var count = hbspt.targetedContentMetadata.length;
+                var targetedContentData = [];
+                for (var i = 0; i < count; i++) {
+                    var tc = hbspt.targetedContentMetadata[i];
+                     if ( tc.length !== 3) {
+                        continue;
+                     }
+                     targetedContentData.push({
+                        definitionId: tc[0],
+                        criterionId: tc[1],
+                        smartTypeId: tc[2]
+                     });
+                }
+                metadata["targetedContentMetadata"] = JSON.stringify(targetedContentData);
+            }
+
+            return metadata;
+        };
+
+        hbspt.forms.create(options);
+    </script>
+
+<script src="https://www.datamine.com/hubfs/hub_generated/module_assets/1/129128867459/1743052258645/module_carousel-local.min.js"></script>
+<script src="/hs/hsstatic/slick/static-1.56/bundles/project.js"></script>
+<script>
+    (function($) {
+        $(document).ready(function() {
+            $("#hs_cos_gallery_widget_1746756065000_Gallery").hsSlick(
+                {"infinite":true,"autoplay":true,"autoplaySpeed":5000.0,"adaptiveHeight":false,"arrows":true,"dots":true,"lazyLoad":"ondemand","displayMode":"standard","fade":false,"lightboxRows":3}
+             );
+        });
+    })(hsjQuery);
+</script>
+
+
+    <script data-hs-allowed="true">
+        var options = {
+            portalId: '3980891',
+            formId: '5edfbbcc-8385-42ad-8797-fad3ce06f9ab',
+            formInstanceId: '2237',
+            
+            pageId: '124229551386',
+            
+            region: 'ap1',
+            
+            
+            
+            
+            pageName: "Guide to Demand Forecasting | Steps & Factors | Datamine",
+            
+            
+            
+            inlineMessage: "Thanks for submitting the form.",
+            
+            
+            rawInlineMessage: "Thanks for submitting the form.",
+            
+            
+            hsFormKey: "a1fd98cfa7449a3749188a235eb27fff",
+            
+            
+            css: '',
+            target: '#hs_form_target_form_97115115',
+            
+            
+            
+            
+            
+            
+            
+            contentType: "landing-page",
+            
+            
+            
+            formsBaseUrl: '/_hcms/forms/',
+            
+            
+            
+            formData: {
+                cssClass: 'hs-form stacked hs-custom-form'
+            }
+        };
+
+        options.getExtraMetaDataBeforeSubmit = function() {
+            var metadata = {};
+            
+
+            if (hbspt.targetedContentMetadata) {
+                var count = hbspt.targetedContentMetadata.length;
+                var targetedContentData = [];
+                for (var i = 0; i < count; i++) {
+                    var tc = hbspt.targetedContentMetadata[i];
+                     if ( tc.length !== 3) {
+                        continue;
+                     }
+                     targetedContentData.push({
+                        definitionId: tc[0],
+                        criterionId: tc[1],
+                        smartTypeId: tc[2]
+                     });
+                }
+                metadata["targetedContentMetadata"] = JSON.stringify(targetedContentData);
+            }
+
+            return metadata;
+        };
+
+        hbspt.forms.create(options);
+    </script>
+
+
+<!-- Start of HubSpot Analytics Code -->
+<script type="text/javascript">
+var _hsq = _hsq || [];
+_hsq.push(["setContentType", "landing-page"]);
+_hsq.push(["setCanonicalUrl", "https:\/\/www.datamine.com\/datafix\/guides\/demand-forecasting"]);
+_hsq.push(["setPageId", "124229551386"]);
+_hsq.push(["setContentMetadata", {
+    "contentPageId": 124229551386,
+    "legacyPageId": "124229551386",
+    "contentFolderId": null,
+    "contentGroupId": null,
+    "abTestId": null,
+    "languageVariantId": 124229551386,
+    "languageCode": null,
+    
+    
+}]);
+</script>
+
+<script type="text/javascript" id="hs-script-loader" async defer src="/hs/scriptloader/3980891.js"></script>
+<!-- End of HubSpot Analytics Code -->
+
+
+<script type="text/javascript">
+var hsVars = {
+    render_id: "c1b50d7c-48cf-4a93-87e7-1d150a11438d",
+    ticks: 1768041989510,
+    page_id: 124229551386,
+    
+    content_group_id: 0,
+    portal_id: 3980891,
+    app_hs_base_url: "https://app-ap1.hubspot.com",
+    cp_hs_base_url: "https://cp-ap1.hubspot.com",
+    language: "en",
+    analytics_page_type: "landing-page",
+    scp_content_type: "",
+    
+    analytics_page_id: "124229551386",
+    category_id: 1,
+    folder_id: 0,
+    is_hubspot_user: false
+}
+</script>
+
+
+<script defer src="/hs/hsstatic/HubspotToolsMenu/static-1.432/js/index.js"></script>
+
+
+
+
+    
+    <!-- Generated by the HubSpot Template Builder - template version 1.03 -->
+
+</body></html>

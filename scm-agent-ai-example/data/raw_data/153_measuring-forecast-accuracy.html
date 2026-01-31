@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" />
+
+
+	
+
+	<!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Favicons
+	================================================== -->
+	<link rel="apple-touch-icon" sizes="57x57" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/img/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
+
+	
+	<title>Measuring forecast accuracy: The complete guide | RELEX Solutions</title>
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel="preload" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/fonts/figtree-v5-latin-700.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="https://s32519.pcdn.co/wp-content/themes/relex-theme/assets/fonts/figtree-v5-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+<!-- The SEO Framework by Sybre Waaijer -->
+<meta name="robots" content="max-snippet:-1,max-image-preview:standard,max-video-preview:-1" />
+<link rel="canonical" href="https://www.relexsolutions.com/resources/measuring-forecast-accuracy/" />
+<meta name="description" content="Learn how to measure forecast accuracy with key metrics for better availability, reduced waste, and optimized inventory." />
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="RELEX Solutions" />
+<meta property="og:title" content="Measuring forecast accuracy: The complete guide | RELEX Solutions" />
+<meta property="og:description" content="Learn how to measure forecast accuracy with key metrics for better availability, reduced waste, and optimized inventory." />
+<meta property="og:url" content="https://www.relexsolutions.com/resources/measuring-forecast-accuracy/" />
+<meta property="og:image" content="https://s32519.pcdn.co/wp-content/uploads/2017/11/Forecast-Accuracy-guide-OG-img.jpg.optimal.jpg" />
+<meta property="article:published_time" content="2026-01-09T09:54:00+00:00" />
+<meta property="article:modified_time" content="2026-01-16T09:09:12+00:00" />
+<meta property="article:publisher" content="https://www.facebook.com/RELEXsolutions" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@RelexSolutions" />
+<meta name="twitter:title" content="Measuring forecast accuracy: The complete guide | RELEX Solutions" />
+<meta name="twitter:description" content="Learn how to measure forecast accuracy with key metrics for better availability, reduced waste, and optimized inventory." />
+<meta name="twitter:image" content="https://s32519.pcdn.co/wp-content/uploads/2017/11/Forecast-Accuracy-guide-OG-img.jpg.optimal.jpg" />
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://www.relexsolutions.com/#/schema/WebSite","url":"https://www.relexsolutions.com/","name":"RELEX Solutions","inLanguage":"en-US","potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.relexsolutions.com/search/{search_term_string}/"},"query-input":"required name=search_term_string"},"publisher":{"@type":"Organization","@id":"https://www.relexsolutions.com/#/schema/Organization","name":"RELEX Solutions","url":"https://www.relexsolutions.com/","sameAs":["https://www.facebook.com/RELEXsolutions/","https://x.com/RelexSolutions","https://www.instagram.com/lifeatrelex/","https://www.youtube.com/@relexsolutions9690","https://www.linkedin.com/company/relexsolutions/"],"logo":"https://s32519.pcdn.co/wp-content/uploads/2024/01/relex-primary-logo-RGB-vector.png"}},{"@type":"WebPage","@id":"https://www.relexsolutions.com/resources/measuring-forecast-accuracy/","url":"https://www.relexsolutions.com/resources/measuring-forecast-accuracy/","name":"Measuring forecast accuracy: The complete guide | RELEX Solutions","description":"Learn how to measure forecast accuracy with key metrics for better availability, reduced waste, and optimized inventory.","inLanguage":"en-US","isPartOf":{"@id":"https://www.relexsolutions.com/#/schema/WebSite"},"breadcrumb":{"@type":"BreadcrumbList","@id":"https://www.relexsolutions.com/#/schema/BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":"https://www.relexsolutions.com/","name":"RELEX Solutions"},{"@type":"ListItem","position":2,"item":"https://www.relexsolutions.com/resource_type/guide/","name":"Guide"},{"@type":"ListItem","position":3,"name":"Measuring forecast accuracy: The complete guide"}]},"potentialAction":{"@type":"ReadAction","target":"https://www.relexsolutions.com/resources/measuring-forecast-accuracy/"},"datePublished":"2026-01-09T09:54:00+00:00","dateModified":"2026-01-16T09:09:12+00:00"}]}</script>
+<!-- / The SEO Framework by Sybre Waaijer | 4.76ms meta | 0.54ms boot -->
+
+<link rel='stylesheet' id='structured-content-frontend-css' href='https://s32519.pcdn.co/wp-content/plugins/structured-content/dist/blocks.style.build.css?ver=1.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='sbi_styles-css' href='https://s32519.pcdn.co/wp-content/plugins/instagram-feed/css/sbi-styles.min.css?ver=6.10.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css' href='https://s32519.pcdn.co/wp-includes/css/dist/block-library/style.min.css' type='text/css' media='all' />
+<style id='meomblocks-accordion-icon-style-inline-css' type='text/css'>
+.accordion-icon__container{display:grid;gap:var(--space-s);grid-template-columns:1fr}@media(min-width:768px){.accordion-icon__container{grid-template-columns:repeat(6,1fr)}.accordion-icon-item{grid-column:span 2}.accordion-icon-item:last-child:nth-child(3n-1){grid-column-end:-2}.accordion-icon-item:nth-last-child(2):nth-child(3n+1){grid-column-end:4}.accordion-icon-item:last-child:nth-child(3n-2){grid-column-end:5}}
+
+</style>
+<style id='meomblocks-accordion-icon-item-style-inline-css' type='text/css'>
+.accordion-icon-item{--accordion-icon-item-padding:var(--space-m);border-radius:var(--border-radius-xs);display:block;padding:var(--accordion-icon-item-padding);transition:box-shadow .3s ease-in-out}.accordion-icon-item__title{align-items:center;background-color:transparent;border:none;cursor:pointer;display:flex;flex-direction:column;font-family:Figtree,sans-serif;font-size:var(--font-size-text-510);font-weight:700;gap:var(--space-2xs);line-height:1.4;padding:0;text-align:center;width:100%}.accordion-icon-item__title svg{flex-shrink:0;transition:all .3s ease-in-out}.accordion-icon-item__title[aria-expanded=true] svg{rotate:-180deg}.accordion-icon-item__icon{display:inline-flex;flex-shrink:0;margin:0;max-width:4rem}.accordion-icon-item__icon img{width:4rem}.accordion-icon-item.active{box-shadow:var(--box-shadow)}.accordion-icon-item.active svg circle{fill:#0a3256}.accordion-icon-item.active svg path{fill:#fff}.accordion-icon-item__content--wrapper{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease-out;visibility:hidden}.accordion-icon-item__content--wrapper[aria-hidden=false]{grid-template-rows:1fr;margin-top:var(--space-s);visibility:visible}.accordion-icon-item__content{overflow:hidden;padding:0;text-align:center;width:100%}.accordion-icon-item__content p{margin-bottom:0}.accordion-icon-item__content ol,.accordion-icon-item__content ul{padding-left:1.5rem;text-align:left}
+
+</style>
+<style id='meomblocks-accordion-image-style-inline-css' type='text/css'>
+@media(min-width:768px){.accordion-image{display:grid;gap:var(--space-xl);grid-template-columns:60% auto}.accordion-image__container{padding-top:var(--space-l)}}.accordion-image__desktop-images{display:none;position:relative}@media(min-width:768px){.accordion-image__desktop-images{aspect-ratio:1/1;display:block}.accordion-image__desktop-images img{border-radius:var(--border-radius-s);height:100%;inset:0;-o-object-fit:cover;object-fit:cover;position:absolute}}
+
+</style>
+<style id='meomblocks-accordion-image-item-style-inline-css' type='text/css'>
+.accordion-image-item{--accordion-image-item-padding:var(--space-m);border-bottom:2px solid var(--grey-300);display:block;padding-bottom:var(--accordion-image-item-padding);padding-top:var(--accordion-image-item-padding);transition:border-bottom .2s ease-in-out}.accordion-image-item.active{border-bottom:2px solid var(--color-brand-blue-700)}.accordion-image-item button{align-items:center;background-color:transparent;border:none;cursor:pointer;display:flex;font-family:Figtree,sans-serif;font-size:var(--font-size-text-510);font-weight:700;gap:var(--space-s);justify-content:space-between;line-height:1.4;padding:var(--tab-new-item-padding);text-align:left;width:100%}.accordion-image-item button svg{flex-shrink:0;transition:all .3s ease-in-out}.accordion-image-item button[aria-expanded=true] svg{rotate:-180deg}.accordion-image-item.active svg circle{fill:#0a3256}.accordion-image-item.active svg path{fill:#fff}.accordion-image-item__content--wrapper{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease-out;visibility:hidden}.accordion-image-item__content--wrapper[aria-hidden=false]{grid-template-rows:1fr;visibility:visible}.accordion-image-item__content{overflow:hidden;padding:0;width:100%}.accordion-image-item__content figure,.accordion-image-item__content>:first-child{margin-top:var(--accordion-image-item-padding)}.accordion-image-item__content figure{aspect-ratio:1}.accordion-image-item__content figure img{border-radius:var(--border-radius-s);height:100%;-o-object-fit:cover;object-fit:cover}.accordion-image-item__content p{margin-bottom:0}@media(min-width:768px){.accordion-image-item__image{display:none}}
+
+</style>
+<link rel='stylesheet' id='meomblocks-banner-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/banner/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<style id='meomblocks-buttons-style-inline-css' type='text/css'>
+.meomblocks-buttons{align-items:center;display:flex;flex-wrap:wrap;gap:var(--spacing-s)}@media(max-width:520px){.meomblocks-buttons .wistia-video-button,.meomblocks-buttons .wistia_embed,.meomblocks-buttons .wp-block-button{width:100%}.meomblocks-buttons .wistia-video-button .button,.meomblocks-buttons .wistia_embed .button,.meomblocks-buttons .wp-block-button .button{width:100%!important}.meomblocks-buttons .wp-block-button__link{display:block}}
+
+</style>
+<style id='meomblocks-citation-lift-style-inline-css' type='text/css'>
+.citation-lift>:not(.animated-svg),.citation-lift__container>:not(.animated-svg){margin-left:auto;margin-right:auto;max-width:var(--width-wide-large)}.citation-lift>h1,.citation-lift>h2,.citation-lift>h3,.citation-lift>h4,.citation-lift__container>h1,.citation-lift__container>h2,.citation-lift__container>h3,.citation-lift__container>h4{max-width:var(--width-wide)}.citation-lift>.wp-block-buttons,.citation-lift>p,.citation-lift__container>.wp-block-buttons,.citation-lift__container>p{max-width:var(--width-regular)}@media(max-width:768px){.citation-lift,.citation-lift__container{gap:var(--spacing-m)}}.citation-lift.block-editor-block-list__block{display:block}
+
+</style>
+<style id='meomblocks-columns-style-inline-css' type='text/css'>
+.is-style-columns-border-left .grid-auto{gap:var(--space-l) var(--space-m)}.is-style-columns-border-left .wp-block-column{border-left:1px solid var(--grey-300);display:flex;flex-direction:column;padding-left:var(--space-m)}.is-style-columns-border-left .wp-block-column>.wp-block-buttons:last-child{margin-top:auto}.is-style-columns-border-left .wp-block-column>:nth-last-child(2){margin-bottom:var(--space-s)}
+
+</style>
+<style id='meomblocks-cta-lift-style-inline-css' type='text/css'>
+.cta-lift{display:grid;min-height:10vh;place-content:center;position:relative}.cta-lift__content{max-width:var(--width-regular);z-index:2}.cta-lift__content .wp-block-buttons{gap:1rem;margin-bottom:0}.cta-lift__content .wp-block-buttons .wp-block-button{margin-bottom:0}.cta-lift.curved-border .cta-lift__content{padding-top:var(--space-l)}
+
+</style>
+<style id='meomblocks-customer-logos-style-inline-css' type='text/css'>
+.customer-logos__container{align-items:center;display:flex;flex-wrap:wrap;gap:var(--spacing-m);justify-content:center}@media(min-width:768px){.customer-logos__container{gap:var(--spacing-l) var(--spacing-xl)}}.customer-logos__image{max-width:6rem}@media(min-width:768px){.customer-logos__image{max-width:8rem}}
+
+</style>
+<style id='meomblocks-customer-logos-item-style-inline-css' type='text/css'>
+.has-greyscale-logos .customer-logos__image{filter:grayscale(1)}
+
+</style>
+<link rel='stylesheet' id='meomblocks-diagram-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/diagram/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='meomblocks-diagram-item-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/diagram-item/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='meomblocks-diagram-item-dialog-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/diagram-item-dialog/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='meomblocks-filters-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/filters/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<style id='meomblocks-form-item-style-inline-css' type='text/css'>
+.people-item{display:grid;grid-auto-flow:row;grid-gap:8px;border-radius:var(--border-radius-s);box-shadow:var(--box-shadow);grid-template-columns:1fr 3fr;padding:var(--spacing-s)}.people-item__image{border-radius:50%;grid-column:1;height:80px;overflow:hidden;text-align:left;width:80px}.people-item__details{display:flex;flex-direction:column}.people-item__name{margin-bottom:0;margin-top:0}.people-item__social{margin-top:auto}.people-item__contact{margin-top:var(--space-xs)}.people-item.people-item a{font-weight:600}.people-item.people-item a:hover{text-decoration:underline}
+
+</style>
+<style id='meomblocks-hero-style-inline-css' type='text/css'>
+.meomblocks-hero{background-color:var(--surface-blue-600);grid-column:1/-1!important;text-align:center}.meomblocks-hero__container>*{margin-left:auto;margin-right:auto;max-width:var(--width-wide)}.meomblocks-hero__container>p{font-family:Figtree,sans-serif;font-size:var(--font-size-text-500);font-weight:400;line-height:1.4;max-width:var(--width-regular)}.meomblocks-hero__container>.meomblocks-buttons,.meomblocks-hero__container>.wp-block-buttons{margin-top:var(--spacing-l);max-width:var(--width-regular)}.meomblocks-hero__container>.tabs-block{margin-top:var(--spacing-xl);max-width:var(--width-full)}.meomblocks-hero__container>.lottie-animation,.meomblocks-hero__container>.wp-block-image,.meomblocks-hero__container>.wp-block-video{margin-top:var(--spacing-xl)}.meomblocks-hero__container>.alignwide{max-width:var(--width-wide-large)}.meomblocks-hero--guide.has-background{padding-top:var(--spacing-xl)}.meomblocks-hero--guide .meomblocks-hero__container>.lottie-animation,.meomblocks-hero--guide .meomblocks-hero__container>.wp-block-image,.meomblocks-hero--guide .meomblocks-hero__container>.wp-block-video{margin-top:var(--spacing-m)}
+
+</style>
+<style id='meomblocks-hero-video-style-inline-css' type='text/css'>
+.hero-video{position:relative;text-align:center}.hero-video.has-background{padding-top:var(--space-m)!important}.hero-video.curved-border:before{z-index:6}.hero-video__overlay{--overlay-opacity:0.4;background-color:rgba(0,0,0,var(--overlay-opacity));bottom:0;left:0;position:absolute;right:0;top:0}.hero-video__overlay.has-opacity-20{--overlay-opacity:0.2}.hero-video__overlay.has-opacity-0{--overlay-opacity:0}.hero-video__video{bottom:0;left:0;position:absolute!important;right:0;top:0;z-index:1}.hero-video__video img,.hero-video__video video{height:100%;-o-object-fit:cover;object-fit:cover;width:100%}@media(orientation:portrait){.hero-video.has-both-videos .hero-video__video--desktop{display:none}}@media(orientation:landscape){.hero-video.has-both-videos .hero-video__video--mobile{display:none}}.hero-video__content{color:var(--text-white);display:flex;flex-direction:column;justify-content:center;margin-left:auto;margin-right:auto;max-width:46rem;min-height:66vh;min-height:66svh;position:relative;z-index:20!important}.hero-video__content>.wp-block-heading,.hero-video__content>p{color:inherit}.hero-video__content p+.wp-block-heading{margin-top:var(--space-s)}.hero-video__content .wp-block-buttons{margin-top:var(--space-l)}.post-content>.hero-video:first-child{margin-top:0}
+
+</style>
+<style id='meomblocks-highlight-point-style-inline-css' type='text/css'>
+.highlight-point{background:var(--surface-white);border-radius:var(--border-radius-s);box-shadow:6px -6px 16px 0 rgba(15,51,86,.08),-6px 6px 16px 0 rgba(15,51,86,.08);display:flex;gap:var(--spacing-s);padding:var(--spacing-m)}.highlight-point.has-image-top{flex-direction:column}.highlight-point__content>*{margin-bottom:0!important;margin-top:0}.highlight-point__content>*+*{margin-top:var(--spacing-xs)}.highlight-point__title{font-family:Figtree,sans-serif;font-size:var(--font-size-text-510);font-weight:700;line-height:1.4}.highlight-point .wp-block-buttons{margin-bottom:0!important;margin-top:var(--spacing-m)}.highlight-point .wp-block-buttons :not(.is-style-outline) .wp-block-button__link{background-color:transparent!important;border:none!important;color:var(--surface-blue-800)!important;padding:0!important;text-decoration:underline!important}.highlight-point figure{aspect-ratio:1/1;flex-shrink:0;height:4rem;width:4rem}.highlight-point figure img{width:auto}.highlight-point.has-image-top figure{align-self:center}.highlight-point.block-editor-block-list__block figure{height:auto!important;width:30%!important}
+
+</style>
+<style id='meomblocks-hightlight-points-lift-style-inline-css' type='text/css'>
+.hightlight-points-lift__container{--column-width:24rem;display:grid;gap:var(--spacing-ml);grid-template-columns:repeat(auto-fill,minmax(min(100%,var(--column-width)),1fr))}.hightlight-points-lift__container>:not(.highlight-point):not(.block-list-appender){grid-column:-1/1}.hightlight-points-lift__container>*{margin-left:auto;margin-right:auto;max-width:var(--width-wide)}.hightlight-points-lift__container>.highlight-point{margin-left:0;margin-right:0}.hightlight-points-lift__container>h1,.hightlight-points-lift__container>h2,.hightlight-points-lift__container>h3,.hightlight-points-lift__container>h4,.hightlight-points-lift__container>p,.hightlight-points-lift__container>wp-block-buttons{max-width:var(--width-regular)}.hightlight-points-lift__container>p{margin-bottom:var(--space-m)}.has-1-columns .hightlight-points-lift__container{--column-width:100%}.has-1-columns .hightlight-points-lift__container>.highlight-point{max-width:var(--width-full)}.has-3-columns .hightlight-points-lift__container{--column-width:21rem}.has-4-columns .hightlight-points-lift__container{--column-width:16rem}.hightlight-points-lift.block-editor-block-list__block{display:block}
+
+</style>
+<style id='meomblocks-image-content-style-inline-css' type='text/css'>
+.image-content__container{display:grid;gap:var(--spacing-l);grid-template-areas:"i" "t";grid-template-columns:1fr;grid-template-rows:1fr}.image-content__container>*{position:relative}@media(min-width:768px){.image-content__container{align-items:center;grid-template-columns:1fr 1fr;grid-template-rows:1fr}.image-content__container.has-image-position-left{grid-template-areas:"i t"}.image-content__container.has-image-position-right{grid-template-areas:"t i"}}.image-content figure{grid-area:i;-ms-grid-column:1;-ms-grid-row:1}.image-content figure img{aspect-ratio:1/1;border-radius:var(--border-radius-s);-o-object-fit:cover;object-fit:cover;width:100%}.image-content__content{grid-area:t;-ms-grid-column:1;-ms-grid-row:3}@media (min-width:768px){.image-content__container.has-image-position-left>figure{-ms-grid-column:1;-ms-grid-row:1}.image-content__container.has-image-position-left>.image-content__content,.image-content__container.has-image-position-right>figure{-ms-grid-column:2;-ms-grid-row:1}.image-content__container.has-image-position-right>.image-content__content{-ms-grid-column:1;-ms-grid-row:1}}
+
+</style>
+<style id='meomblocks-logo-item-style-inline-css' type='text/css'>
+.logo-item{filter:grayscale(1);text-align:center}
+
+</style>
+<style id='meomblocks-logos-wrapper-style-inline-css' type='text/css'>
+.logos-wrapper,.logos-wrapper__container{display:grid;gap:var(--spacing-l) var(--spacing-xl);grid-template-columns:repeat(auto-fill,minmax(min(100%,max(6rem,12%)),1fr))}@media(max-width:768px){.logos-wrapper,.logos-wrapper__container{gap:var(--spacing-m)}}.logos-wrapper,.logos-wrapper__container{margin-bottom:var(--spacing-2xl);margin-top:var(--spacing-2xl)}.logos-wrapper.block-editor-block-list__block{display:block}
+
+</style>
+<style id='meomblocks-lottie-animation-style-inline-css' type='text/css'>
+.lottie-animation.is-style-surface-blue-600{background-color:var(--surface-blue-600);box-shadow:0 0 0 100vmax var(--surface-blue-600);clip-path:inset(0 -100vmax);padding-bottom:var(--spacing-2xl);padding-top:var(--spacing-2xl)}
+
+</style>
+<link rel='stylesheet' id='meomblocks-map-block-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/map-block/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<style id='meomblocks-media-content-style-inline-css' type='text/css'>
+.media-content__container{display:grid;gap:var(--spacing-l);grid-template-areas:"i" "t";grid-template-columns:1fr;grid-template-rows:1fr}.media-content__container>*{position:relative}@media(min-width:768px){.media-content__container{align-items:center;grid-template-columns:1fr 1fr;grid-template-rows:1fr}.media-content__container.has-media-position-left{grid-template-areas:"i t"}.media-content__container.has-media-position-right{grid-template-areas:"t i"}}.media-content .media-content-item--media{grid-area:i;-ms-grid-column:1;-ms-grid-row:1}.media-content .media-content-item--content{grid-area:t;-ms-grid-column:1;-ms-grid-row:3}@media (min-width:768px){.media-content__container.has-media-position-left>.media-content-item--media{-ms-grid-column:1;-ms-grid-row:1}.media-content__container.has-media-position-left>.media-content-item--content,.media-content__container.has-media-position-right>.media-content-item--media{-ms-grid-column:2;-ms-grid-row:1}.media-content__container.has-media-position-right>.media-content-item--content{-ms-grid-column:1;-ms-grid-row:1}}.media-content img{border-radius:var(--border-radius-s)}
+
+</style>
+<style id='meomblocks-media-content-item-style-inline-css' type='text/css'>
+
+
+</style>
+<style id='meomblocks-media-content-media-style-inline-css' type='text/css'>
+
+
+</style>
+<style id='meomblocks-pages-item-style-inline-css' type='text/css'>
+
+
+</style>
+<style id='meomblocks-pages-manual-grid-style-inline-css' type='text/css'>
+.pages-manual-grid__container{display:grid;gap:var(--spacing-ml);grid-template-columns:repeat(auto-fill,minmax(min(100%,max(17rem,25%)),1fr))}
+
+</style>
+<style id='meomblocks-people-item-style-inline-css' type='text/css'>
+.people-item{display:grid;grid-auto-flow:row;grid-gap:8px;border-radius:var(--border-radius-s);box-shadow:var(--box-shadow);grid-template-columns:1fr 3fr;padding:var(--spacing-s)}.people-item__image{border-radius:50%;grid-column:1;height:80px;overflow:hidden;text-align:left;width:80px}.people-item__details{display:flex;flex-direction:column}.people-item__name{margin-bottom:0;margin-top:0}.people-item__social{margin-top:auto}.people-item__contact{margin-top:var(--space-xs)}.people-item.people-item a{font-weight:600}.people-item.people-item a:hover{text-decoration:underline}
+
+</style>
+<style id='meomblocks-people-manual-grid-style-inline-css' type='text/css'>
+.people-manual-grid__container{display:grid;gap:var(--spacing-s);grid-template-columns:repeat(auto-fill,minmax(min(100%,max(17rem,25%)),1fr))}
+
+</style>
+<style id='meomblocks-personas-lift-style-inline-css' type='text/css'>
+.personas-lift__container>:not(.tabs-block){margin-left:auto;margin-right:auto;max-width:47rem}
+
+</style>
+<style id='meomblocks-resources-auto-grid-style-inline-css' type='text/css'>
+.resources-auto-grid__items{display:grid;gap:var(--spacing-ml);grid-template-columns:repeat(auto-fill,minmax(min(100%,max(17rem,25%)),1fr))}
+
+</style>
+<style id='meomblocks-resources-item-style-inline-css' type='text/css'>
+
+
+</style>
+<style id='meomblocks-resources-lift-style-inline-css' type='text/css'>
+.resources-lift{display:flex;flex-direction:column}.resources-lift .category-archive__link{display:inline-block;margin-left:auto;margin-right:auto}.resources-lift__content>*{margin-left:auto;margin-right:auto;max-width:var(--width-regular)}.resources-lift__content>.pages-manual-grid,.resources-lift__content>.resources-auto-grid,.resources-lift__content>.resources-manual-grid,.resources-lift__content>.solutions-auto-grid,.resources-lift__content>.solutions-manual-grid{max-width:var(--width-wide-large)}.resources-lift__items{display:grid;gap:var(--spacing-ml);grid-template-columns:repeat(auto-fill,minmax(min(100%,max(17rem,25%)),1fr))}
+
+</style>
+<style id='meomblocks-resources-manual-grid-style-inline-css' type='text/css'>
+.resources-manual-grid__container{display:grid;gap:var(--spacing-ml);grid-template-columns:repeat(auto-fill,minmax(min(100%,max(17rem,25%)),1fr))}
+
+</style>
+<style id='meomblocks-slider-style-inline-css' type='text/css'>
+.slider{margin-bottom:var(--spacing-2xl);margin-top:var(--spacing-2xl)}.slider .swiper-buttons{display:flex;gap:var(--spacing-l);justify-content:flex-end;margin-bottom:var(--spacing-s);margin-top:var(--spacing-l);width:calc(95% - 20px)}@media(min-width:1024px){.slider .swiper-buttons{width:calc(100% - 6px)}}.slider .swiper-buttons .swiper-button-next,.slider .swiper-buttons .swiper-button-prev{background-color:transparent;border:0;margin-top:0;position:unset}.slider .swiper-buttons .swiper-button-next:after,.slider .swiper-buttons .swiper-button-prev:after{background-color:var(--grey-300);background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2720%27 height=%2714%27 fill=%27none%27%3E%3Cg stroke=%27%230A3256%27 stroke-linecap=%27round%27 stroke-width=%273.14%27 clip-path=%27url%28%23a%29%27%3E%3Cpath stroke-linejoin=%27round%27 d=%27m12.82 1.51 5.631 5.495-5.63 5.484%27/%3E%3Cpath d=%27M18.126 7.005H1.548%27/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id=%27a%27%3E%3Cpath fill=%27%23fff%27 d=%27M0 0h20v14H0z%27/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");background-position:50%;background-repeat:no-repeat;border-radius:100%;content:"";height:auto;padding:1.3rem;width:20px}.has-background .slider .swiper-buttons .swiper-button-next:after,.has-background .slider .swiper-buttons .swiper-button-prev:after{background-color:var(--surface-white);color:var(--surface-blue-900)}.slider .swiper-buttons .swiper-button-prev:after{transform:rotate(180deg)}.slider .swiper-wrapper{height:unset}
+
+</style>
+<link rel='stylesheet' id='meomblocks-slider-slide-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/slider-slide/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='meomblocks-solutions-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/solutions/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<style id='meomblocks-solutions-auto-grid-style-inline-css' type='text/css'>
+.solutions-auto-grid__items{display:grid;gap:var(--spacing-ml);grid-template-columns:repeat(auto-fill,minmax(min(100%,max(17rem,25%)),1fr))}
+
+</style>
+<style id='meomblocks-solutions-auto-list-style-inline-css' type='text/css'>
+.solutions-auto-list__items{list-style-type:none;margin:0;padding:0}.solutions-auto-list__item{padding:var(--space-xs);position:relative}.solutions-auto-list__item-link{align-items:center;color:var(--text-main)!important;display:flex;gap:var(--spacing-xs);text-decoration:none!important}.solutions-auto-list__item-link:hover{text-decoration:underline!important}.solutions-auto-list__item-icon{flex-shrink:0;height:1.5rem;width:1.5rem}
+
+</style>
+<style id='meomblocks-solutions-child-style-inline-css' type='text/css'>
+
+
+</style>
+<style id='meomblocks-solutions-item-style-inline-css' type='text/css'>
+
+
+</style>
+<style id='meomblocks-solutions-manual-grid-style-inline-css' type='text/css'>
+.solutions-manual-grid__container{display:grid;gap:var(--spacing-ml);grid-template-columns:repeat(auto-fill,minmax(min(100%,max(17rem,25%)),1fr))}
+
+</style>
+<style id='meomblocks-statistics-style-inline-css' type='text/css'>
+@property --progress{syntax:"<length-percentage>";inherits:false;initial-value:0}.statistics[role=progressbar]{--size:min(285px,100%);--bar-width:48px;--color-bar:var(--surface-blue-800);--color-bg:var(--grey-200);--color-inner-bg:var(--surface-white);--gap-size:3px}.has-relex-dark-blue-background-color .statistics[role=progressbar]{--color-bar:var(--surface-blue-800);--color-bg:var(--surface-blue-600);--color-inner-bg:var(--surface-blue-900)}.statistics[role=progressbar]{aspect-ratio:1/1;background:conic-gradient(var(--color-bar),var(--color-bar) var(--progress),var(--color-bg) 0);border-radius:50vmax;display:grid;font-size:var(--font-size-h2);font-weight:700;margin:auto;place-items:center;transition:--progress .5s linear;width:var(--size)}.statistics[role=progressbar]>.statistics__content{display:none}.statistics[role=progressbar]:after{aspect-ratio:1;background:var(--color-inner-bg);border-radius:inherit;content:attr(aria-valuenow) " %";display:grid;place-items:center;width:calc(100% - var(--bar-width))}.statistics:not([role=progressbar]){position:relative}.statistics:not([role=progressbar]):after{display:none}.statistics:not([role=progressbar]) span{display:block;text-align:center}
+
+</style>
+<link rel='stylesheet' id='meomblocks-tab-item-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/tab-item/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='meomblocks-tabs-style-css' href='https://s32519.pcdn.co/wp-content/plugins/meomblocks/build/blocks/tabs/style-index.css?ver=0.1.0' type='text/css' media='all' />
+<style id='meomblocks-wistia-video-button-style-inline-css' type='text/css'>
+
+
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--relex-blue: var(--surface-blue-600);--wp--preset--color--relex-dark-blue: var(--surface-blue-900);--wp--preset--color--relex-green: var(--color-brand-green-600);--wp--preset--color--relex-yellow: var(--color-brand-yellow-600);--wp--preset--color--relex-purple: var(--color-brand-purple-600);--wp--preset--color--relex-red: var(--color-brand-red-600);--wp--preset--color--relex-orange: var(--color-brand-orange-600);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--gradient--relex-gradient-blue-from-top: linear-gradient(180deg, #80C5EF 0%, #E8F3FF 70%);--wp--preset--gradient--relex-gradient-blue-from-bottom: linear-gradient(177deg, #E8F3FF 2.46%, #C2DFFF 88%);--wp--preset--gradient--relex-gradient-blue-from-left: linear-gradient(99deg, #80C5EF 0%, #E8F3FF 70%);--wp--preset--gradient--relex-gradient-blue-from-right: linear-gradient(90deg, #E6F2FF 50%, #F7F8F8 50%);--wp--preset--gradient--relex-gradient-blue-dark-from-top: linear-gradient(180deg, #063961 0%, #1884C5 70%);--wp--preset--gradient--relex-gradient-blue-dark-from-left: linear-gradient(99deg, #063961 0%, #1884C5 70%);--wp--preset--gradient--relex-gradient-blue-dark-from-right: linear-gradient(261deg, #063961 0%, #1884C5 70%);--wp--preset--gradient--relex-gradient-purple-from-top: linear-gradient(180deg, #AC8BC2 0%, #EDE8FD 70%);--wp--preset--gradient--relex-gradient-purple-from-bottom: linear-gradient(177deg, #EDE8FD 2.46%, #AC8BC2 88%);--wp--preset--gradient--relex-gradient-orange-from-top: linear-gradient(180deg, #EF8638 0%, #FCEEE2 70%);--wp--preset--gradient--relex-gradient-orange-from-bottom: linear-gradient(177deg, #FCEEE2 2.46%, #EF8638 88%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--relex-small: var(--font-size-text-200);--wp--preset--font-size--relex-body: var(--font-size-body);--wp--preset--font-size--relex-h-1: var(--font-size-h1);--wp--preset--font-size--relex-h-2: var(--font-size-h2);--wp--preset--font-size--relex-h-2-thin: var(--font-size-h2-thin);--wp--preset--font-size--relex-h-3: var(--font-size-h3);--wp--preset--font-size--relex-h-4: var(--font-size-h4);--wp--preset--font-size--relex-h-5: var(--font-size-h5);--wp--preset--font-size--relex-h-6: var(--font-size-h6);--wp--preset--font-size--relex-subheading: var(--font-size-text-510);--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--spacing--space-xs: var(--space-xs);--wp--preset--spacing--space-s: var(--space-s);--wp--preset--spacing--space-m: var(--space-m);--wp--preset--spacing--space-l: var(--space-l);--wp--preset--spacing--space-xl: var(--space-xl);--wp--preset--spacing--space-2-xl: var(--space-2xl);--wp--preset--spacing--space-3-xl: var(--space-3xl);--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}.wp-block-meomblocks-banner{--wp--preset--color--relex-blue: var(--surface-blue-600);--wp--preset--color--relex-purple: var(--color-brand-purple-600);}:root { --wp--style--global--content-size: var(--width-regular);--wp--style--global--wide-size: var(--width-wide-large); }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;line-height: inherit;padding: calc(0.667em + 2px) calc(1.333em + 2px);text-decoration: none;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-relex-blue-color{color: var(--wp--preset--color--relex-blue) !important;}.has-relex-dark-blue-color{color: var(--wp--preset--color--relex-dark-blue) !important;}.has-relex-green-color{color: var(--wp--preset--color--relex-green) !important;}.has-relex-yellow-color{color: var(--wp--preset--color--relex-yellow) !important;}.has-relex-purple-color{color: var(--wp--preset--color--relex-purple) !important;}.has-relex-red-color{color: var(--wp--preset--color--relex-red) !important;}.has-relex-orange-color{color: var(--wp--preset--color--relex-orange) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-relex-blue-background-color{background-color: var(--wp--preset--color--relex-blue) !important;}.has-relex-dark-blue-background-color{background-color: var(--wp--preset--color--relex-dark-blue) !important;}.has-relex-green-background-color{background-color: var(--wp--preset--color--relex-green) !important;}.has-relex-yellow-background-color{background-color: var(--wp--preset--color--relex-yellow) !important;}.has-relex-purple-background-color{background-color: var(--wp--preset--color--relex-purple) !important;}.has-relex-red-background-color{background-color: var(--wp--preset--color--relex-red) !important;}.has-relex-orange-background-color{background-color: var(--wp--preset--color--relex-orange) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-relex-blue-border-color{border-color: var(--wp--preset--color--relex-blue) !important;}.has-relex-dark-blue-border-color{border-color: var(--wp--preset--color--relex-dark-blue) !important;}.has-relex-green-border-color{border-color: var(--wp--preset--color--relex-green) !important;}.has-relex-yellow-border-color{border-color: var(--wp--preset--color--relex-yellow) !important;}.has-relex-purple-border-color{border-color: var(--wp--preset--color--relex-purple) !important;}.has-relex-red-border-color{border-color: var(--wp--preset--color--relex-red) !important;}.has-relex-orange-border-color{border-color: var(--wp--preset--color--relex-orange) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-relex-gradient-blue-from-top-gradient-background{background: var(--wp--preset--gradient--relex-gradient-blue-from-top) !important;}.has-relex-gradient-blue-from-bottom-gradient-background{background: var(--wp--preset--gradient--relex-gradient-blue-from-bottom) !important;}.has-relex-gradient-blue-from-left-gradient-background{background: var(--wp--preset--gradient--relex-gradient-blue-from-left) !important;}.has-relex-gradient-blue-from-right-gradient-background{background: var(--wp--preset--gradient--relex-gradient-blue-from-right) !important;}.has-relex-gradient-blue-dark-from-top-gradient-background{background: var(--wp--preset--gradient--relex-gradient-blue-dark-from-top) !important;}.has-relex-gradient-blue-dark-from-left-gradient-background{background: var(--wp--preset--gradient--relex-gradient-blue-dark-from-left) !important;}.has-relex-gradient-blue-dark-from-right-gradient-background{background: var(--wp--preset--gradient--relex-gradient-blue-dark-from-right) !important;}.has-relex-gradient-purple-from-top-gradient-background{background: var(--wp--preset--gradient--relex-gradient-purple-from-top) !important;}.has-relex-gradient-purple-from-bottom-gradient-background{background: var(--wp--preset--gradient--relex-gradient-purple-from-bottom) !important;}.has-relex-gradient-orange-from-top-gradient-background{background: var(--wp--preset--gradient--relex-gradient-orange-from-top) !important;}.has-relex-gradient-orange-from-bottom-gradient-background{background: var(--wp--preset--gradient--relex-gradient-orange-from-bottom) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-relex-small-font-size{font-size: var(--wp--preset--font-size--relex-small) !important;}.has-relex-body-font-size{font-size: var(--wp--preset--font-size--relex-body) !important;}.has-relex-h-1-font-size{font-size: var(--wp--preset--font-size--relex-h-1) !important;}.has-relex-h-2-font-size{font-size: var(--wp--preset--font-size--relex-h-2) !important;}.has-relex-h-2-thin-font-size{font-size: var(--wp--preset--font-size--relex-h-2-thin) !important;}.has-relex-h-3-font-size{font-size: var(--wp--preset--font-size--relex-h-3) !important;}.has-relex-h-4-font-size{font-size: var(--wp--preset--font-size--relex-h-4) !important;}.has-relex-h-5-font-size{font-size: var(--wp--preset--font-size--relex-h-5) !important;}.has-relex-h-6-font-size{font-size: var(--wp--preset--font-size--relex-h-6) !important;}.has-relex-subheading-font-size{font-size: var(--wp--preset--font-size--relex-subheading) !important;}.wp-block-meomblocks-banner.has-relex-blue-color{color: var(--wp--preset--color--relex-blue) !important;}.wp-block-meomblocks-banner.has-relex-purple-color{color: var(--wp--preset--color--relex-purple) !important;}.wp-block-meomblocks-banner.has-relex-blue-background-color{background-color: var(--wp--preset--color--relex-blue) !important;}.wp-block-meomblocks-banner.has-relex-purple-background-color{background-color: var(--wp--preset--color--relex-purple) !important;}.wp-block-meomblocks-banner.has-relex-blue-border-color{border-color: var(--wp--preset--color--relex-blue) !important;}.wp-block-meomblocks-banner.has-relex-purple-border-color{border-color: var(--wp--preset--color--relex-purple) !important;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='relex-css' href='https://s32519.pcdn.co/wp-content/themes/relex-theme/build/css/layout.css?ver=1769264148' type='text/css' media='all' />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.relexsolutions.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.relexsolutions.com%2Fresources%2Fmeasuring-forecast-accuracy%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.relexsolutions.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.relexsolutions.com%2Fresources%2Fmeasuring-forecast-accuracy%2F&#038;format=xml" />
+<link rel="alternate" hreflang="de-DE" href="https://www.relexsolutions.com/de/fachbeitraege/die-ermittlung-der-prognosegenauigkeit/"><link rel="alternate" hreflang="en-US" href="https://www.relexsolutions.com/resources/measuring-forecast-accuracy/"><link rel="alternate" href="https://www.relexsolutions.com/resources/measuring-forecast-accuracy/" hreflang="x-default"><link rel="icon" href="https://s32519.pcdn.co/wp-content/uploads/2024/07/cropped-relex-mark-square-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://s32519.pcdn.co/wp-content/uploads/2024/07/cropped-relex-mark-square-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://s32519.pcdn.co/wp-content/uploads/2024/07/cropped-relex-mark-square-180x180.png" />
+<meta name="msapplication-TileImage" content="https://s32519.pcdn.co/wp-content/uploads/2024/07/cropped-relex-mark-square-270x270.png" />
+
+			<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TM2D4SK');</script>
+<!-- End Google Tag Manager -->
+	
+</head>
+
+<body class="wp-singular resource-template-default single single-resource postid-35264 wp-theme-relex-theme" itemscope="" itemtype="http://schema.org/WebPage">
+			<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TM2D4SK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->							<style>
+			#notice-banner {
+				color: #0a3256!important;
+				background-color: #e6f2ff!important;
+			}
+			#notice-banner a {
+				color: #177abf!important;
+			}
+			#notice-banner #notice-banner-close svg path {
+				fill: #0a3256!important;
+			}
+		</style>
+		<section id="notice-banner">
+					<p>To win at grocery, you must win at fresh. Learn how at our live webinar.									<a id="notice-bar-link" href="https://hub.relexsolutions.com/en/fresh-store-operations-webinar?utm_source=relex-web&utm_medium=promo-topbanner&utm_campaign=25q4_global_grocery-freshness" target="blank">Register now</a>
+							</p>
+					<button id="notice-banner-close" aria-label="Close banner">
+						<div id="cc2cc04f2f1df0ce9e1b952a05a9cef4" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><title>menu-close</title><rect width="48" height="48" style="fill:none"/><rect x="8" y="8" width="32" height="32" style="fill:none"/><path d="M16.929,15.515,32.485,31.071a1,1,0,0,1-1.414,1.414L15.515,16.929a1,1,0,0,1,1.414-1.414Z" style="fill:var(--color-brand-blue-900);fill-rule:evenodd"/><path d="M31.071,15.515,15.515,31.071a1,1,0,0,0,1.414,1.414L32.485,16.929a1,1,0,0,0-1.414-1.414Z" style="fill:var(--color-brand-blue-900);fill-rule:evenodd"/></svg>			</div>
+					</button>
+	</section>
+						<nav class="site-nav site-nav--secondary site-nav--secondary--desktop side-padding" aria-label="Secondary">
+		<div class="wrapper mx-auto width-wide-xl">
+			<ul id="menu-en-secondary" class="site-nav__items site-nav__items--secondary"><li id="menu-item-51495" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51495"><a href="https://www.relexsolutions.com/community-portal/">Community</a></li>
+<li id="menu-item-51496" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51496"><a href="https://www.relexsolutions.com/partners/">Partners</a></li>
+<li id="menu-item-51497" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51497"><a href="https://www.relexsolutions.com/analysts/">Analysts</a></li>
+<li id="menu-item-51498" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51498"><a href="https://www.relexsolutions.com/events/">Events</a></li>
+<li id="menu-item-51499" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51499"><a href="https://www.relexsolutions.com/news/">News</a></li>
+</ul>		</div>
+	</nav>
+
+<header class="top-bar side-padding">
+	<div class="wrapper mx-auto width-wide-xl">
+		<div class="logo-container">
+			<a href="https://www.relexsolutions.com">
+							<div id="bf7d36d1c36921154a41be93b55c52c7" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="114" height="35" viewBox="0 0 114 35">  <path d="M3.3,3.55c.26,0,.51.06.75.16,6.38,2.14,10.68,8.12,10.68,14.85-6.39.02-12.16-3.83-14.6-9.74-.08-.21-.13-.43-.13-.66v-.24c.04-.29.14-.57.29-.82.56-1.05,1.22-2.04,1.97-2.96.18-.26.45-.45.75-.53.09-.03.19-.05.29-.05M24.97,33.97c.36.18.76.3,1.16.34h.13c.48-.04.96-.17,1.39-.4.8-.4,1.58-.86,2.32-1.38.41-.3.69-.73.8-1.22.09-.48.04-.97-.13-1.43-2.28-6.14-8.18-10.19-14.73-10.09-.06,6.1,3.49,11.66,9.06,14.16M2.24,25.84c-.38.42-.61.95-.64,1.51-.05.51.09,1.02.4,1.43,1.06,1.37,2.29,2.59,3.68,3.63.37.28.82.44,1.28.45.47,0,.92-.17,1.28-.48,4.02-2.94,6.4-7.62,6.39-12.6-4.83.03-9.39,2.26-12.38,6.06M26.13.61c-6.3,3.76-10.17,10.56-10.18,17.9,7.45,0,14.35-3.92,18.14-10.33.43-.67.6-1.47.51-2.25-.07-.62-.34-1.21-.77-1.67-1.1-1.42-2.39-2.69-3.84-3.76C29.43.15,28.77-.02,28.1,0h-.11c-.66.05-1.3.26-1.86.61M51.6,19.81l3.22,9.43h-3.46l-2.88-8.66c-.13,0-.24.03-.4.03h-1.23v8.63h-3.33V8.53h4.69c2.29,0,3.78.45,4.83,1.46,1.06,1.15,1.61,2.67,1.55,4.24,0,2.54-.97,4.45-2.74,5.45-.08.05-.16.08-.24.13M48.38,11.31c-.29,0-1.12,0-1.52-.03v6.59h1.57c.71.02,1.4-.25,1.92-.74.63-.74.94-1.7.86-2.67-.03-2.17-.88-3.12-2.82-3.15M62.77,20.18h5.25v-2.97h-5.26v-5.67h6.55v-3.02h-9.88v20.7h10.26v-3.02h-6.93v-6.04ZM91.03,20.18h5.25v-2.97h-5.26v-5.67h6.58v-3.02h-9.89v20.7h10.26v-3.02h-6.92v-6.04h-.02ZM77.3,8.53h-3.33v20.7h10.1v-2.96h-6.77V8.53ZM109.21,18.61l4.37-10.09h-3.33l-2.02,4.82c-.24.61-.48,1.19-.75,1.91-.29-.69-.54-1.27-.83-1.82l-2.02-4.77-.05-.11h-3.41l4.24,10.14-4.58,10.3-.13.26h3.54l2.13-5c.32-.71.61-1.48.91-2.22.32.79.59,1.46.91,2.17l2.18,4.95.05.11h3.6l-4.79-10.65Z" style="fill:var(--color-brand-blue-900)"></path></svg>			</div>
+						</a>
+		</div>
+					<button class="site-nav__toggle js-site-nav-toggle">
+			<span class="screen-reader-text">Menu</span>
+					<span class="site-nav__toggle-inner" aria-hidden="true">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+			</button>
+			<nav class="site-nav" aria-label="Primary">
+				<ul id="menu-en-main" class="site-nav__items js-site-nav-items"><li id="menu-item-46027" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-46027"><a href="https://www.relexsolutions.com/unified-platform/">Platform</a>
+<ul class="sub-menu">
+	<li id="menu-item-46364" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46364"><a href="https://www.relexsolutions.com/relex-and-ai/">Artificial Intelligence</a></li>
+	<li id="menu-item-46026" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46026"><a href="https://www.relexsolutions.com/platform-technology/">Data Management</a></li>
+	<li id="menu-item-49588" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49588"><a href="https://www.relexsolutions.com/platform-sustainability/">Sustainability</a></li>
+	<li id="menu-item-51630" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51630"><a href="https://www.relexsolutions.com/unified-merchandising-platform/">Unified Merchandising</a></li>
+</ul>
+</li>
+<li id="menu-item-38375" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-38375"><a href="https://www.relexsolutions.com/solutions-overview/">Solutions</a>
+<ul class="sub-menu">
+	<li id="menu-item-49300" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49300 menu-item--no-link"><span class="menu-item--text">Demand Planning</span>
+	<ul class="sub-menu">
+		<li id="menu-item-38395" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38395"><a href="https://www.relexsolutions.com/solutions/demand-planning-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Fluctuating-Graph_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Demand planning</a></li>
+		<li id="menu-item-47445" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-47445"><a href="https://www.relexsolutions.com/solutions/demand-sensing-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Visbility_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Demand sensing</a></li>
+		<li id="menu-item-49297" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49297 menu-item--no-link"><span class="menu-item--text">Manufacturing Planning</span></li>
+		<li id="menu-item-47613" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-47613"><a href="https://www.relexsolutions.com/solutions/master-planning/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Speed_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Master planning</a></li>
+		<li id="menu-item-43380" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-43380"><a href="https://www.relexsolutions.com/solutions/production-scheduling-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Time_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Production scheduling</a></li>
+		<li id="menu-item-43377" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-43377"><a href="https://www.relexsolutions.com/solutions/distribution-planning-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Location_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Distribution planning</a></li>
+		<li id="menu-item-49298" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49298 menu-item--no-link"><span class="menu-item--text">Collaboration</span></li>
+		<li id="menu-item-38388" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38388"><a href="https://www.relexsolutions.com/solutions/supply-chain-collaboration-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Collaboration_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Supply chain collaboration</a></li>
+	</ul>
+</li>
+	<li id="menu-item-49299" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49299 menu-item--no-link"><span class="menu-item--text">Inventory &amp; Replenishment</span>
+	<ul class="sub-menu">
+		<li id="menu-item-38381" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38381"><a href="https://www.relexsolutions.com/solutions/inventory-planning-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Logistics_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>End-to-end inventory planning</a></li>
+		<li id="menu-item-38386" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38386"><a href="https://www.relexsolutions.com/solutions/fresh-inventory-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/In-Store-Food_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Fresh inventory</a></li>
+		<li id="menu-item-38385" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38385"><a href="https://www.relexsolutions.com/solutions/automatic-replenishment-system/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Additional-Stock_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Automatic replenishment and allocation</a></li>
+		<li id="menu-item-38382" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38382"><a href="https://www.relexsolutions.com/solutions/omnichannel-supply-chain-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Targeting_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Channel planning</a></li>
+		<li id="menu-item-51450" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-51450"><a href="https://www.relexsolutions.com/solutions/fresh-store-ordering/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Ecommerce_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Fresh store ordering</a></li>
+		<li id="menu-item-49301" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49301 menu-item--no-link"><span class="menu-item--text">Retail Operations</span></li>
+		<li id="menu-item-39916" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-39916"><a href="https://www.relexsolutions.com/solutions/workload-forecasting-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Workload_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Workload forecasting</a></li>
+		<li id="menu-item-38379" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38379"><a href="https://www.relexsolutions.com/solutions/store-execution-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Trolley_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Store execution</a></li>
+		<li id="menu-item-47543" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-47543"><a href="https://www.relexsolutions.com/solutions/predictive-inventory/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Out-of-Stock-1_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Predictive inventory</a></li>
+	</ul>
+</li>
+	<li id="menu-item-49302" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49302 menu-item--no-link"><span class="menu-item--text">Space &amp; Assortment</span>
+	<ul class="sub-menu">
+		<li id="menu-item-38390" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38390"><a href="https://www.relexsolutions.com/solutions/assortment-planning-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Bottle_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Assortment planning</a></li>
+		<li id="menu-item-42158" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-42158"><a href="https://www.relexsolutions.com/solutions/planogram-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Planogram_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Planogram optimization</a></li>
+		<li id="menu-item-42159" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-42159"><a href="https://www.relexsolutions.com/solutions/retail-floor-planning-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Floor-Plan_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Retail floor planning</a></li>
+		<li id="menu-item-49303" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49303 menu-item--no-link"><span class="menu-item--text">Pricing &amp; Promotions</span></li>
+		<li id="menu-item-51191" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51191"><a href="https://www.relexsolutions.com/solutions/deal-management/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Investigate_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Deal management</a></li>
+		<li id="menu-item-43667" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-43667"><a href="https://www.relexsolutions.com/solutions/price-optimization-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Measurable-Value_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Price optimization</a></li>
+		<li id="menu-item-38383" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38383"><a href="https://www.relexsolutions.com/solutions/promotion-planning-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Coupons_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Promotion planning</a></li>
+		<li id="menu-item-38392" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38392"><a href="https://www.relexsolutions.com/solutions/markdown-pricing-and-optimization-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Price-Tag_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Seasonal planning</a></li>
+	</ul>
+</li>
+	<li id="menu-item-49304" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-49304 menu-item--no-link"><span class="menu-item--text">Diagnostics</span>
+	<ul class="sub-menu">
+		<li id="menu-item-47124" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-47124"><a href="https://www.relexsolutions.com/solutions/diagnostics/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Magnifying-Glass_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Diagnostics</a></li>
+		<li id="menu-item-49305" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49305 menu-item--no-link"><span class="menu-item--text">Strategic Planning</span></li>
+		<li id="menu-item-45603" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-45603"><a href="https://www.relexsolutions.com/solutions/integrated-business-planning/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Jigsaw_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>Integrated Business Planning (IBP)</a></li>
+		<li id="menu-item-44201" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-44201"><a href="https://www.relexsolutions.com/solutions/soe-and-sop-software/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/To-Do-List_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>S&#038;OE and S&#038;OP</a></li>
+		<li id="menu-item-47678" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-47678"><a href="https://www.relexsolutions.com/solutions/mfp-otb/"><div class="menu-icon"><img width="1" height="1" src="https://s32519.pcdn.co/wp-content/uploads/2024/01/Coins_icon.svg" class="attachment-thumbnail size-thumbnail" alt="" decoding="async" /></div>MFP/OTB</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-41987" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41987"><a href="https://www.relexsolutions.com/industries/">Industries</a>
+<ul class="sub-menu">
+	<li id="menu-item-41984" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41984"><a href="https://www.relexsolutions.com/industries/retail/">Retail</a>
+	<ul class="sub-menu">
+		<li id="menu-item-40213" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40213"><a href="https://www.relexsolutions.com/industries/retail/convenience-stores/">Convenience</a></li>
+		<li id="menu-item-40215" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40215"><a href="https://www.relexsolutions.com/industries/retail/diy-home-improvement/">DIY and home improvement</a></li>
+		<li id="menu-item-42502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42502"><a href="https://www.relexsolutions.com/industries/retail/electronics/">Electronics retailers</a></li>
+		<li id="menu-item-41025" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41025"><a href="https://www.relexsolutions.com/industries/retail/general-merchandise-discount/">General merchandise and discount</a></li>
+		<li id="menu-item-40216" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40216"><a href="https://www.relexsolutions.com/industries/retail/grocery/">Grocery</a></li>
+		<li id="menu-item-40217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40217"><a href="https://www.relexsolutions.com/industries/retail/health-beauty-pharmacy/">Health, beauty, and pharmacy</a></li>
+		<li id="menu-item-40218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40218"><a href="https://www.relexsolutions.com/industries/retail/home-furnishing/">Home furnishing</a></li>
+		<li id="menu-item-42196" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-42196"><a href="https://www.relexsolutions.com/industries/retail/specialty/">Specialty retailers</a></li>
+	</ul>
+</li>
+	<li id="menu-item-41985" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41985"><a href="https://www.relexsolutions.com/industries/wholesale-distribution/">Wholesale &#038; distribution</a>
+	<ul class="sub-menu">
+		<li id="menu-item-41995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41995"><a href="https://www.relexsolutions.com/industries/wholesale-distribution/automotive-parts/">Automotive parts and tools</a></li>
+		<li id="menu-item-41994" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41994"><a href="https://www.relexsolutions.com/industries/wholesale-distribution/construction-technical-trade/">Building, construction and technical trade</a></li>
+		<li id="menu-item-41991" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41991"><a href="https://www.relexsolutions.com/industries/wholesale-distribution/grocery-foodservice/">Grocery and foodservice</a></li>
+		<li id="menu-item-41988" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41988"><a href="https://www.relexsolutions.com/industries/wholesale-distribution/pharmaceutical/">Pharmaceutical</a></li>
+	</ul>
+</li>
+	<li id="menu-item-41986" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-41986"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/">Consumer packaged goods &#038; manufacturing</a>
+	<ul class="sub-menu">
+		<li id="menu-item-51032" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51032"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/apparel-and-footwear/">Apparel and footwear</a></li>
+		<li id="menu-item-43582" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43582"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/baked-goods/">Baked goods</a></li>
+		<li id="menu-item-43583" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43583"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/beverage-brands/">Beverage consumer brands</a></li>
+		<li id="menu-item-45491" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45491"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/dairy-processors/">Dairy processors</a></li>
+		<li id="menu-item-43581" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43581"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/fresh-food/">Fresh food producers</a></li>
+		<li id="menu-item-41990" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41990"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/health-beauty-hygiene-brands/">Health, beauty, and hygiene</a></li>
+		<li id="menu-item-41989" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41989"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/home-living-brands/">Home and living</a></li>
+		<li id="menu-item-43584" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-43584"><a href="https://www.relexsolutions.com/industries/cpg-manufacturing/meat-processors/">Meat processors</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-45374" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45374"><a href="https://www.relexsolutions.com/customers/">Customers</a></li>
+<li id="menu-item-45376" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45376"><a href="https://www.relexsolutions.com/resources/">Resources</a></li>
+<li id="menu-item-39281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39281"><a href="https://www.relexsolutions.com/about/">Company</a>
+<ul class="sub-menu">
+	<li id="menu-item-39282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39282"><a href="https://www.relexsolutions.com/about/">About us</a></li>
+	<li id="menu-item-39283" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39283"><a href="https://www.relexsolutions.com/contact/">Contact info</a></li>
+	<li id="menu-item-49667" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-49667"><a href="https://www.relexsolutions.com/in-the-news/">In the news</a></li>
+	<li id="menu-item-47457" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47457"><a href="https://www.relexsolutions.com/people/">Key people</a></li>
+	<li id="menu-item-41410" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-41410"><a href="https://www.relexsolutions.com/media/">Media</a></li>
+	<li id="menu-item-39932" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39932"><a href="https://www.relexsolutions.com/sustainability/">Sustainability</a></li>
+	<li id="menu-item-35882" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35882"><a href="https://www.relexsolutions.com/why-us/">Why us</a></li>
+</ul>
+</li>
+<li id="menu-item-39616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-39616"><a href="https://www.relexsolutions.com/careers/">Careers</a>
+<ul class="sub-menu">
+	<li id="menu-item-39618" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-39618"><a href="https://www.relexsolutions.com/careers/">Careers overview</a></li>
+	<li id="menu-item-48583" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48583"><a href="https://www.relexsolutions.com/careers/customer-operations/">Customer operations</a></li>
+	<li id="menu-item-48584" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48584"><a href="https://www.relexsolutions.com/careers/marketing/">Marketing</a></li>
+	<li id="menu-item-48585" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48585"><a href="https://www.relexsolutions.com/careers/operational-functions/">Operational functions</a></li>
+	<li id="menu-item-48587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48587"><a href="https://www.relexsolutions.com/careers/product-technology/">Product &#038; technology</a></li>
+	<li id="menu-item-48588" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48588"><a href="https://www.relexsolutions.com/careers/sales/">Sales</a></li>
+	<li id="menu-item-48586" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48586"><a href="https://www.relexsolutions.com/careers/people-stories/">People stories</a></li>
+</ul>
+</li>
+</ul>			</nav>
+						<div class="nav-utilities">
+							<ul id="menu-en-secondary-1" class="site-nav__items site-nav__items--secondary site-nav__items--secondary--mobile"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51495"><a href="https://www.relexsolutions.com/community-portal/">Community</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51496"><a href="https://www.relexsolutions.com/partners/">Partners</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51497"><a href="https://www.relexsolutions.com/analysts/">Analysts</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51498"><a href="https://www.relexsolutions.com/events/">Events</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51499"><a href="https://www.relexsolutions.com/news/">News</a></li>
+</ul>						
+<form role="search" method="get" id="searchform" class="searchform" action="https://www.relexsolutions.com/">
+	<div class="search-bar">
+		<input type="submit" id="searchsubmit" value="" />
+		<input autofocus placeholder="Search..." class="search-input" type="text" value="" name="s" id="s" />
+	</div>
+	<span class="search-toggl"></span>
+</form>
+
+			<ul class="globe-languages desktop">
+				<li>
+					<a class="globe-icon">
+									<div id="719e9cc126f565513afcfc4c4609ab4c" class="svg-icon">
+				<svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(1 1)" stroke="#03363D" stroke-width="1.3" fill="none" fill-rule="evenodd">
+        <circle cx="8" cy="8" r="8"/>
+        <ellipse cx="8" cy="8" rx="3.429" ry="8"/>
+        <path d="M0 5.701h16M0 10.273h16"/>
+    </g>
+</svg>
+			</div>
+									EN					</a>
+					<ul id="menu-en-language-menu" class="menu"><li id="menu-item-36710" class="site-id-1 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-has-children mlp-current-language-item menu-item-36710"><a rel="alternate" href="https://www.relexsolutions.com/resources/measuring-forecast-accuracy/" lang="en-US" hreflang="en-US">English</a>
+<ul class="sub-menu">
+	<li id="menu-item-36703" class="site-id-4 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-36703"><a rel="alternate" href="https://www.relexsolutions.com/de/fachbeitraege/die-ermittlung-der-prognosegenauigkeit/" lang="de-DE" hreflang="de-DE">Deutsch</a></li>
+	<li id="menu-item-36702" class="site-id-3 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-36702"><a rel="alternate" href="https://www.relexsolutions.com/es/" lang="es-ES" hreflang="es-ES">Español</a></li>
+	<li id="menu-item-36704" class="site-id-5 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-36704"><a rel="alternate" href="https://www.relexsolutions.com/it/" lang="it-IT" hreflang="it-IT">Italiano</a></li>
+	<li id="menu-item-36705" class="site-id-6 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-36705"><a rel="alternate" href="https://www.relexsolutions.com/fr/" lang="fr-FR" hreflang="fr-FR">Français</a></li>
+	<li id="menu-item-36706" class="site-id-7 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-36706"><a rel="alternate" href="https://www.relexsolutions.com/fi/" lang="fi-FI" hreflang="fi-FI">Suomi</a></li>
+	<li id="menu-item-36707" class="site-id-8 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-36707"><a rel="alternate" href="https://www.relexsolutions.com/sv/" lang="sv-SE" hreflang="sv-SE">Svenska</a></li>
+	<li id="menu-item-36708" class="site-id-9 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-36708"><a rel="alternate" href="https://www.relexsolutions.com/nb/" lang="nb-NO" hreflang="nb-NO">Norsk</a></li>
+	<li id="menu-item-36709" class="site-id-10 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-36709"><a rel="alternate" href="https://www.relexsolutions.com/dk/" lang="da-DK" hreflang="da-DK">Dansk</a></li>
+	<li id="menu-item-41944" class="site-id-11 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-41944"><a rel="alternate" href="https://www.relexsolutions.com/pt/" lang="pt-PT" hreflang="pt-PT">Português-BR</a></li>
+	<li id="menu-item-46092" class="site-id-13 mlp-language-nav-item menu-item menu-item-type-mlp_language menu-item-object-mlp_language menu-item-46092"><a rel="alternate" href="https://www.relexsolutions.com/jp/" lang="ja-JP" hreflang="ja-JP">日本語</a></li>
+	<li id="menu-item-50986" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50986"><a href="https://www.relexsolutions.com.cn/">中文</a></li>
+</ul>
+</li>
+</ul>				</li>
+			</ul>
+
+							<div class="cta-container">
+					<a class="button" href="https://www.relexsolutions.com/demo-request/">
+						Request a demo					</a>
+				</div>
+			
+			<nav class="languages">
+				<select onchange="if (this.value) window.location.href=this.value"><option value="https://www.relexsolutions.com/resources/measuring-forecast-accuracy/">English<option value="https://www.relexsolutions.com/de/fachbeitraege/die-ermittlung-der-prognosegenauigkeit/">Deutsch</option>
+<option value="https://www.relexsolutions.com/es/">Español</option>
+<option value="https://www.relexsolutions.com/it/">Italiano</option>
+<option value="https://www.relexsolutions.com/fr/">Français</option>
+<option value="https://www.relexsolutions.com/fi/">Suomi</option>
+<option value="https://www.relexsolutions.com/sv/">Svenska</option>
+<option value="https://www.relexsolutions.com/nb/">Norsk</option>
+<option value="https://www.relexsolutions.com/dk/">Dansk</option>
+<option value="https://www.relexsolutions.com/pt/">Português-BR</option>
+<option value="https://www.relexsolutions.com/jp/">日本語</option>
+<option value="https://www.relexsolutions.com.cn/">中文</option>
+</option>
+</select>			</nav>
+		</div>
+	</div>
+</header>
+				<main id="site-content" class="site-content side-padding">
+	<article class="content-area post-35264 resource type-resource status-publish has-post-thumbnail hentry resource_type-guide topic-demand-forecasting guide" id="post-35264">
+	<div class="meomblocks-hero meomblocks-hero--guide alignwide margin-top-default has-background curved-border curved-border--bottom has-overlap-media">
+		<div class="meomblocks-hero__container margin-top-children">
+				<nav aria-label="breadcrumb" class="breadcrumb-nav alignwide">
+		<ul class="breadcrumb">
+			<li class="breadcrumb-item">
+									<a href="https://www.relexsolutions.com/resources/">Resources</a>
+							</li>
+							<span class="base-separator"> / </span>
+									<li class="breadcrumb-item">
+													<a href="https://www.relexsolutions.com/resources/?topic=demand-forecasting">Demand Forecasting</a>
+											</li>
+																	</ul>
+	</nav>
+			<h1 class="post-title">Measuring forecast accuracy: The complete guide</h1>			<p class="post-excerpt">
+							</p>
+			<div class="wp-block-image">
+				<img width="1280" height="640" src="https://s32519.pcdn.co/wp-content/uploads/2025/06/Agentic-AI-in-retail-and-supply-chain-planning-cover.jpg.optimal.jpg" class="attachment-full size-full wp-post-image" alt="" decoding="async" fetchpriority="high" srcset="https://s32519.pcdn.co/wp-content/uploads/2025/06/Agentic-AI-in-retail-and-supply-chain-planning-cover.jpg.optimal.jpg 1280w, https://s32519.pcdn.co/wp-content/uploads/2025/06/Agentic-AI-in-retail-and-supply-chain-planning-cover-300x150.jpg.optimal.jpg 300w, https://s32519.pcdn.co/wp-content/uploads/2025/06/Agentic-AI-in-retail-and-supply-chain-planning-cover-1024x512.jpg.optimal.jpg 1024w, https://s32519.pcdn.co/wp-content/uploads/2025/06/Agentic-AI-in-retail-and-supply-chain-planning-cover-768x384.jpg.optimal.jpg 768w" sizes="(max-width: 1280px) 100vw, 1280px" />			</div>
+		</div>
+	</div>
+
+			<div class="guide-pdf alignwide">
+			<div class="guide-pdf__icon-title">
+							<div id="64b13bcf1a8d245edf2b375115d05220" class="svg-icon">
+				<svg width="32" height="30" id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.53 30.13">
+  <defs>
+    <style>
+      .cls-guide {
+        fill: #0a3256;
+      }
+    </style>
+  </defs>
+  <g id="Icons">
+    <g>
+      <path class="cls-guide" d="M32.03,6.22h-2.52v-2.45c0-.16-.08-.31-.21-.41-.13-.09-.3-.12-.46-.06l-7.91,2.81c-1-1.52-2.72-2.52-4.67-2.52s-3.67,1-4.68,2.52L3.68,3.3c-.15-.05-.32-.03-.46.06-.13.09-.21.25-.21.41v2.45H.5c-.28,0-.5.22-.5.5v19.67c0,.28.22.5.5.5h10.44v2.74c0,.18.1.35.26.44.07.04.16.06.24.06.09,0,.19-.03.27-.08l1.41-.9,1.41.9c.15.1.35.1.51.02.16-.09.26-.26.26-.44v-2.74h16.74c.28,0,.5-.22.5-.5V6.72c0-.28-.22-.5-.5-.5ZM16.26,4.59c2.54,0,4.6,2.06,4.6,4.6,0,1.64-.84,3.11-2.25,3.95-.15.09-.24.25-.24.43v1.24h-4.22v-1.24c0-.18-.09-.34-.24-.43-1.41-.84-2.25-2.32-2.25-3.95,0-2.54,2.07-4.6,4.6-4.6ZM18.21,16.74h-3.89c-.09,0-.16-.07-.16-.17v-.77h4.22v.77c0,.09-.07.17-.16.17ZM17.31,17.74c-.13.43-.54.75-1.01.75h-.07c-.48,0-.88-.32-1.01-.75h2.1ZM4.01,4.48l7.1,2.53c-.29.67-.45,1.41-.45,2.19,0,1.87.95,3.62,2.49,4.66v2.73c0,.6.46,1.08,1.04,1.14.14,1,.99,1.77,2.03,1.77h.07c1.04,0,1.89-.77,2.03-1.77.58-.06,1.04-.54,1.04-1.14v-2.73c1.54-1.03,2.49-2.79,2.49-4.66,0-.78-.16-1.52-.45-2.19l7.09-2.52v18.56l-11.75,2.72v-4.5c0-.28-.22-.5-.5-.5s-.5.22-.5.5v4.5l-11.75-2.72V4.48ZM1,7.22h2.01v16.22c0,.23.16.43.39.49l8.48,1.96h-.44s0,0,0,0H1V7.22ZM14.29,28.72l-.91-.58c-.16-.1-.37-.1-.54,0l-.91.58v-1.83h2.35v1.83ZM31.53,25.89h-10.89l8.48-1.96c.23-.05.39-.25.39-.49V7.22h2.02v18.67Z"/>
+      <path class="cls-guide" d="M16.26,2.91c.28,0,.5-.22.5-.5V.5c0-.28-.22-.5-.5-.5s-.5.22-.5.5v1.91c0,.28.22.5.5.5Z"/>
+      <path class="cls-guide" d="M19.71,3.93c.16,0,.31-.07.41-.21l1.11-1.55c.16-.22.11-.54-.11-.7-.22-.16-.54-.11-.7.11l-1.11,1.55c-.16.22-.11.54.11.7.09.06.19.09.29.09Z"/>
+      <path class="cls-guide" d="M12.4,3.72c.1.14.25.21.41.21.1,0,.2-.03.29-.09.22-.16.27-.47.11-.7l-1.11-1.55c-.16-.22-.47-.28-.7-.11-.22.16-.27.47-.11.7l1.11,1.55Z"/>
+    </g>
+  </g>
+</svg>			</div>
+							<h2 class="guide-pdf__title h4">Get the guide sent to me as a PDF</h2>
+			</div>
+			<button class="guide-pdf__button guide-pdf__button--modal button" type="button" data-a11y-dialog-show="guide-pdf-modal">Send me the PDF</button>
+		</div>
+
+		<!-- 1. The dialog container -->
+		<div
+			id="guide-pdf-modal"
+			class="guide-pdf-modal"
+			aria-labelledby="guide-pdf-modal-id"
+			aria-hidden="true"
+		>
+			<!-- 2. The dialog overlay -->
+			<div class="guide-pdf-modal__overlay" data-a11y-dialog-hide></div>
+			<!-- 3. The actual dialog -->
+			<div class="guide-pdf-modal__content" role="document">
+				<!-- 4. The close button -->
+				<button class="guide-pdf-modal__close" type="button" data-a11y-dialog-hide aria-label="Close search">
+							<div id="21e4ee60e3a5fc95bc292f21d018fb58" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+<g mask="url(#mask0_3434_28172)">
+<path d="M8.4 17.5L7 16.1L10.6 12.5L7 8.92499L8.4 7.52499L12 11.125L15.575 7.52499L16.975 8.92499L13.375 12.5L16.975 16.1L15.575 17.5L12 13.9L8.4 17.5Z" fill="currentColor"/>
+</g>
+</svg>			</div>
+							</button>
+				<!-- 5. The dialog title -->
+				<h2 class="guide-pdf-modal__title screen-reader-text" id="guide-pdf-modal-id">Download PDF</h2>
+				<div class="form hubspot-form pdf-download" id="hubspot-pdf-download">
+	<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    portalId: "317879",
+    formId: "94fb5caa-7185-4417-a5c3-c8bd9c28afcb",
+    region: "na1"
+  });
+</script></div>
+			</div>
+		</div>
+	
+	<div class="post-grid has-sidebar alignwide">
+				<div class="table-of-contents sidebar">
+			<button class="table-of-contents__toggle" type="button" data-toc="toggle" aria-expanded="false">
+							<div id="0d9c7a8f37e7cad7d8a72db49b37b0cd" class="svg-icon">
+				<svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="import_contacts">
+<mask id="mask0_3434_31000" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="25">
+<rect id="Bounding box" y="0.5" width="24" height="24" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_3434_31000)">
+<path id="import_contacts_2" d="M6.5 16.5C7.28333 16.5 8.04583 16.5875 8.7875 16.7625C9.52917 16.9375 10.2667 17.2 11 17.55V7.7C10.3167 7.3 9.59167 7 8.825 6.8C8.05833 6.6 7.28333 6.5 6.5 6.5C5.9 6.5 5.30417 6.55833 4.7125 6.675C4.12083 6.79167 3.55 6.96667 3 7.2V17.1C3.58333 16.9 4.1625 16.75 4.7375 16.65C5.3125 16.55 5.9 16.5 6.5 16.5ZM13 17.55C13.7333 17.2 14.4708 16.9375 15.2125 16.7625C15.9542 16.5875 16.7167 16.5 17.5 16.5C18.1 16.5 18.6875 16.55 19.2625 16.65C19.8375 16.75 20.4167 16.9 21 17.1V7.2C20.45 6.96667 19.8792 6.79167 19.2875 6.675C18.6958 6.55833 18.1 6.5 17.5 6.5C16.7167 6.5 15.9417 6.6 15.175 6.8C14.4083 7 13.6833 7.3 13 7.7V17.55ZM12 20.5C11.2 19.8667 10.3333 19.375 9.4 19.025C8.46667 18.675 7.5 18.5 6.5 18.5C5.8 18.5 5.1125 18.5917 4.4375 18.775C3.7625 18.9583 3.11667 19.2167 2.5 19.55C2.15 19.7333 1.8125 19.725 1.4875 19.525C1.1625 19.325 1 19.0333 1 18.65V6.6C1 6.41667 1.04583 6.24167 1.1375 6.075C1.22917 5.90833 1.36667 5.78333 1.55 5.7C2.31667 5.3 3.11667 5 3.95 4.8C4.78333 4.6 5.63333 4.5 6.5 4.5C7.46667 4.5 8.4125 4.625 9.3375 4.875C10.2625 5.125 11.15 5.5 12 6C12.85 5.5 13.7375 5.125 14.6625 4.875C15.5875 4.625 16.5333 4.5 17.5 4.5C18.3667 4.5 19.2167 4.6 20.05 4.8C20.8833 5 21.6833 5.3 22.45 5.7C22.6333 5.78333 22.7708 5.90833 22.8625 6.075C22.9542 6.24167 23 6.41667 23 6.6V18.65C23 19.0333 22.8375 19.325 22.5125 19.525C22.1875 19.725 21.85 19.7333 21.5 19.55C20.8833 19.2167 20.2375 18.9583 19.5625 18.775C18.8875 18.5917 18.2 18.5 17.5 18.5C16.5 18.5 15.5333 18.675 14.6 19.025C13.6667 19.375 12.8 19.8667 12 20.5Z" fill="currentColor"/>
+</g>
+</g>
+</svg>
+			</div>
+							Guide contents:							<div id="09125dfdb74097e9f03c293475c96fff" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+    <circle cx="12" cy="12.5" r="12" transform="rotate(90 12 12.5)" fill="#E6F2FF"/>
+    <path d="M12 14.0744L15.6726 10.5019C15.8453 10.334 16.065 10.25 16.3318 10.25C16.5987 10.25 16.8184 10.334 16.991 10.5019C17.1637 10.6698 17.25 10.8836 17.25 11.1431C17.25 11.4027 17.1637 11.6164 16.991 11.7844L12.6592 15.9981C12.565 16.0897 12.463 16.1546 12.3531 16.1927C12.2433 16.2309 12.1256 16.25 12 16.25C11.8744 16.25 11.7567 16.2309 11.6469 16.1927C11.537 16.1546 11.435 16.0897 11.3408 15.9981L7.00897 11.7844C6.83632 11.6164 6.75 11.4027 6.75 11.1431C6.75 10.8836 6.83632 10.6698 7.00897 10.5019C7.18161 10.334 7.40135 10.25 7.66816 10.25C7.93498 10.25 8.15471 10.334 8.32735 10.5019L12 14.0744Z" fill="#0A3256"/>
+</svg>			</div>
+						</button>
+			<div class="table-of-contents__wrapper">
+				<div class="sidebar-content">
+									<h3 class="table-of-contents__title h4">Guide contents:</h3>
+					<ul>
+														<li data-target-id="chapter-1"><a data-target-id-link="chapter-1" href="#chapter-1">1. What is forecast accuracy, and why does it matter?</a></li>
+															<li data-target-id="chapter-2"><a data-target-id-link="chapter-2" href="#chapter-2">2. Forecast accuracy vs. forecast bias</a></li>
+															<li data-target-id="chapter-3"><a data-target-id-link="chapter-3" href="#chapter-3">3. Key metrics for measuring forecast accuracy</a></li>
+															<li data-target-id="chapter-4"><a data-target-id-link="chapter-4" href="#chapter-4">4. How to measure forecast accuracy</a></li>
+															<li data-target-id="chapter-5"><a data-target-id-link="chapter-5" href="#chapter-5">5. How demand forecasting software improves forecast accuracy and reduces bias</a></li>
+															<li data-target-id="chapter-6"><a data-target-id-link="chapter-6" href="#chapter-6">6. Turning demand forecasting insights into action</a></li>
+															<li data-target-id="chapter-7"><a data-target-id-link="chapter-7" href="#chapter-7">7. Forecast accuracy case studies and real-world examples</a></li>
+															<li data-target-id="chapter-8"><a data-target-id-link="chapter-8" href="#chapter-8">8. Leverage forecast accuracy to deliver business results</a></li>
+																							</ul>
+											<button class="guide-pdf__button guide-pdf__button--sidebar button" type="button" data-a11y-dialog-show="guide-pdf-modal">Send me the PDF</button>
+									</div>
+			</div>
+		</div>
+		<div class="post-content margin-top-children">
+			
+<p>Many companies track impressive-looking metrics yet still face empty shelves, excess inventory, and spoiled produce.&nbsp;It&#8217;s&nbsp;not for lack of effort.&nbsp;It’s&nbsp;that&nbsp;traditional accuracy metrics&nbsp;often&nbsp;fail to&nbsp;connect to business outcomes.&nbsp;</p>
+
+
+
+<p>In&nbsp;supply chain planning,&nbsp;<strong>forecasting is always a means to an end</strong>.&nbsp;Effective accuracy measurement reveals where forecast errors actually hurt the business and where they have minimal impact. It identifies which products require improved predictions and which need alternative operational approaches. Most importantly, a good system knows when to stop chasing perfect forecasts and start fixing other parts of the planning process.</p>
+
+
+
+<p>Understanding how to measure, interpret, and act on forecast performance separates high-performing retailers and wholesalers from their competitors. The difference lies not in better numbers but in better availability, less waste, optimized inventory, and stronger profits. This guide demonstrates how to use forecast accuracy as a tool for making smarter supply chain decisions.</p>
+
+
+
+<h2 class="wp-block-heading">Key takeaways &nbsp;</h2>
+
+
+
+<ul class="wp-block-list">
+<li>Forecast accuracy alone doesn&#8217;t guarantee business success and must connect to actions and KPIs like availability, spoilage, and inventory turnover.</li>
+
+
+
+<li>Different metrics serve different purposes: MAPE for comparisons, bias for systemic errors, and cycle error for replenishment impact.</li>
+
+
+
+<li>Good forecast accuracy varies dramatically by product type, sales volume, and planning horizon.</li>
+
+
+
+<li>It’s best to focus accuracy measurement efforts on areas where they matter most, such as fresh products, high-value items, and volatile demand patterns. </li>
+
+
+
+<li>Modern forecasting methods, such as the RELEX ML-based approach, deliver accuracy improvements over traditional time-series methods. </li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="chapter-1">What is forecast accuracy, and why does it matter?&nbsp;</h2>
+
+
+
+<p><strong>Forecast accuracy measures how closely demand predictions match actual sales.</strong> It&nbsp;informs&nbsp;nearly every&nbsp;store and&nbsp;supply chain decision,&nbsp;from&nbsp;determining&nbsp;<a href="https://www.relexsolutions.com/resources/inventory-optimization/" target="_blank" rel="noreferrer noopener">how much inventory to hold</a>&nbsp;and&nbsp;when to order&nbsp;to&nbsp;staff&nbsp;scheduling&nbsp;and&nbsp;production capacity.&nbsp;</p>
+
+
+
+<p>Poor accuracy creates cascading effects across the business:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Customer experience suffers</strong>&nbsp;when stockouts prevent shoppers from finding what they&nbsp;need.&nbsp;</li>
+
+
+
+<li><strong>Working capital gets tied up&nbsp;in&nbsp;excess inventory</strong>,&nbsp;increasing&nbsp;the risk of markdown&nbsp;or spoilage.&nbsp;</li>
+
+
+
+<li><strong>Waste increases</strong>&nbsp;for perishables, where over-forecasting leads to unsold goods and under-forecasting&nbsp;causes&nbsp;lost sales.&nbsp;</li>
+
+
+
+<li><strong>Labor efficiency declines</strong>&nbsp;when inaccurate forecasts drive overstaffing during slow periods or understaffing during peak demand.&nbsp;</li>
+</ul>
+
+
+
+<p>The larger the forecast error, the greater the business impact. For example, even a 10% error for a fresh retailer can mean the difference between profit and loss for entire categories. Over-forecasting by 10% means shelves stocked with fresh salads, berries, and pastries will spoil before they can be sold, generating pure waste. Under-forecasting by the same margin means empty shelves during peak hours and customers choosing alternatives, resulting in lost sales that never return.</p>
+
+
+
+<h2 class="wp-block-heading" id="chapter-2">Forecast accuracy vs. forecast bias&nbsp;</h2>
+
+
+
+<p>While often discussed together, forecast accuracy and forecast bias measure fundamentally different things.&nbsp;Both must be&nbsp;tracked&nbsp;to&nbsp;truly understand&nbsp;forecast&nbsp;performance&nbsp;and act accordingly.&nbsp;&nbsp;</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1796" height="294" src="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-1.png" alt="Two formulas show how forecast bias is calculated by comparing the forecast to sales." class="wp-image-51596" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-1.png 1796w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-1-300x49.png 300w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-1-1024x168.png 1024w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-1-768x126.png 768w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-1-1536x251.png 1536w" sizes="(max-width: 1796px) 100vw, 1796px" /></figure>
+
+
+
+<p><strong>Forecast accuracy&nbsp;</strong>measures the average size of&nbsp;an&nbsp;error&nbsp;regardless of direction. Whether&nbsp;over-forecasting&nbsp;by&nbsp;ten&nbsp;units or under-forecasting&nbsp;by&nbsp;ten&nbsp;units, the accuracy calculation treats both as the same&nbsp;magnitude&nbsp;of error. This&nbsp;indicates&nbsp;the degree of&nbsp;variability in&nbsp;predictions&nbsp;and shows overall forecasting performance, helping retailers and wholesalers understand the level of uncertainty their planning processes must accommodate.&nbsp;</p>
+
+
+
+<p><strong>Forecast bias</strong>&nbsp;reveals systematic over- or under-forecasting. If forecasts consistently run 5% high or 5% low, then there’s a bias problem. Bias is expressed as a percentage: results over 100% indicate over-forecasting, while results under 100% indicate under-forecasting. Tracking bias is critical because it detects systemic issues that accumulate over time and across locations.</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><tbody><tr><td><strong>Metric</strong></td><td><strong>What&nbsp;it&nbsp;measures</strong></td><td><strong>How it’s calculated</strong></td><td><strong>What&nbsp;it&nbsp;tells&nbsp;us</strong></td><td><strong>Common misinterpretation</strong></td></tr><tr><td><strong>Forecast accuracy</strong></td><td>The average size of errors, regardless of whether forecasts over- or under-estimate demand.</td><td>Compares absolute error between forecast and actual (direction irrelevant).</td><td>Indicates how closely forecasts align overall and how much uncertainty planners must account for.</td><td>High accuracy does <strong>not</strong> mean there is no bias. A forecast can be consistently wrong in the same direction.</td></tr><tr><td><strong>Forecast&nbsp;bias</strong></td><td>Systematic tendency to over- or under-forecast.</td><td>Compares forecast to actual as a ratio or percentage (over 100% = over-forecasting; under 100% = under-forecasting).</td><td>Highlights structural issues in the forecasting process that compound over time and across locations.</td><td>Low bias does <strong>not</strong> mean a forecast is accurate. It may fluctuate widely around the correct value.</td></tr></tbody></table></figure>
+
+
+
+<p>A small bias at the store or item level can seem insignificant in isolation.&nbsp;But when that same bias is repeated across hundreds of stores or rolled up to a distribution center, it&nbsp;quietly creates&nbsp;major inventory imbalances. Consistently over-forecasting by just 5% means ordering more than needed. Even a 2% bias can tie up capital in excess stock,&nbsp;especially when item-level patterns go unnoticed.&nbsp;</p>
+
+
+
+<p>This is where aggregated metrics become misleading. A forecast can appear highly accurate at the total level, even when individual items are consistently over- or under-forecasted.</p>
+
+
+
+<p>Imagine that three products are forecasted for the same week. At an individual level, each item shows a large forecasting error — some significantly over-forecasted,&nbsp;others under-forecasted. However, when&nbsp;aggregated,&nbsp;these errors&nbsp;largely cancel&nbsp;each other out. The result is a group-level forecast that appears highly&nbsp;accurate, masking substantial item-level bias that would still drive excess stock or missed sales.&nbsp;</p>
+
+
+
+<figure class="wp-block-image size-full"><img decoding="async" width="1264" height="666" src="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-2.png" alt="A table comparing forecast accuracy and bias metrics, showing what each measures and common misinterpretations." class="wp-image-51597" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-2.png 1264w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-2-300x158.png 300w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-2-1024x540.png 1024w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-2-768x405.png 768w" sizes="(max-width: 1264px) 100vw, 1264px" /><figcaption class="wp-element-caption"><strong><em>Fig.&nbsp;1:</em></strong><em> </em>&nbsp;<em>Significant&nbsp;item-level over- and under-forecasting cancels out in aggregate, creating the illusion of&nbsp;an accurate&nbsp;forecast while hiding meaningful bias.</em></figcaption></figure>
+
+
+
+<h3 class="wp-block-heading">What&nbsp;is a “good” level of forecast accuracy?&nbsp;</h3>
+
+
+
+<p><strong>There’s&nbsp;no universal benchmark for “good” forecast accuracy because no two businesses face the same forecasting conditions.&nbsp;</strong>What counts as “good” depends on the uncertainty built into&nbsp;the&nbsp;product mix, demand patterns, and planning horizons&nbsp;—factors that&nbsp;determine&nbsp;what level of accuracy is&nbsp;actually achievable.&nbsp;</p>
+
+
+
+<p>Several factors have an outsized impact on&nbsp;realistic accuracy levels:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Sales volume.&nbsp;</strong>High-volume products typically achieve better forecast accuracy because random variation smooths out across larger numbers. Low-volume items are more exposed to&nbsp;day-to-day variability&nbsp;and percentage swings.&nbsp;</li>
+
+
+
+<li><strong>Demand variability.&nbsp;</strong>Products with stable, year-round demand are far easier to forecast than those influenced by promotions, seasonality, or irregular spikes.&nbsp;</li>
+
+
+
+<li><strong>Forecast&nbsp;horizon.</strong> Short-term forecasts are inherently more reliable, while longer-term forecasts face growing uncertainty.&nbsp;</li>
+</ul>
+
+
+
+<p><strong>Typical&nbsp;accuracy ranges</strong>&nbsp;vary dramatically by product type:&nbsp;</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><tbody><tr><td><strong>Product Type</strong></td><td><strong>Typical Range</strong></td><td><strong>Why This Range Makes Sense</strong></td></tr><tr><td><strong>High-volume, stable products</strong></td><td><strong>85–95%</strong></td><td>Large volumes smooth out random variation, and demand patterns are predictable.</td></tr><tr><td><strong>Slow-movers&nbsp;with intermittent demand</strong></td><td><strong>50–70%</strong></td><td>Low volume and sporadic demand create large percentage swings, making higher accuracy unrealistic.</td></tr><tr><td><strong>Fresh products with weather-sensitive demand</strong></td><td><strong>70–80%</strong></td><td>External factors introduce inherent volatility, limiting achievable precision even with good models.</td></tr></tbody></table></figure>
+
+
+
+<p>Ultimately, understanding&nbsp;<em>when&nbsp;</em>and&nbsp;<em>why&nbsp;</em>forecast accuracy drops matters more than chasing arbitrary targets.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="chapter-3">Key metrics for measuring forecast accuracy&nbsp;&nbsp;</h2>
+
+
+
+<p>No single metric tells the complete story of forecast performance. The same dataset can yield dramatically different accuracy readings depending on the metric used and the aggregation method employed. A forecast might show 95% accuracy by one measure while simultaneously revealing a 15% error by another, and both could be technically correct.</p>
+
+
+
+<p>Each metric&nbsp;addresses a distinct business question, ranging from comparing performance across categories to&nbsp;monitoring&nbsp;how forecast errors impact&nbsp;replenishment decisions.&nbsp;What matters&nbsp;is matching the right metric to&nbsp;the&nbsp;specific planning context and using multiple metrics together to get the full picture.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">MAPE (Mean Absolute Percentage Error)&nbsp;</h3>
+
+
+
+<p><strong>Mean Absolute Percentage Error (MAPE)&nbsp;</strong>shows, on average, how many percentage points off forecasts are, making it the most widely used metric in&nbsp;<a href="https://www.relexsolutions.com/resources/demand-planning/" target="_blank" rel="noreferrer noopener">demand planning</a>.&nbsp;The calculation compares absolute forecast error to actual sales volume, treating each product or time period equally, regardless of its size.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="764" height="293" src="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-3.png" alt="The MAPE formula for calculating forecast accuracy." class="wp-image-51598" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-3.png 764w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-3-300x115.png 300w" sizes="auto, (max-width: 764px) 100vw, 764px" /></figure>
+
+
+
+<p>MAPE works best for comparing forecast performance across&nbsp;different products&nbsp;or categories,&nbsp;as&nbsp;the percentage format&nbsp;is consistent&nbsp;regardless of volume differences.&nbsp;</p>
+
+
+
+<p>However, MAPE can produce misleadingly high error percentages for slow-moving products where small absolute errors translate to&nbsp;large percentage&nbsp;swings.&nbsp;It&#8217;s&nbsp;also impossible to calculate when actual sales are zero, making it problematic for intermittent demand items at the daily level.&nbsp;&nbsp;</p>
+
+
+
+<p>Use MAPE for product mix analysis, category performance reviews, and&nbsp;comparing&nbsp;forecasting performance across different scales.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">MAD (Mean Absolute Deviation)&nbsp;</h3>
+
+
+
+<p><strong>Mean Absolute Deviation (MAD)</strong>&nbsp;shows the average size of forecast errors in units, making it straightforward to understand&nbsp;but&nbsp;limited in&nbsp;application. While MAPE expresses forecast error as a percentage of sales, MAD calculates the average absolute difference between forecasted and actual sales in the original units.&nbsp;</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="764" height="293" src="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-4.png" alt="The MAD formula for measuring average forecast error in units." class="wp-image-51599" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-4.png 764w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-4-300x115.png 300w" sizes="auto, (max-width: 764px) 100vw, 764px" /></figure>
+
+
+
+<p>MAD works best for analyzing&nbsp;single-product&nbsp;forecast performance, particularly when comparing the results of different forecasting models applied to the same SKU. However, because MAD&nbsp;gives&nbsp;the average error in units, it is not&nbsp;particularly&nbsp;useful for&nbsp;comparing&nbsp;across&nbsp;different datasets.&nbsp;</p>
+
+
+
+<p>For example, if Model A averages 12 units of error per week for a laundry detergent SKU while Model B averages 8 units, Model B clearly performs better. However, that 8-unit error&nbsp;can&#8217;t&nbsp;be meaningfully compared to a different product, such as paper towels, where sales volumes and unit economics are entirely different.&nbsp;</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1264" height="667" src="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-5.png" alt="A table displays MAD and MAPE metrics for three products and their group average." class="wp-image-51600" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-5.png 1264w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-5-300x158.png 300w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-5-1024x540.png 1024w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-5-768x405.png 768w" sizes="auto, (max-width: 1264px) 100vw, 1264px" /><figcaption class="wp-element-caption"><strong><em>Fig.&nbsp;2:</em></strong><em> Individual&nbsp;and average MAD and MAPE metrics for the same three products. MAD measures the average absolute error in the same units as the data, while MAPE measures the average absolute percentage error, making it easier to compare across different scales.</em>&nbsp;</figcaption></figure>
+
+
+
+<h3 class="wp-block-heading">WAPE (Weighted Absolute Percentage Error)&nbsp;</h3>
+
+
+
+<p><strong>Weighted Absolute Percentage Error (WAPE)&nbsp;</strong>compares absolute errors to actual values, assigning&nbsp;more weight to larger values.&nbsp;</p>
+
+
+
+<p>The formula for this metric is:&nbsp;</p>
+
+
+
+<p class="has-text-align-center"><strong>WAPE=<em>t</em>∑​<em>wt</em>​∣<em>yt</em>​∣∣<em>yt</em>​−<em>y</em>^​<em>t</em>​∣​&nbsp;&nbsp;</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="920" height="508" src="https://s32519.pcdn.co/wp-content/uploads/2026/01/MFA-Image-6.png" alt="The formula showing how WAPE weights forecast errors by actual sales values." class="wp-image-51627" srcset="https://s32519.pcdn.co/wp-content/uploads/2026/01/MFA-Image-6.png 920w, https://s32519.pcdn.co/wp-content/uploads/2026/01/MFA-Image-6-300x166.png 300w, https://s32519.pcdn.co/wp-content/uploads/2026/01/MFA-Image-6-768x424.png 768w" sizes="auto, (max-width: 920px) 100vw, 920px" /></figure>
+
+
+
+<p>It’s&nbsp;well-suited&nbsp;for measuring overall business performance because it accounts for the relative importance of items by weighting errors based on their sales volume. This prevents distortion caused by slow-moving items, which might otherwise disproportionately&nbsp;impact&nbsp;metrics like MAPE.&nbsp;</p>
+
+
+
+<p>WAPE&nbsp;gives&nbsp;more weight to larger sales volumes&nbsp;to&nbsp;provide&nbsp;a realistic view of&nbsp;the&nbsp;overall&nbsp;impact on&nbsp;operations. High-volume products naturally have&nbsp;a&nbsp;greater&nbsp;influence on the metric, reflecting their&nbsp;significance&nbsp;to business outcomes.&nbsp;</p>
+
+
+
+<p>While&nbsp;effective at&nbsp;measuring&nbsp;aggregate performance, WAPE can be disconnected from operational impact in specific situations. A product might&nbsp;exhibit&nbsp;poor WAPE accuracy but still perform well operationally if factors&nbsp;such as&nbsp;large batch sizes or infrequent ordering cycles absorb forecast errors.&nbsp;&nbsp;</p>
+
+
+
+<p>For example, a product with 15% forecast accuracy (measured as 1-WAPE) might&nbsp;maintain&nbsp;adequate stock levels if replenishment is driven by batch sizes rather than precise daily&nbsp;forecasts. This is why WAPE should be complemented with process-specific metrics that connect accuracy to actual business decisions.&nbsp;</p>
+
+
+
+<p><strong><em>Note</em></strong><strong>:</strong> <em>RELEX uses 1-WAPE (expressed as a percentage) as a primary accuracy metric, where&nbsp;a&nbsp;higher percentage&nbsp;indicates&nbsp;better forecast accuracy.</em>&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Forecast error&nbsp;and forecast&nbsp;bias in batches&nbsp;</h3>
+
+
+
+<p>Forecast error and bias in batches are&nbsp;two&nbsp;RELEX-developed metrics that directly connect forecast accuracy to replenishment decisions.&nbsp;These metrics&nbsp;indicate&nbsp;whether forecast errors during order calculation were&nbsp;substantial&nbsp;enough to result in different order quantities than would have been obtained with&nbsp;perfect forecast accuracy.&nbsp;Unlike statistical measures that operate independently of business processes, batch-based metrics show whether forecast inaccuracies&nbsp;actually distort&nbsp;ordering decisions.&nbsp;</p>
+
+
+
+<p>The formulas for these metrics are:&nbsp;</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="800" height="865" src="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-7.png" alt="Formulas for calculating forecast error and bias in batches." class="wp-image-51602" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-7.png 800w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-7-277x300.png 277w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-7-768x830.png 768w" sizes="auto, (max-width: 800px) 100vw, 800px" /></figure>
+
+
+
+<p>Critically, these metrics are <strong>scale-agnostic</strong>,&nbsp;meaning&nbsp;the effect on replenishment&nbsp;remains&nbsp;consistent regardless of demand volume. A product selling 0.23 units per day and another selling 230 units can be evaluated using the same thresholds. Percentage-based metrics, such as MAPE, however, require different interpretations&nbsp;depending on product velocity.&nbsp;</p>
+
+
+
+<p>Using these metrics provides clear, actionable&nbsp;decision thresholds:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Cycle error &lt; 0.25</strong>: Ordering decisions&nbsp;aren&#8217;t&nbsp;affected by forecast inaccuracy—no improvement efforts&nbsp;required&nbsp;</li>
+
+
+
+<li><strong>Cycle error &gt; 1</strong>: Forecast inaccuracies are actively distorting&nbsp;optimal&nbsp;order quantities—focus forecasting efforts here, prioritizing products with the highest cycle forecast error&nbsp;&nbsp;</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="chapter-4">How to measure forecast accuracy&nbsp;</h2>
+
+
+
+<p>Measuring forecast accuracy effectively requires a systematic approach that aligns measurement methodology with actual business processes. The following five steps establish a robust framework for tracking and interpreting forecast performance.</p>
+
+
+
+<h3 class="wp-block-heading">Step 1: Define measurement scope&nbsp;</h3>
+
+
+
+<p>Before calculating any metrics, define precisely&nbsp;what’s&nbsp;being&nbsp;measured&nbsp;and why.&nbsp;The scope should reflect how forecasts&nbsp;actually drive&nbsp;operational decisions.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><em>Time horizon</em>&nbsp;</h4>
+
+
+
+<p>The forecast version used to measure accuracy should match the time lag when important business decisions are made.&nbsp;&nbsp;</p>
+
+
+
+<p>For fast-moving consumer goods (FMCGs) and fresh products with short lead times,&nbsp;it is essential to&nbsp;measure forecast accuracy at shorter horizons.&nbsp;This is typically&nbsp;1-2 weeks&nbsp;in advance&nbsp;for&nbsp;<a href="https://www.relexsolutions.com/resources/automatic-replenishment-optimization/" target="_blank" rel="noreferrer noopener">store replenishment</a>&nbsp;or even&nbsp;daily for&nbsp;products with&nbsp;very short&nbsp;shelf lives.&nbsp;<a href="https://www.relexsolutions.com/resources/fresh-forecasting-replenishment-master-spoilage/" target="_blank" rel="noreferrer noopener">Fresh products</a>&nbsp;require particularly tight alignment since forecast errors translate almost&nbsp;immediately&nbsp;into either waste or lost sales.&nbsp;&nbsp;</p>
+
+
+
+<p>For long-lead items, such as those sourced from overseas, the relevant measurement horizon extends much further. If a supplier delivers with a&nbsp;12-week&nbsp;lead time, what matters is the forecast quality when the order was created, not when the products arrived.&nbsp;</p>
+
+
+
+<p>These different horizons come with different attainable accuracy levels and planning implications.&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Short-horizon forecasts for FMCG support daily replenishment,</strong>&nbsp;where accuracy directly affects availability and waste.&nbsp;</li>
+
+
+
+<li><strong>Long-horizon forecasts for overseas-sourced products&nbsp;guide&nbsp;larger commitment decisions,</strong>&nbsp;where factors like flexible sourcing or strategic inventory positioning may matter as much as—if not more than—raw forecast accuracy.&nbsp;</li>
+</ul>
+
+
+
+<p>Forecasts naturally become more accurate closer to the sales period, so measuring the wrong version gives&nbsp;a misleading picture of the forecast performance that&nbsp;actually drove&nbsp;decisions.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><em>Aggregation level</em>&nbsp;</h4>
+
+
+
+<p>The&nbsp;appropriate aggregation&nbsp;level depends entirely on the planning process being supported. Different decisions happen at&nbsp;different levels&nbsp;of granularity, so forecasts&nbsp;should be evaluated at the level where those decisions are made.&nbsp;</p>
+
+
+
+<p>The table below illustrates&nbsp;different&nbsp;aggregation level shifts.&nbsp;</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><tbody><tr><td><strong>Planning&nbsp;process</strong></td><td><strong>Recommended aggregation level</strong></td><td><strong>Why&nbsp;this&nbsp;level&nbsp;matters</strong></td></tr><tr><td>Store replenishment</td><td>Store–SKU–day</td><td>Ordering decisions occur daily at the store–SKU level.</td></tr><tr><td>Distribution center inventory planning</td><td>DC–SKU–week</td><td>Weekly aggregation aligns with how DC inventory is planned and managed.</td></tr><tr><td>Sales &amp; Operations Planning (S&amp;OP)</td><td>Category–month</td><td>Strategic decisions require a broader, monthly category view.</td></tr></tbody></table></figure>
+
+
+
+<p>Choosing the wrong aggregation level can distort the interpretation of results, making performance appear better or worse than the accuracy that actually influenced planning decisions. Ensuring alignment between the aggregation level and the planning process is essential for drawing meaningful conclusions about forecast quality.</p>
+
+
+
+<h4 class="wp-block-heading"><em>Product scope</em>&nbsp;</h4>
+
+
+
+<p>Not all products require the same level of forecast accuracy to drive good business results.&nbsp;Products should be classified based on their importance and predictability. ABC classification reflects economic impact based on sales value, while XYZ classification captures demand variability and forecasting difficulty. Combining them helps&nbsp;determine&nbsp;where accuracy truly matters.&nbsp;</p>
+
+
+
+<figure class="wp-block-table"><table class="has-fixed-layout"><tbody><tr><td><strong>Segment</strong></td><td><strong>Characteristics</strong></td><td><strong>Forecast accuracy expectation</strong></td><td><strong>Exception thresholds</strong></td><td><strong>Why&nbsp;it&nbsp;matters</strong></td></tr><tr><td>AX (High value, stable demand)</td><td>High sales value, high frequency, predictable patterns</td><td>High accuracy is realistic and critical</td><td>Very low</td><td>Drives major revenue and margin outcomes</td></tr><tr><td>AY / AZ (High value, variable demand)</td><td>High value but more volatility</td><td>Moderately&nbsp;high expectations</td><td>Moderate</td><td>Still important financially; volatility requires caution</td></tr><tr><td>BX / BY / BZ (Medium value)</td><td>Moderate contribution and varying predictability</td><td>Balanced expectations</td><td>Balanced</td><td>Important enough to monitor but not worth over-optimizing</td></tr><tr><td>CX / CY / CZ (Low value)</td><td>Low economic impact, often low frequency</td><td>Lower expectations</td><td>High</td><td>Excess scrutiny wastes effort; tolerate more error</td></tr></tbody></table></figure>
+
+
+
+<p>This segmentation ensures&nbsp;that measurement efforts focus on areas&nbsp;where accuracy has the greatest impact on business results.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Step 2: Collect and prepare data&nbsp;</h3>
+
+
+
+<p>Accurate measurement requires collecting the correct data at the right time and properly cleansing it to reflect actual forecast performance, not supply chain constraints.</p>
+
+
+
+<h4 class="wp-block-heading"><em>Required data</em>&nbsp;</h4>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Historical forecasts at decision time.</strong>&nbsp;Collect&nbsp;the forecast version that was active when key business decisions were made. For&nbsp;example, when measuring replenishment performance, the relevant forecast is the one that existed when orders were placed, not the most recent update.&nbsp;</li>
+
+
+
+<li><strong>Actual sales/demand data.</strong>&nbsp;Gather actual sales or demand data for the same time periods and aggregation levels as the forecasts.&nbsp;</li>
+
+
+
+<li><strong>Contextual information.<em>&nbsp;</em></strong>Collect data about promotional periods, assortment changes, price modifications, and other planned business decisions that should have been reflected in forecasts. This helps distinguish between forecast model errors and planning process failures.&nbsp;</li>
+</ul>
+
+
+
+<h4 class="wp-block-heading"><em>Data cleansing</em>&nbsp;</h4>
+
+
+
+<p>Raw sales data requires careful cleansing to ensure it reflects actual demand rather than distortions caused by supply constraints or external factors:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Remove stockout periods.</strong> These artificially depress actual sales figures and make forecasts appear overly optimistic when the real issue was a supply constraint, not a forecast error.&nbsp;</li>
+
+
+
+<li><strong>Adjust for cannibalizations and substitutions.</strong> When customers bought alternative items because their first choice&nbsp;wasn&#8217;t&nbsp;available, these purchases&nbsp;represent&nbsp;latent demand that should be credited to the original forecast.&nbsp;</li>
+
+
+
+<li><strong>Flag&nbsp;promotional periods.</strong> Some metrics behave very differently during promotions versus baseline selling periods.&nbsp;</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Step 3: Calculate chosen metrics&nbsp;</h3>
+
+
+
+<p>After defining&nbsp;the&nbsp;scope and preparing&nbsp;the&nbsp;data, the next step is calculating forecast accuracy metrics. However, the calculation approach itself significantly&nbsp;impacts&nbsp;results, even when using the same underlying data and metric formulas.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><em>Apply formulas at the&nbsp;appropriate aggregation&nbsp;level</em>&nbsp;</h4>
+
+
+
+<p>Each chosen metric should be calculated&nbsp;at the aggregation level that matches&nbsp;the&nbsp;business process.&nbsp;MAPE, MAD, bias, and cycle forecast error should&nbsp;use&nbsp;the same time buckets and product groupings defined earlier.&nbsp;&nbsp;</p>
+
+
+
+<p>It’s&nbsp;also important to stay consistent in how metrics are interpreted. Accuracy metrics target 100%, while error metrics target 0%. Forecast bias, despite its name, is an accuracy metric. MAD and MAPE measure&nbsp;error.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><em>Understand the difference between aggregating data and aggregating metrics</em>&nbsp;</h4>
+
+
+
+<p>Another important&nbsp;consideration&nbsp;is how aggregation is handled. Metrics can be calculated on aggregated data&nbsp;or calculated at a detailed level and then averaged. Both approaches are valid, but they answer different questions and should never be compared directly.&nbsp;</p>
+
+
+
+<p>For example, calculating MAPE on aggregated group-level data may produce a result of 3%. Calculating MAPE at the product level and then averaging those results could yield 33% for the same dataset. Neither is wrong, but each tells&nbsp;a very different&nbsp;story.&nbsp;</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1041" height="666" src="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-8.png" alt="A table shows how group-level MAPE differs when calculated from aggregated data versus individual products." class="wp-image-51603" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-8.png 1041w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-8-300x192.png 300w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-8-1024x655.png 1024w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-8-768x491.png 768w" sizes="auto, (max-width: 1041px) 100vw, 1041px" /><figcaption class="wp-element-caption"><strong><em>Fig.&nbsp;3:</em></strong><em>&nbsp;Group-level MAPE is far lower when calculated on aggregated sales and forecasts than when averaging individual product MAPEs.</em></figcaption></figure>
+
+
+
+<p>Which number is correct? Both are, but&nbsp;<strong>they&nbsp;answer different questions and should never be compared</strong>.&nbsp;</p>
+
+
+
+<p>From a store replenishment perspective, a 3% error calculated at an aggregated level would be misleading. Replenishment decisions depend on product-level accuracy, where large individual errors are hidden by aggregation.&nbsp;</p>
+
+
+
+<p>At a more aggregated decision level, such as planning picking capacity in a distribution center, the same 3% error is far more meaningful. In this case, what matters is&nbsp;<em>total volume accuracy</em>, not how each individual product performs.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Step 4: Interpret results in context&nbsp;</h3>
+
+
+
+<p>Calculating metrics is only the beginning.&nbsp;Value comes from understanding what those numbers mean for real planning decisions. Accuracy percentages on their own rarely drive action, so results need to be interpreted against the right context to surface meaningful patterns and underlying issues.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><em>Compare to relevant benchmarks</em>&nbsp;</h4>
+
+
+
+<p>Assess forecast accuracy results against&nbsp;these&nbsp;three&nbsp;reference points:&nbsp;</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li><strong>Historical performance&nbsp;trends.</strong>&nbsp;Monitor&nbsp;results over time to&nbsp;determine&nbsp;whether accuracy is improving, declining, or stable. Early shifts can signal changes in demand patterns.&nbsp;</li>
+
+
+
+<li><strong>Product segment benchmarks.</strong>&nbsp;Split&nbsp;results by ABC/XYZ classification or similar segmentation. Attainable accuracy varies widely: high-volume, stable products may reach 85–95%,&nbsp;intermittent items often fall between 50–70%, and fresh, weather-sensitive products typically sit around 70–80%.&nbsp;</li>
+
+
+
+<li><strong>Business impact thresholds.</strong>&nbsp;Compare results to thresholds such as cycle forecast error in batches to determine whether inaccuracies&nbsp;actually affect&nbsp;replenishment decisions.&nbsp;This helps separate forecasts that need improvement from those where errors have little operational impact.&nbsp;</li>
+</ol>
+
+
+
+<h4 class="wp-block-heading"><em>Look for patterns that reveal root causes</em>&nbsp;</h4>
+
+
+
+<p>Beyond comparing aggregate numbers, examine patterns that point to specific problems:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Systematic bias.</strong>&nbsp;Consistent over- or under-forecasting may have limited impact at a single store but can create significant imbalances when repeated across many locations.&nbsp;</li>
+
+
+
+<li><strong>Accuracy degradation over a time horizon.</strong>&nbsp;Predictable degradation over time helps&nbsp;identify&nbsp;when forecasts become unreliable and where more flexibility is needed.&nbsp;</li>
+
+
+
+<li><strong>Category/store variations.</strong>&nbsp;Persistent underperformance by certain products or locations may&nbsp;indicate&nbsp;the need for different forecasting approaches or parameter settings. Knowing where accuracy is likely to be low enables more informed&nbsp;risk&nbsp;trade-offs.&nbsp;</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">Step 5: Set up ongoing monitoring&nbsp;</h3>
+
+
+
+<p>Retail and supply chain organizations typically manage thousands of product-location combinations, and tracking multiple metrics across all of them creates an overwhelming amount of data. Without a structured&nbsp;monitoring approach,&nbsp;demand&nbsp;planners&nbsp;risk&nbsp;either&nbsp;reviewing&nbsp;too much detail or missing&nbsp;important&nbsp;demand&nbsp;signals&nbsp;in&nbsp;the&nbsp;averages.&nbsp;&nbsp;</p>
+
+
+
+<p>In practice, this means&nbsp;focusing&nbsp;attention&nbsp;where it matters most.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><em>Exception-based reporting by product segment</em>&nbsp;</h4>
+
+
+
+<p>Monitoring should reflect both product importance and demand behavior.&nbsp;&nbsp;</p>
+
+
+
+<p><strong>High-value, high-frequency items</strong>&nbsp;require close attention because high accuracy is both achievable and critical. For these products, exception thresholds should be tight, and deviations should trigger prompt investigation.&nbsp;&nbsp;</p>
+
+
+
+<p><strong>Low-value, low-frequency items</strong>&nbsp;require a more tolerant approach. Forecast errors are less avoidable and less costly, so higher thresholds and periodic review are usually sufficient.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><em>Special situations requiring heightened attention</em>&nbsp;</h4>
+
+
+
+<p>Some situations&nbsp;warrant&nbsp;closer monitoring regardless of product segmentation:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>New product launches.</strong>&nbsp;Limited history and evolving demand patterns make early&nbsp;forecasts inherently&nbsp;uncertain.&nbsp;</li>
+
+
+
+<li><strong>Promotions.</strong>&nbsp;Forecast errors can have an outsized impact, especially for new or poorly represented promotion types.&nbsp;</li>
+
+
+
+<li><strong>Seasonal transitions and short shelf life.</strong>&nbsp;Highly seasonal and short-shelf-life products, particularly fresh items, require close monitoring, as errors quickly translate into waste or lost sales.&nbsp;</li>
+</ul>
+
+
+
+<p>Together, these exceptions ensure monitoring stays focused on situations where forecast accuracy has the greatest business impact.&nbsp;</p>
+
+
+
+<h4 class="wp-block-heading"><em>Automate monitoring</em><strong><em>&nbsp;</em></strong><em>to&nbsp;focus on root causes</em>&nbsp;</h4>
+
+
+
+<p>To make this sustainable, monitoring must be automated. Forecasting systems should flag exceptions based on predefined thresholds, allowing planners to focus on understanding the&nbsp;root causes instead of manually reviewing thousands of forecasts.&nbsp;&nbsp;</p>
+
+
+
+<p>But simply correcting individual exceptions is not enough. Flagged issues should be used to&nbsp;identify&nbsp;systematic problems and drive improvements in models, parameters, or input data, ensuring continuous improvement and more effective use of planning resources.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="chapter-5">How demand forecasting software improves forecast accuracy and reduces bias</h2>
+
+
+
+<p>Modern&nbsp;<a href="https://www.relexsolutions.com/resources/demand-forecasting/" target="_blank" rel="noreferrer noopener">demand forecasting</a>&nbsp;software addresses the core challenges that limit&nbsp;the&nbsp;accuracy&nbsp;of forecasts&nbsp;in traditional approaches.&nbsp;Instead of&nbsp;manually&nbsp;configuring&nbsp;each product or&nbsp;relying on&nbsp;simple time-series methods, advanced systems&nbsp;utilize&nbsp;machine learning to automatically detect patterns, incorporate business context, and adapt to changing conditions across entire portfolios.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Capturing demand patterns&nbsp;</h3>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="1200" height="906" src="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-9.png" alt="A diagram illustrates how AI-driven demand forecasting captures demand patterns, business decisions, and external factors." class="wp-image-51604" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-9.png 1200w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-9-300x227.png 300w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-9-1024x773.png 1024w, https://s32519.pcdn.co/wp-content/uploads/2024/08/MFA-Image-9-768x580.png 768w" sizes="auto, (max-width: 1200px) 100vw, 1200px" /><figcaption class="wp-element-caption"><strong><em>Fig.&nbsp;4:</em></strong><em> Machine learning enables retailers to capture the impact of recurring sales patterns, their own internal business decisions, and external factors on demand for more&nbsp;accurate, granular, and automatic short- and long-term demand forecasts.</em></figcaption></figure>
+
+
+
+<p>Traditional forecasting methods struggle to&nbsp;identify&nbsp;complex demand patterns&nbsp;when multiple factors influence sales simultaneously. Manual identification of these patterns is time-consuming and often incomplete.&nbsp;</p>
+
+
+
+<p>RELEX&#8217;s machine learning engine automatically detects these systematic variations, such as seasonality, trends, and weekday patterns, enabling fast analysis and informed action. The system typically delivers 2-5 percentage point accuracy improvements over traditional time-series methods while ensuring consistency across thousands of products.</p>
+
+
+
+<h3 class="wp-block-heading">Incorporating business decisions&nbsp;</h3>
+
+
+
+<p>Internal business decisions, such as promotions, price changes, and assortment modifications, directly impact demand but are often poorly integrated with forecasting systems.</p>
+
+
+
+<p>RELEX&#8217;s unified data model captures all demand drivers in a single system,&nbsp;automatically reflecting planned change into new&nbsp;forecasts. The system learns from historical data to understand how different&nbsp;promotion&nbsp;types, price discounts, and&nbsp;marketing activities&nbsp;affect demand.&nbsp;This creates transparent forecasts that separate&nbsp;the baseline demand, promotional impacts, and event-driven changes,&nbsp;allowing planners to evaluate&nbsp;the&nbsp;realism&nbsp;of&nbsp;<a href="https://www.relexsolutions.com/resources/promotion-forecasting-and-replenishment/" target="_blank" rel="noreferrer noopener">promotional forecasts</a>&nbsp;and&nbsp;identify&nbsp;when assumptions need adjustment.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Handling&nbsp;external factors&nbsp;</h3>
+
+
+
+<p>External factors, such as weather, holidays, and local events,&nbsp;significantly influence demand but are often&nbsp;overlooked&nbsp;or handled through crude manual adjustments.&nbsp;</p>
+
+
+
+<p>RELEX ingests external data via API integrations, ERP connections, or CSV uploads to incorporate weather forecasts, holiday calendars, and event schedules. For recurring events with historical data, forecasting can be highly automated.&nbsp;&nbsp;</p>
+
+
+
+<p>The system also&nbsp;identifies&nbsp;highly weather-sensitive products and enables automatic adjustments for near-term decisions. When unexpected events occur,&nbsp;such as products going viral on social media,&nbsp;planners can flag these and cleanse historical data to prevent anomalies from distorting future forecasts.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Scaling across portfolios&nbsp;</h3>
+
+
+
+<p>Traditional systems often require products to be segmented&nbsp;with&nbsp;different models applied to each segment, creating a maintenance burden and discontinuity&nbsp;when products move between segments.&nbsp;</p>
+
+
+
+<p>RELEX&#8217;s&nbsp;machine learning engine handles all products without requiring segmentation.&nbsp;Because the&nbsp;system&#8217;s&nbsp;forecast error and bias in&nbsp;batch&nbsp;metrics are scale-agnostic,&nbsp;the same threshold values work whether a product sells 1 unit or 1,000 units per day.&nbsp;This delivers consistent accuracy improvements across entire portfolios while allowing planners to focus on exceptions rather than managing different forecasting approaches.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Enabling continuous improvement&nbsp;</h3>
+
+
+
+<p>Forecast models naturally become outdated as demand patterns&nbsp;evolve,&nbsp;new products are introduced,&nbsp;and market conditions change. Black-box systems make it difficult to&nbsp;identify&nbsp;why forecasts are failing, while overly complex systems require specialized&nbsp;expertise&nbsp;to&nbsp;modify&nbsp;and improve.&nbsp;</p>
+
+
+
+<p>RELEX provides transparency into forecast components:&nbsp;&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>Baseline forecasts&nbsp;</li>
+
+
+
+<li>Weekday patterns&nbsp;</li>
+
+
+
+<li>Weather impacts&nbsp;</li>
+
+
+
+<li>Promotional effects&nbsp;</li>
+
+
+
+<li>Special events&nbsp;</li>
+
+
+
+<li>Manual adjustments&nbsp;</li>
+</ul>
+
+
+
+<p>This&nbsp;allows&nbsp;planners to quickly&nbsp;identify&nbsp;error sources. The&nbsp;RELEX Configuration Kit enables organizations to&nbsp;modify&nbsp;forecasting logic and test&nbsp;new approaches&nbsp;without vendor support. Combined with regular&nbsp;<a href="https://www.relexsolutions.com/resources/machine-learning-in-retail-demand-forecasting/" target="_blank" rel="noreferrer noopener">machine learning</a>&nbsp;model updates&nbsp;that&nbsp;incorporate&nbsp;learnings from&nbsp;over&nbsp;400&nbsp;customer implementations, this ensures forecast accuracy improves continuously rather than degrading over time.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="chapter-6">Turning demand forecasting insights into action&nbsp;</h2>
+
+
+
+<p>Measuring forecast accuracy only creates value when it drives better decisions.&nbsp;Here&#8217;s&nbsp;how to translate accuracy metrics into operational improvements.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">When accuracy is poor but predictable&nbsp;</h3>
+
+
+
+<p>Sometimes low accuracy is simply the reality for certain products or situations.&nbsp;Knowing&nbsp;<em>when&nbsp;</em>to expect it<em>&nbsp;</em>allows&nbsp;planners to&nbsp;adapt accordingly.&nbsp;</p>
+
+
+
+<p>When low accuracy is expected, planners can adapt in a few practical ways:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Adjust&nbsp;</strong><a href="https://www.relexsolutions.com/resources/safety-stock/" target="_blank" rel="noreferrer noopener"><strong>safety stock</strong></a><strong>&nbsp;and planning buffers rather than&nbsp;attempting&nbsp;to perfect inherently uncertain forecasts.&nbsp;</strong>Understanding where and when accuracy will be low enables strategic risk analysis of over- and under-forecasting consequences, allowing for better-informed business decisions. For instance, seasonal items that reliably achieve 60% accuracy but follow consistent patterns remain predictable, even if the precise volumes are uncertain.</li>
+
+
+
+<li><strong>Position inventory centrally at distribution centers rather than committing stock to individual stores early.</strong> This allows allocation based on real-time demand signals as the season develops, maximizing sell-through at full price even with moderate forecast accuracy.&nbsp;</li>
+</ul>
+
+
+
+<p>A&nbsp;real-world&nbsp;example of this is a fast-moving consumer goods&nbsp;(FMCG)&nbsp;manufacturer&nbsp;with a structured&nbsp;process for&nbsp;identifying&nbsp;&#8220;stars&#8221; in its portfolio of new products. &#8220;Star&#8221; products have the potential to break the bank, but&nbsp;they&#8217;re&nbsp;rare and seen only a couple of times each year. As the products have limited shelf life, the manufacturer does not want to risk potentially inflated forecasts&nbsp;driving up&nbsp;inventory &#8220;just in case.&#8221; Instead, they ensure they have production capacity, raw materials, and packaging supplies to deal with a scenario where the original forecast is too low.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">When bias is detected&nbsp;</h3>
+
+
+
+<p>Systematic over- or under-forecasting requires immediate action at multiple levels. Small biases compound at aggregate levels. Even&nbsp;a 2% bias at&nbsp;the&nbsp;store level can create significant DC inventory imbalances.&nbsp;</p>
+
+
+
+<p>Don&#8217;t wait to understand the root cause before&nbsp;taking action.&nbsp;If systematic bias&nbsp;is detected, adjust near-term orders proportionally while investigating the cause. For example, if forecasts have been consistently underestimating demand by 5%, temporarily increase order quantities to rebuild inventory positions before stockouts occur.&nbsp;</p>
+
+
+
+<p>Once immediate actions are in place, conduct root cause analysis by investigating&nbsp;common sources of bias:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Check if promotions were cancelled or&nbsp;modified.</strong> Was a&nbsp;large&nbsp;purchase order placed because the forecast&nbsp;contained&nbsp;a planned promotion that was later&nbsp;removed? If so,&nbsp;the root cause for poor forecast accuracy was not the forecasting itself but rather a lack of synchronization in planning.&nbsp;</li>
+
+
+
+<li><strong>Review manual forecast adjustments.</strong> Manual adjustments often introduce systematic bias without planners realizing it.&nbsp;Monitor the added value of these changes&nbsp;on a continuous basis.&nbsp;</li>
+
+
+
+<li><strong>Validate baseline demand assumptions.</strong> Has there been an ongoing trend that&nbsp;the forecasting&nbsp;models&nbsp;haven&#8217;t&nbsp;captured? Are seasonal patterns shifting? Has a competitor&#8217;s action permanently affected&nbsp;a company’s&nbsp;market share?&nbsp;Confirm that the fundamental demand patterns&nbsp;on which the models rely still accurately&nbsp;reflect current market conditions.&nbsp;</li>
+</ul>
+
+
+
+<p>Once the source of bias&nbsp;is&nbsp;identified, retrain models or adjust parameters to fix it systematically. If promotional forecasts consistently overestimate lift, recalibrate those models. If manual adjustments consistently push forecasts in one direction, address why planners feel the need to override the system.&nbsp;</p>
+
+
+
+<p>The need for predictable forecast behavior is also why extreme caution&nbsp;should be&nbsp;exercised when using&nbsp;machine learning algorithms.&nbsp;For example, when testing promotion data, an approach that is, on average, slightly more&nbsp;accurate&nbsp;than others might be&nbsp;discarded if&nbsp;it&#8217;s&nbsp;significantly less robust and more difficult for the average demand planner to understand.&nbsp;</p>
+
+
+
+<p>Occasional extreme forecast errors can be detrimental to performance when the planning process has been set up to tolerate a certain level of uncertainty. These errors also reduce demand planners&#8217; confidence in the forecast calculations, significantly hurting efficiency.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="chapter-7">Forecast accuracy case studies and real-world examples&nbsp;</h2>
+
+
+
+<p>Ultimately, measuring forecast accuracy only matters if it leads to better decisions. These real-world examples show how retailers use forecast accuracy insights to adapt planning strategies, balance availability and inventory, and improve outcomes across different product segments.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Europris: Centralized forecasting drives segment-specific improvements&nbsp;</h3>
+
+
+
+<p>Norwegian discount variety retailer&nbsp;<a href="https://www.relexsolutions.com/resources/europris/?utm_source=pba&amp;utm_medium=influ2&amp;utm_campaign=cpg-f" target="_blank" rel="noreferrer noopener">Europris</a>&nbsp;demonstrates&nbsp;how centralized, automated forecasting can deliver different benefits across product segments. Before implementing RELEX, store managers spent three to four hours weekly on manual ordering without data analysis or forecasting support. The lack of visibility made it difficult to measure availability or understand why some stores carried significantly more inventory than others while still experiencing stockouts.&nbsp;</p>
+
+
+
+<p>By centralizing replenishment with RELEX and applying sophisticated forecasting across their entire portfolio,&nbsp;Europris&nbsp;achieved&nbsp;17%+ reduction in DC inventory within&nbsp;18 weeks&nbsp;and improved store availability from 91% to 97%+. Store managers saw ordering time drop by 85%, freeing them to focus on customer care and merchandising. The automated system now handles the complexity of matching forecasts to individual store needs without manual categorization, allowing the supply chain team to focus their attention where human&nbsp;expertise&nbsp;adds the most value.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading">Ametller&nbsp;Origen: Tailoring strategies by product characteristics&nbsp;</h3>
+
+
+
+<p>Catalan grocery chain&nbsp;<a href="https://www.relexsolutions.com/resources/case-ametller-origen-group/?utm_source=pba&amp;utm_medium=influ2&amp;utm_campaign=cpg-f" target="_blank" rel="noreferrer noopener">Ametller Origen Group</a>&nbsp;illustrates how different product segments require different approaches based on their accuracy profiles and business impact. Facing rapid 19% year-over-year growth, the retailer needed greater inventory control as their supply chain complexity increased, particularly for fresh products where forecast errors quickly translate into waste or lost sales.&nbsp;</p>
+
+
+
+<p>After implementing RELEX forecasting and replenishment,&nbsp;Ametller&nbsp;Origen achieved differentiated improvements across segments: 12 percentage point availability increase for non-perishables with 9 percentage point inventory reduction, compared to 4 percentage point availability increase for refrigerated goods with 24 percentage point&nbsp;inventory reduction. The retailer also drove a 14% increase in non-perishable sales and achieved significant reductions in fresh spoilage rates&nbsp;—&nbsp;a critical outcome for their commitment to sustainable business practices and CO2 neutrality by 2027.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="chapter-8">Leverage&nbsp;forecast accuracy&nbsp;to deliver business results&nbsp;</h2>
+
+
+
+<p>Measuring forecast accuracy is essential, but&nbsp;results suffer when companies&nbsp;optimize&nbsp;the wrong things.&nbsp;Hitting accuracy targets does not guarantee success,&nbsp;while&nbsp;modest accuracy&nbsp;can&nbsp;deliver exceptional business results&nbsp;when measurement&nbsp;is&nbsp;focused&nbsp;where&nbsp;it matters most.&nbsp;</p>
+
+
+
+<p>Success depends on three principles:&nbsp;</p>
+
+
+
+<ol start="1" class="wp-block-list">
+<li><strong>Choose metrics that match&nbsp;the&nbsp;planning processes.&nbsp;</strong>Select the right aggregation level, weighting, and timing for each purpose, and use multiple metrics together. How metrics are&nbsp;calculated&nbsp;matters as much as which metrics are chosen.&nbsp;</li>
+
+
+
+<li><strong>Use forecast&nbsp;accuracy&nbsp;to&nbsp;drive action, not&nbsp;reporting.</strong>&nbsp;Focus measurement where accuracy affects decisions, tolerate error where it does not, and address the&nbsp;<em>real&nbsp;</em>constraint,&nbsp;whether that is bias, limited flexibility, or another planning bottleneck.&nbsp;</li>
+
+
+
+<li><strong>Rely on technology that improves continuously.</strong>&nbsp;Modern ML-based forecasting delivers measurable accuracy gains over traditional methods, while integrated planning turns those gains into better decisions, greater transparency, and ongoing improvement.&nbsp;</li>
+</ol>
+
+
+
+<p><strong>RELEX brings all three together.</strong>&nbsp;Our customers&nbsp;achieve industry-leading forecast accuracy while reducing waste, improving availability, and&nbsp;optimizing&nbsp;inventory&nbsp;because they measure&nbsp;the right things&nbsp;—&nbsp;and act on what they learn.&nbsp;&nbsp;</p>
+
+
+
+<div class="wp-block-buttons is-layout-flex wp-block-buttons-is-layout-flex">
+<div class="wp-block-button is-style-outline is-style-outline--1"><a class="wp-block-button__link wp-element-button" href="https://www.relexsolutions.com/resources/demand-forecasting/" target="_blank" rel="noreferrer noopener">See how RELEX customers achieve industry-leading forecast accuracy</a></div>
+</div>
+
+				<h4 class="written-by">Written by</h4>
+		<div class="authors has-2-authors">
+					<div class="author">
+	<div class="author-image">
+		<img width="100" height="100" src="https://s32519.pcdn.co/wp-content/uploads/2025/07/1710748538393.jpg.optimal.jpg" class="attachment-author-medium size-author-medium wp-post-image" alt="" decoding="async" loading="lazy" />	</div>
+	<div class="author-details">
+		<h4 class="author-name">Hannu Pantsar</h4>
+					<span class="author-title">Product Manager </span>
+					</div>
+</div>
+					<div class="author">
+	<div class="author-image">
+		<img width="450" height="450" src="https://s32519.pcdn.co/wp-content/uploads/2024/09/craig-norman-profile-photo.jpg.optimal.jpg" class="attachment-author-medium size-author-medium wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://s32519.pcdn.co/wp-content/uploads/2024/09/craig-norman-profile-photo.jpg.optimal.jpg 450w, https://s32519.pcdn.co/wp-content/uploads/2024/09/craig-norman-profile-photo-300x300.jpg.optimal.jpg 300w, https://s32519.pcdn.co/wp-content/uploads/2024/09/craig-norman-profile-photo-150x150.jpg.optimal.jpg 150w" sizes="auto, (max-width: 450px) 100vw, 450px" />	</div>
+	<div class="author-details">
+		<h4 class="author-name">Craig Norman</h4>
+					<span class="author-title">Senior Product Marketing Manager</span>
+					</div>
+</div>
+					</div>			<div class="social-sharing"><p class="social-sharing__share">Share</p><ul class="social-sharing__items"><li class="social-sharing__item"><a class="social-sharing__anchor" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.relexsolutions.com/resources/measuring-forecast-accuracy/&amp;title=Measuring%20forecast%20accuracy%3A%20The%20complete%20guide">			<div id="90013d316e8efbe636781c765e7a067c" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+</svg>			</div>
+			<span class="screen-reader-text">Share in Linkedin</span></a></li><li class="social-sharing__item"><a class="social-sharing__anchor" href="https://twitter.com/intent/tweet/?url=https://www.relexsolutions.com/resources/measuring-forecast-accuracy/&text=Measuring%20forecast%20accuracy%3A%20The%20complete%20guide">			<div id="a02675d86df4fb7ca477d5dc6fe70f1e" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+</svg>			</div>
+			<span class="screen-reader-text">Share in X</span></a></li><li class="social-sharing__item"><a class="social-sharing__anchor" href="https://facebook.com/sharer/sharer.php?u=https://www.relexsolutions.com/resources/measuring-forecast-accuracy/&t=Measuring%20forecast%20accuracy%3A%20The%20complete%20guide">			<div id="07d53713d4ff86d6e056910d09d16018" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+</svg>			</div>
+			<span class="screen-reader-text">Share in  Facebook</span></a></li></ul></div>		</div>
+	</div>
+	
+<div class="related-posts alignwide">
+	<h2 class="related-posts__title h5">Related Articles</h2>
+	<div class="posts">
+					
+<article id="resource-51645" class="card-item card-item--resource post-51645 resource type-resource status-publish has-post-thumbnail hentry resource_type-case-study topic-ai-technology topic-demand-forecasting">
+            <figure class="card-item__image"><img width="768" height="384" src="https://s32519.pcdn.co/wp-content/uploads/2026/01/case-merza-cover-768x384.jpg.optimal.jpg" class="attachment-medium_large size-medium_large wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://s32519.pcdn.co/wp-content/uploads/2026/01/case-merza-cover-768x384.jpg.optimal.jpg 768w, https://s32519.pcdn.co/wp-content/uploads/2026/01/case-merza-cover-300x150.jpg.optimal.jpg 300w, https://s32519.pcdn.co/wp-content/uploads/2026/01/case-merza-cover-1024x512.jpg.optimal.jpg 1024w, https://s32519.pcdn.co/wp-content/uploads/2026/01/case-merza-cover.jpg.optimal.jpg 1280w" sizes="auto, (max-width: 768px) 100vw, 768px" /></figure>
+        <div class="card-item__content">
+                    <div class="entry-meta">
+                <span class="entry-meta__category-no-link">
+                    Case study                </span>
+            </div>
+        
+        <h3 class="card-item__title h4">
+                            <a
+                    href="https://www.relexsolutions.com/resources/case-merza/"
+                    rel="bookmark"
+                    target="_self"
+                    class="is-absolute-link">
+                    Case Study: Merza                </a>
+                    </h3>
+
+                    <p class="card-item__excerpt">After evaluating multiple vendors in early 2022, Merza selected RELEX Solutions in February 2023 for its AI-driven forecasting, user-friendly interface, and reputation in grocery retail.</p>
+                
+                    <div class="card-item__link" aria-hidden="true">
+                Read more                            </div>
+            </div>
+</article>
+					
+<article id="resource-51576" class="card-item card-item--resource post-51576 resource type-resource status-publish has-post-thumbnail hentry resource_type-guide topic-ai-technology topic-demand-forecasting topic-pricing-promotions topic-replenishment topic-space-assortment guide">
+            <figure class="card-item__image"><img width="768" height="384" src="https://s32519.pcdn.co/wp-content/uploads/2026/01/unified-diy-guide_hero_1280x640-768x384.png" class="attachment-medium_large size-medium_large wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://s32519.pcdn.co/wp-content/uploads/2026/01/unified-diy-guide_hero_1280x640-768x384.png 768w, https://s32519.pcdn.co/wp-content/uploads/2026/01/unified-diy-guide_hero_1280x640-300x150.png 300w, https://s32519.pcdn.co/wp-content/uploads/2026/01/unified-diy-guide_hero_1280x640-1024x512.png 1024w, https://s32519.pcdn.co/wp-content/uploads/2026/01/unified-diy-guide_hero_1280x640.png 1280w" sizes="auto, (max-width: 768px) 100vw, 768px" /></figure>
+        <div class="card-item__content">
+                    <div class="entry-meta">
+                <span class="entry-meta__category-no-link">
+                    Guide                </span>
+            </div>
+        
+        <h3 class="card-item__title h4">
+                            <a
+                    href="https://www.relexsolutions.com/resources/unified-diy-retail/"
+                    rel="bookmark"
+                    target="_self"
+                    class="is-absolute-link">
+                    The essential toolkit for DIY and home improvement retail success                </a>
+                    </h3>
+
+                    <p class="card-item__excerpt">Get the key tools to improve efficiency, drive revenue, and increase margins in DIY and home improvement retail.</p>
+                
+                    <div class="card-item__link" aria-hidden="true">
+                Read more                            </div>
+            </div>
+</article>
+					
+<article id="resource-41560" class="card-item card-item--resource post-41560 resource type-resource status-publish has-post-thumbnail hentry resource_type-blog topic-ai-technology topic-demand-forecasting">
+            <figure class="card-item__image"><img width="768" height="325" src="https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-768x325.png" class="attachment-medium_large size-medium_large wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-768x325.png 768w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-300x127.png 300w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-1024x433.png 1024w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-1536x649.png 1536w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-2048x865.png 2048w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-568x240.png 568w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-1136x480.png 1136w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-168x71.png 168w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-336x142.png 336w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-672x284.png 672w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-56x24.png 56w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-112x48.png 112w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-224x96.png 224w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-320x135.png 320w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-640x270.png 640w, https://s32519.pcdn.co/wp-content/uploads/2023/01/How-demand-sensing-helps-conquer-FMCG-supply-chain-chaos-image-1280x541.png 1280w" sizes="auto, (max-width: 768px) 100vw, 768px" /></figure>
+        <div class="card-item__content">
+                    <div class="entry-meta">
+                <span class="entry-meta__category-no-link">
+                    Blog                </span>
+            </div>
+        
+        <h3 class="card-item__title h4">
+                            <a
+                    href="https://www.relexsolutions.com/resources/demand-sensing/"
+                    rel="bookmark"
+                    target="_self"
+                    class="is-absolute-link">
+                    Demand sensing: How to conquer manufacturing supply chain chaos                </a>
+                    </h3>
+
+                    <p class="card-item__excerpt">This blog explores how forecasts built using demand sensing can result in fewer lost sales, reduced waste, and increased cost savings.</p>
+                
+                    <div class="card-item__link" aria-hidden="true">
+                Read more                            </div>
+            </div>
+</article>
+					</div>
+</div>
+	<div class="cta-lift cta-lift--guide block margin-top-default has-background animated-svg-1--bottom-left animated-svg-2--top-right curved-border curved-border--top curved-border--white wp-block-meomblocks-cta-lift has-background has-relex-blue-background-color">
+		<div class="cta-lift__content margin-top-children">
+			<div class="form monthly-digest hubspot-form alignwide margin-top-default">
+	<!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+	portalId: "317879",
+	formId: "0b2e7501-b066-4cfb-b916-57f9d05662e7"
+});
+</script></div>
+		</div>
+	</div>
+</article><!-- .post -->
+</main><!-- #site-content -->
+
+	</div>
+</div>
+<footer class="site-footer side-padding">
+	<div class="site-footer__container mx-auto width-wide-xl">
+		<div class="site-footer__middle-container">
+	<div class="footer-logo-container">
+								<div id="1c4e04cd247dfc59e687bdfeb2fe6470" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><title>logo-flower</title><path d="M7.073,7.309a1.845,1.845,0,0,1,.694.148A14.61,14.61,0,0,1,17.7,21.309,14.649,14.649,0,0,1,4.124,12.222,1.718,1.718,0,0,1,4,11.605v-.222a1.906,1.906,0,0,1,.273-.766A17.263,17.263,0,0,1,6.106,7.852,1.26,1.26,0,0,1,6.8,7.358a1.047,1.047,0,0,1,.273-.049m20.146,28.37a3.2,3.2,0,0,0,1.09.321h.124a3.309,3.309,0,0,0,1.288-.37,17.147,17.147,0,0,0,2.156-1.284,1.926,1.926,0,0,0,.744-1.136,2.5,2.5,0,0,0-.124-1.333,14.388,14.388,0,0,0-13.7-9.408,14.319,14.319,0,0,0,8.426,13.21M6.081,28.1a2.328,2.328,0,0,0-.594,1.407,1.926,1.926,0,0,0,.371,1.334,17.782,17.782,0,0,0,3.42,3.382,1.993,1.993,0,0,0,1.19.42,1.79,1.79,0,0,0,1.189-.444A14.562,14.562,0,0,0,17.6,22.444,14.775,14.775,0,0,0,6.081,28.1M28.309,4.568a19.472,19.472,0,0,0-9.466,16.691A19.585,19.585,0,0,0,35.718,11.63a3.194,3.194,0,0,0,.471-2.1,2.752,2.752,0,0,0-.719-1.556A18.431,18.431,0,0,0,31.9,4.469,3.137,3.137,0,0,0,30.143,4h-.1a3.847,3.847,0,0,0-1.734.568" style="fill:#005073"/></svg>			</div>
+							</div>
+		<div class="footer-top no-columns">
+			<nav class="footer-nav primary left">
+				<div class="footer-first-container">
+											<div class="menu-en-footer-left-container"><ul id="menu-en-footer-left" class="nav-container"><li id="menu-item-40411" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40411"><a href="https://www.relexsolutions.com/about/">Company</a></li>
+<li id="menu-item-35898" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35898"><a href="https://www.relexsolutions.com/about/">About us</a></li>
+<li id="menu-item-35899" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35899"><a target="_blank" href="https://www.relexsolutions.com/careers/">Careers</a></li>
+<li id="menu-item-45873" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45873"><a href="https://www.relexsolutions.com/customers/">Customers</a></li>
+<li id="menu-item-48912" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48912"><a href="https://www.relexsolutions.com/events/">Events</a></li>
+<li id="menu-item-42689" class="footer-cta menu-item menu-item-type-post_type menu-item-object-page menu-item-42689"><a href="https://www.relexsolutions.com/demo-request/">Request a demo</a></li>
+<li id="menu-item-45874" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45874"><a href="https://www.relexsolutions.com/resources/">Resources</a></li>
+<li id="menu-item-35894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35894"><a href="https://www.relexsolutions.com/unified-platform/">Unified platform</a></li>
+<li id="menu-item-35895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-35895"><a href="https://www.relexsolutions.com/why-us/">Why us</a></li>
+<li id="menu-item-51398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-51398"><a href="#"></a>
+<ul class="sub-menu">
+	<li id="menu-item-51399" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51399"><a>REFERENCE INDEX</a></li>
+</ul>
+</li>
+<li id="menu-item-51400" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-51400"><a href="https://www.relexsolutions.com/relex-forecasting-and-replenishment-rfp/">RFP support: F&#038;R</a></li>
+</ul></div>					
+									</div>
+			</nav>
+			<nav class="footer-nav secondary center">
+									<div class="menu-en-footer-centre-guides-container"><ul id="menu-en-footer-centre-guides" class="nav-container"><li id="menu-item-35911" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-35911"><a href="/resources/?resource_type=guide">Helpful guides</a></li>
+<li id="menu-item-42349" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-42349"><a href="https://www.relexsolutions.com/resources/how-to-build-a-better-diy-supply-chain/">Build a better DIY and home improvement supply chain</a></li>
+<li id="menu-item-39875" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-39875"><a href="https://www.relexsolutions.com/resources/business-case-development-for-supply-chain-technology-investment/">Business case development for supply chain technology investment</a></li>
+<li id="menu-item-46105" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-46105"><a href="https://www.relexsolutions.com/resources/category-management/">Category management: How to develop and execute a customer-first product strategy</a></li>
+<li id="menu-item-42350" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-42350"><a href="https://www.relexsolutions.com/resources/demand-forecasting/">Demand forecasting for retail and consumer goods</a></li>
+<li id="menu-item-48004" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-48004"><a href="https://www.relexsolutions.com/resources/demand-planning/">Demand planning: Key features and best practices for success</a></li>
+<li id="menu-item-45583" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-45583"><a href="https://www.relexsolutions.com/resources/inventory-planning/">How to take inventory planning to the next level</a></li>
+<li id="menu-item-42348" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-42348"><a href="https://www.relexsolutions.com/resources/machine-learning-in-retail-demand-forecasting/">Machine learning in retail demand forecasting</a></li>
+<li id="menu-item-35908" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-35908"><a href="https://www.relexsolutions.com/resources/managing-retail-grocery-supply-chains/">Managing grocery retail supply chains</a></li>
+<li id="menu-item-35910" class="menu-item menu-item-type-post_type menu-item-object-resource current-menu-item menu-item-35910"><a href="https://www.relexsolutions.com/resources/measuring-forecast-accuracy/" aria-current="page">Measuring forecast accuracy</a></li>
+<li id="menu-item-42344" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-42344"><a href="https://www.relexsolutions.com/resources/retail-promotion-optimization/">Promotion optimization: Maximizing results </a></li>
+<li id="menu-item-42345" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-42345"><a href="https://www.relexsolutions.com/resources/promotion-planning-optimization-how-to-build-a-case-for-technology-investment/">Promotion planning &#038; optimization: Building a case for technology investment</a></li>
+<li id="menu-item-41600" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-41600"><a href="https://www.relexsolutions.com/resources/retail-space-planning-technology-business-case/">Retail space planning: Building a business case for technology investment</a></li>
+<li id="menu-item-47416" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-47416"><a href="https://www.relexsolutions.com/resources/supply-chain-planning/">Supply chain planning: The key to optimizing the end-to-end value chain</a></li>
+<li id="menu-item-35909" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-35909"><a href="https://www.relexsolutions.com/resources/supply-chain-transformation/">Supply chain transformation</a></li>
+<li id="menu-item-50676" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-50676"><a href="https://www.relexsolutions.com/resources/inventory-planning-software/">The best inventory planning software: AI-powered, planner-driven</a></li>
+<li id="menu-item-42346" class="menu-item menu-item-type-post_type menu-item-object-resource menu-item-42346"><a href="https://www.relexsolutions.com/resources/wholesale-supply-chain/">Wholesale supply chain optimization: Benefits, challenges, &amp; tips  </a></li>
+</ul></div>							</nav>
+			<nav class="footer-nav secondary right">
+									<div class="menu-en-footer-centre-solutions-container"><ul id="menu-en-footer-centre-solutions" class="nav-container"><li id="menu-item-38397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38397"><a href="https://www.relexsolutions.com/solutions-overview/">Our Solutions</a></li>
+<li id="menu-item-38399" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38399"><a href="https://www.relexsolutions.com/solutions/assortment-planning-software/">Assortment planning</a></li>
+<li id="menu-item-38400" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38400"><a href="https://www.relexsolutions.com/solutions/automatic-replenishment-system/">Automatic replenishment and allocation</a></li>
+<li id="menu-item-38406" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38406"><a href="https://www.relexsolutions.com/solutions/omnichannel-supply-chain-software/">Channel planning</a></li>
+<li id="menu-item-51192" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51192"><a href="https://www.relexsolutions.com/solutions/deal-management/">Deal management</a></li>
+<li id="menu-item-38401" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38401"><a href="https://www.relexsolutions.com/solutions/demand-planning-software/">Demand planning</a></li>
+<li id="menu-item-47446" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-47446"><a href="https://www.relexsolutions.com/solutions/demand-sensing-software/">Demand sensing</a></li>
+<li id="menu-item-47447" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-47447"><a href="https://www.relexsolutions.com/solutions/diagnostics/">Diagnostics</a></li>
+<li id="menu-item-43383" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-43383"><a href="https://www.relexsolutions.com/solutions/distribution-planning-software/">Distribution planning</a></li>
+<li id="menu-item-38402" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38402"><a href="https://www.relexsolutions.com/solutions/inventory-planning-software/">End-to-end inventory planning</a></li>
+<li id="menu-item-38403" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38403"><a href="https://www.relexsolutions.com/solutions/fresh-inventory-software/">Fresh inventory</a></li>
+<li id="menu-item-51452" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-51452"><a href="https://www.relexsolutions.com/solutions/fresh-store-ordering/">Fresh store ordering</a></li>
+<li id="menu-item-45604" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-45604"><a href="https://www.relexsolutions.com/solutions/integrated-business-planning/">Integrated Business Planning (IBP)</a></li>
+<li id="menu-item-47619" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-47619"><a href="https://www.relexsolutions.com/solutions/master-planning/">Master planning</a></li>
+<li id="menu-item-49611" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-49611"><a href="https://www.relexsolutions.com/solutions/mfp-otb/">MFP/OTB</a></li>
+<li id="menu-item-42160" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-42160"><a href="https://www.relexsolutions.com/solutions/planogram-software/">Planogram optimization</a></li>
+<li id="menu-item-49610" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-49610"><a href="https://www.relexsolutions.com/solutions/predictive-inventory/">Predictive inventory</a></li>
+<li id="menu-item-43669" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-43669"><a href="https://www.relexsolutions.com/solutions/price-optimization-software/">Price optimization</a></li>
+<li id="menu-item-43386" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-43386"><a href="https://www.relexsolutions.com/solutions/production-scheduling-software/">Production scheduling</a></li>
+<li id="menu-item-38409" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38409"><a href="https://www.relexsolutions.com/solutions/promotion-planning-software/">Promotion planning</a></li>
+<li id="menu-item-42161" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-42161"><a href="https://www.relexsolutions.com/solutions/retail-floor-planning-software/">Retail floor planning</a></li>
+<li id="menu-item-38411" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38411"><a href="https://www.relexsolutions.com/solutions/soe-and-sop-software/">S&#038;OE and S&#038;OP</a></li>
+<li id="menu-item-38404" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38404"><a href="https://www.relexsolutions.com/solutions/markdown-pricing-and-optimization-software/">Seasonal planning</a></li>
+<li id="menu-item-38412" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38412"><a href="https://www.relexsolutions.com/solutions/store-execution-software/">Store execution</a></li>
+<li id="menu-item-38414" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-38414"><a href="https://www.relexsolutions.com/solutions/supply-chain-collaboration-software/">Supply chain collaboration</a></li>
+<li id="menu-item-39917" class="menu-item menu-item-type-post_type menu-item-object-solution menu-item-39917"><a href="https://www.relexsolutions.com/solutions/workload-forecasting-software/">Workload forecasting</a></li>
+</ul></div>							</nav>
+			<!-- This menu is for future use -->
+							<nav class="footer-nav secondary last">
+						<div class="menu-en-footer-right-legal-container"><ul id="menu-en-footer-right-legal" class="nav-container"><li id="menu-item-47943" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-47943"><a>Security at RELEX</a></li>
+<li id="menu-item-47940" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-47940"><a href="https://www.relexsolutions.com/policy/infosec-faq/">Information Security FAQ</a></li>
+<li id="menu-item-49914" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-49914"><a href="https://www.relexsolutions.com/policy/privacy-notice-knowledge-hub/">Privacy Policy for RELEX Knowledge Hub</a></li>
+<li id="menu-item-49658" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-49658"><a href="https://www.relexsolutions.com/policy/ai-governance-trust-at-relex/">AI Governance &amp; Trust At RELEX</a></li>
+<li id="menu-item-46988" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46988"><a href="https://www.relexsolutions.com/policy/vulnerability-disclosure/">Report a vulnerability</a></li>
+<li id="menu-item-47942" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47942"><a href="https://www.relexsolutions.com/security-compliance/">Security Compliance</a></li>
+<li id="menu-item-51688" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-51688"><a href="https://www.relexsolutions.com/policy/privacy-notice-recruiting/">Privacy Notice &#8211; Recruiting</a></li>
+<li id="menu-item-46993" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-46993"><a href="#"> </a>
+<ul class="sub-menu">
+	<li id="menu-item-46992" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-46992"><a>Ethical compliance</a></li>
+</ul>
+</li>
+<li id="menu-item-46983" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46983"><a href="https://www.relexsolutions.com/policy/anti-bribery-anti-corruption/">Anti-Bribery &amp; Anti-Corruption Policy</a></li>
+<li id="menu-item-46984" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46984"><a href="https://www.relexsolutions.com/policy/code-of-conduct/">Code of Conduct</a></li>
+<li id="menu-item-46985" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46985"><a href="https://www.relexsolutions.com/policy/corporate-responsibility/">Corporate Responsibility</a></li>
+<li id="menu-item-46986" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46986"><a href="https://www.relexsolutions.com/policy/environmental/">Environmental Policy</a></li>
+<li id="menu-item-48624" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-48624"><a href="https://www.relexsolutions.com/de/unternehmenspolitik/impressum/">German Impressum</a></li>
+<li id="menu-item-46990" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46990"><a href="https://www.relexsolutions.com/policy/modern-slavery-statement/">Modern Slavery Statement 2024</a></li>
+<li id="menu-item-46987" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46987"><a href="https://www.relexsolutions.com/policy/whistleblowing-channel/">Whistleblowing channel</a></li>
+<li id="menu-item-46991" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46991"><a href="https://www.relexsolutions.com/policy/whistleblowing/">Whistleblowing Policy</a></li>
+</ul></div>				</nav>
+					</div>
+		</div>
+		<div class="footer-bottom">
+			<nav class="footer-nav bottom">
+									<div class="menu-en-footer-bottom-container"><ul id="menu-en-footer-bottom" class="nav-container"><li id="menu-item-46946" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46946"><a href="https://www.relexsolutions.com/policy/privacy-policy-website/">Privacy Policy</a></li>
+<li id="menu-item-37101" class="ot-sdk-show-settings menu-item menu-item-type-custom menu-item-object-custom menu-item-37101"><a href="#">Cookies Settings</a></li>
+<li id="menu-item-46945" class="menu-item menu-item-type-post_type menu-item-object-privacy menu-item-46945"><a href="https://www.relexsolutions.com/policy/terms-of-use-website/">Terms of Use</a></li>
+<li id="menu-item-49119" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-49119"><a href="https://www.relexsolutions.com/sitemap.xml">Sitemap</a></li>
+</ul></div>								<div class="copyright">
+					Copyright © 2026 RELEX Solutions
+				</div>
+				<div class="social">
+											<a href="https://www.linkedin.com/company/relexsolutions/">			<div id="90013d316e8efbe636781c765e7a067c" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+</svg>			</div>
+			</a>
+																					<a href="https://www.facebook.com/RELEXsolutions/">			<div id="07d53713d4ff86d6e056910d09d16018" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+</svg>			</div>
+			</a>
+																<a href="https://www.instagram.com/lifeatrelex/">			<div id="688dc2f0372d6538c9532ca0820b3cd9" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+</svg>
+			</div>
+			</a>
+																<a href="https://www.youtube.com/@relexsolutions9690">			<div id="cbb8bcda4d0f6d27b557e1139a29892c" class="svg-icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
+</svg>			</div>
+			</a>
+																<a href="https://www.glassdoor.co.uk/Overview/Working-at-RELEX-Solutions-EI_IE973116.11,26.htm">			<div id="2084288a0ee90411fa01694f3270c158" class="svg-icon">
+				<svg id="b" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 43 45.99"><defs><style>.d{fill:#fff;fill-rule:evenodd;stroke-width:0px;}</style></defs><g id="c"><path class="d" d="m23.32,31.59c0,.14.11.25.25.25h19.17c.14,0,.25-.11.25-.25V14.07c0-4.28-1.54-7.77-4.63-10.21C35.51,1.62,31.24.28,25.54,0c-.14-.01-.25.1-.25.24v6.61c0,.13.1.23.23.24,5.01.32,8.83,1.82,8.83,7.06h-10.76c-.14,0-.25.11-.25.25v17.18h0ZM0,14.41c0-.14.11-.25.25-.25h19.17c.14,0,.25.11.25.25v17.51c0,4.28-1.54,7.77-4.63,10.21-2.86,2.24-7.13,3.58-12.83,3.86-.14.01-.25-.1-.25-.24v-6.61c0-.13.1-.23.23-.24,5.01-.32,8.83-1.82,8.83-7.06H.25c-.14,0-.25-.11-.25-.25V14.41Z"/></g></svg>			</div>
+			</a>
+									</div>
+			</nav>
+		</div>
+	</div>
+</footer>
+
+		<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/relex-theme\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script>window.wpsc_print_css_uri = 'https://s32519.pcdn.co/wp-content/plugins/structured-content/dist/print.css';</script><!-- Instagram Feed JS -->
+<script type="text/javascript">
+var sbiajaxurl = "https://www.relexsolutions.com/wp-admin/admin-ajax.php";
+</script>
+<style id='block-style-variation-styles-inline-css' type='text/css'>
+:root :where(.wp-block-button.is-style-outline--1 .wp-block-button__link){background: transparent none;border-color: currentColor;border-width: 2px;border-style: solid;color: currentColor;padding-top: 0.667em;padding-right: 1.33em;padding-bottom: 0.667em;padding-left: 1.33em;}
+</style>
+<script type="text/javascript" src="https://s32519.pcdn.co/wp-content/plugins/structured-content/dist/app.build.js?ver=1.7.0" id="structured-content-frontend-js"></script>
+<script type="text/javascript" id="relex-js-extra">
+/* <![CDATA[ */
+var relex = {"nonce":"12de147a5a","ajaxurl":"https:\/\/www.relexsolutions.com\/wp-admin\/admin-ajax.php"};
+var kalaData = {"expandChildNavText":"Sub menu","seeAllLinkText":"See all"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://s32519.pcdn.co/wp-content/themes/relex-theme/build/js/app.js?ver=1765952380" id="relex-js"></script>
+<script type="text/javascript" src="https://s32519.pcdn.co/wp-content/themes/relex-theme/build/js/noticeBar.js?ver=1750403274" id="noticeBar-js"></script>
+<script type="text/javascript" src="https://s32519.pcdn.co/wp-content/themes/relex-theme/build/js/onepagerTabs.js?ver=1750403274" id="onepagerTabs-js"></script>
+<script type="text/javascript" src="https://s32519.pcdn.co/wp-content/themes/relex-theme/build/js/searchbar.js?ver=1750403274" id="searchbar-js"></script>
+<script type="text/javascript" src="https://s32519.pcdn.co/wp-content/themes/relex-theme/build/js/tabs.js?ver=1750403274" id="tabs-js"></script>
+				
+				</div>
+	</body>
+</html>
