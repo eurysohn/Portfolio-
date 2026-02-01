@@ -3,14 +3,16 @@
 import type React from 'react'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useStickToBottomContext } from 'use-stick-to-bottom'
 
 import { Button } from '@/components/ui/button'
 import Icon from '@/components/ui/icon'
 
-const ScrollToBottom: React.FC = () => {
-  const { isAtBottom, scrollToBottom } = useStickToBottomContext()
+interface ScrollToBottomProps {
+  scrollToBottom: () => void
+  isAtBottom: boolean
+}
 
+const ScrollToBottom: React.FC<ScrollToBottomProps> = ({ scrollToBottom, isAtBottom }) => {
   return (
     <AnimatePresence>
       {!isAtBottom && (

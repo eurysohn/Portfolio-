@@ -18,6 +18,7 @@ import RecommendedQuestions from './RecommendedQuestions'
 
 interface MessageListProps {
   messages: ChatMessage[]
+  lastUserMessageRef?: React.RefObject<HTMLDivElement>
 }
 
 interface MessageWrapperProps {
@@ -152,7 +153,7 @@ const ToolComponent = memo(({ tools }: ToolCallProps) => (
   </div>
 ))
 ToolComponent.displayName = 'ToolComponent'
-const Messages = ({ messages }: MessageListProps) => {
+const Messages = ({ messages, lastUserMessageRef }: MessageListProps) => {
   if (messages.length === 0) {
     return <ChatBlankState />
   }
@@ -162,6 +163,7 @@ const Messages = ({ messages }: MessageListProps) => {
       {messages.map((message, index) => {
         const key = `${message.role}-${message.created_at}-${index}`
         const isLastMessage = index === messages.length - 1
+        const isSecondLastMessage = index === messages.length - 2
 
         if (message.role === 'agent') {
           return (
@@ -172,7 +174,12 @@ const Messages = ({ messages }: MessageListProps) => {
             />
           )
         }
-        return <UserMessage key={key} message={message} />
+        // Add ref to the second-to-last user message (the question before the latest agent response)
+        return (
+          <div key={key} ref={isSecondLastMessage && message.role === 'user' ? lastUserMessageRef : undefined}>
+            <UserMessage message={message} />
+          </div>
+        )
       })}
       <RecommendedQuestions />
     </>
