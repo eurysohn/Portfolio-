@@ -19,6 +19,7 @@ const useAIChatStreamHandler = () => {
   const [sessionId, setSessionId] = useQueryState('session')
   const selectedEndpoint = useStore((state) => state.selectedEndpoint)
   const mode = useStore((state) => state.mode)
+  const generatorMode = useStore((state) => state.generatorMode)
   const setStreamingErrorMessage = useStore(
     (state) => state.setStreamingErrorMessage
   )
@@ -161,6 +162,7 @@ const useAIChatStreamHandler = () => {
 
         formData.append('stream', 'true')
         formData.append('session_id', sessionId ?? '')
+        formData.append('generator_mode', generatorMode)
 
         // Create headers with auth token if available
         const headers: Record<string, string> = {}
@@ -443,6 +445,7 @@ const useAIChatStreamHandler = () => {
       agentId,
       teamId,
       mode,
+      generatorMode,
       setStreamingErrorMessage,
       setIsStreaming,
       focusChatInput,

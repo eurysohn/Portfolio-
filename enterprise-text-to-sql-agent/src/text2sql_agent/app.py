@@ -52,6 +52,7 @@ app.add_middleware(
 class AskRequest(BaseModel):
     question: str
     scope: str = "default"
+    generator_mode: Optional[str] = None  # "rule_based", "llm", or "hybrid"
 
 
 @app.get("/healthz")
@@ -102,7 +103,18 @@ def ask(
 ) -> dict:
     client_id, set_cookie = _ensure_client_id(http_request)
     _enforce_rate_limit(http_request, client_id, authorization)
-    response_payload = agent.ask(request.question, scope=request.scope)
+    
+    # Use request-specific mode or fall back to agent's default
+    mode = request.generator_mode or agent.config.generator_mode
+    original_mode = agent.config.generator_mode
+    agent.config.generator_mode = mode
+    
+    try:
+        response_payload = agent.ask(request.question, scope=request.scope)
+        response_payload["generator_mode_used"] = mode
+    finally:
+        agent.config.generator_mode = original_mode
+    
     if set_cookie:
         response = JSONResponse(content=response_payload)
         response.set_cookie(_client_cookie_name, client_id, httponly=True, samesite="lax")
@@ -175,6 +187,7 @@ def run_agent(
     message: str = Form(...),
     stream: str = Form("true"),
     session_id: Optional[str] = Form(None),
+    generator_mode: Optional[str] = Form(None),
     authorization: Optional[str] = Header(None)
 ) -> StreamingResponse:
     client_id, set_cookie = _ensure_client_id(http_request)
@@ -193,7 +206,16 @@ def run_agent(
     else:
         _sessions[session_id]["updated_at"] = created_at
 
-    response_payload = agent.ask(message, scope="default")
+    # Use request-specific mode or fall back to agent's default
+    mode = generator_mode or agent.config.generator_mode
+    original_mode = agent.config.generator_mode
+    agent.config.generator_mode = mode
+    
+    try:
+        response_payload = agent.ask(message, scope="default")
+        response_payload["generator_mode_used"] = mode
+    finally:
+        agent.config.generator_mode = original_mode
     reasoning_steps = response_payload.get("extra_data", {}).get("reasoning_steps", [])
     result_payload = response_payload.get("result") or {}
     summary = result_payload.get("summary") or {}

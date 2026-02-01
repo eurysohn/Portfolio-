@@ -54,6 +54,8 @@ interface Store {
   ) => void
   isSessionsLoading: boolean
   setIsSessionsLoading: (isSessionsLoading: boolean) => void
+  generatorMode: 'rule_based' | 'llm' | 'hybrid'
+  setGeneratorMode: (mode: 'rule_based' | 'llm' | 'hybrid') => void
 }
 
 export const useStore = create<Store>()(
@@ -106,7 +108,9 @@ export const useStore = create<Store>()(
         })),
       isSessionsLoading: false,
       setIsSessionsLoading: (isSessionsLoading) =>
-        set(() => ({ isSessionsLoading }))
+        set(() => ({ isSessionsLoading })),
+      generatorMode: 'hybrid',
+      setGeneratorMode: (generatorMode) => set(() => ({ generatorMode }))
     }),
     {
       name: 'endpoint-storage-v2',
