@@ -88,7 +88,7 @@ const ChatBlankState = () => {
               </div>
               <p className="text-sm text-secondary leading-relaxed">
                 Lightning-fast deterministic SQL generation using template matching. 
-                Perfect for common KPIs like "order fill rate" or "on time delivery rate". 
+                Perfect for common KPIs like &quot;order fill rate&quot; or &quot;on time delivery rate&quot;. 
                 ~5ms response time with 95%+ accuracy for standard queries.
               </p>
             </div>
@@ -112,7 +112,7 @@ const ChatBlankState = () => {
               </div>
               <p className="text-sm text-secondary leading-relaxed">
                 AI-powered SQL generation using GPT-4o-mini for complex, 
-                ad-hoc queries. Handles natural language questions that don't 
+                ad-hoc queries. Handles natural language questions that don&apos;t 
                 match templates. Higher latency (~1-2s) but maximum flexibility.
               </p>
             </div>
