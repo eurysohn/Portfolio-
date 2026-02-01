@@ -25,7 +25,7 @@ const ChatInput = () => {
     const currentMessage = inputMessage
     setInputMessage('')
 
-    try:
+    try {
       await handleStreamResponse(currentMessage)
     } catch (error) {
       toast.error(
