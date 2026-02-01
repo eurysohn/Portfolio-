@@ -25,15 +25,37 @@ class SQLExecutor:
 def summarize_kpi(rows: List[Dict[str, Any]], time_window: str | None) -> Dict[str, Any]:
     if not rows:
         return {
-            "value": None,
-            "unit": None,
-            "summary": "No results found.",
+            "value": 0,
+            "unit": "count",
+            "summary": "No data available for the specified time period.",
             "time_window": time_window,
         }
     first = rows[0]
     value = first.get("value")
-    unit = first.get("unit")
-    summary = f"KPI value: {value} {unit}".strip()
+    unit = first.get("unit", "")
+    
+    # Handle None values
+    if value is None:
+        value = 0
+    
+    # Format value nicely
+    if isinstance(value, float):
+        if unit == "ratio":
+            # Show as percentage for ratios
+            formatted_value = f"{value * 100:.2f}%"
+        elif unit == "usd":
+            formatted_value = f"${value:,.2f}"
+        else:
+            formatted_value = f"{value:.2f}"
+    else:
+        formatted_value = f"{value:,}"
+    
+    # Build summary with proper formatting
+    if time_window:
+        summary = f"**{formatted_value}** ({time_window})"
+    else:
+        summary = f"**{formatted_value}**"
+    
     return {
         "value": value,
         "unit": unit,

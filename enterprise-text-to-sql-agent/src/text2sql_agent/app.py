@@ -171,15 +171,21 @@ def run_agent(
     reasoning_steps = response_payload.get("extra_data", {}).get("reasoning_steps", [])
     result_payload = response_payload.get("result") or {}
     summary = result_payload.get("summary") or {}
-    summary_text = (
-        summary.get("summary")
-        or response_payload.get("message")
-        or response_payload.get("clarification")
-        or "OK"
-    )
+    
+    # Get the formatted summary or create a good default
+    if isinstance(summary, dict):
+        summary_text = summary.get("summary", "Result calculated")
+    else:
+        summary_text = str(summary) if summary else "Result calculated"
+    
+    # If it's a clarification or error message, use that instead
+    if response_payload.get("clarification"):
+        summary_text = response_payload.get("clarification")
+    elif response_payload.get("message"):
+        summary_text = response_payload.get("message")
+    
     rationale = response_payload.get("rationale") or "Rule-based KPI template."
     sql_text = response_payload.get("sql") or "-- no sql generated --"
-    reasoning_steps = response_payload.get("extra_data", {}).get("reasoning_steps", [])
 
     def _format_thinking() -> str:
         if not reasoning_steps:
