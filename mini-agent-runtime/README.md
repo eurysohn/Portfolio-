@@ -39,23 +39,5 @@ python -m runtime.cli show-trace <run_id>
 ```
 
 ## Demo GIF 
-```
+![Screen Recording 2026-02-01 at 8](https://github.com/user-attachments/assets/44eb9c74-9d23-44be-af6e-8f1b45f4ee2d)
 
-https://github.com/user-attachments/assets/bae4a188-65dc-4e22-889e-5905e34ab3cb
-
-
-## Tradeoffs and next steps
-
-- This baseline is deterministic and rule-based for local runs without API keys.
-- Tools are in-memory mocks; replace with real services or data stores as needed.
-- To plug in Azure AI Foundry or Semantic Kernel later, add an LLM adapter in
-  `runtime/llm.py` and swap the router/agent implementations to call it.
-
-## Commands
-
-- `make setup` - install dependencies
-- `make run` - run interactive CLI
-- `make demo` - run sample tickets
-- `make test` - run unit tests
-- `make lint` - run ruff
-- `python -m eval.run_eval` - run golden set evaluation
