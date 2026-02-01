@@ -89,6 +89,66 @@ def root() -> dict:
     }
 
 
+@app.get("/rate-limit-status")
+def rate_limit_status(
+    http_request: Request,
+    authorization: Optional[str] = Header(None)
+) -> dict:
+    client_id, _ = _ensure_client_id(http_request)
+    
+    # Bypass rate limit if valid API token provided
+    if _api_token and authorization:
+        token = authorization.replace("Bearer ", "")
+        if token == _api_token:
+            return {
+                "unlimited": True,
+                "remaining": -1,
+                "limit": _rate_limit_max,
+            }
+    
+    # If not in demo mode, no limits
+    if not _demo_mode:
+        return {
+            "unlimited": True,
+            "remaining": -1,
+            "limit": _rate_limit_max,
+        }
+    
+    key = client_id
+    now = datetime.now()
+    
+    # Get or initialize rate limit data
+    if key not in _rate_limit:
+        return {
+            "unlimited": False,
+            "remaining": _rate_limit_max,
+            "limit": _rate_limit_max,
+            "used": 0,
+        }
+    
+    rate_data = _rate_limit[key]
+    window_start = rate_data["window_start"]
+    
+    # Reset if window has expired
+    if now - window_start > timedelta(hours=_rate_limit_window_hours):
+        return {
+            "unlimited": False,
+            "remaining": _rate_limit_max,
+            "limit": _rate_limit_max,
+            "used": 0,
+        }
+    
+    used = rate_data["count"]
+    remaining = max(0, _rate_limit_max - used)
+    
+    return {
+        "unlimited": False,
+        "remaining": remaining,
+        "limit": _rate_limit_max,
+        "used": used,
+    }
+
+
 @app.get("/schema")
 def get_schema() -> dict:
     snapshot = introspect_schema("sqlite:///data/app.db", SchemaCache())
@@ -363,8 +423,8 @@ def _enforce_rate_limit(request: Request, client_id: str, authorization: Optiona
     if not _demo_mode:
         return
     
-    client_ip = request.client.host if request.client else "unknown"
-    key = f"{client_ip}:{client_id}"
+    # Use only client_id for rate limiting (not IP)
+    key = client_id
     
     now = datetime.now()
     
