@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Restart payments service",
+    "keywords": ["restart", "payments", "service"],
+    "steps": [
+      "Verify current deploy version in service registry.",
+      "Drain traffic and restart service instances.",
+      "Validate health checks and resume traffic."
+    ]
+  },
+  {
+    "title": "Cache reset procedure",
+    "keywords": ["cache", "reset", "invalidate"],
+    "steps": [
+      "Confirm cache cluster health.",
+      "Run cache invalidation script.",
+      "Monitor hit rate and latency."
+    ]
+  },
+  {
+    "title": "Rotate API keys",
+    "keywords": ["rotate", "api", "keys", "credentials"],
+    "steps": [
+      "Generate new keys in secrets manager.",
+      "Update service configuration.",
+      "Revoke old keys after validation."
+    ]
+  },
+  {
+    "title": "Scheduler restart",
+    "keywords": ["scheduler", "restart", "jobs"],
+    "steps": [
+      "Pause job intake.",
+      "Restart scheduler nodes.",
+      "Resume job intake and monitor backlog."
+    ]
+  },
+  {
+    "title": "Failover runbook",
+    "keywords": ["failover", "procedure", "dr"],
+    "steps": [
+      "Verify replication status.",
+      "Promote standby cluster.",
+      "Update DNS and notify stakeholders."
+    ]
+  }
+]

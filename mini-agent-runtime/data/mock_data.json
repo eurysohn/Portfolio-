@@ -1,0 +1,7 @@
+{
+  "metrics": {
+    "p95_latency_ms": 420,
+    "error_rate": 0.031,
+    "daily_usage": 78213
+  }
+}

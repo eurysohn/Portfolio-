@@ -1,1 +1,2 @@
-# Placeholder requirements
+pytest==8.4.0
+ruff==0.6.5

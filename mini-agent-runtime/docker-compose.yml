@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    command: ["python", "-m", "runtime.cli", "demo"]
+    volumes:
+      - .:/app
+    environment:
+      - TRACE_JSONL_PATH=logs/traces.jsonl
+
+  redis:
+    image: redis:7
+    profiles: ["optional"]
+    ports:
+      - "6379:6379"
+
+  postgres:
+    image: postgres:16
+    profiles: ["optional"]
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ops
+    ports:
+      - "5432:5432"

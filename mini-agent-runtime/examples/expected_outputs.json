@@ -1,0 +1,7 @@
+{
+  "demo-001": {"expected_route": "runbook_lookup", "expected_escalate": false},
+  "demo-002": {"expected_route": "data_query", "expected_escalate": false},
+  "demo-003": {"expected_route": "escalate", "expected_escalate": true},
+  "demo-004": {"expected_route": "data_query", "expected_escalate": false},
+  "demo-005": {"expected_route": "runbook_lookup", "expected_escalate": false}
+}
