@@ -22,10 +22,10 @@ def _print_result(result: Any) -> None:
     print(json.dumps(_serialize_result(result), indent=2))
 
 
-def run_interactive() -> None:
+def run_interactive(correlation_id: str | None = None, idempotency_key: str | None = None) -> None:
     runtime = AgentRuntime()
     ticket = input("Enter ticket: ").strip()
-    result = runtime.run(ticket)
+    result = runtime.run(ticket, correlation_id=correlation_id, idempotency_key=idempotency_key)
     _print_result(result)
 
 
@@ -36,7 +36,11 @@ def run_demo() -> None:
         if not line.strip():
             continue
         payload = json.loads(line)
-        result = runtime.run(payload["ticket"], correlation_id=payload.get("id"))
+        result = runtime.run(
+            payload["ticket"],
+            correlation_id=payload.get("id"),
+            idempotency_key=payload.get("idempotency_key"),
+        )
         _print_result(result)
 
 
@@ -51,7 +55,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Mini agent runtime CLI")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    subparsers.add_parser("run")
+    run_parser = subparsers.add_parser("run")
+    run_parser.add_argument("--correlation-id")
+    run_parser.add_argument("--idempotency-key")
     subparsers.add_parser("demo")
 
     show_parser = subparsers.add_parser("show-trace")
@@ -60,7 +66,7 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.command == "run":
-        run_interactive()
+        run_interactive(correlation_id=args.correlation_id, idempotency_key=args.idempotency_key)
     elif args.command == "demo":
         run_demo()
     elif args.command == "show-trace":

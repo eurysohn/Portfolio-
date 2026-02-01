@@ -1,6 +1,6 @@
-PYTHON ?= python3.11
+PYTHON ?= python3
 
-.PHONY: setup run demo test lint format
+.PHONY: setup run demo test lint format ui
 
 setup:
 	$(PYTHON) -m pip install --upgrade pip
@@ -11,6 +11,9 @@ run:
 
 demo:
 	$(PYTHON) -m runtime.cli demo
+
+ui:
+	$(PYTHON) -m runtime.api
 
 test:
 	$(PYTHON) -m pytest

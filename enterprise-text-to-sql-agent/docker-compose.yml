@@ -1,0 +1,9 @@
+version: "3.9"
+services:
+  agent:
+    build: .
+    command: >
+      /bin/sh -c "python -m text2sql_agent.cli init-db &&
+      python -m text2sql_agent.cli ask 'order fill rate last 30 days'"
+    volumes:
+      - .:/app

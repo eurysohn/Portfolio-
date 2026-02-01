@@ -7,3 +7,6 @@ logs/
 .ruff_cache/
 dist/
 build/
+node_modules/
+frontend-ts/dist/
+frontend-ts/.vite/

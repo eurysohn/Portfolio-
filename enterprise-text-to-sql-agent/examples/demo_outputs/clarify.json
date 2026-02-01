@@ -1,0 +1,11 @@
+{
+  "question": "order fill rate",
+  "outcome_type": "CLARIFY",
+  "sql": null,
+  "parameters": {},
+  "rationale": "KPI requires a time window to be meaningful.",
+  "result": null,
+  "clarification": "Which time window should I use (e.g., last 30 days, this month)?",
+  "message": null,
+  "cache_hit": false
+}

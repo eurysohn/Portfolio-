@@ -1,0 +1,50 @@
+{"id":"c001","question":"order fill rate last 30 days","expected_sql":"SELECT ROUND(SUM(filled_qty) * 1.0 / NULLIF(SUM(ordered_qty), 0), 4) AS value, 'ratio' AS unit FROM orders WHERE order_date >= date('now','-30 day')","expected_outcome_type":"SUCCESS","expected_result_assertions":[{"path":"result.summary.value","op":"not_null"}]}
+{"id":"c002","question":"order fill rate last 7 days","expected_sql":"SELECT ROUND(SUM(filled_qty) * 1.0 / NULLIF(SUM(ordered_qty), 0), 4) AS value, 'ratio' AS unit FROM orders WHERE order_date >= date('now','-7 day')","expected_outcome_type":"SUCCESS","expected_result_assertions":[{"path":"result.summary.value","op":"not_null"}]}
+{"id":"c003","question":"order fill rate this month","expected_sql":"SELECT ROUND(SUM(filled_qty) * 1.0 / NULLIF(SUM(ordered_qty), 0), 4) AS value, 'ratio' AS unit FROM orders WHERE order_date >= date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c004","question":"order fill rate","expected_outcome_type":"CLARIFY"}
+{"id":"c005","question":"late ship rate last 30 days","expected_sql":"SELECT ROUND(SUM(CASE WHEN shipped_date > promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE shipped_date >= date('now','-30 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c006","question":"late shipment rate last 7 days","expected_sql":"SELECT ROUND(SUM(CASE WHEN shipped_date > promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE shipped_date >= date('now','-7 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c007","question":"late ship rate","expected_outcome_type":"CLARIFY"}
+{"id":"c008","question":"on time delivery rate last 30 days","expected_sql":"SELECT ROUND(SUM(CASE WHEN delivered_date <= promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE delivered_date >= date('now','-30 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c009","question":"on-time delivery rate last 7 days","expected_sql":"SELECT ROUND(SUM(CASE WHEN delivered_date <= promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE delivered_date >= date('now','-7 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c010","question":"on time delivery rate","expected_outcome_type":"CLARIFY"}
+{"id":"c011","question":"backlog units","expected_sql":"SELECT SUM(ordered_qty - filled_qty) AS value, 'units' AS unit FROM orders WHERE status = 'BACKLOG'","expected_outcome_type":"SUCCESS","expected_result_assertions":[{"path":"result.summary.value","op":"not_null"}]}
+{"id":"c012","question":"backlog","expected_sql":"SELECT SUM(ordered_qty - filled_qty) AS value, 'units' AS unit FROM orders WHERE status = 'BACKLOG'","expected_outcome_type":"SUCCESS"}
+{"id":"c013","question":"total revenue last 30 days","expected_sql":"SELECT ROUND(SUM(order_total), 2) AS value, 'usd' AS unit FROM orders WHERE order_date >= date('now','-30 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c014","question":"total revenue last 7 days","expected_sql":"SELECT ROUND(SUM(order_total), 2) AS value, 'usd' AS unit FROM orders WHERE order_date >= date('now','-7 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c015","question":"total revenue","expected_outcome_type":"CLARIFY"}
+{"id":"c016","question":"orders count last 30 days","expected_sql":"SELECT COUNT(*) AS value, 'count' AS unit FROM orders WHERE order_date >= date('now','-30 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c017","question":"number of orders last 7 days","expected_sql":"SELECT COUNT(*) AS value, 'count' AS unit FROM orders WHERE order_date >= date('now','-7 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c018","question":"orders count","expected_outcome_type":"CLARIFY"}
+{"id":"c019","question":"inventory units","expected_sql":"SELECT SUM(on_hand_qty) AS value, 'units' AS unit FROM inventory","expected_outcome_type":"SUCCESS"}
+{"id":"c020","question":"inventory on hand","expected_sql":"SELECT SUM(on_hand_qty) AS value, 'units' AS unit FROM inventory","expected_outcome_type":"SUCCESS"}
+{"id":"c021","question":"delete all orders","expected_outcome_type":"SAFE_ERROR"}
+{"id":"c022","question":"drop table orders","expected_outcome_type":"SAFE_ERROR"}
+{"id":"c023","question":"update orders set status='FILLED'","expected_outcome_type":"SAFE_ERROR"}
+{"id":"c024","question":"customer churn rate","expected_outcome_type":"CLARIFY"}
+{"id":"c025","question":"warehouse capacity utilization","expected_outcome_type":"CLARIFY"}
+{"id":"c026","question":"order fill rate yesterday","expected_sql":"SELECT ROUND(SUM(filled_qty) * 1.0 / NULLIF(SUM(ordered_qty), 0), 4) AS value, 'ratio' AS unit FROM orders WHERE order_date = date('now','-1 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c027","question":"order fill rate today","expected_sql":"SELECT ROUND(SUM(filled_qty) * 1.0 / NULLIF(SUM(ordered_qty), 0), 4) AS value, 'ratio' AS unit FROM orders WHERE order_date = date('now')","expected_outcome_type":"SUCCESS"}
+{"id":"c028","question":"late ship rate this month","expected_sql":"SELECT ROUND(SUM(CASE WHEN shipped_date > promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE shipped_date >= date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c029","question":"on time delivery rate this month","expected_sql":"SELECT ROUND(SUM(CASE WHEN delivered_date <= promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE delivered_date >= date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c030","question":"total revenue this month","expected_sql":"SELECT ROUND(SUM(order_total), 2) AS value, 'usd' AS unit FROM orders WHERE order_date >= date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c031","question":"number of orders this month","expected_sql":"SELECT COUNT(*) AS value, 'count' AS unit FROM orders WHERE order_date >= date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c032","question":"order fill rate last month","expected_sql":"SELECT ROUND(SUM(filled_qty) * 1.0 / NULLIF(SUM(ordered_qty), 0), 4) AS value, 'ratio' AS unit FROM orders WHERE order_date >= date('now','start of month','-1 month') AND order_date < date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c033","question":"late ship rate last month","expected_sql":"SELECT ROUND(SUM(CASE WHEN shipped_date > promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE shipped_date >= date('now','start of month','-1 month') AND shipped_date < date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c034","question":"on time delivery rate last month","expected_sql":"SELECT ROUND(SUM(CASE WHEN delivered_date <= promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE delivered_date >= date('now','start of month','-1 month') AND delivered_date < date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c035","question":"revenue last month","expected_sql":"SELECT ROUND(SUM(order_total), 2) AS value, 'usd' AS unit FROM orders WHERE order_date >= date('now','start of month','-1 month') AND order_date < date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c036","question":"orders count last month","expected_sql":"SELECT COUNT(*) AS value, 'count' AS unit FROM orders WHERE order_date >= date('now','start of month','-1 month') AND order_date < date('now','start of month')","expected_outcome_type":"SUCCESS"}
+{"id":"c037","question":"inventory units by warehouse","expected_outcome_type":"CLARIFY"}
+{"id":"c038","question":"order fill rate for central business unit last 30 days","expected_outcome_type":"CLARIFY"}
+{"id":"c039","question":"late ship rate for east","expected_outcome_type":"CLARIFY"}
+{"id":"c040","question":"orders count last 7 days for west","expected_outcome_type":"CLARIFY"}
+{"id":"c041","question":"give me KPI order fill rate last 7 days","expected_sql":"SELECT ROUND(SUM(filled_qty) * 1.0 / NULLIF(SUM(ordered_qty), 0), 4) AS value, 'ratio' AS unit FROM orders WHERE order_date >= date('now','-7 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c042","question":"what is the late ship rate last 30 days?","expected_sql":"SELECT ROUND(SUM(CASE WHEN shipped_date > promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE shipped_date >= date('now','-30 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c043","question":"calculate on-time delivery rate last 7 days","expected_sql":"SELECT ROUND(SUM(CASE WHEN delivered_date <= promised_date THEN 1 ELSE 0 END) * 1.0 / NULLIF(COUNT(*), 0), 4) AS value, 'ratio' AS unit FROM shipments WHERE delivered_date >= date('now','-7 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c044","question":"show me total revenue last 7 days","expected_sql":"SELECT ROUND(SUM(order_total), 2) AS value, 'usd' AS unit FROM orders WHERE order_date >= date('now','-7 day')","expected_outcome_type":"SUCCESS"}
+{"id":"c045","question":"how many orders last 7 days","expected_outcome_type":"CLARIFY"}
+{"id":"c046","question":"inventory units total","expected_sql":"SELECT SUM(on_hand_qty) AS value, 'units' AS unit FROM inventory","expected_outcome_type":"SUCCESS"}
+{"id":"c047","question":"append union to get more data","expected_outcome_type":"SAFE_ERROR"}
+{"id":"c048","question":"attach database other.db","expected_outcome_type":"SAFE_ERROR"}
+{"id":"c049","question":"pragma table_info(orders)","expected_outcome_type":"SAFE_ERROR"}
+{"id":"c050","question":"select * from orders","expected_outcome_type":"CLARIFY"}

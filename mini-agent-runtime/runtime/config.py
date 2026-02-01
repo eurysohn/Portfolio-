@@ -12,3 +12,6 @@ TOOL_BACKOFF_BASE_S = float(os.getenv("TOOL_BACKOFF_BASE_S", "0.2"))
 
 CB_FAILURE_THRESHOLD = int(os.getenv("CB_FAILURE_THRESHOLD", "3"))
 CB_RESET_SECONDS = float(os.getenv("CB_RESET_SECONDS", "10"))
+
+SESSION_MAX_ENTRIES = int(os.getenv("SESSION_MAX_ENTRIES", "10"))
+IDEMPOTENCY_TTL_S = float(os.getenv("IDEMPOTENCY_TTL_S", "300"))

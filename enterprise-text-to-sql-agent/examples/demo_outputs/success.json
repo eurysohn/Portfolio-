@@ -1,0 +1,24 @@
+{
+  "question": "order fill rate last 30 days",
+  "outcome_type": "SUCCESS",
+  "sql": "SELECT ROUND(SUM(filled_qty) * 1.0 / NULLIF(SUM(ordered_qty), 0), 4) AS value, 'ratio' AS unit FROM orders WHERE order_date >= date('now','-30 day')",
+  "parameters": {},
+  "rationale": "Order fill rate is filled_qty / ordered_qty over the time window.",
+  "result": {
+    "rows": [
+      {
+        "value": 0.8043,
+        "unit": "ratio"
+      }
+    ],
+    "summary": {
+      "value": 0.8043,
+      "unit": "ratio",
+      "summary": "KPI value: 0.8043 ratio",
+      "time_window": "last 30 days"
+    }
+  },
+  "clarification": null,
+  "message": null,
+  "cache_hit": false
+}

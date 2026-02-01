@@ -58,3 +58,4 @@ class AgentResult:
     action_plan: list[str]
     escalate: bool
     escalation_reason: str | None
+    session_state: dict[str, Any] | None = None

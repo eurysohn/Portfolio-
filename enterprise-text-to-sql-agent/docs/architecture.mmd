@@ -1,0 +1,12 @@
+flowchart LR
+  user[User / API Client] --> cli[CLI or FastAPI]
+  cli --> agent[Text2SQLAgent]
+  agent --> cache[Cache]
+  agent --> schema[Schema Introspection]
+  agent --> generator[Rule-Based Generator]
+  generator --> validator[SQL Validator]
+  validator --> executor[SQL Executor]
+  executor --> db[(SQLite DB)]
+  agent --> fallback[Fallback / Clarify]
+  agent --> logs[JSON Observability]
+  logs --> trace[(logs/trace.jsonl)]

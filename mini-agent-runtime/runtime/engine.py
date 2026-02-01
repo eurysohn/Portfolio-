@@ -15,6 +15,8 @@ from runtime.executor import ToolExecutor
 from runtime.models import AgentResult, ToolCall, ToolResult
 from runtime.router import decide_route
 from runtime.security import guardrails_check, redact_pii
+from runtime.idempotency import idempotency_store
+from runtime.state import SessionEntry, memory_store, now_ts as state_now_ts
 from tools.registry import build_registry
 
 
@@ -23,8 +25,23 @@ class AgentRuntime:
         self.registry = build_registry()
         self.executor = ToolExecutor(self.registry)
         self.logger = get_logger("runtime")
+        self.audit_logger = get_logger("audit")
 
-    def run(self, ticket: str, correlation_id: str | None = None) -> AgentResult:
+    def run(
+        self,
+        ticket: str,
+        correlation_id: str | None = None,
+        idempotency_key: str | None = None,
+    ) -> AgentResult:
+        if idempotency_key:
+            cached = idempotency_store.get(idempotency_key)
+            if cached:
+                set_context(cached.correlation_id, cached.trace_id, cached.run_id)
+                self.logger.info(
+                    json.dumps({"event": "idempotency_hit", "idempotency_key": idempotency_key})
+                )
+                return cached
+
         run_id = uuid.uuid4().hex
         trace_id = uuid.uuid4().hex
         correlation_id = correlation_id or uuid.uuid4().hex
@@ -50,6 +67,16 @@ class AgentRuntime:
             "Agent run started",
             {"ticket": redacted_ticket},
         )
+        self.audit_logger.info(
+            json.dumps(
+                {
+                    "event": "audit_run_start",
+                    "ticket": redacted_ticket,
+                    "correlation_id": correlation_id,
+                    "idempotency_key": idempotency_key,
+                }
+            )
+        )
 
         self._trace(
             run_id,
@@ -62,6 +89,23 @@ class AgentRuntime:
 
         plan, tool_calls = self._select_plan(route, redacted_ticket)
         tool_results = self._execute_tools(run_id, trace_id, correlation_id, tool_calls)
+        session_entry = SessionEntry(
+            ticket=redacted_ticket,
+            route=route,
+            confidence=confidence,
+            tool_results=[result.__dict__ for result in tool_results],
+            escalated=route == "escalate" or confidence < 0.45,
+            timestamp=state_now_ts(),
+        )
+        session_state = memory_store.append(correlation_id, session_entry)
+        self._trace(
+            run_id,
+            trace_id,
+            correlation_id,
+            "memory_update",
+            "Session state updated",
+            memory_store.summary(correlation_id),
+        )
 
         escalate = route == "escalate" or confidence < 0.45
         escalation_reason = None
@@ -94,8 +138,19 @@ class AgentRuntime:
                 }
             )
         )
+        self.audit_logger.info(
+            json.dumps(
+                {
+                    "event": "audit_run_complete",
+                    "route": route,
+                    "confidence": confidence,
+                    "escalate": escalate,
+                    "tool_names": [call.name for call in tool_calls],
+                }
+            )
+        )
 
-        return AgentResult(
+        result = AgentResult(
             run_id=run_id,
             trace_id=trace_id,
             correlation_id=correlation_id,
@@ -108,7 +163,11 @@ class AgentRuntime:
             action_plan=plan.action_plan,
             escalate=escalate,
             escalation_reason=escalation_reason,
+            session_state=session_state.to_dict(),
         )
+        if idempotency_key:
+            idempotency_store.set(idempotency_key, result)
+        return result
 
     def _select_plan(self, route: str, ticket: str):
         if route == "runbook_lookup":
