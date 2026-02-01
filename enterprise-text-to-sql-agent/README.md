@@ -31,8 +31,7 @@ make test
 
 The UI is included under `ui/` and connects to the backend via AgentOS-compatible endpoints.
 
-- UI: `https://enterprise-text-to-sql-agent-ui.fly.dev/?v=9`
-- API: `https://enterprise-text-to-sql-agent.fly.dev`
+- UI: ``https://enterprise-text-to-sql-agent-ui.fly.dev``
 
 Note: This is a public demo link. If abuse is a concern, add a token gate or an allowlist.
 
