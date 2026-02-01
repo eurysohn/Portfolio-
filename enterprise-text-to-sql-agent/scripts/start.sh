@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-if [ ! -f "data/app.db" ]; then
-  python -m text2sql_agent.cli init-db
-fi
+# Always initialize database on startup to ensure fresh data
+echo "Initializing database..."
+python -m text2sql_agent.cli init-db
 
 exec uvicorn text2sql_agent.app:app --host 0.0.0.0 --port 8080
