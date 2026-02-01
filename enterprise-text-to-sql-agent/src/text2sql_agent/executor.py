@@ -22,7 +22,7 @@ class SQLExecutor:
         return ExecutionResult(rows=rows, row_count=len(rows))
 
 
-def summarize_kpi(rows: List[Dict[str, Any]], time_window: str | None) -> Dict[str, Any]:
+def summarize_kpi(rows: List[Dict[str, Any]], time_window: Optional[str]) -> Dict[str, Any]:
     if not rows:
         return {
             "value": 0,

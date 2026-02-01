@@ -12,10 +12,22 @@ from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 
 from .agent import AgentConfig, Text2SQLAgent
+from .config import settings
 from .schema import SchemaCache, introspect_schema, schema_as_dict
 
 app = FastAPI(title="Enterprise Text-to-SQL Agent")
-agent = Text2SQLAgent(AgentConfig(db_url="sqlite:///data/app.db"))
+
+# Initialize agent with configuration from environment
+agent_config = AgentConfig(
+    db_url=settings.db_url,
+    max_rows=settings.max_rows,
+    allow_union=settings.allow_union,
+    generator_mode=settings.generator_mode,
+    openai_api_key=settings.openai_api_key,
+    llm_model=settings.llm_model,
+    llm_temperature=settings.llm_temperature,
+)
+agent = Text2SQLAgent(agent_config)
 _sessions: Dict[str, Dict[str, Any]] = {}
 _session_runs: Dict[str, List[Dict[str, Any]]] = {}
 _rate_limit: Dict[str, Dict[str, Any]] = {}  # Now stores count + timestamp
@@ -49,7 +61,13 @@ def healthz() -> dict:
 
 @app.get("/health")
 def health() -> dict:
-    return {"status": "ok"}
+    return {
+        "status": "ok",
+        "generator_mode": settings.generator_mode,
+        "llm_enabled": settings.openai_api_key is not None,
+        "llm_model": settings.llm_model if settings.openai_api_key else None,
+    }
+
 
 
 @app.get("/")
@@ -94,12 +112,20 @@ def ask(
 
 @app.get("/agents")
 def get_agents() -> List[Dict[str, Any]]:
+    # Show actual generator mode and LLM info
+    if settings.generator_mode == "llm":
+        model_info = {"name": settings.llm_model, "model": settings.llm_model, "provider": "openai"}
+    elif settings.generator_mode == "hybrid":
+        model_info = {"name": "hybrid (rules + LLM)", "model": f"rules + {settings.llm_model}", "provider": "hybrid"}
+    else:
+        model_info = {"name": "rule-based", "model": "deterministic", "provider": "local"}
+    
     return [
         {
             "id": "text2sql-agent",
             "name": "Enterprise Text-to-SQL Agent",
             "db_id": "sqlite",
-            "model": {"name": "rule-based", "model": "deterministic", "provider": "local"},
+            "model": model_info,
         }
     ]
 

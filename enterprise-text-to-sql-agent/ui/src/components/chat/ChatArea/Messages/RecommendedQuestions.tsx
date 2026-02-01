@@ -8,12 +8,10 @@ import { useQueryState } from 'nuqs'
 
 const RECOMMENDED_QUESTIONS = [
   'Order fill rate last 30 days',
-  'Late ship rate last 7 days',
   'On time delivery rate this month',
   'Total revenue last month',
   'Orders count last 7 days',
   'Order fill rate yesterday',
-  'Late ship rate last month',
   'On time delivery rate last 30 days'
 ]
 

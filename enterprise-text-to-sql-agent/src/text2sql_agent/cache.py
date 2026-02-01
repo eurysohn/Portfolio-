@@ -2,7 +2,8 @@ import hashlib
 import json
 import os
 from dataclasses import dataclass
-from typing import Any, Dict, Optional
+from datetime import datetime
+from typing import Any, Dict, Optional, Union
 
 
 def normalize_question(question: str) -> str:
@@ -41,7 +42,7 @@ class FileCache:
             return None
         return CacheEntry(response=payload[key])
 
-    def set(self, key: str, entry: CacheEntry | Dict[str, Any]) -> None:
+    def set(self, key: str, entry: Union[CacheEntry, Dict[str, Any]]) -> None:
         payload = self._load()
         if isinstance(entry, CacheEntry):
             payload[key] = entry.response

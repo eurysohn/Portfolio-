@@ -357,9 +357,11 @@ const useAIChatStreamHandler = () => {
                     let updatedContent = message.content
                     if (typeof chunk.content === 'string') {
                       updatedContent = chunk.content
-                    } else if (chunk.content && typeof chunk.content === 'object') {
-                      const contentObj = chunk.content as Record<string, unknown>
-                      const resultObj = contentObj.result as
+                    } else if (!message.content?.trim()) {
+                      const contentObj = chunk.content as
+                        | Record<string, unknown>
+                        | undefined
+                      const resultObj = contentObj?.result as
                         | Record<string, unknown>
                         | undefined
                       const summaryObj = resultObj?.summary as
@@ -367,8 +369,8 @@ const useAIChatStreamHandler = () => {
                         | undefined
                       const summaryText =
                         (summaryObj?.summary as string | undefined) ||
-                        (contentObj.message as string | undefined) ||
-                        (contentObj.clarification as string | undefined)
+                        (contentObj?.message as string | undefined) ||
+                        (contentObj?.clarification as string | undefined)
                       if (summaryText) {
                         updatedContent = summaryText
                       }

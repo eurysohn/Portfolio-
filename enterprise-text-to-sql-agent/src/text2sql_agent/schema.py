@@ -24,7 +24,7 @@ class SchemaCache:
         self.cache_path = cache_path
         os.makedirs(os.path.dirname(cache_path), exist_ok=True)
 
-    def load(self) -> SchemaSnapshot | None:
+    def load(self) -> Optional[SchemaSnapshot]:
         if not os.path.exists(self.cache_path):
             return None
         with open(self.cache_path, "r", encoding="utf-8") as handle:
@@ -54,7 +54,7 @@ def _compute_hash(tables: List[TableSchema]) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()
 
 
-def introspect_schema(db_url: str, cache: SchemaCache | None = None) -> SchemaSnapshot:
+def introspect_schema(db_url: str, cache: Optional[SchemaCache] = None) -> SchemaSnapshot:
     if cache:
         cached = cache.load()
         if cached:

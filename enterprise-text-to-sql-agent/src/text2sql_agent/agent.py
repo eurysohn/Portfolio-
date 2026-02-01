@@ -1,5 +1,5 @@
 from dataclasses import asdict, dataclass
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from .cache import FileCache, cache_key
 from .executor import SQLExecutor, summarize_kpi
@@ -22,22 +22,37 @@ class AgentConfig:
     allow_union: bool = False
     table_allowlist: Optional[set[str]] = None
     column_denylist: Optional[set[str]] = None
+    generator_mode: str = "hybrid"  # "rule_based", "llm", or "hybrid"
+    openai_api_key: Optional[str] = None
+    llm_model: str = "gpt-4o-mini"
+    llm_temperature: float = 0.0
+
 
 
 class Text2SQLAgent:
     def __init__(
         self,
-        config: AgentConfig | None = None,
+        config: Optional[AgentConfig] = None,
         *,
-        cache: FileCache | None = None,
-        observability: Observability | None = None,
+        cache: Optional[FileCache] = None,
+        observability: Optional[Observability] = None,
     ) -> None:
+        from .generator import LLMAdapter
+
         self.config = config or AgentConfig()
         self.cache = cache or FileCache()
         self.schema_cache = SchemaCache()
         self.observability = observability or Observability()
-        self.generator = RuleBasedGenerator()
+        
+        # Initialize both generators for hybrid mode
+        self.rule_generator = RuleBasedGenerator()
+        self.llm_generator = LLMAdapter(
+            api_key=self.config.openai_api_key,
+            model=self.config.llm_model,
+            temperature=self.config.llm_temperature,
+        )
         self.executor = SQLExecutor(self.config.db_url)
+
 
     def ask(self, question: str, scope: str = "default") -> Dict[str, Any]:
         ctx = TraceContext()
@@ -96,7 +111,9 @@ class Text2SQLAgent:
             ctx, level="info", stage="cache", message="Cache miss", cache_hit=False
         )
 
-        generation = self.generator.generate(question, schema_dict)
+        # Hybrid generation: try rules first, then LLM
+        generation = self._generate_with_mode(question, schema_dict, ctx)
+        
         reasoning_steps[0]["result"] = (
             "KPI intent detected" if generation.outcome_type != "SAFE_ERROR" else "Non-KPI"
         )
@@ -194,6 +211,34 @@ class Text2SQLAgent:
         )
         self.cache.set(cache_id, response)
         return response
+
+    def _generate_with_mode(
+        self, question: str, schema_dict: Dict[str, Dict[str, str]], ctx: TraceContext
+    ) -> GenerationResult:
+        """Generate SQL using the configured mode (rule_based, llm, or hybrid)."""
+        
+        if self.config.generator_mode == "rule_based":
+            return self.rule_generator.generate(question, schema_dict)
+        
+        elif self.config.generator_mode == "llm":
+            return self.llm_generator.generate(question, schema_dict)
+        
+        else:  # hybrid mode
+            # Try rule-based first (fast, deterministic)
+            rule_result = self.rule_generator.generate(question, schema_dict)
+            
+            # If rules succeed, use them
+            if rule_result.outcome_type == "SUCCESS":
+                self.observability.log_event(
+                    ctx, level="info", stage="generation", message="Rule-based match"
+                )
+                return rule_result
+            
+            # Otherwise, fall back to LLM for more flexible understanding
+            self.observability.log_event(
+                ctx, level="info", stage="generation", message="Falling back to LLM"
+            )
+            return self.llm_generator.generate(question, schema_dict)
 
     def _safe_error(
         self,
