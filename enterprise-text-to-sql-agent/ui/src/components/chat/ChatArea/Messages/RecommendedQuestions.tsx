@@ -7,10 +7,14 @@ import { useStore } from '@/store'
 import { useQueryState } from 'nuqs'
 
 const RULE_BASED_QUESTIONS = [
-  { text: 'Order fill rate last 30 days', badge: '⚡ Rule' },
-  { text: 'On time delivery rate this month', badge: '⚡ Rule' },
-  { text: 'Late ship rate last 7 days', badge: '⚡ Rule' },
-  { text: 'Total revenue last month', badge: '⚡ Rule' }
+  { text: 'Order fill rate last 30 days', badge: '⚡ Rules' },
+  { text: 'On time delivery rate this month', badge: '⚡ Rules' },
+  { text: 'Late ship rate last 7 days', badge: '⚡ Rules' }
+]
+
+const HYBRID_QUESTIONS = [
+  { text: 'Total revenue last month', badge: '🔄 Hybrid' },
+  { text: 'Order fill rate yesterday', badge: '🔄 Hybrid' }
 ]
 
 const LLM_QUESTIONS = [
@@ -41,7 +45,7 @@ const RecommendedQuestions = () => {
         
         {/* Rule-based questions */}
         <div className="mb-4">
-          <p className="mb-2 text-xs text-tertiary">Fast & Deterministic (Rule-based):</p>
+          <p className="mb-2 text-xs text-tertiary">⚡ Rules - Fast & Deterministic:</p>
           <div className="flex flex-wrap gap-2">
             {RULE_BASED_QUESTIONS.map(({ text, badge }) => (
               <Button
@@ -59,9 +63,29 @@ const RecommendedQuestions = () => {
           </div>
         </div>
 
+        {/* Hybrid questions */}
+        <div className="mb-4">
+          <p className="mb-2 text-xs text-tertiary">🔄 Hybrid - Balanced:</p>
+          <div className="flex flex-wrap gap-2">
+            {HYBRID_QUESTIONS.map(({ text, badge }) => (
+              <Button
+                key={text}
+                variant="ghost"
+                size="sm"
+                onClick={() => handleExampleClick(text)}
+                disabled={!canSend}
+                className="group relative rounded-full border border-primary/15 bg-primaryAccent px-3 py-1.5 text-xs text-primary hover:bg-primaryAccent/80 hover:scale-105 transition-all"
+              >
+                <span className="mr-1.5 opacity-60 group-hover:opacity-100">{badge}</span>
+                {text}
+              </Button>
+            ))}
+          </div>
+        </div>
+
         {/* LLM questions */}
         <div>
-          <p className="mb-2 text-xs text-tertiary">Smart & Flexible (LLM-powered):</p>
+          <p className="mb-2 text-xs text-tertiary">🤖 LLM - Smart & Flexible:</p>
           <div className="flex flex-wrap gap-2">
             {LLM_QUESTIONS.map(({ text, badge }) => (
               <Button
