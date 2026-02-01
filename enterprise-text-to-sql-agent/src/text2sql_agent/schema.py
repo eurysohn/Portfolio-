@@ -2,7 +2,7 @@ import hashlib
 import json
 import os
 from dataclasses import dataclass
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from sqlalchemy import create_engine, inspect
 
