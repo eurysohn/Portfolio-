@@ -31,7 +31,7 @@ agent = Text2SQLAgent(agent_config)
 _sessions: Dict[str, Dict[str, Any]] = {}
 _session_runs: Dict[str, List[Dict[str, Any]]] = {}
 _rate_limit: Dict[str, Dict[str, Any]] = {}  # Now stores count + timestamp
-_rate_limit_max = int(os.getenv("RATE_LIMIT_MAX", "3"))
+_rate_limit_max = int(os.getenv("RATE_LIMIT_MAX", "5"))
 _rate_limit_window_hours = int(os.getenv("RATE_LIMIT_WINDOW_HOURS", "24"))
 _demo_mode = os.getenv("DEMO_MODE", "true").lower() == "true"
 _api_token = os.getenv("API_TOKEN", None)  # Optional token for bypassing rate limits
@@ -79,7 +79,7 @@ def root() -> dict:
         "rate_limit": {
             "max_requests": _rate_limit_max,
             "window_hours": _rate_limit_window_hours,
-            "message": f"Demo is limited to {_rate_limit_max} requests per {_rate_limit_window_hours} hours per person"
+            "message": f"デモは使用コストのため、1人あたり{_rate_limit_max}回/24時間に制限されています"
         },
         "endpoints": {
             "healthz": "/healthz",
@@ -402,7 +402,9 @@ def _rate_limit_handler(request: Request, exc: RateLimitExceeded) -> JSONRespons
     return JSONResponse(
         status_code=429,
         content={
-            "detail": "I'm sorry, but to protect usage I've limited to 3 times per person.",
+            "detail": "申し訳ございません。使用コストのため、デモは1人あたり5回/24時間に制限させていただいております。ご了承ください。",
             "limit": _rate_limit_max,
+            "hours_remaining": exc.hours_remaining,
+            "minutes_remaining": exc.minutes_remaining,
         },
     )

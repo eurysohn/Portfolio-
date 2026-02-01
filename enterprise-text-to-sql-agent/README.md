@@ -22,14 +22,15 @@ This project demonstrates a production-ready approach to enterprise Text-to-SQL 
 
 ## Key Features
 
-- ✅ **KPI-only, rule-based SQL generation** (deterministic templates)
+- 🎯 **Hybrid SQL Generation**: Rule-based templates (fast & deterministic) + LLM fallback (GPT-4o-mini) for flexibility
 - 🛡️ **Strict validation**: 15+ security rules (allowlist + denylist + linting)
 - ⚡ **Sub-20ms average latency** with schema and query caching
 - 📊 **90%+ accuracy** across 50+ test cases with eval harness
 - 🔍 **JSON observability** logs with trace IDs for full auditability
 - 🚫 **Safe failures** with structured error codes and clarification prompts
 - 🌐 **Production-ready API** with AgentOS-compatible streaming
-- 🎨 **Clean UI** powered by agno-agi/agent-ui
+- 🎨 **Clean UI** with mode selector (Rules/Hybrid/LLM) powered by agno-agi/agent-ui
+- 🔒 **Rate limiting**: 5 requests per person per 24 hours for demo cost management
 
 ## 3-minute Quickstart
 
@@ -55,13 +56,18 @@ The demo includes:
 ### How to Use the Demo
 
 1. Open the UI and select the default agent
-2. Click an example question (e.g., "Order fill rate last 30 days")
-3. Observe the response showing:
+2. **Choose a mode**: Rules (fast), Hybrid (smart fallback), or LLM (full AI power)
+3. Try different question types:
+   - **Rule-based questions** (⚡): "Order fill rate last 30 days", "Late ship rate last 7 days"
+   - **LLM-powered questions** (🤖): "Total revenue for shipped orders last 30 days", "Average order value this month"
+4. Observe the response showing:
    - **Answer** (bold KPI value)
    - **Source rationale** (explains calculation logic)
    - **SQL query** (validated and executed)
    - **Thinking steps**: Scope check → Schema grounding → SQL generation → Validation → Execution
-4. Try a non-KPI question (e.g., "What is the weather?") to see a SAFE_ERROR response
+5. Try edge cases to see SAFE_ERROR or CLARIFY responses
+
+**Note**: Demo is limited to 5 requests per person per 24 hours due to API costs. Sorry for the inconvenience!
 
 The UI is built with Next.js and connects to the backend via AgentOS-compatible streaming endpoints.
 
@@ -69,12 +75,16 @@ The UI is built with Next.js and connects to the backend via AgentOS-compatible 
 
 See `examples/questions.md` for the full list. Here are some examples:
 
-**Basic KPIs:**
+**Rule-based (Fast & Deterministic):**
 - Order fill rate last 30 days
 - Late ship rate last 7 days  
 - On time delivery rate this month
 - Total revenue last month
-- Orders count last 7 days
+
+**LLM-powered (Smart & Flexible):**
+- Total revenue for shipped orders last 30 days
+- How many products do we have in stock right now?
+- Average order value this month
 
 **Edge Cases:**
 - "Order fill rate" → Returns CLARIFY (needs time window)
@@ -173,7 +183,12 @@ AgentOS-compatible streaming:
 - `POST /agents/{agent_id}/runs` (streaming)
 
 Rate limiting:
-- 3 requests per person (IP + cookie) across `/ask` and `/agents/{agent_id}/runs`
+- 5 requests per person (IP + cookie) per 24 hours across `/ask` and `/agents/{agent_id}/runs`
+- Can be configured via `RATE_LIMIT_MAX` and `RATE_LIMIT_WINDOW_HOURS` environment variables
+
+Generator mode:
+- Pass `generator_mode` parameter: `"rule_based"`, `"llm"`, or `"hybrid"` (default)
+- Hybrid mode tries rule-based first, falls back to LLM if no match
 
 ## Security Posture
 
@@ -218,14 +233,16 @@ python -m text2sql_agent.cli eval
 
 ## Architecture
 
-The system follows a strict validation pipeline:
+The system follows a strict validation pipeline with hybrid generation:
 
-1. **User/API Client** → Submits natural language KPI question
+1. **User/API Client** → Submits natural language KPI question + optional generator mode
 2. **CLI/FastAPI** → Routes request to Text2SQLAgent
 3. **Text2SQLAgent** orchestrates:
    - **Cache**: Check for cached results (sub-5ms when hit)
    - **Schema Introspection**: Load table/column metadata
-   - **Rule-Based Generator**: Match question to KPI template
+   - **Hybrid Generator**: 
+     - Try **Rule-Based Generator** first (deterministic KPI templates)
+     - Fall back to **LLM Generator** (GPT-4o-mini) if no rule match
    - **SQL Validator**: Run 15+ security checks
    - **SQL Executor**: Execute against SQLite DB
    - **Fallback/Clarify**: Handle ambiguous or incomplete questions
@@ -241,14 +258,15 @@ See `docs/architecture.mmd` for the Mermaid source.
 
 ## Production Considerations
 
-This project demonstrates core enterprise Text-to-SQL capabilities. Extension points for production deployments:
+This project demonstrates core enterprise Text-to-SQL capabilities with hybrid LLM + rule-based approach. Extension points for production deployments:
 
-- **LLM Integration**: Plug in Azure AI Foundry or Semantic Kernel for dynamic query generation while maintaining validation guardrails
+- **Enhanced LLM Integration**: Fine-tune models or use RAG for domain-specific SQL patterns
 - **RBAC & Permissions**: Add role-based access control with real identity context for row-level and column-level security
 - **Warehouse Backends**: Extend beyond SQLite to Postgres, Snowflake, BigQuery, or Databricks
 - **Advanced Validation**: Implement parser-based SQL validation (e.g., sqlglot, sqlparse) for stronger security guarantees
 - **Caching Strategy**: Scale cache layer with Redis for multi-instance deployments
 - **Monitoring**: Add Prometheus metrics and distributed tracing for production observability
+- **Cost Management**: Implement smarter LLM fallback strategies and caching to minimize API costs
 
 ## Fly.io Deploy
 
