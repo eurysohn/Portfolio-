@@ -18,7 +18,7 @@ import RecommendedQuestions from './RecommendedQuestions'
 
 interface MessageListProps {
   messages: ChatMessage[]
-  lastUserMessageRef?: React.RefObject<HTMLDivElement>
+  lastUserMessageRef?: React.RefObject<HTMLDivElement | null>
 }
 
 interface MessageWrapperProps {
