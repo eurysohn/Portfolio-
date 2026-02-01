@@ -1,0 +1,34 @@
+{
+  "tables": {
+    "incidents": [
+      {
+        "id": "INC-1024",
+        "status": "open",
+        "service": "payments",
+        "severity": "sev2",
+        "owner": "oncall-payments"
+      },
+      {
+        "id": "INC-1025",
+        "status": "closed",
+        "service": "messaging",
+        "severity": "sev3",
+        "owner": "oncall-messaging"
+      }
+    ],
+    "tickets": [
+      {
+        "id": "TCK-441",
+        "status": "open",
+        "customer": "acme",
+        "topic": "latency"
+      },
+      {
+        "id": "TCK-442",
+        "status": "open",
+        "customer": "beta",
+        "topic": "quota"
+      }
+    ]
+  }
+}

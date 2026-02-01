@@ -1,0 +1,25 @@
+{
+  "routes": {
+    "/health": {
+      "status": 200,
+      "body": {
+        "status": "ok",
+        "region": "ap-northeast-2",
+        "version": "1.4.2"
+      }
+    },
+    "/metrics": {
+      "status": 200,
+      "body": {
+        "p95_latency_ms": 312,
+        "error_rate": 0.012
+      }
+    },
+    "default": {
+      "status": 404,
+      "body": {
+        "message": "route_not_found"
+      }
+    }
+  }
+}

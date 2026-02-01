@@ -79,7 +79,7 @@ def root() -> dict:
         "rate_limit": {
             "max_requests": _rate_limit_max,
             "window_hours": _rate_limit_window_hours,
-            "message": f"デモは使用コストのため、1人あたり{_rate_limit_max}回/24時間に制限されています"
+            "message": f"죄송합니다. 사용 비용 때문에 1인당 {_rate_limit_max}회로 제한됩니다."
         },
         "endpoints": {
             "healthz": "/healthz",
@@ -402,7 +402,7 @@ def _rate_limit_handler(request: Request, exc: RateLimitExceeded) -> JSONRespons
     return JSONResponse(
         status_code=429,
         content={
-            "detail": "申し訳ございません。使用コストのため、デモは1人あたり5回/24時間に制限させていただいております。ご了承ください。",
+            "detail": "죄송합니다. 사용 비용 때문에 5회 이상 사용하실 수 없습니다. 24시간 후 다시 시도해주세요.",
             "limit": _rate_limit_max,
             "hours_remaining": exc.hours_remaining,
             "minutes_remaining": exc.minutes_remaining,

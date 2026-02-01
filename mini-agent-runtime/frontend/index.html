@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mini Agent Runtime</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Mini Agent Runtime</h1>
+        <p>Route tickets, call tools, and inspect traces.</p>
+      </header>
+
+      <section class="card">
+        <h2>Run a ticket</h2>
+        <form id="ticket-form">
+          <label for="ticket">Ticket</label>
+          <textarea
+            id="ticket"
+            name="ticket"
+            rows="4"
+            placeholder="Example: API latency spike on payments service, check DB incidents"
+            required
+          ></textarea>
+          <div class="row">
+            <div>
+              <label for="correlationId">Correlation ID (optional)</label>
+              <input id="correlationId" name="correlationId" type="text" />
+            </div>
+            <div>
+              <label for="idempotencyKey">Idempotency Key (optional)</label>
+              <input id="idempotencyKey" name="idempotencyKey" type="text" />
+            </div>
+          </div>
+          <button type="submit">Run</button>
+        </form>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>Result</h2>
+          <pre id="result">Run a ticket to see output.</pre>
+        </div>
+        <div class="card">
+          <h2>Trace events</h2>
+          <pre id="trace">Trace events will appear here.</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

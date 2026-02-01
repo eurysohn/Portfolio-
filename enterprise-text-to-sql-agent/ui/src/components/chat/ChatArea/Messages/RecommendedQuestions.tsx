@@ -82,7 +82,7 @@ const RecommendedQuestions = () => {
         {/* Usage notice */}
         <div className="mt-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-800/30 px-3 py-2">
           <p className="text-xs text-yellow-800 dark:text-yellow-200">
-            ⚠️ <strong>Demo限制:</strong> 使用コストのため、1人あたり24時間に5回までとさせていただきます。ご了承ください。
+            ⚠️ <strong>사용 제한:</strong> 죄송합니다. 사용 비용 때문에 1인당 5회로 제한됩니다.
           </p>
         </div>
       </div>
