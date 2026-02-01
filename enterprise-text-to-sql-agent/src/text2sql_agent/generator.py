@@ -118,11 +118,14 @@ class RuleBasedGenerator:
             return GenerationResult("SUCCESS", sql, params, rationale)
 
         return GenerationResult(
-            outcome_type="CLARIFY",
+            outcome_type="SAFE_ERROR",
             sql=None,
             parameters={},
-            rationale="Unable to map question to a known KPI template.",
-            clarification="Which KPI are you asking about? Examples: order fill rate, late ship rate.",
+            rationale=(
+                "This agent only answers KPI questions. "
+                "Examples: order fill rate, late ship rate, on-time delivery rate."
+            ),
+            clarification=None,
         )
 
 

@@ -41,7 +41,10 @@ class FileCache:
             return None
         return CacheEntry(response=payload[key])
 
-    def set(self, key: str, entry: CacheEntry) -> None:
+    def set(self, key: str, entry: CacheEntry | Dict[str, Any]) -> None:
         payload = self._load()
-        payload[key] = entry.response
+        if isinstance(entry, CacheEntry):
+            payload[key] = entry.response
+        else:
+            payload[key] = entry
         self._save(payload)
