@@ -47,11 +47,6 @@ The UI shows:
   - Validation
   - Execution
 
-## Screenshots
-
-![UI Home](docs/screenshots/ui-home.png)
-![UI Answer](docs/screenshots/ui-answer.png)
-
 ## Demo Flow
 
 1) Open the UI and select the default agent.
