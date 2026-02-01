@@ -177,7 +177,13 @@ def ask(
     
     if set_cookie:
         response = JSONResponse(content=response_payload)
-        response.set_cookie(_client_cookie_name, client_id, httponly=True, samesite="lax")
+        response.set_cookie(
+            _client_cookie_name, 
+            client_id, 
+            httponly=True, 
+            samesite="none",  # Changed from "lax" to "none" for cross-site
+            secure=True  # Required when samesite="none"
+        )
         return response
     return response_payload
 
@@ -392,7 +398,13 @@ def run_agent(
 
     response = StreamingResponse(event_stream(), media_type="application/json")
     if set_cookie:
-        response.set_cookie(_client_cookie_name, client_id, httponly=True, samesite="lax")
+        response.set_cookie(
+            _client_cookie_name, 
+            client_id, 
+            httponly=True, 
+            samesite="none",  # Changed from "lax" to "none" for cross-site
+            secure=True  # Required when samesite="none"
+        )
     _session_runs.setdefault(session_id, []).append(
         {
             "run_input": message,
