@@ -38,13 +38,11 @@ Inspect a trace after running:
 python -m runtime.cli show-trace <run_id>
 ```
 
-## Demo GIF placeholder
-
-Record a short CLI walkthrough and save it as `docs/demo.gif`. Update this section with:
-
+## Demo GIF 
 ```
-![Demo](docs/demo.gif)
-```
+
+https://github.com/user-attachments/assets/bae4a188-65dc-4e22-889e-5905e34ab3cb
+
 
 ## Tradeoffs and next steps
 
