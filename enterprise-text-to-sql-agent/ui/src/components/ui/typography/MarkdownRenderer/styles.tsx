@@ -59,7 +59,7 @@ const OrderedList = ({ className, ...props }: OrderedListProps) => (
     className={cn(
       className,
       PARAGRAPH_SIZES.body,
-      'flex list-decimal flex-col pl-10'
+      'flex list-decimal flex-col pl-6 space-y-2'
     )}
     {...filterProps(props)}
   />
@@ -67,7 +67,7 @@ const OrderedList = ({ className, ...props }: OrderedListProps) => (
 
 const Paragraph = ({ className, ...props }: ParagraphProps) => (
   <div
-    className={cn(className, PARAGRAPH_SIZES.body)}
+    className={cn(className, PARAGRAPH_SIZES.body, 'leading-relaxed text-primary')}
     {...filterProps(props)}
   />
 )
@@ -88,7 +88,7 @@ const ItalicText = ({ className, ...props }: ItalicTextProps) => (
 
 const StrongText = ({ className, ...props }: StrongTextProps) => (
   <strong
-    className={cn(className, 'text-lg font-semibold')}
+    className={cn(className, 'text-base font-bold text-primary')}
     {...filterProps(props)}
   />
 )
@@ -113,16 +113,43 @@ const DeletedText = ({ className, ...props }: DeletedTextProps) => (
 
 const HorizontalRule = ({ className, ...props }: HorizontalRuleProps) => (
   <hr
-    className={cn(className, 'mx-auto w-48 border-b border-border')}
+    className={cn(className, 'my-4 w-full border-t border-primary/15')}
     {...filterProps(props)}
   />
 )
 
 const InlineCode: FC<PreparedTextProps> = ({ children }) => {
   return (
-    <code className="relative whitespace-pre-wrap rounded-sm bg-background-secondary/50 p-1">
+    <code className="relative whitespace-pre-wrap rounded-md bg-primary/5 px-1.5 py-0.5 text-sm font-mono text-primary border border-primary/10">
       {children}
     </code>
+  )
+}
+
+interface CodeBlockProps {
+  children?: React.ReactNode
+  className?: string
+  inline?: boolean
+}
+
+const CodeBlock: FC<CodeBlockProps> = ({ children, className, inline }) => {
+  if (inline) {
+    return <InlineCode>{children}</InlineCode>
+  }
+  
+  const language = className?.replace('language-', '') || 'text'
+  
+  return (
+    <div className="relative my-4 w-full overflow-hidden rounded-lg border border-primary/15 bg-background-secondary/50">
+      <div className="flex items-center justify-between border-b border-primary/15 bg-background-secondary px-4 py-2">
+        <span className="text-xs font-mono text-secondary uppercase">{language}</span>
+      </div>
+      <pre className="overflow-x-auto p-4">
+        <code className="font-mono text-sm text-primary leading-relaxed">
+          {children}
+        </code>
+      </pre>
+    </div>
   )
 }
 
@@ -143,15 +170,15 @@ const AnchorLink = ({ className, ...props }: AnchorLinkProps) => (
 )
 
 const Heading1 = ({ className, ...props }: HeadingProps) => (
-  <h1 className={cn(className, HEADING_SIZES[3])} {...filterProps(props)} />
+  <h1 className={cn(className, 'text-2xl font-bold text-primary mb-2')} {...filterProps(props)} />
 )
 
 const Heading2 = ({ className, ...props }: HeadingProps) => (
-  <h2 className={cn(className, HEADING_SIZES[3])} {...filterProps(props)} />
+  <h2 className={cn(className, 'text-xl font-bold text-primary mb-2')} {...filterProps(props)} />
 )
 
 const Heading3 = ({ className, ...props }: HeadingProps) => (
-  <h3 className={cn(className, PARAGRAPH_SIZES.lead)} {...filterProps(props)} />
+  <h3 className={cn(className, 'text-lg font-semibold text-primary mb-1.5')} {...filterProps(props)} />
 )
 
 const Heading4 = ({ className, ...props }: HeadingProps) => (
@@ -265,7 +292,7 @@ export const components = {
   del: DeletedText,
   hr: HorizontalRule,
   blockquote: Blockquote,
-  code: InlineCode,
+  code: CodeBlock,
   a: AnchorLink,
   img: Img,
   p: Paragraph,

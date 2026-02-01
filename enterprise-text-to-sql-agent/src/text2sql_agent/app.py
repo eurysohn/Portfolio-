@@ -1,9 +1,11 @@
 import json
+import os
 import time
 import uuid
+from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, Form, Query, Request
+from fastapi import FastAPI, Form, Query, Request, Header, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -16,8 +18,11 @@ app = FastAPI(title="Enterprise Text-to-SQL Agent")
 agent = Text2SQLAgent(AgentConfig(db_url="sqlite:///data/app.db"))
 _sessions: Dict[str, Dict[str, Any]] = {}
 _session_runs: Dict[str, List[Dict[str, Any]]] = {}
-_rate_limit: Dict[str, int] = {}
-_rate_limit_max = 3
+_rate_limit: Dict[str, Dict[str, Any]] = {}  # Now stores count + timestamp
+_rate_limit_max = int(os.getenv("RATE_LIMIT_MAX", "3"))
+_rate_limit_window_hours = int(os.getenv("RATE_LIMIT_WINDOW_HOURS", "24"))
+_demo_mode = os.getenv("DEMO_MODE", "true").lower() == "true"
+_api_token = os.getenv("API_TOKEN", None)  # Optional token for bypassing rate limits
 _client_cookie_name = "t2s_client_id"
 
 app.add_middleware(
@@ -51,6 +56,12 @@ def health() -> dict:
 def root() -> dict:
     return {
         "message": "Enterprise Text-to-SQL Agent",
+        "demo_mode": _demo_mode,
+        "rate_limit": {
+            "max_requests": _rate_limit_max,
+            "window_hours": _rate_limit_window_hours,
+            "message": f"Demo is limited to {_rate_limit_max} requests per {_rate_limit_window_hours} hours per person"
+        },
         "endpoints": {
             "healthz": "/healthz",
             "schema": "/schema",
@@ -66,9 +77,13 @@ def get_schema() -> dict:
 
 
 @app.post("/ask")
-def ask(request: AskRequest, http_request: Request) -> dict:
+def ask(
+    request: AskRequest, 
+    http_request: Request,
+    authorization: Optional[str] = Header(None)
+) -> dict:
     client_id, set_cookie = _ensure_client_id(http_request)
-    _enforce_rate_limit(http_request, client_id)
+    _enforce_rate_limit(http_request, client_id, authorization)
     response_payload = agent.ask(request.question, scope=request.scope)
     if set_cookie:
         response = JSONResponse(content=response_payload)
@@ -134,9 +149,10 @@ def run_agent(
     message: str = Form(...),
     stream: str = Form("true"),
     session_id: Optional[str] = Form(None),
+    authorization: Optional[str] = Header(None)
 ) -> StreamingResponse:
     client_id, set_cookie = _ensure_client_id(http_request)
-    _enforce_rate_limit(http_request, client_id)
+    _enforce_rate_limit(http_request, client_id, authorization)
     run_id = str(uuid.uuid4())
     created_at = int(time.time())
     session_id = session_id or str(uuid.uuid4())
@@ -167,20 +183,25 @@ def run_agent(
 
     def _format_thinking() -> str:
         if not reasoning_steps:
-            return "- STEP 1: Scope check\n- STEP 2: Schema grounding\n- STEP 3: SQL generation\n- STEP 4: Validation\n- STEP 5: Execution"
+            return "1. **Scope check**\n2. **Schema grounding**\n3. **SQL generation**\n4. **Validation**\n5. **Execution**"
         lines: List[str] = []
         for idx, step in enumerate(reasoning_steps, start=1):
             title = step.get("title", "Step")
             result = step.get("result", "OK")
-            lines.append(f"- STEP {idx}: {title} — {result}")
+            lines.append(f"{idx}. **{title}**: {result}")
         return "\n".join(lines)
 
     formatted_summary = (
+        f"### 📊 Answer\n\n"
         f"**{summary_text}**\n\n"
-        f"*Source: {rationale}*\n\n"
-        f"*SQL*\n"
+        f"---\n\n"
+        f"### 💡 How this was calculated\n\n"
+        f"{rationale}\n\n"
+        f"---\n\n"
+        f"### 🔍 SQL Query\n\n"
         f"```sql\n{sql_text}\n```\n\n"
-        f"*Thinking*\n"
+        f"---\n\n"
+        f"### 🧠 Thinking Process\n\n"
         f"{_format_thinking()}"
     )
 
@@ -277,17 +298,49 @@ def _ensure_client_id(request: Request) -> tuple[str, bool]:
     return str(uuid.uuid4()), True
 
 
-def _enforce_rate_limit(request: Request, client_id: str) -> None:
+def _enforce_rate_limit(request: Request, client_id: str, authorization: Optional[str] = None) -> None:
+    # Bypass rate limit if valid API token provided
+    if _api_token and authorization:
+        token = authorization.replace("Bearer ", "")
+        if token == _api_token:
+            return
+    
+    # Demo mode: enforce strict rate limits
+    if not _demo_mode:
+        return
+    
     client_ip = request.client.host if request.client else "unknown"
     key = f"{client_ip}:{client_id}"
-    current = _rate_limit.get(key, 0)
-    if current >= _rate_limit_max:
-        raise RateLimitExceeded()
-    _rate_limit[key] = current + 1
+    
+    now = datetime.now()
+    
+    # Get or initialize rate limit data
+    if key not in _rate_limit:
+        _rate_limit[key] = {"count": 0, "window_start": now}
+    
+    rate_data = _rate_limit[key]
+    window_start = rate_data["window_start"]
+    
+    # Reset if window has expired
+    if now - window_start > timedelta(hours=_rate_limit_window_hours):
+        _rate_limit[key] = {"count": 0, "window_start": now}
+        rate_data = _rate_limit[key]
+    
+    # Check limit
+    if rate_data["count"] >= _rate_limit_max:
+        time_remaining = (_rate_limit_window_hours * 3600) - (now - window_start).total_seconds()
+        hours_remaining = int(time_remaining / 3600)
+        minutes_remaining = int((time_remaining % 3600) / 60)
+        raise RateLimitExceeded(hours_remaining, minutes_remaining)
+    
+    # Increment counter
+    _rate_limit[key]["count"] += 1
 
 
 class RateLimitExceeded(Exception):
-    pass
+    def __init__(self, hours_remaining: int, minutes_remaining: int):
+        self.hours_remaining = hours_remaining
+        self.minutes_remaining = minutes_remaining
 
 
 @app.exception_handler(RateLimitExceeded)

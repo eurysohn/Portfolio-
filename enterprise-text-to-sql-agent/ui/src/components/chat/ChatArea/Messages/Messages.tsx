@@ -14,6 +14,7 @@ import React, { type FC } from 'react'
 
 import Icon from '@/components/ui/icon'
 import ChatBlankState from './ChatBlankState'
+import RecommendedQuestions from './RecommendedQuestions'
 
 interface MessageListProps {
   messages: ChatMessage[]
@@ -173,6 +174,7 @@ const Messages = ({ messages }: MessageListProps) => {
         }
         return <UserMessage key={key} message={message} />
       })}
+      <RecommendedQuestions />
     </>
   )
 }
