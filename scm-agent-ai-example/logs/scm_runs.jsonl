@@ -1,0 +1,1 @@
+{"run_id": "ee8500e6-57a4-4f9c-b287-b05a51aa3d3a", "query": "What is OTIF?", "intent": "CALCULATION", "tool_calls": ["calculator"], "sources": [], "confidence": 0.9, "answer": "- OTIF = 87.4%"}

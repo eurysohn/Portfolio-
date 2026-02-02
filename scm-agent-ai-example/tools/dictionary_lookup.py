@@ -1,0 +1,29 @@
+from typing import List, Tuple, Dict
+
+# Mock dictionary for demo purposes
+SCM_DICT = {
+    "otif": {
+        "term": "OTIF",
+        "definition": "On-Time In-Full",
+        "business_meaning": "A key performance indicator that measures whether the supply chain was able to deliver the expected product in the quantity ordered at the place and time agreed upon.",
+        "formula": "OTIF = % On-Time * % In-Full"
+    },
+    "eoq": {
+        "term": "EOQ",
+        "definition": "Economic Order Quantity",
+        "business_meaning": "The ideal order quantity a company should purchase to minimize inventory costs such as holding costs, shortage costs, and order costs.",
+        "formula": "sqrt((2 * D * S) / H)"
+    }
+}
+
+def lookup(query: str) -> Tuple[List[Dict], List[str]]:
+    query_lower = query.lower()
+    results = []
+    related = []
+    
+    for term, data in SCM_DICT.items():
+        if term in query_lower:
+            results.append(data)
+            related.append(term)
+            
+    return results, related

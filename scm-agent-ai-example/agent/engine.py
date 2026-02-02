@@ -227,7 +227,9 @@ def _to_markdown(answer: str, max_bullets: int = 5) -> str:
     return formatted
 
 
-def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3) -> Dict:
+def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, api_key: Optional[str] = None) -> Dict:
+    # Use provided api_key for LLM calls if needed
+    # (Note: Current tools are mock or localized, but this is for future LLM tool usage)
     dict_results, related_terms = lookup(query)
     routing = route(query, related_terms)
     intent = routing["intent"]
