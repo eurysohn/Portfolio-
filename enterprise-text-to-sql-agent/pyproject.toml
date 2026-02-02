@@ -3,7 +3,7 @@ name = "enterprise-text-to-sql-agent"
 version = "0.1.0"
 description = "Enterprise-grade Text-to-SQL agent with safety guardrails"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.9"
 dependencies = [
     "fastapi>=0.110.0",
     "pydantic>=2.5.0",
@@ -24,12 +24,11 @@ dev = [
 text2sql-agent = "text2sql_agent.cli:main"
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
 testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py39"
 select = ["E", "F", "I", "UP", "B"]
 ignore = ["E501"]
 

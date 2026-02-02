@@ -1,14 +1,10 @@
 FROM python:3.11-slim
 
 WORKDIR /app
-COPY pyproject.toml /app/
-COPY src /app/src
-COPY data /app/data
-COPY eval /app/eval
-COPY tests /app/tests
-COPY README.md /app/README.md
-COPY scripts /app/scripts
+COPY . /app
 
-RUN pip install --no-cache-dir -e .
+RUN pip install --no-cache-dir .
 
-CMD ["/bin/sh", "/app/scripts/start.sh"]
+EXPOSE 8000
+
+CMD ["uvicorn", "text2sql_agent.app:app", "--host", "0.0.0.0", "--port", "8000"]

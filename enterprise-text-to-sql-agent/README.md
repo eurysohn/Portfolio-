@@ -32,14 +32,20 @@ This project demonstrates a production-ready approach to enterprise Text-to-SQL 
 - 🎨 **Clean UI** with mode selector (Rules/Hybrid/LLM) powered by agno-agi/agent-ui
 - 🔒 **Rate limiting**: 5 requests per person per 24 hours for demo cost management
 
-## 3-minute Quickstart
+## Quickstart (Python >=3.9)
 
 ```bash
-make setup
-make init-db
-make demo
-make eval
+make smoke
 make test
+uvicorn text2sql_agent.app:app --reload
+```
+
+## Manual setup (optional)
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
 ```
 
 The demo includes:
@@ -163,10 +169,23 @@ CLARIFY:
 ## CLI Commands
 
 ```bash
-python -m text2sql_agent.cli init-db
-python -m text2sql_agent.cli ask "order fill rate last 30 days" --scope default
-python -m text2sql_agent.cli show-schema
-python -m text2sql_agent.cli eval
+python3 -m text2sql_agent.cli init-db
+python3 -m text2sql_agent.cli ask "order fill rate last 30 days" --scope default
+python3 -m text2sql_agent.cli show-schema
+python3 -m text2sql_agent.cli eval
+```
+
+## Docker smoke (matches Fly.io)
+
+```bash
+make docker-smoke
+```
+
+Manual:
+
+```bash
+docker build -t text2sql-agent .
+docker run --rm -p 8000:8000 text2sql-agent
 ```
 
 ## API Endpoints
