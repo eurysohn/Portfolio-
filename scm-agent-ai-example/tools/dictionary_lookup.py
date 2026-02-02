@@ -2,6 +2,12 @@ from typing import Dict, List, Tuple
 
 # Mock dictionary for demo purposes
 SCM_DICT = {
+    "scm": {
+        "term": "SCM",
+        "definition": "Supply Chain Management",
+        "business_meaning": "End-to-end planning, sourcing, production, logistics, and fulfillment.",
+        "formula": "N/A"
+    },
     "otif": {
         "term": "OTIF",
         "definition": "On-Time In-Full",

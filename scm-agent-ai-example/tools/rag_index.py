@@ -1,4 +1,5 @@
 import json
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
@@ -102,15 +103,27 @@ def search_index(query: str, top_k: int = 3) -> List[Dict]:
     index = load_index()
     query_vec = index.vectorizer.transform([query])
     scores = cosine_similarity(query_vec, index.matrix).flatten()
+    query_tokens = {
+        token
+        for token in re.split(r"[^a-zA-Z0-9가-힣]+", query.lower())
+        if token
+    }
     top_indices = scores.argsort()[::-1][:top_k]
     results: List[Dict] = []
     for idx in top_indices:
         meta = index.metadata[idx]
+        text_tokens = {
+            token
+            for token in re.split(r"[^a-zA-Z0-9가-힣]+", meta["text"].lower())
+            if token
+        }
+        overlap = len(query_tokens & text_tokens)
+        score = float(scores[idx]) + (0.15 * overlap)
         results.append(
             {
                 "source_id": meta["source_id"],
                 "chunk_id": meta["chunk_id"],
-                "score": float(scores[idx]),
+                "score": score,
                 "text": meta["text"],
                 "page_text": meta["text"],
             }

@@ -5,7 +5,7 @@ import uuid
 from threading import Lock
 from typing import Dict, Optional, Tuple
 
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -117,6 +117,8 @@ async def health_check_alias():
 
 @app.post("/query")
 async def query_agent(payload: QueryRequest, request: Request):
+    if settings.REQUIRE_API_KEY and not payload.api_key:
+        raise HTTPException(status_code=401, detail="OPENAI_API_KEY is required.")
     logger.info(
         "agent_query query_len=%s top_k=%s correlation_id=%s",
         len(payload.query),

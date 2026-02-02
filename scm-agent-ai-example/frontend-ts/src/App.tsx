@@ -8,6 +8,7 @@ interface Message {
     steps?: { title: string; status: 'done' | 'running' | 'waiting' }[];
     sources?: string[];
     confidence?: number;
+    traceSummary?: string;
 }
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
     const [apiKey, setApiKey] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const chatEndRef = useRef<HTMLDivElement>(null);
+    const apiKeyMissing = !apiKey.trim();
 
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -29,7 +31,7 @@ function App() {
     useEffect(scrollToBottom, [messages]);
 
     const handleSend = async () => {
-        if (!input.trim()) return;
+        if (!input.trim() || apiKeyMissing) return;
 
         const userMsg: Message = { role: 'user', content: input };
         setMessages(prev => [...prev, userMsg]);
@@ -54,7 +56,9 @@ function App() {
                 body: JSON.stringify({ query: input, api_key: apiKey }),
             });
             if (!response.ok) {
-                throw new Error('Request failed');
+                const errorBody = await response.json().catch(() => null);
+                const detail = errorBody?.detail || 'Request failed';
+                throw new Error(detail);
             }
 
             const data = await response.json();
@@ -63,6 +67,7 @@ function App() {
             const confidence =
                 typeof data?.confidence === 'number' ? data.confidence : undefined;
             const sources = Array.isArray(data?.sources) ? data.sources : [];
+            const traceSummary = typeof data?.trace_summary === 'string' ? data.trace_summary : undefined;
 
             setMessages(prev => {
                 const newMsgs = [...prev];
@@ -78,6 +83,7 @@ function App() {
                         { title: 'Response Finalized', status: 'done' }
                     ],
                     confidence,
+                    traceSummary,
                     sources: sources
                         .map((s: any) => s?.source)
                         .filter((source: unknown): source is string => typeof source === 'string')
@@ -88,7 +94,9 @@ function App() {
             setMessages(prev => {
                 const newMsgs = [...prev];
                 // TODO: Surface backend error details in a safe user-friendly banner.
-                newMsgs[newMsgs.length - 1].content = 'Error connecting to the agent. Please check your backend.';
+                newMsgs[newMsgs.length - 1].content = error instanceof Error
+                    ? `Error: ${error.message}`
+                    : 'Error connecting to the agent. Please check your backend.';
                 return newMsgs;
             });
         } finally {
@@ -119,23 +127,6 @@ function App() {
                     </div>
                 </div>
 
-                <div className="config-section">
-                    <label className="section-label">Credentials</label>
-                    <div className="config-card">
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                            <Shield size={14} />
-                            <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>OpenAI API Key</span>
-                        </div>
-                        <input
-                            type="password"
-                            className="key-input"
-                            placeholder="sk-..."
-                            value={apiKey}
-                            onChange={(e) => setApiKey(e.target.value)}
-                        />
-                    </div>
-                </div>
-
                 <div className="config-section" style={{ marginTop: 'auto' }}>
                     <label className="section-label">Tools Active</label>
                     <div className="tool-toggle"><div className="toggle-dot checked"></div> RAG Search</div>
@@ -145,6 +136,31 @@ function App() {
             </aside>
 
             <main className="main-content">
+                <div className="hero-card">
+                    <div className="hero-title">SCM Intelligence Agent Framework</div>
+                    <div className="hero-subtitle">
+                        I can search RAG, calculate SCM Scores or use Web to answer your questions.
+                    </div>
+                    <div className="hero-note">To start, please enter an OpenAI API key to use.</div>
+                </div>
+                <div className="config-card hero-credentials">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                        <Shield size={14} />
+                        <span style={{ fontSize: '0.875rem', fontWeight: 500 }}>OpenAI API Key</span>
+                    </div>
+                    <input
+                        type="password"
+                        className="key-input"
+                        placeholder="sk-..."
+                        value={apiKey}
+                        onChange={(e) => setApiKey(e.target.value)}
+                    />
+                    {apiKeyMissing && (
+                        <div style={{ marginTop: '6px', fontSize: '0.75rem', color: 'var(--text-sub)' }}>
+                            API key is required to run queries.
+                        </div>
+                    )}
+                </div>
                 <div className="chat-container">
                     {messages.map((msg, idx) => (
                         <div key={idx} className={`message-row ${msg.role}`}>
@@ -169,6 +185,24 @@ function App() {
                                     </div>
                                 )}
                                 <div className="message-text">{msg.content}</div>
+                                {msg.traceSummary && (
+                                    <div className="message-meta">
+                                        <div style={{ fontWeight: 600, marginBottom: '6px' }}>
+                                            Workflow Trace (high-level)
+                                        </div>
+                                        <pre style={{ whiteSpace: 'pre-wrap' }}>{msg.traceSummary}</pre>
+                                    </div>
+                                )}
+                                {msg.sources && msg.sources.length > 0 && (
+                                    <div className="message-meta">
+                                        <div style={{ fontWeight: 600, marginBottom: '6px' }}>Sources</div>
+                                        <ul style={{ paddingLeft: '18px', margin: 0 }}>
+                                            {msg.sources.map((source) => (
+                                                <li key={source}>{source}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                                 {msg.confidence && (
                                     <div className="message-meta">
                                         Confidence: {(msg.confidence * 100).toFixed(1)}% | Sources: {msg.sources?.length || 0}
@@ -189,9 +223,9 @@ function App() {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                            disabled={isLoading}
+                            disabled={isLoading || apiKeyMissing}
                         />
-                        <button className="send-button" onClick={handleSend} disabled={isLoading}>
+                        <button className="send-button" onClick={handleSend} disabled={isLoading || apiKeyMissing}>
                             <Send size={18} />
                         </button>
                     </div>

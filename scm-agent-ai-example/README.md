@@ -64,6 +64,7 @@ python scripts/eval_golden_set.py
 - `PORT`: API port (Fly `internal_port` must match).
 - `LOG_LEVEL`: `INFO` by default.
 - `GIT_SHA`: Optional commit hash for health reporting.
+- `REQUIRE_API_KEY`: Require `OPENAI_API_KEY` for `/query` (default false).
 - `OPENAI_API_KEY`: **Secret** (set via `fly secrets set`).
 
 ## 🚢 Fly.io Deployment

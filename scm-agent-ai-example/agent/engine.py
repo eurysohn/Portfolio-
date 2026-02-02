@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from agent.prompts import ANSWER_TEMPLATE
 from agent.router import route
 from app.trace_schema import RetrievalHit, WorkflowTrace
+from config import settings
 from tools.calculators import economic_order_quantity, fill_rate, otif, reorder_point, safety_stock
 from tools.data_query import query_kpi
 from tools.dictionary_lookup import lookup
@@ -125,7 +126,7 @@ def is_scm_question(query: str) -> bool:
     out_of_scope = ["weather", "poem", "game", "sports", "movie", "celebrity"]
     if any(keyword in text for keyword in out_of_scope):
         return False
-    return any(keyword in text for keyword in SCM_KEYWORDS) or True
+    return True
 
 
 def expand_with_dictionary(query: str) -> Tuple[str, List[str]]:
@@ -153,6 +154,49 @@ def maybe_run_data_query(query: str) -> Optional[Dict]:
 
 def maybe_run_web_search(query: str) -> List[Dict]:
     return web_search(query, max_results=3)
+
+
+def _source_url(source_id: str) -> str:
+    if source_id.startswith("http"):
+        return source_id
+    base = settings.DOCS_BASE_URL.rstrip("/")
+    return f"{base}/{source_id}.md"
+
+
+def _sources_markdown(source_ids: List[str]) -> str:
+    unique = []
+    for source_id in source_ids:
+        if source_id not in unique:
+            unique.append(source_id)
+    if not unique:
+        return "- None"
+    return "\n".join(f"- {_source_url(source_id)}" for source_id in unique)
+
+
+def _to_bullets(text: str) -> List[str]:
+    chunks = [c.strip() for c in re.split(r"[\n\.]", text) if c.strip()]
+    return [f"- {c}" for c in chunks]
+
+
+def _build_rag_answer(query: str, context: str, detailed: bool, source_ids: List[str]) -> str:
+    focused = _select_relevant_sentences(query, context, max_sentences=5 if detailed else 3)
+    summary = focused or _summarize_context(context, max_sentences=5 if detailed else 3)
+    if not summary:
+        return "No relevant information found in sources."
+
+    key_points = _select_relevant_sentences(query, context, max_sentences=6 if detailed else 4)
+    key_bullets = _to_bullets(key_points or summary)
+
+    sections = []
+    sections.append("## 핵심 내용\n" + "\n".join(key_bullets))
+    sections.append("Sources:\n" + _sources_markdown(source_ids))
+
+    if detailed:
+        detail_text = summary
+        sections.append("\n## 세부 설명\n" + detail_text)
+        sections.append("Sources:\n" + _sources_markdown(source_ids))
+
+    return "\n\n".join(sections)
 
 def _format_sources(sources: List[Dict]) -> str:
     if not sources:
@@ -374,13 +418,8 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
         else:
             context_blocks.append(s["text"])
     context = "\n\n".join(context_blocks)[:2000]
-
-    focused = _select_relevant_sentences(query, context, max_sentences=3)
-    if focused:
-        answer = focused
-    else:
-        summary = _summarize_context(context, max_sentences=3)
-        answer = summary if summary else "No relevant information found in sources."
+    detailed = any(token in query.lower() for token in ["detail", "detailed", "explain", "how"])
+    answer = _build_rag_answer(query, context, detailed=detailed, source_ids=trace.citations)
 
     if data_result:
         structured = json.dumps(data_result, ensure_ascii=True)
