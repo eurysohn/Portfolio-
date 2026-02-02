@@ -82,17 +82,17 @@ flowchart TD
 ## 🏛️ Architecture Overview (Mermaid)
 ```mermaid
 flowchart LR
-  UI[Web UI] --> API[FastAPI /query]
+  UI[Web UI] --> API[FastAPI Query]
   API --> ENG[Agent Engine]
   ENG --> ROUTE[LLM Intent Routing]
   ENG --> DICT[Dictionary Lookup]
-  ENG --> RAGIDX[RAG Index (TF-IDF)]
+  ENG --> RAGIDX[RAG Index TFIDF]
   ENG --> KPIS[Structured KPI Data]
   ENG --> WEB[Web Search Fallback]
   RAGIDX --> KB[Knowledge Base Markdown]
   ENG --> TRACE[Workflow Trace Schema]
-  API --> METRICS[/metrics]
-  API --> HEALTH[/healthz]
+  API --> METRICS[Metrics]
+  API --> HEALTH[Health]
 ```
 
 ## 🔧 Environment Variables
