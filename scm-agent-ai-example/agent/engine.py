@@ -126,7 +126,8 @@ def is_scm_question(query: str) -> bool:
     out_of_scope = ["weather", "poem", "game", "sports", "movie", "celebrity"]
     if any(keyword in text for keyword in out_of_scope):
         return False
-    return True
+    dict_results, _ = lookup(query)
+    return any(keyword in text for keyword in SCM_KEYWORDS) or bool(dict_results)
 
 
 def expand_with_dictionary(query: str) -> Tuple[str, List[str]]:
@@ -446,6 +447,7 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
                 }
                 for idx, r in enumerate(web_results, start=1)
             ]
+            trace.citations = [item["source"] for item in sources]
             trace.add_route("web_search")
             trace.add_tool("web_search")
 
