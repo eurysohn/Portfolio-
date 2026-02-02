@@ -23,15 +23,23 @@ function App() {
     const [input, setInput] = useState('');
     const [apiKey, setApiKey] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const chatEndRef = useRef<HTMLDivElement>(null);
+    const lastMessageRef = useRef<HTMLDivElement>(null);
+    const inputRef = useRef<HTMLTextAreaElement>(null);
+    const recommendedQuestions = [
+        'What is the baseline forecast horizon in the playbook?',
+        'How should promotions be tagged in forecasts?',
+        'What split is recommended between baseline and planner override?',
+        'How is OTD calculated?',
+        'What is the dock-to-stock target time?',
+    ];
     const apiKeyMissing = !apiKey.trim();
     const apiKeyLooksValid = apiKey.trim().startsWith('sk-') && apiKey.trim().length >= 20;
 
-    const scrollToBottom = () => {
-        chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const scrollToLatestAnswer = () => {
+        lastMessageRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     };
 
-    useEffect(scrollToBottom, [messages]);
+    useEffect(scrollToLatestAnswer, [messages]);
 
     const handleSend = async () => {
         if (!input.trim() || !apiKeyLooksValid) return;
@@ -39,6 +47,9 @@ function App() {
         const userMsg: Message = { role: 'user', content: input };
         setMessages(prev => [...prev, userMsg]);
         setInput('');
+        if (inputRef.current) {
+            inputRef.current.style.height = 'auto';
+        }
         setIsLoading(true);
 
         const agentMsg: Message = {
@@ -99,7 +110,7 @@ function App() {
             setMessages(prev => {
                 const newMsgs = [...prev];
                 // TODO: Surface backend error details in a safe user-friendly banner.
-                newMsgs[newMsgs.length - 1].content = error instanceof Error
+                    newMsgs[newMsgs.length - 1].content = error instanceof Error
                     ? `Error: ${error.message}`
                     : 'Error connecting to the agent. Please check your backend.';
                 return newMsgs;
@@ -141,13 +152,6 @@ function App() {
             </aside>
 
             <main className="main-content">
-                <div className="hero-card">
-                    <div className="hero-title">SCM Intelligence Agent Framework</div>
-                    <div className="hero-subtitle">
-                        I can search RAG, calculate SCM Scores or use Web to answer your questions.
-                    </div>
-                    <div className="hero-note">To start, please enter an OpenAI API key to use.</div>
-                </div>
                 <div className="config-card hero-credentials">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
                         <Shield size={14} />
@@ -167,8 +171,35 @@ function App() {
                     )}
                 </div>
                 <div className="chat-container">
+                    <div className="welcome-card">
+                        <div className="welcome-title">SCM Intelligence Agent Framework</div>
+                        <div className="welcome-subtitle">
+                            I can search RAG, calculate SCM Scores or use Web to answer your questions.
+                        </div>
+                        <div className="welcome-note">To start, please enter an OpenAI API key to use.</div>
+                        <div className="welcome-section">Recommended questions</div>
+                        <div className="welcome-buttons">
+                            {recommendedQuestions.map((question) => (
+                                <button
+                                    key={question}
+                                    type="button"
+                                    className="welcome-button"
+                                    onClick={() => {
+                                        setInput(question);
+                                        inputRef.current?.focus();
+                                    }}
+                                >
+                                    {question}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                     {messages.map((msg, idx) => (
-                        <div key={idx} className={`message-row ${msg.role}`}>
+                        <div
+                            key={idx}
+                            ref={idx === messages.length - 1 ? lastMessageRef : undefined}
+                            className={`message-row ${msg.role}`}
+                        >
                             <div className="avatar">
                                 {msg.role === 'user' ? <div className="user-icon" /> : <Zap size={18} />}
                             </div>
@@ -224,18 +255,29 @@ function App() {
                             </div>
                         </div>
                     ))}
-                    <div ref={chatEndRef} />
                 </div>
 
                 <div className="input-area">
                     <div className="input-wrapper">
-                        <input
-                            type="text"
+                        <textarea
+                            ref={inputRef}
                             className="chat-input"
                             placeholder="Ask about OTIF, EOQ, or demand forecasting..."
                             value={input}
+                            rows={1}
                             onChange={(e) => setInput(e.target.value)}
-                            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                            onInput={(e) => {
+                                // Auto-resize to keep long questions readable.
+                                e.currentTarget.style.height = 'auto';
+                                e.currentTarget.style.height = `${e.currentTarget.scrollHeight}px`;
+                            }}
+                            onKeyDown={(e) => {
+                                // Send on Enter, allow newline with Shift+Enter.
+                                if (e.key === 'Enter' && !e.shiftKey) {
+                                    e.preventDefault();
+                                    handleSend();
+                                }
+                            }}
                             disabled={isLoading || !apiKeyLooksValid}
                         />
                         <button className="send-button" onClick={handleSend} disabled={isLoading || !apiKeyLooksValid}>

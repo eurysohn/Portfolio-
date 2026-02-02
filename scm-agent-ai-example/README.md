@@ -57,6 +57,12 @@ curl -X POST http://localhost:8080/query \
 python scripts/eval_golden_set.py
 ```
 
+## 🧭 UI Behavior (Web)
+- **Answer layout**: Responses render as Answer / Evidence / Next step, with source URLs in Evidence.
+- **Recommended questions**: Clickable buttons that populate the input box.
+- **Scroll behavior**: On each response, the view snaps to the start of the latest answer (no auto-scroll to bottom).
+- **API key required**: Valid `sk-` key is required before querying.
+
 ## 🔧 Environment Variables
 - `APP_NAME`: Service name.
 - `APP_VERSION`: Release version (e.g., `0.1.0`).

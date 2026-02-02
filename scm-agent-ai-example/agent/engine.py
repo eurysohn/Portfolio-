@@ -181,6 +181,14 @@ def _clean_line(text: str) -> str:
     return re.sub(r"^#+\s*", "", text).strip()
 
 
+def _clean_snippet(text: str) -> str:
+    clean = re.sub(r"[\r\n]+", " ", text).strip()
+    clean = re.sub(r"^[-*•]\s+", "", clean)
+    clean = _clean_line(clean)
+    clean = re.sub(r"\s+", " ", clean).strip()
+    return clean
+
+
 def _normalize_markdown_list(text: str) -> str:
     lines = [line.strip() for line in text.splitlines()]
     lines = [line for line in lines if line and line not in {"-", "*", "•"}]
@@ -299,10 +307,10 @@ def _compose_answer(
 ) -> str:
     evidence = evidence_lines if evidence_lines else ["- No internal evidence found."]
     parts = [
-        f"**Answer**: {answer_text}",
-        "**Evidence**:",
+        f"<div class=\"answer-line\"><span class=\"answer-label\">Answer</span>: {answer_text}</div>",
+        "<div class=\"evidence-line\"><span class=\"evidence-label\">Evidence</span>:</div>",
         *evidence,
-        f"**Next step**: {next_step}",
+        f"<div class=\"next-line\"><span class=\"next-label\">Next step</span>: {next_step}</div>",
         route_tag,
     ]
     return "\n".join(parts)
@@ -590,7 +598,8 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
 
     evidence_lines = []
     for hit in retrieval_hits[:5]:
-        evidence_lines.append(f"- {hit.snippet} ({_source_url(hit.source_id)})")
+        snippet = _clean_snippet(hit.snippet)
+        evidence_lines.append(f"- {snippet} ({_source_url(hit.source_id)})")
     if data_result:
         evidence_lines.append(f"- Structured data: {json.dumps(data_result, ensure_ascii=True)}")
 
