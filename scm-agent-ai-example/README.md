@@ -66,17 +66,17 @@ python scripts/eval_golden_set.py
 ## 🧩 Agent Workflow (Mermaid)
 ```mermaid
 flowchart TD
-  Q[User Query] --> K[API Key Valid?]
-  K -->|No| OOS[Out-of-scope Guard] --> R1[Return Scope Message]
+  Q[User Query] --> K{API Key Valid}
+  K -->|No| OOS[Out of Scope Guard] --> R1[Return Scope Message]
   K -->|Yes| I[LLM Intent Classifier]
   I --> S[SCM Scope Check]
   S --> D[Dictionary Expansion]
   D --> RAG[Retrieve Internal Knowledge]
-  RAG --> DATA[Structured KPI Query (optional)]
-  DATA --> WEB[Web Fallback (if RAG confidence low)]
+  RAG --> DATA[Structured KPI Query Optional]
+  DATA --> WEB[Web Fallback if RAG Low Confidence]
   WEB --> GEN[Answer Generation]
-  GEN --> TRACE[Workflow Trace + Evidence]
-  TRACE --> RESP[Response: Answer / Evidence / Next step]
+  GEN --> TRACE[Workflow Trace and Evidence]
+  TRACE --> RESP[Response Answer Evidence Next Step]
 ```
 
 ## 🏛️ Architecture Overview (Mermaid)
@@ -112,15 +112,6 @@ flowchart LR
 
 ## 🌐 Live Demo
 - https://scm-agent-ai-example-eury.fly.dev/
-
-## 📊 Demo Scenarios
-1. **SCM Definition**: "What is EOQ and how is it measured?" -> Returns business definition + formula.
-   - Local: `curl -X POST http://localhost:8080/query -H "Content-Type: application/json" -d '{"query": "What is EOQ and how is it measured?", "top_k": 3}'`
-   - Fly: `curl -X POST https://<app-name>.fly.dev/query -H "Content-Type: application/json" -d '{"query": "What is EOQ and how is it measured?", "top_k": 3}'`
-2. **Real-time Calculation**: "Calculate OTIF for 90% on-time and 95% in-full." -> Returns `85.5%`.
-   - Local: `curl -X POST http://localhost:8080/query -H "Content-Type: application/json" -d '{"query": "Calculate OTIF for 90% on-time and 95% in-full.", "top_k": 3}'`
-   - Fly: `curl -X POST https://<app-name>.fly.dev/query -H "Content-Type: application/json" -d '{"query": "Calculate OTIF for 90% on-time and 95% in-full.", "top_k": 3}'`
-3. **Knowledge Search**: "How to improve demand forecasting?" -> Returns RAG-based insights.
 
 ## 🏗️ Advanced Docs
 - [ARCHITECTURE.md](ARCHITECTURE.md) - Design patterns & data flow.
