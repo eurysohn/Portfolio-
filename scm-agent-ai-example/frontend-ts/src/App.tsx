@@ -53,24 +53,41 @@ function App() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query: input, api_key: apiKey }),
             });
+            if (!response.ok) {
+                throw new Error('Request failed');
+            }
+
             const data = await response.json();
+            const answer = typeof data?.answer === 'string' ? data.answer : '응답을 이해할 수 없어요.';
+            const domain = typeof data?.domain === 'string' ? data.domain : 'UNKNOWN';
+            const confidence =
+                typeof data?.confidence === 'number' ? data.confidence : undefined;
+            const sources = Array.isArray(data?.sources) ? data.sources : [];
 
             setMessages(prev => {
                 const newMsgs = [...prev];
-                const lastMsg = newMsgs[newMsgs.length - 1];
-                lastMsg.content = data.answer;
-                lastMsg.steps = [
-                    { title: 'Intent Detected: ' + data.domain, status: 'done' },
-                    { title: 'Information Retrieved', status: 'done' },
-                    { title: 'Response Finalized', status: 'done' }
-                ];
-                lastMsg.confidence = data.confidence;
-                lastMsg.sources = data.sources.map((s: any) => s.source);
+                const lastIdx = newMsgs.length - 1;
+                const lastMsg = newMsgs[lastIdx];
+                // Avoid mutating state directly to prevent render inconsistencies.
+                newMsgs[lastIdx] = {
+                    ...lastMsg,
+                    content: answer,
+                    steps: [
+                        { title: 'Intent Detected: ' + domain, status: 'done' },
+                        { title: 'Information Retrieved', status: 'done' },
+                        { title: 'Response Finalized', status: 'done' }
+                    ],
+                    confidence,
+                    sources: sources
+                        .map((s: any) => s?.source)
+                        .filter((source: unknown): source is string => typeof source === 'string')
+                };
                 return newMsgs;
             });
         } catch (error) {
             setMessages(prev => {
                 const newMsgs = [...prev];
+                // TODO: Surface backend error details in a safe user-friendly banner.
                 newMsgs[newMsgs.length - 1].content = 'Error connecting to the agent. Please check your backend.';
                 return newMsgs;
             });

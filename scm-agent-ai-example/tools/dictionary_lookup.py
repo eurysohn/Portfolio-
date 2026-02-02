@@ -1,4 +1,4 @@
-from typing import List, Tuple, Dict
+from typing import Dict, List, Tuple
 
 # Mock dictionary for demo purposes
 SCM_DICT = {
@@ -20,10 +20,10 @@ def lookup(query: str) -> Tuple[List[Dict], List[str]]:
     query_lower = query.lower()
     results = []
     related = []
-    
+
     for term, data in SCM_DICT.items():
         if term in query_lower:
             results.append(data)
             related.append(term)
-            
+
     return results, related

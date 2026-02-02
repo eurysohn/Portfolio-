@@ -2,15 +2,16 @@ import json
 import re
 import uuid
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
-from agent.prompts import ANSWER_TEMPLATE, SYSTEM_PROMPT
+from agent.prompts import ANSWER_TEMPLATE
 from agent.router import route
+from app.trace_schema import RetrievalHit, WorkflowTrace
 from tools.calculators import economic_order_quantity, fill_rate, otif, reorder_point, safety_stock
+from tools.data_query import query_kpi
 from tools.dictionary_lookup import lookup
 from tools.rag_search import search
 from tools.web_search import web_search
-
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 LOG_PATH = BASE_DIR / "logs" / "scm_runs.jsonl"
@@ -91,6 +92,67 @@ STOPWORDS = {
     "해줘",
 }
 
+
+SCM_KEYWORDS = {
+    "scm",
+    "supply chain",
+    "supply",
+    "supplier",
+    "procurement",
+    "logistics",
+    "warehouse",
+    "inventory",
+    "demand",
+    "forecast",
+    "s&op",
+    "otif",
+    "fill rate",
+    "reorder point",
+    "safety stock",
+    "수요",
+    "공급",
+    "공급망",
+    "조달",
+    "물류",
+    "창고",
+    "재고",
+    "예측",
+}
+
+
+def is_scm_question(query: str) -> bool:
+    text = query.lower()
+    out_of_scope = ["weather", "poem", "game", "sports", "movie", "celebrity"]
+    if any(keyword in text for keyword in out_of_scope):
+        return False
+    return any(keyword in text for keyword in SCM_KEYWORDS) or True
+
+
+def expand_with_dictionary(query: str) -> Tuple[str, List[str]]:
+    dict_results, related_terms = lookup(query)
+    if not dict_results:
+        return query, []
+    expansions = []
+    for entry in dict_results:
+        expansions.append(entry["term"])
+        expansions.append(entry["definition"])
+        expansions.append(entry["business_meaning"])
+        if entry.get("formula"):
+            expansions.append(f"formula: {entry['formula']}")
+    expanded = f"{query}\n\nDictionary expansions:\n" + "\n".join(expansions)
+    return expanded, related_terms
+
+
+def retrieve_internal_knowledge(expanded_question: str, top_k: int) -> List[Dict]:
+    return search(expanded_question, top_k=top_k)
+
+
+def maybe_run_data_query(query: str) -> Optional[Dict]:
+    return query_kpi(query)
+
+
+def maybe_run_web_search(query: str) -> List[Dict]:
+    return web_search(query, max_results=3)
 
 def _format_sources(sources: List[Dict]) -> str:
     if not sources:
@@ -228,206 +290,137 @@ def _to_markdown(answer: str, max_bullets: int = 5) -> str:
 
 
 def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, api_key: Optional[str] = None) -> Dict:
-    # Use provided api_key for LLM calls if needed
-    # (Note: Current tools are mock or localized, but this is for future LLM tool usage)
-    dict_results, related_terms = lookup(query)
-    routing = route(query, related_terms)
+    trace = WorkflowTrace(input=query, normalized_input=query.strip().lower())
+    routing = route(query, [])
     intent = routing["intent"]
     confidence = routing["confidence"]
-    sources = []
+    sources: List[Dict[str, Any]] = []
     answer = ""
-    tool_calls = []
-    handled = False
+    tool_calls: List[str] = []
 
-    text = query.lower()
-    scm_keywords = [
-        "scm",
-        "supply chain",
-        "supply",
-        "supplier",
-        "procurement",
-        "logistics",
-        "warehouse",
-        "inventory",
-        "demand",
-        "forecast",
-        "s&op",
-        "otif",
-        "fill rate",
-        "reorder point",
-        "safety stock",
-        "수요",
-        "공급",
-        "공급망",
-        "조달",
-        "물류",
-        "창고",
-        "재고",
-        "예측",
-    ]
-    if not any(k in text for k in scm_keywords):
+    if not is_scm_question(query):
+        trace.add_route("scm_check")
+        trace.decisions.append("Rejected: non-SCM query.")
         answer = (
             "I can only answer SCM-related questions. "
             "Please ask about supply chain, demand planning, inventory, or logistics."
         )
-        sources = []
-        tool_calls.append("scm_guard")
+        formatted = ANSWER_TEMPLATE.format(
+            answer=_to_markdown(answer),
+            sources=_format_sources([]),
+            confidence=confidence,
+            domain="OUT_OF_SCOPE",
+        )
+        trace.output = answer
+        payload = {
+            "run_id": str(uuid.uuid4()),
+            "query": query,
+            "intent": "OUT_OF_SCOPE",
+            "tool_calls": tool_calls,
+            "sources": [],
+            "confidence": confidence,
+            "answer": answer,
+            "trace": trace.model_dump(),
+        }
+        _log_run(payload)
         return {
             "answer": _to_markdown(answer),
-            "sources": sources,
+            "sources": [],
             "confidence": confidence,
-            "domain": intent,
-            "formatted": ANSWER_TEMPLATE.format(
-                answer=_to_markdown(answer),
-                sources=_format_sources(sources),
-                confidence=confidence,
-                domain=intent,
-            ),
+            "domain": "OUT_OF_SCOPE",
+            "formatted": formatted,
+            "trace": trace.model_dump(),
+            "trace_summary": trace.summary(),
         }
-    if "수요예측" in text or "demand forecast" in text or "forecast" in text:
-        answer = (
-            "## Demand forecasting methods (practical)\n"
-            "- **Qualitative**: sales/marketing input, Delphi, scenario planning to form an initial baseline.\n"
-            "- **Quantitative**: statistical models based on historical sales data.\n"
-            "\n"
-            "## Key formulas (examples)\n"
-            "- **Simple Moving Average (SMA)**: D̂(t+1) = (D_t + D_{t-1} + ... + D_{t-n+1}) / n\n"
-            "- **Simple Exponential Smoothing (SES)**: D̂(t+1) = α·D_t + (1-α)·D̂_t\n"
-            "- **MAPE**: MAPE = (1/n) · Σ |(D_t - D̂_t) / D_t| × 100\n"
-            "\n"
-            "## Quick examples\n"
-            "- If the last 3 months are 100, 120, 110, then SMA(3) = 110.\n"
-            "- If α=0.3, D_t=120, D̂_t=110, then SES forecast = 113.\n"
-            "\n"
-            "## Practical checklist\n"
-            "- Separate **seasonality/promotions** as explicit model inputs.\n"
-            "- Monitor accuracy with **MAPE, WAPE, Bias**.\n"
-            "- Use **ABC segmentation**: A-items get advanced models, C-items use simpler models.\n"
-            "\n"
-            "## Case examples (illustrative)\n"
-            "- Company A: inventory surplus → ABC + SES → **12% inventory turnover improvement**.\n"
-            "- Company B: promo spike → add promo drivers → **18% stockout reduction**.\n"
-        )
-        sources = [
-            {
-                "chunk_id": "built_in_definition",
-                "source": "built_in_definition",
-                "score": 1.0,
-                "text": "수요예측 방법론",
-                "page_text": "",
-            }
-        ]
-        tool_calls.append("definition_fallback")
-        intent = "PLANNING"
-        handled = True
-    elif "안전재고" in text or "safety stock" in text:
-        answer = (
-            "Safety stock is buffer inventory used to absorb demand variability and lead-time uncertainty. "
-            "A common formula is Safety Stock = Z × σd × √L, where Z is the service-level z-score, "
-            "σd is the daily demand standard deviation, and L is lead time (days)."
-        )
-        sources = [
-            {
-                "chunk_id": "built_in_definition",
-                "source": "built_in_definition",
-                "score": 1.0,
-                "text": "안전재고 공식",
-                "page_text": "",
-            }
-        ]
-        tool_calls.append("definition_fallback")
-        intent = "INVENTORY"
-        handled = True
 
-    if intent == "DEFINITION":
-        if dict_results:
-            entry = dict_results[0]
-            answer = (
-                f"{entry['term']}: {entry['definition']}\n"
-                f"Business meaning: {entry['business_meaning']}\n"
-                f"Formula: {entry.get('formula', 'N/A')}"
+    trace.add_route("scm_check")
+
+    expanded_question, dictionary_hits = expand_with_dictionary(query)
+    if dictionary_hits:
+        trace.add_route("dictionary_expand")
+        trace.dictionary_hits = dictionary_hits
+        trace.decisions.append("Expanded query using dictionary terms.")
+
+    try:
+        sources = retrieve_internal_knowledge(expanded_question, top_k=top_k)
+        trace.add_route("rag_answer")
+    except FileNotFoundError:
+        sources = []
+        trace.decisions.append("RAG index missing; run build_rag_index.py.")
+
+    retrieval_hits = []
+    for item in sources:
+        retrieval_hits.append(
+            RetrievalHit(
+                source_id=item.get("source", "unknown"),
+                chunk_id=item.get("chunk_id", "unknown"),
+                score=float(item.get("score", 0.0)),
+                snippet=item.get("text", "")[:160],
             )
+        )
+    trace.retrieval_hits = retrieval_hits
+    trace.citations = [hit.source_id for hit in retrieval_hits]
+
+    data_result = maybe_run_data_query(query)
+    if data_result:
+        trace.add_route("data_query")
+        trace.add_tool("data_query")
+        trace.decisions.append("Structured KPI lookup matched query.")
+
+    context_blocks: List[str] = []
+    for s in sources:
+        if s.get("page_text"):
+            context_blocks.append(s["page_text"])
+        else:
+            context_blocks.append(s["text"])
+    context = "\n\n".join(context_blocks)[:2000]
+
+    focused = _select_relevant_sentences(query, context, max_sentences=3)
+    if focused:
+        answer = focused
+    else:
+        summary = _summarize_context(context, max_sentences=3)
+        answer = summary if summary else "No relevant information found in sources."
+
+    if data_result:
+        structured = json.dumps(data_result, ensure_ascii=True)
+        answer = f"Structured data:\n{structured}\n\nRAG context:\n{answer}"
+
+    if not data_result and (answer == "No relevant information found in sources." or _scores_too_low(sources)):
+        trace.decisions.append("RAG confidence low; using web fallback.")
+        web_results = maybe_run_web_search(query)
+        if web_results:
+            snippets: List[str] = []
+            for result in web_results:
+                snippet = result.get("snippet")
+                if isinstance(snippet, str) and snippet:
+                    snippets.append(snippet)
+            if snippets:
+                answer = " ".join(snippets)
             sources = [
                 {
-                    "chunk_id": f"dict:{entry['term']}",
-                    "source": "data/scm_dictionary.json",
-                    "score": 1.0,
-                    "text": entry["term"],
-                    "page_text": "",
+                    "chunk_id": f"web:{idx}",
+                    "source": r["url"],
+                    "score": r.get("score", 1.0),
+                    "text": r.get("title", "Web result"),
+                    "page_text": r.get("snippet", ""),
                 }
+                for idx, r in enumerate(web_results, start=1)
             ]
-            tool_calls.append("dictionary_lookup")
-            handled = True
-        else:
-            if "scm" in text or "supply chain" in text:
-                answer = (
-                    "SCM (Supply Chain Management) is the end-to-end management of "
-                    "planning, sourcing, production, logistics, and fulfillment to "
-                    "deliver products efficiently and reliably."
-                )
-                tool_calls.append("definition_fallback")
-                sources = [
-                    {
-                        "chunk_id": "built_in_definition",
-                        "source": "built_in_definition",
-                        "score": 1.0,
-                        "text": "SCM",
-                        "page_text": "",
-                    }
-                ]
-                handled = True
-            else:
-                intent = "GENERAL"
+            trace.add_route("web_search")
+            trace.add_tool("web_search")
 
-    if intent == "CALCULATION":
-        calc = _run_calculator(query)
-        answer = f"{calc['metric']} = {calc['value']}"
-        tool_calls.append("calculator")
-        handled = True
-
-    if not handled:
-        domain = _detect_rag_domain(query)
-        sources = search(query, top_k=top_k, domain=domain)
-        context_blocks = []
-        for s in sources:
-            if s.get("page_text"):
-                context_blocks.append(s["page_text"])
-            else:
-                context_blocks.append(s["text"])
-        context = " ".join(context_blocks)[:2000]
-        focused = _select_relevant_sentences(query, context, max_sentences=3)
-        if focused:
-            answer = focused
-        else:
-            summary = _summarize_context(context, max_sentences=3)
-            answer = summary if summary else "No relevant information found in sources."
-        tool_calls.append("rag_search")
-
-        if answer == "No relevant information found in sources." or _scores_too_low(sources):
-            web_results = web_search(query, max_results=3)
-            if web_results:
-                answer = " ".join([r["snippet"] for r in web_results if r["snippet"]])
-                sources = [
-                    {
-                        "chunk_id": f"web:{idx}",
-                        "source": r["url"],
-                        "score": r.get("score", 1.0),
-                        "text": r.get("title", "Web result"),
-                        "page_text": r.get("snippet", ""),
-                    }
-                    for idx, r in enumerate(web_results, start=1)
-                ]
-                tool_calls.append("web_search")
-
-    if confidence < confidence_threshold:
-        related = ", ".join(related_terms[:5]) if related_terms else "No related terms found"
+    if confidence < confidence_threshold and answer == "No relevant information found in sources." and not data_result:
+        related = ", ".join(dictionary_hits[:5]) if dictionary_hits else "No related terms found"
         answer = (
             "I want to be precise. Can you clarify your request? "
             f"Related terms: {related}"
         )
         sources = []
+        trace.decisions.append("Low confidence; requested clarification.")
 
     answer = _to_markdown(answer)
+    trace.output = answer
 
     formatted = ANSWER_TEMPLATE.format(
         answer=answer,
@@ -435,6 +428,7 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
         confidence=confidence,
         domain=intent,
     )
+    formatted = f"{formatted}\n\n---\n{trace.summary()}"
 
     payload = {
         "run_id": str(uuid.uuid4()),
@@ -444,7 +438,16 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
         "sources": [s["source"] for s in sources],
         "confidence": confidence,
         "answer": answer,
+        "trace": trace.model_dump(),
     }
     _log_run(payload)
 
-    return {"answer": answer, "sources": sources, "confidence": confidence, "domain": intent, "formatted": formatted}
+    return {
+        "answer": answer,
+        "sources": sources,
+        "confidence": confidence,
+        "domain": intent,
+        "formatted": formatted,
+        "trace": trace.model_dump(),
+        "trace_summary": trace.summary(),
+    }

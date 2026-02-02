@@ -1,13 +1,17 @@
-from typing import List, Dict, Optional
+from typing import Dict, List, Optional
+
+from tools.rag_index import search_index
+
 
 def search(query: str, top_k: int = 3, domain: Optional[str] = None) -> List[Dict]:
-    # Mock RAG search results
+    results = search_index(query=query, top_k=top_k)
     return [
         {
-            "chunk_id": "mock_chunk_1",
-            "source": "SCM Handook v1.pdf",
-            "score": 0.85,
-            "text": "Effective demand forecasting requires high-quality historical data and collaboration between sales and supply chain teams.",
-            "page_text": "Effective demand forecasting requires high-quality historical data and collaboration between sales and supply chain teams."
+            "chunk_id": r["chunk_id"],
+            "source": r["source_id"],
+            "score": r["score"],
+            "text": r["text"],
+            "page_text": r["page_text"],
         }
+        for r in results
     ]

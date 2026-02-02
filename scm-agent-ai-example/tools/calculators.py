@@ -1,6 +1,7 @@
 import math
 from typing import Dict
 
+
 def economic_order_quantity(annual_demand: float, order_cost: float, holding_cost: float) -> Dict:
     eoq = math.sqrt((2 * annual_demand * order_cost) / holding_cost)
     return {"metric": "EOQ", "value": round(eoq, 2)}

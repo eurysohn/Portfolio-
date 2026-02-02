@@ -1,4 +1,5 @@
-from typing import List, Dict
+from typing import Dict, List
+
 
 def web_search(query: str, max_results: int = 3) -> List[Dict]:
     # Mock web search results

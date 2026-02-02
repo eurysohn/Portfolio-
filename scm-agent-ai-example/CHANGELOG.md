@@ -9,3 +9,8 @@
 - SCM metric calculators (EOQ, OTIF, etc.).
 - Robust documentation (ARCHITECTURE, CONTRIBUTING).
 - Correlation ID middleware for distributed tracing.
+- Minimal `/metrics` endpoint for Prometheus scraping.
+- Health payload now includes `git_sha` for build traceability.
+- Real RAG indexing + retrieval with internal knowledge base.
+- Workflow trace schema with route/tool decisions in responses.
+- Synthetic golden set + evaluation script.

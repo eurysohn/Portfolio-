@@ -1,5 +1,6 @@
 from tools.calculators import economic_order_quantity, otif
 
+
 def test_eoq():
     result = economic_order_quantity(annual_demand=1200, order_cost=50, holding_cost=5)
     assert result["metric"] == "EOQ"

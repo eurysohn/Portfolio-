@@ -1,0 +1,11 @@
+{
+  "latest_month": {
+    "otif": 0.874,
+    "fill_rate": 0.952,
+    "inventory_turns": 8.1
+  },
+  "latest_week": {
+    "on_time_delivery": 0.91,
+    "dock_to_stock_hours": 18.4
+  }
+}
