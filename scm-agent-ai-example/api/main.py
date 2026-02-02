@@ -117,8 +117,9 @@ async def health_check_alias():
 
 @app.post("/query")
 async def query_agent(payload: QueryRequest, request: Request):
-    if settings.REQUIRE_API_KEY and not payload.api_key:
-        raise HTTPException(status_code=401, detail="OPENAI_API_KEY is required.")
+    if settings.REQUIRE_API_KEY:
+        if not payload.api_key or not payload.api_key.startswith("sk-") or len(payload.api_key) < 20:
+            raise HTTPException(status_code=401, detail="Valid OPENAI_API_KEY is required.")
     logger.info(
         "agent_query query_len=%s top_k=%s correlation_id=%s",
         len(payload.query),

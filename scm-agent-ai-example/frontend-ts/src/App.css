@@ -47,6 +47,29 @@
     white-space: pre-wrap;
 }
 
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown p,
+.markdown ul,
+.markdown ol {
+    margin: 0 0 2px 0;
+}
+
+.markdown ul,
+.markdown ol {
+    padding-left: 18px;
+    margin: 0 0 2px 0;
+}
+
+.markdown li {
+    margin: 0;
+}
+
+.markdown h2 {
+    margin-top: 4px;
+}
+
 .message-meta {
     font-size: 0.75rem;
     color: var(--text-sub);

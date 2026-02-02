@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Settings, Wrench, Zap, Send, Shield, ChevronDown, CheckCircle2, Loader2 } from 'lucide-react'
+import { marked } from 'marked'
 import './App.css'
 
 interface Message {
@@ -9,6 +10,7 @@ interface Message {
     sources?: string[];
     confidence?: number;
     traceSummary?: string;
+    context?: { source: string; chunk_id: string; score: number; snippet: string }[];
 }
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const chatEndRef = useRef<HTMLDivElement>(null);
     const apiKeyMissing = !apiKey.trim();
+    const apiKeyLooksValid = apiKey.trim().startsWith('sk-') && apiKey.trim().length >= 20;
 
     const scrollToBottom = () => {
         chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -31,7 +34,7 @@ function App() {
     useEffect(scrollToBottom, [messages]);
 
     const handleSend = async () => {
-        if (!input.trim() || apiKeyMissing) return;
+        if (!input.trim() || !apiKeyLooksValid) return;
 
         const userMsg: Message = { role: 'user', content: input };
         setMessages(prev => [...prev, userMsg]);
@@ -68,6 +71,7 @@ function App() {
                 typeof data?.confidence === 'number' ? data.confidence : undefined;
             const sources = Array.isArray(data?.sources) ? data.sources : [];
             const traceSummary = typeof data?.trace_summary === 'string' ? data.trace_summary : undefined;
+            const context = Array.isArray(data?.context) ? data.context : [];
 
             setMessages(prev => {
                 const newMsgs = [...prev];
@@ -84,6 +88,7 @@ function App() {
                     ],
                     confidence,
                     traceSummary,
+                    context,
                     sources: sources
                         .map((s: any) => s?.source)
                         .filter((source: unknown): source is string => typeof source === 'string')
@@ -155,9 +160,9 @@ function App() {
                         value={apiKey}
                         onChange={(e) => setApiKey(e.target.value)}
                     />
-                    {apiKeyMissing && (
+                    {!apiKeyLooksValid && (
                         <div style={{ marginTop: '6px', fontSize: '0.75rem', color: 'var(--text-sub)' }}>
-                            API key is required to run queries.
+                            Enter a valid OpenAI API key to run queries.
                         </div>
                     )}
                 </div>
@@ -184,7 +189,10 @@ function App() {
                                         ))}
                                     </div>
                                 )}
-                                <div className="message-text">{msg.content}</div>
+                                <div
+                                    className="message-text markdown"
+                                    dangerouslySetInnerHTML={{ __html: marked.parse(msg.content || '', { breaks: true }) }}
+                                />
                                 {msg.traceSummary && (
                                     <div className="message-meta">
                                         <div style={{ fontWeight: 600, marginBottom: '6px' }}>
@@ -193,12 +201,17 @@ function App() {
                                         <pre style={{ whiteSpace: 'pre-wrap' }}>{msg.traceSummary}</pre>
                                     </div>
                                 )}
-                                {msg.sources && msg.sources.length > 0 && (
+                                {msg.context && msg.context.length > 0 && (
                                     <div className="message-meta">
-                                        <div style={{ fontWeight: 600, marginBottom: '6px' }}>Sources</div>
+                                        <div style={{ fontWeight: 600, marginBottom: '6px' }}>Context</div>
                                         <ul style={{ paddingLeft: '18px', margin: 0 }}>
-                                            {msg.sources.map((source) => (
-                                                <li key={source}>{source}</li>
+                                            {msg.context.map((item) => (
+                                                <li key={item.chunk_id} style={{ marginBottom: '6px' }}>
+                                                    <div>{item.snippet}</div>
+                                                    <div style={{ fontSize: '0.7rem' }}>
+                                                        {item.source}
+                                                    </div>
+                                                </li>
                                             ))}
                                         </ul>
                                     </div>
@@ -223,9 +236,9 @@ function App() {
                             value={input}
                             onChange={(e) => setInput(e.target.value)}
                             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                            disabled={isLoading || apiKeyMissing}
+                            disabled={isLoading || !apiKeyLooksValid}
                         />
-                        <button className="send-button" onClick={handleSend} disabled={isLoading || apiKeyMissing}>
+                        <button className="send-button" onClick={handleSend} disabled={isLoading || !apiKeyLooksValid}>
                             <Send size={18} />
                         </button>
                     </div>

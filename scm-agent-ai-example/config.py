@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     GIT_SHA: Optional[str] = None
     REQUIRE_API_KEY: bool = False
     DOCS_BASE_URL: str = "https://github.com/eurysohn/Portfolio-/blob/main/scm-agent-ai-example/data/knowledge_base"
+    OPENAI_MODEL: str = "gpt-4o-mini"
+    OPENAI_TEMPERATURE: float = 0.1
 
     OPENAI_API_KEY: Optional[str] = None
 

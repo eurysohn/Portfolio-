@@ -19,6 +19,18 @@ SCM_DICT = {
         "definition": "Economic Order Quantity",
         "business_meaning": "The ideal order quantity a company should purchase to minimize inventory costs such as holding costs, shortage costs, and order costs.",
         "formula": "sqrt((2 * D * S) / H)"
+    },
+    "otd": {
+        "term": "OTD",
+        "definition": "On-Time Delivery",
+        "business_meaning": "Measures the share of deliveries made on or before the promised date.",
+        "formula": "OTD = on_time_deliveries / total_deliveries"
+    },
+    "tms": {
+        "term": "TMS",
+        "definition": "Transportation Management System",
+        "business_meaning": "Software that plans, executes, and optimizes the movement of goods.",
+        "formula": "N/A"
     }
 }
 

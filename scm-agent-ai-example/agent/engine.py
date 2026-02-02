@@ -107,6 +107,8 @@ SCM_KEYWORDS = {
     "forecast",
     "s&op",
     "otif",
+    "otd",
+    "tms",
     "fill rate",
     "reorder point",
     "safety stock",
@@ -127,7 +129,8 @@ def is_scm_question(query: str) -> bool:
     if any(keyword in text for keyword in out_of_scope):
         return False
     dict_results, _ = lookup(query)
-    return any(keyword in text for keyword in SCM_KEYWORDS) or bool(dict_results)
+    internal_code = re.search(r"[A-Z]{2,}-[A-Z0-9]{2,}", query)
+    return any(keyword in text for keyword in SCM_KEYWORDS) or bool(dict_results) or bool(internal_code)
 
 
 def expand_with_dictionary(query: str) -> Tuple[str, List[str]]:
@@ -174,35 +177,146 @@ def _sources_markdown(source_ids: List[str]) -> str:
     return "\n".join(f"- {_source_url(source_id)}" for source_id in unique)
 
 
+def _clean_line(text: str) -> str:
+    return re.sub(r"^#+\s*", "", text).strip()
+
+
+def _normalize_markdown_list(text: str) -> str:
+    lines = [line.strip() for line in text.splitlines()]
+    lines = [line for line in lines if line and line not in {"-", "*", "•"}]
+    has_bullets = any(re.match(r"^[-*•]\s+", line) for line in lines)
+    if has_bullets:
+        normalized = []
+        for line in lines:
+            if re.match(r"^[-*•]\s+", line):
+                normalized.append(re.sub(r"^[-*•]\s+", "- ", line))
+            else:
+                normalized.append(line)
+        return "\n".join(normalized)
+    chunks = [_clean_line(c) for c in re.split(r"[.\n]", text) if c.strip()]
+    filtered = [c for c in chunks if len(c) > 2]
+    return "\n".join(f"- {c}" for c in filtered)
+
+
 def _to_bullets(text: str) -> List[str]:
-    chunks = [c.strip() for c in re.split(r"[\n\.]", text) if c.strip()]
-    return [f"- {c}" for c in chunks]
+    normalized = _normalize_markdown_list(text)
+    return [line for line in normalized.splitlines() if line.startswith("- ")]
+
+def _llm_generate(query: str, context: str, api_key: Optional[str]) -> Optional[str]:
+    if not api_key:
+        return None
+    try:
+        from openai import OpenAI
+    except Exception:
+        return None
+    client = OpenAI(api_key=api_key)
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are an SCM assistant. Use ONLY the provided context. "
+                "If the context is insufficient, say so. "
+                "Respond in English with 1-2 concise sentences. "
+                "Do not include markdown headings or lists."
+            ),
+        },
+        {
+            "role": "user",
+            "content": f"Question: {query}\n\nContext:\n{context}",
+        },
+    ]
+    response = client.chat.completions.create(
+        model=settings.OPENAI_MODEL,
+        temperature=settings.OPENAI_TEMPERATURE,
+        messages=messages,  # type: ignore[arg-type]
+    )
+    content = response.choices[0].message.content
+    return content.strip() if content else None
 
 
-def _build_rag_answer(query: str, context: str, detailed: bool, source_ids: List[str]) -> str:
-    focused = _select_relevant_sentences(query, context, max_sentences=5 if detailed else 3)
-    summary = focused or _summarize_context(context, max_sentences=5 if detailed else 3)
-    if not summary:
-        return "No relevant information found in sources."
+def _llm_classify_intent(query: str, api_key: Optional[str]) -> Optional[Dict[str, Any]]:
+    if not api_key:
+        return None
+    try:
+        from openai import OpenAI
+    except Exception:
+        return None
+    client = OpenAI(api_key=api_key)
+    system_prompt = (
+        "Classify the user query intent for an SCM assistant. "
+        "Return STRICT JSON with keys: intent, in_scope, confidence. "
+        "intent must be one of: DEFINITION, CALCULATION, PLANNING, DATA_QUERY, GENERAL. "
+        "in_scope is true if the query is SCM-related."
+    )
+    response = client.chat.completions.create(
+        model=settings.OPENAI_MODEL,
+        temperature=0.0,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": query},
+        ],  # type: ignore[arg-type]
+    )
+    content = response.choices[0].message.content
+    if not content:
+        return None
+    try:
+        data = json.loads(content)
+        return {
+            "intent": data.get("intent"),
+            "in_scope": bool(data.get("in_scope")),
+            "confidence": float(data.get("confidence", 0.7)),
+        }
+    except Exception:
+        return None
 
-    key_points = _select_relevant_sentences(query, context, max_sentences=6 if detailed else 4)
-    key_bullets = _to_bullets(key_points or summary)
 
-    sections = []
-    sections.append("## 핵심 내용\n" + "\n".join(key_bullets))
-    sections.append("Sources:\n" + _sources_markdown(source_ids))
+def _build_rag_answer(
+    query: str,
+    context: str,
+    detailed: bool,
+    source_ids: List[str],
+    api_key: Optional[str],
+) -> Tuple[str, bool]:
+    llm_text = _llm_generate(query, context, api_key)
+    used_llm = bool(llm_text)
+    if llm_text:
+        answer_text = llm_text
+    else:
+        focused = _select_relevant_sentences(query, context, max_sentences=5 if detailed else 3)
+        summary = focused or _summarize_context(context, max_sentences=5 if detailed else 3)
+        if not summary:
+            return "No relevant information found in sources.", used_llm
+        answer_text = summary
 
-    if detailed:
-        detail_text = summary
-        sections.append("\n## 세부 설명\n" + detail_text)
-        sections.append("Sources:\n" + _sources_markdown(source_ids))
+    return answer_text, used_llm
 
-    return "\n\n".join(sections)
+
+def _compose_answer(
+    answer_text: str,
+    evidence_lines: List[str],
+    next_step: str,
+    route_tag: str,
+) -> str:
+    evidence = evidence_lines if evidence_lines else ["- No internal evidence found."]
+    parts = [
+        f"**Answer**: {answer_text}",
+        "**Evidence**:",
+        *evidence,
+        f"**Next step**: {next_step}",
+        route_tag,
+    ]
+    return "\n".join(parts)
 
 def _format_sources(sources: List[Dict]) -> str:
     if not sources:
         return "None"
-    return "\n".join(f"- {s['source']} (score={s['score']:.3f})" for s in sources)
+    lines = []
+    for item in sources:
+        source = item.get("source", "")
+        url = _source_url(source) if source else ""
+        score = item.get("score", 0.0)
+        lines.append(f"- {url} (score={score:.3f})")
+    return "\n".join(lines)
 
 
 def _log_run(payload: Dict) -> None:
@@ -336,25 +450,34 @@ def _to_markdown(answer: str, max_bullets: int = 5) -> str:
 
 def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, api_key: Optional[str] = None) -> Dict:
     trace = WorkflowTrace(input=query, normalized_input=query.strip().lower())
-    routing = route(query, [])
-    intent = routing["intent"]
-    confidence = routing["confidence"]
+    llm_route = _llm_classify_intent(query, api_key)
+    if llm_route:
+        intent = llm_route["intent"] or "GENERAL"
+        confidence = llm_route["confidence"]
+        in_scope = llm_route["in_scope"]
+        trace.add_tool("openai")
+    else:
+        routing = route(query, [])
+        intent = routing["intent"]
+        confidence = routing["confidence"]
+        in_scope = is_scm_question(query)
     sources: List[Dict[str, Any]] = []
     answer = ""
     tool_calls: List[str] = []
 
-    if not is_scm_question(query):
+    if not in_scope:
         trace.add_route("scm_check")
         trace.decisions.append("Rejected: non-SCM query.")
-        answer = (
+        answer_text = (
             "I can only answer SCM-related questions. "
             "Please ask about supply chain, demand planning, inventory, or logistics."
         )
-        formatted = ANSWER_TEMPLATE.format(
-            answer=_to_markdown(answer),
-            sources=_format_sources([]),
-            confidence=confidence,
-            domain="OUT_OF_SCOPE",
+        route_tag = "[ROUTE: OUT_OF_SCOPE]"
+        answer = _compose_answer(
+            answer_text,
+            [],
+            "Provide a supply-chain-related question or internal policy reference.",
+            route_tag,
         )
         trace.output = answer
         payload = {
@@ -369,11 +492,11 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
         }
         _log_run(payload)
         return {
-            "answer": _to_markdown(answer),
+            "answer": answer,
             "sources": [],
             "confidence": confidence,
             "domain": "OUT_OF_SCOPE",
-            "formatted": formatted,
+            "formatted": answer,
             "trace": trace.model_dump(),
             "trace_summary": trace.summary(),
         }
@@ -404,7 +527,7 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
             )
         )
     trace.retrieval_hits = retrieval_hits
-    trace.citations = [hit.source_id for hit in retrieval_hits]
+    trace.citations = [_source_url(hit.source_id) for hit in retrieval_hits]
 
     data_result = maybe_run_data_query(query)
     if data_result:
@@ -420,13 +543,18 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
             context_blocks.append(s["text"])
     context = "\n\n".join(context_blocks)[:2000]
     detailed = any(token in query.lower() for token in ["detail", "detailed", "explain", "how"])
-    answer = _build_rag_answer(query, context, detailed=detailed, source_ids=trace.citations)
+    answer_text, used_llm = _build_rag_answer(
+        query,
+        context,
+        detailed=detailed,
+        source_ids=trace.citations,
+        api_key=api_key,
+    )
+    if used_llm:
+        trace.add_tool("openai")
+        trace.decisions.append("LLM used for final response.")
 
-    if data_result:
-        structured = json.dumps(data_result, ensure_ascii=True)
-        answer = f"Structured data:\n{structured}\n\nRAG context:\n{answer}"
-
-    if not data_result and (answer == "No relevant information found in sources." or _scores_too_low(sources)):
+    if not data_result and (answer_text == "No relevant information found in sources." or _scores_too_low(sources)):
         trace.decisions.append("RAG confidence low; using web fallback.")
         web_results = maybe_run_web_search(query)
         if web_results:
@@ -436,7 +564,7 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
                 if isinstance(snippet, str) and snippet:
                     snippets.append(snippet)
             if snippets:
-                answer = " ".join(snippets)
+                answer_text = " ".join(snippets)
             sources = [
                 {
                     "chunk_id": f"web:{idx}",
@@ -451,25 +579,31 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
             trace.add_route("web_search")
             trace.add_tool("web_search")
 
-    if confidence < confidence_threshold and answer == "No relevant information found in sources." and not data_result:
+    if confidence < confidence_threshold and answer_text == "No relevant information found in sources." and not data_result:
         related = ", ".join(dictionary_hits[:5]) if dictionary_hits else "No related terms found"
-        answer = (
+        answer_text = (
             "I want to be precise. Can you clarify your request? "
             f"Related terms: {related}"
         )
         sources = []
         trace.decisions.append("Low confidence; requested clarification.")
 
-    answer = _to_markdown(answer)
+    evidence_lines = []
+    for hit in retrieval_hits[:5]:
+        evidence_lines.append(f"- {hit.snippet} ({_source_url(hit.source_id)})")
+    if data_result:
+        evidence_lines.append(f"- Structured data: {json.dumps(data_result, ensure_ascii=True)}")
+
+    next_step = (
+        "Provide the document link or policy section to verify the definition."
+        if answer_text == "No relevant information found in sources."
+        else "Tell me if you want a deeper breakdown or a specific policy section."
+    )
+    route_tag = f"[ROUTE: {','.join(trace.route_taken)}]"
+    answer = _compose_answer(answer_text, evidence_lines, next_step, route_tag)
     trace.output = answer
 
-    formatted = ANSWER_TEMPLATE.format(
-        answer=answer,
-        sources=_format_sources(sources),
-        confidence=confidence,
-        domain=intent,
-    )
-    formatted = f"{formatted}\n\n---\n{trace.summary()}"
+    formatted = f"{answer}\n---\n{trace.summary()}"
 
     payload = {
         "run_id": str(uuid.uuid4()),
@@ -483,12 +617,23 @@ def run_agent(query: str, confidence_threshold: float = 0.55, top_k: int = 3, ap
     }
     _log_run(payload)
 
+    display_sources = [_source_url(s["source"]) if "source" in s else "" for s in sources]
+
     return {
         "answer": answer,
-        "sources": sources,
+        "sources": [{"source": s} for s in display_sources if s],
         "confidence": confidence,
         "domain": intent,
         "formatted": formatted,
         "trace": trace.model_dump(),
         "trace_summary": trace.summary(),
+        "context": [
+            {
+                "source": _source_url(hit.source_id),
+                "chunk_id": hit.chunk_id,
+                "score": hit.score,
+                "snippet": hit.snippet,
+            }
+            for hit in retrieval_hits
+        ],
     }

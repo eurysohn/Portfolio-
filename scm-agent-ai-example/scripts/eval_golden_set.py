@@ -1,4 +1,5 @@
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
@@ -28,6 +29,8 @@ def _retrieval_hit(expected_sources: List[str], trace: Dict) -> bool:
         return True
     if "structured_kpis" in expected_sources:
         return "data_query" in trace.get("tools_used", [])
+    if any(item.startswith("http") for item in expected_sources):
+        return "web_search" in trace.get("tools_used", []) or "web_search" in trace.get("route_taken", [])
     hits = trace.get("retrieval_hits", [])
     sources = {hit.get("source_id", "") for hit in hits}
     return any(expected in source for expected in expected_sources for source in sources)
@@ -41,20 +44,25 @@ def _keypoint_match(expected_keypoints: List[str], answer: str, min_hits: int = 
     return len(hits) >= min(min_hits, len(expected_keypoints))
 
 
-def evaluate() -> Tuple[int, int, List[Dict]]:
+def evaluate() -> Tuple[int, int, Dict[str, Dict[str, int]], List[Dict]]:
     _ensure_index()
     total = 0
     passed = 0
     failures: List[Dict] = []
+    by_category: Dict[str, Dict[str, int]] = {}
+    api_key = os.getenv("OPENAI_API_KEY")
 
     with GOLDEN_PATH.open("r", encoding="utf-8") as f:
         for line in f:
             if not line.strip():
                 continue
             sample = json.loads(line)
+            category = sample.get("category", "unknown")
+            by_category.setdefault(category, {"passed": 0, "total": 0})
+            by_category[category]["total"] += 1
             total += 1
 
-            result = run_agent(sample["question"], top_k=3)
+            result = run_agent(sample["question"], top_k=3, api_key=api_key)
             trace = result.get("trace", {})
             actual_route = trace.get("route_taken", [])
 
@@ -64,6 +72,7 @@ def evaluate() -> Tuple[int, int, List[Dict]]:
 
             if route_ok and retrieval_ok and keypoints_ok:
                 passed += 1
+                by_category[category]["passed"] += 1
                 continue
 
             failures.append(
@@ -79,12 +88,19 @@ def evaluate() -> Tuple[int, int, List[Dict]]:
                 }
             )
 
-    return passed, total, failures
+    return passed, total, by_category, failures
 
 
 def main() -> None:
-    passed, total, failures = evaluate()
-    print(f"Golden set: {passed}/{total} passed")
+    passed, total, by_category, failures = evaluate()
+    percent = (passed / total * 100) if total else 0.0
+    print(f"Golden set: {passed}/{total} passed ({percent:.1f}%)")
+    print("Category breakdown:")
+    for category, stats in sorted(by_category.items()):
+        cat_total = stats["total"]
+        cat_passed = stats["passed"]
+        cat_percent = (cat_passed / cat_total * 100) if cat_total else 0.0
+        print(f"- {category}: {cat_passed}/{cat_total} ({cat_percent:.1f}%)")
     if failures:
         print("\nFailures:")
         for failure in failures[:20]:
