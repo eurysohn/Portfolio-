@@ -1,7 +1,6 @@
 # FastAPI Deployment Pipeline
 
-[![CI Pipeline](https://github.com/eurysohn/fastapi-deployment-pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/eurysohn/fastapi-deployment-pipeline/actions/workflows/ci.yml)
-[![Security Scan](https://github.com/eurysohn/fastapi-deployment-pipeline/actions/workflows/security.yml/badge.svg)](https://github.com/eurysohn/fastapi-deployment-pipeline/actions/workflows/security.yml)
+[![CI Pipeline](https://github.com/eurysohn/Portfolio-/actions/workflows/ci.yml/badge.svg)](https://github.com/eurysohn/Portfolio-/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 
@@ -13,45 +12,31 @@ This repository serves as a reference implementation for building, testing, and 
 
 ## Architecture Overview
 
-```
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                          CI/CD PIPELINE (GitHub Actions)                    │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   ┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐            │
-│   │   Lint   │───▶│ Security │───▶│   Test   │───▶│  Build   │            │
-│   │  & Format│    │   Scan   │    │  pytest  │    │  Docker  │            │
-│   └──────────┘    └──────────┘    └──────────┘    └────┬─────┘            │
-│                                                        │                   │
-│                                         ┌──────────────┴──────────────┐    │
-│                                         ▼                             ▼    │
-│                                   ┌──────────┐                 ┌──────────┐│
-│                                   │Push GHCR │                 │  Deploy  ││
-│                                   └──────────┘                 └──────────┘│
-└─────────────────────────────────────────────────────────────────────────────┘
-                                         │
-                                         ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                       APPLICATION STACK (Docker Compose)                    │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│   ┌─────────────────┐       ┌─────────────────┐       ┌─────────────────┐  │
-│   │                 │       │                 │       │                 │  │
-│   │    FastAPI      │──────▶│     Redis       │       │   Prometheus    │  │
-│   │    (API)        │       │    (Cache)      │       │   (Metrics)     │  │
-│   │   Port 8000     │       │   Port 6379     │       │   Port 9090     │  │
-│   │                 │       │                 │       │                 │  │
-│   └────────┬────────┘       └─────────────────┘       └────────┬────────┘  │
-│            │                                                    │          │
-│            │              ┌─────────────────┐                   │          │
-│            │              │                 │                   │          │
-│            └─────────────▶│    Grafana      │◀──────────────────┘          │
-│                           │  (Dashboard)    │                              │
-│                           │   Port 3000     │                              │
-│                           │                 │                              │
-│                           └─────────────────┘                              │
-│                                                                             │
-└─────────────────────────────────────────────────────────────────────────────┘
+```mermaid
+graph TB
+    subgraph CICD[CI/CD Pipeline - GitHub Actions]
+        direction LR
+        A[Pull Request] --> B[Lint]
+        B --> C[Security Scan]
+        C --> D[Test]
+        D --> E[Build Docker]
+        E --> F[Push to GHCR]
+        F --> G[Deploy]
+    end
+    
+    subgraph Stack[Application Stack - Docker Compose]
+        direction TB
+        API[FastAPI API<br/>Port 8000]
+        REDIS[(Redis Cache<br/>Port 6379)]
+        PROM[Prometheus<br/>Port 9090]
+        GRAF[Grafana<br/>Port 3000]
+        
+        API -->|cache| REDIS
+        API -->|metrics| PROM
+        PROM -->|data source| GRAF
+    end
+    
+    CICD --> Stack
 ```
 
 ### System Components
@@ -66,56 +51,75 @@ This repository serves as a reference implementation for building, testing, and 
 
 ---
 
+## CI/CD Pipeline
+
+```mermaid
+flowchart LR
+    subgraph Triggers
+        PR[Pull Request]
+        PUSH[Push to main]
+        TAG[Version Tag]
+    end
+    
+    subgraph CI[Continuous Integration]
+        LINT[Lint & Format<br/>Ruff, Black, MyPy]
+        SEC[Security Scan<br/>Bandit, Safety, Trivy]
+        TEST[Unit Tests<br/>Pytest 70%+ Coverage]
+        BUILD[Docker Build<br/>Multi-stage]
+    end
+    
+    subgraph CD[Continuous Deployment]
+        PUSH_REG[Push to GHCR]
+        DEPLOY[Deploy to Environment]
+    end
+    
+    PR --> LINT
+    PUSH --> LINT
+    TAG --> LINT
+    
+    LINT --> SEC --> TEST --> BUILD
+    BUILD --> PUSH_REG --> DEPLOY
+```
+
+### Pipeline Stages
+
+| Stage | Tools | Description |
+|-------|-------|-------------|
+| **Lint** | Ruff, Black, MyPy | Code quality & type checking |
+| **Security** | Bandit, Safety, Trivy | SAST & dependency scanning |
+| **Test** | Pytest | Unit tests with 70% coverage threshold |
+| **Build** | Docker | Multi-stage production image |
+| **Push** | GHCR | GitHub Container Registry |
+| **Deploy** | Mock | Deployment simulation |
+
+---
+
 ## Project Structure
 
 ```
-fastapi-deployment-pipeline/
+FastAI-Deployment-Pipeline/
 │
 ├── app/                          # Application source code
 │   ├── api/                      # API endpoints
 │   │   ├── health.py             # /healthz, /readyz endpoints
 │   │   ├── metrics.py            # /metrics (Prometheus)
-│   │   └── v1/                   # API version 1
-│   │       └── items.py          # CRUD operations
+│   │   └── v1/items.py           # CRUD operations
 │   ├── core/                     # Core modules
 │   │   ├── config.py             # Pydantic settings
 │   │   └── logging.py            # Structured logging
-│   ├── middleware/               # Custom middleware
-│   │   └── request_id.py         # Request tracing
-│   ├── services/                 # Business logic
-│   │   └── cache.py              # Redis service
+│   ├── middleware/               # Request tracing
+│   ├── services/cache.py         # Redis service
 │   └── main.py                   # App entry point
 │
 ├── tests/                        # Test suite (pytest)
-│   ├── conftest.py               # Fixtures
-│   ├── test_health.py
-│   ├── test_metrics.py
-│   └── test_items.py
-│
-├── .github/                      # GitHub configuration
-│   ├── workflows/                # CI/CD pipelines
-│   │   ├── ci.yml                # Main CI pipeline
-│   │   ├── release.yml           # Release automation
-│   │   └── security.yml          # Security scanning
-│   ├── ISSUE_TEMPLATE/           # Issue templates
-│   └── dependabot.yml            # Dependency updates
-│
-├── monitoring/                   # Observability
-│   ├── prometheus/               # Prometheus config
-│   └── grafana/                  # Dashboards
-│
-├── load_tests/                   # Performance testing
-│   └── locustfile.py             # Load test scenarios
-│
-├── docs/                         # Documentation
-│   ├── architecture/             # ADRs
-│   └── runbook.md                # Operations guide
+├── .github/workflows/            # CI/CD pipelines
+├── monitoring/                   # Prometheus & Grafana
+├── load_tests/                   # Locust performance tests
+├── docs/                         # ADRs & Runbook
 │
 ├── Dockerfile                    # Multi-stage build
 ├── docker-compose.yml            # Full stack
-├── Makefile                      # Developer commands
-├── requirements.txt              # Production deps
-└── requirements-dev.txt          # Development deps
+└── Makefile                      # Developer commands
 ```
 
 ---
@@ -126,23 +130,19 @@ fastapi-deployment-pipeline/
 
 - **Docker & Docker Compose** - For running the full stack
 - **Python 3.9+** - For local development
-- **Make** (optional) - For convenience commands
 
 ### Option 1: Docker Compose (Recommended)
 
 ```bash
 # Clone the repository
-git clone https://github.com/eurysohn/fastapi-deployment-pipeline.git
-cd fastapi-deployment-pipeline
+git clone https://github.com/eurysohn/Portfolio-.git
+cd Portfolio-/FastAI-Deployment-Pipeline
 
 # Start all services
 docker-compose up -d
 
 # Check status
 docker-compose ps
-
-# View logs
-docker-compose logs -f api
 
 # Stop services
 docker-compose down
@@ -160,13 +160,9 @@ docker-compose down
 ### Option 2: Local Development
 
 ```bash
-# Clone and enter directory
-git clone https://github.com/eurysohn/fastapi-deployment-pipeline.git
-cd fastapi-deployment-pipeline
-
 # Create virtual environment
 python3 -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 
 # Install dependencies
 pip install -r requirements-dev.txt
@@ -174,55 +170,9 @@ pip install -r requirements-dev.txt
 # Run tests
 pytest tests/ -v
 
-# Start the API (without Redis)
+# Start the API
 uvicorn app.main:app --reload --port 8000
 ```
-
----
-
-## CI/CD Pipeline
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                        TRIGGER                                  │
-├─────────────────────────────────────────────────────────────────┤
-│  • Pull Request to main/develop                                 │
-│  • Push to main/develop                                         │
-│  • Version tag (v*.*.*)                                         │
-└───────────────────────────┬─────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                     CI PIPELINE                                 │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  ┌─────────┐   ┌──────────┐   ┌────────┐   ┌────────┐         │
-│  │  Lint   │──▶│ Security │──▶│  Test  │──▶│ Build  │         │
-│  │         │   │          │   │        │   │        │         │
-│  │ • Ruff  │   │ • Bandit │   │• pytest│   │• Docker│         │
-│  │ • Black │   │ • Safety │   │• 70%+  │   │• Multi │         │
-│  │ • MyPy  │   │ • Trivy  │   │  cov   │   │  stage │         │
-│  └─────────┘   └──────────┘   └────────┘   └───┬────┘         │
-│                                                 │              │
-│                                    ┌────────────┴────────────┐ │
-│                                    ▼                         ▼ │
-│                              ┌──────────┐             ┌────────┐│
-│                              │Push GHCR │             │ Deploy ││
-│                              │(Registry)│             │ (Mock) ││
-│                              └──────────┘             └────────┘│
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Pipeline Stages
-
-| Stage | Tools | Description |
-|-------|-------|-------------|
-| **Lint** | Ruff, Black, MyPy | Code quality & type checking |
-| **Security** | Bandit, Safety, Trivy | SAST & dependency scanning |
-| **Test** | Pytest | Unit tests with 70% coverage threshold |
-| **Build** | Docker | Multi-stage production image |
-| **Push** | GHCR | GitHub Container Registry |
-| **Deploy** | Mock | Deployment simulation |
 
 ---
 
@@ -279,34 +229,8 @@ make security      # Run security checks
 make build         # Build Docker image
 make docker-up     # Start all services
 make docker-down   # Stop all services
-make docker-logs   # Follow service logs
-make load-test     # Run load tests (Locust)
 make ci            # Run full CI pipeline locally
 ```
-
----
-
-## Configuration
-
-Environment variables (see `.env.example`):
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `ENVIRONMENT` | Runtime environment | `development` |
-| `LOG_LEVEL` | Logging verbosity | `INFO` |
-| `LOG_FORMAT` | Log format (`json`/`console`) | `json` |
-| `REDIS_URL` | Redis connection string | `redis://redis:6379/0` |
-| `METRICS_ENABLED` | Enable Prometheus metrics | `true` |
-
----
-
-## Documentation
-
-- [Architecture Decision Records](docs/architecture/) - Design decisions
-- [Operations Runbook](docs/runbook.md) - Incident response guide
-- [Contributing Guide](CONTRIBUTING.md) - How to contribute
-- [Security Policy](SECURITY.md) - Vulnerability reporting
-- [Changelog](CHANGELOG.md) - Version history
 
 ---
 
@@ -323,9 +247,12 @@ Environment variables (see `.env.example`):
 
 ---
 
-## License
+## Documentation
 
-MIT License - see [LICENSE](LICENSE) for details.
+- [Architecture Decision Records](docs/architecture/) - Design decisions
+- [Operations Runbook](docs/runbook.md) - Incident response guide
+- [Contributing Guide](CONTRIBUTING.md) - How to contribute
+- [Security Policy](SECURITY.md) - Vulnerability reporting
 
 ---
 
@@ -338,3 +265,9 @@ MIT License - see [LICENSE](LICENSE) for details.
 ![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat&logo=prometheus&logoColor=white)
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat&logo=github-actions&logoColor=white)
+
+---
+
+## License
+
+MIT License - see [LICENSE](LICENSE) for details.
