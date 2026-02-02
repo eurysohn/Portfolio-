@@ -1,58 +1,113 @@
-import os
+"""FastAPI application entry point.
 
-import redis
-from fastapi import FastAPI, HTTPException, Response
+Production-ready FastAPI application with:
+- Lifespan management for startup/shutdown
+- Middleware for request tracking
+- Health and metrics endpoints
+- CORS and security headers
+"""
 
-from app.metrics import record_current_count, record_hit, render_metrics
+from __future__ import annotations
 
-REDIS_KEY = "hit_count"
+import logging
+from contextlib import asynccontextmanager
+from typing import AsyncGenerator, Dict, Any
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from prometheus_client import CONTENT_TYPE_LATEST, generate_latest
+
+from app import __version__
+from app.api import health, metrics
+from app.api.metrics import MetricsMiddleware
+from app.api.v1 import items
+from app.core.config import settings
+from app.core.logging import setup_logging
+from app.middleware.request_id import RequestIDMiddleware
+from app.services.cache import close_cache, init_cache
+
+logger = logging.getLogger(__name__)
 
 
-def build_redis_client() -> redis.Redis:
-    host = os.getenv("REDIS_HOST", "localhost")
-    port = int(os.getenv("REDIS_PORT", "6379"))
-    return redis.Redis(host=host, port=port, decode_responses=True)
+@asynccontextmanager
+async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
+    """Manage application lifespan events."""
+    # Startup
+    setup_logging()
+    logger.info(
+        f"Starting {settings.app_name} v{__version__}",
+        extra={"environment": settings.environment},
+    )
 
-
-app = FastAPI(title="fastapi-deployment-pipeline")
-
-
-@app.on_event("startup")
-def startup() -> None:
-    app.state.redis = build_redis_client()
+    # Initialize services
     try:
-        app.state.redis.ping()
-    except redis.RedisError as exc:
-        raise RuntimeError("Redis connection failed") from exc
+        await init_cache()
+        logger.info("All services initialized successfully")
+    except Exception as e:
+        logger.warning(f"Cache initialization failed (continuing without cache): {e}")
+
+    yield
+
+    # Shutdown
+    logger.info("Shutting down application...")
+    await close_cache()
+    logger.info("Application shutdown complete")
 
 
-@app.post("/hit")
-def hit() -> dict:
-    try:
-        count = app.state.redis.incr(REDIS_KEY)
-        record_hit(int(count))
-        return {"count": int(count)}
-    except redis.RedisError as exc:
-        raise HTTPException(status_code=503, detail="Redis unavailable") from exc
+def create_app() -> FastAPI:
+    """Create and configure the FastAPI application."""
+    app = FastAPI(
+        title=settings.app_name,
+        version=__version__,
+        description="Production-ready FastAPI deployment pipeline demonstrating DevOps best practices",
+        docs_url="/docs" if settings.is_development else None,
+        redoc_url="/redoc" if settings.is_development else None,
+        openapi_url="/openapi.json" if settings.is_development else None,
+        lifespan=lifespan,
+    )
+
+    # Add middleware (order matters - first added is outermost)
+    app.add_middleware(RequestIDMiddleware)
+    app.add_middleware(MetricsMiddleware)
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.cors_origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Register routers
+    app.include_router(health.router, tags=["Health"])
+    app.include_router(metrics.router, tags=["Metrics"])
+    app.include_router(items.router, prefix="/api/v1", tags=["Items"])
+
+    # Root endpoint
+    @app.get("/", include_in_schema=False)
+    async def root() -> dict:
+        return {
+            "service": settings.app_name,
+            "version": __version__,
+            "environment": settings.environment,
+            "docs": "/docs" if settings.is_development else "disabled",
+        }
+
+    return app
 
 
-@app.get("/stats")
-def stats() -> dict:
-    try:
-        value = app.state.redis.get(REDIS_KEY)
-        count = int(value) if value is not None else 0
-        record_current_count(count)
-        return {"count": count}
-    except redis.RedisError as exc:
-        raise HTTPException(status_code=503, detail="Redis unavailable") from exc
+app = create_app()
 
 
-@app.get("/healthz")
-def healthz() -> dict:
-    return {"status": "ok"}
+if __name__ == "__main__":
+    import uvicorn
 
-
-@app.get("/metrics")
-def metrics() -> Response:
-    data, content_type = render_metrics()
-    return Response(content=data, media_type=content_type)
+    uvicorn.run(
+        "app.main:app",
+        host=settings.host,
+        port=settings.port,
+        reload=settings.is_development,
+        workers=settings.workers if not settings.is_development else 1,
+        log_level=settings.log_level.lower(),
+    )
