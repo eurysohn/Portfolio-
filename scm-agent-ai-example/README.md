@@ -63,6 +63,38 @@ python scripts/eval_golden_set.py
 - **Scroll behavior**: On each response, the view snaps to the start of the latest answer (no auto-scroll to bottom).
 - **API key required**: Valid `sk-` key is required before querying.
 
+## 🧩 Agent Workflow (Mermaid)
+```mermaid
+flowchart TD
+  Q[User Query] --> K[API Key Valid?]
+  K -->|No| OOS[Out-of-scope Guard] --> R1[Return Scope Message]
+  K -->|Yes| I[LLM Intent Classifier]
+  I --> S[SCM Scope Check]
+  S --> D[Dictionary Expansion]
+  D --> RAG[Retrieve Internal Knowledge]
+  RAG --> DATA[Structured KPI Query (optional)]
+  DATA --> WEB[Web Fallback (if RAG confidence low)]
+  WEB --> GEN[Answer Generation]
+  GEN --> TRACE[Workflow Trace + Evidence]
+  TRACE --> RESP[Response: Answer / Evidence / Next step]
+```
+
+## 🏛️ Architecture Overview (Mermaid)
+```mermaid
+flowchart LR
+  UI[Web UI] --> API[FastAPI /query]
+  API --> ENG[Agent Engine]
+  ENG --> ROUTE[LLM Intent Routing]
+  ENG --> DICT[Dictionary Lookup]
+  ENG --> RAGIDX[RAG Index (TF-IDF)]
+  ENG --> KPIS[Structured KPI Data]
+  ENG --> WEB[Web Search Fallback]
+  RAGIDX --> KB[Knowledge Base Markdown]
+  ENG --> TRACE[Workflow Trace Schema]
+  API --> METRICS[/metrics]
+  API --> HEALTH[/healthz]
+```
+
 ## 🔧 Environment Variables
 - `APP_NAME`: Service name.
 - `APP_VERSION`: Release version (e.g., `0.1.0`).
